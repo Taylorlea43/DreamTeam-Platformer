@@ -1,4 +1,4 @@
-# SER225 Platformer Game
+# SER225 Platformer Game - Hannah
 
 ## What is this?
 This is a game created for Quinnipiac's SER225 Agile Development class.

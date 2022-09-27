@@ -1,9 +1,12 @@
 package Screens;
 
 import Engine.GraphicsHandler;
+import Engine.ImageLoader;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import GameObject.Frame;
+import GameObject.GameObject;
 import Level.Map;
 import Level.Player;
 import Level.PlayerListener;
@@ -16,6 +19,7 @@ import Utils.Stopwatch;
 public class PlayLevelScreen extends Screen implements PlayerListener {
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
+    protected GameObject coin, coin2, coin3;
     protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
     protected Stopwatch screenTimer = new Stopwatch();
@@ -31,6 +35,16 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         // define/setup map
         this.map = new TestMap();
         map.reset();
+        
+        Frame frame = new Frame(ImageLoader.load("coins.png"));
+        this.coin = new GameObject(250,400, frame);
+        coin.setMap(map);
+        
+        this.coin2 = new GameObject(740, 105, frame);
+        coin2.setMap(map);
+
+        this.coin3 = new GameObject(1300,200, frame);
+        coin3.setMap(map);
 
         // setup player
         this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -77,6 +91,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
             case RUNNING:
                 map.draw(graphicsHandler);
                 player.draw(graphicsHandler);
+                coin.draw(graphicsHandler);
+                coin2.draw(graphicsHandler);
+                coin3.draw(graphicsHandler);
                 break;
             case LEVEL_COMPLETED:
                 levelClearedScreen.draw(graphicsHandler);

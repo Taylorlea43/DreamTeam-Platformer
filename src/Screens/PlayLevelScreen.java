@@ -1,5 +1,7 @@
 package Screens;
 
+import java.awt.Color;
+
 import Engine.GraphicsHandler;
 import Engine.Screen;
 import Game.GameState;
@@ -9,6 +11,7 @@ import Level.Player;
 import Level.PlayerListener;
 import Maps.TestMap;
 import Players.Cat;
+import SpriteFont.SpriteFont;
 import Utils.Point;
 import Utils.Stopwatch;
 
@@ -22,6 +25,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     protected LevelClearedScreen levelClearedScreen;
     protected LevelLoseScreen levelLoseScreen;
     protected boolean levelCompletedStateChangeStart;
+    protected SpriteFont gameTimer;
+    protected SpriteFont coinCounter;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -39,6 +44,15 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         Point playerStartPosition = map.getPlayerStartPosition();
         this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
         this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+        
+        // setup HUD
+        this.gameTimer = new SpriteFont("Time: 0", 700, 25, "Comic Sans", 23, new Color(49, 207, 240));
+        this.gameTimer.setOutlineColor(Color.black);
+        this.gameTimer.setOutlineThickness(3);
+        
+        this.coinCounter = new SpriteFont("Coins: 0", 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
+        this.coinCounter.setOutlineColor(Color.black);
+        this.coinCounter.setOutlineThickness(3);
 
         levelClearedScreen = new LevelClearedScreen();
         levelLoseScreen = new LevelLoseScreen(this);
@@ -51,6 +65,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
             case RUNNING:
                 player.update();
                 map.update(player);
+                
                 break;
             // if level has been completed, bring up level cleared screen
             case LEVEL_COMPLETED:
@@ -77,6 +92,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
             case RUNNING:
                 map.draw(graphicsHandler);
                 player.draw(graphicsHandler);
+                gameTimer.draw(graphicsHandler);
+                coinCounter.draw(graphicsHandler);
                 break;
             case LEVEL_COMPLETED:
                 levelClearedScreen.draw(graphicsHandler);

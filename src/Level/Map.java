@@ -2,7 +2,10 @@ package Level;
 
 import Engine.Config;
 import Engine.GraphicsHandler;
+import Engine.ImageLoader;
 import Engine.ScreenManager;
+import GameObject.Frame;
+import GameObject.GameObject;
 import Utils.Point;
 
 import java.io.File;
@@ -97,6 +100,7 @@ public abstract class Map {
         for (NPC npc: this.npcs) {
             npc.setMap(this);
         }
+       
 
         this.camera = new Camera(0, 0, tileset.getScaledSpriteWidth(), tileset.getScaledSpriteHeight(), this);
     }
@@ -322,6 +326,7 @@ public abstract class Map {
         npc.setMap(this);
         this.npcs.add(npc);
     }
+
 
     public void setAdjustCamera(boolean adjustCamera) {
         this.adjustCamera = adjustCamera;

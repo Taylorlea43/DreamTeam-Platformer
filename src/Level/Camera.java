@@ -147,6 +147,7 @@ public class Camera extends Rectangle {
         }
         return activeNPCs;
     }
+    
 
     /*
         determines if map entity (enemy, enhanced map tile, or npc) is active by the camera's standards
@@ -197,6 +198,7 @@ public class Camera extends Rectangle {
                 npc.draw(graphicsHandler);
             }
         }
+        
     }
 
     // checks if a game object's position falls within the camera's current radius
@@ -249,5 +251,7 @@ public class Camera extends Rectangle {
     public boolean isAtLeftOfMap() {
         return this.getX() <= 0;
     }
+
+	
 
 }

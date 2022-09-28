@@ -19,14 +19,11 @@ import java.util.ArrayList;
 // Represents a test map to be used in a level
 public class TestMap extends Map {
 	
-	private GameObject coin;
-	private Frame frame;
 	
     public TestMap() {
         super("test_map.txt", new CommonTileset());
         this.playerStartPosition = getMapTile(2, 11).getLocation();
         
-       
     }
 
     @Override

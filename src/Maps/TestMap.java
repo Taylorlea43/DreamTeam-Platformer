@@ -6,6 +6,8 @@ import Enemies.ZookeeperEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
+import GameObject.Frame;
+import GameObject.GameObject;
 import GameObject.Rectangle;
 import Level.*;
 import NPCs.Walrus;
@@ -17,10 +19,15 @@ import java.util.ArrayList;
 
 // Represents a test map to be used in a level
 public class TestMap extends Map {
-
+	
+	private GameObject coin;
+	private Frame frame;
+	
     public TestMap() {
         super("test_map.txt", new CommonTileset());
         this.playerStartPosition = getMapTile(2, 11).getLocation();
+        
+       
     }
 
     @Override
@@ -32,6 +39,7 @@ public class TestMap extends Map {
         enemies.add(new DinosaurEnemy(getMapTile(19, 1).getLocation().addY(2), getMapTile(22, 1).getLocation().addY(2), Direction.RIGHT));
         return enemies; 
     }
+  
 
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
@@ -62,4 +70,5 @@ public class TestMap extends Map {
 
         return npcs;
     }
+
 }

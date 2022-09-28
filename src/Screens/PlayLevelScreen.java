@@ -22,7 +22,7 @@ import Utils.Stopwatch;
 public class PlayLevelScreen extends Screen implements PlayerListener {
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
-    protected GameObject coin, coin2, coin3;
+    protected GameObject coin, coin2, coin3, coin4;
     protected GameObject key;
     protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
@@ -53,6 +53,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
         this.coin3 = new GameObject(1300,200, frame);
         coin3.setMap(map);
+        
+        this.coin4 = new GameObject(500, 150, frame);
+        coin4.setMap(map);
         
         //setup key
         Frame frame1 = new Frame(ImageLoader.load("key.png"));
@@ -122,6 +125,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
                 coin.draw(graphicsHandler);
                 coin2.draw(graphicsHandler);
                 coin3.draw(graphicsHandler);
+                coin4.draw(graphicsHandler);
                 
                 key.draw(graphicsHandler);
 

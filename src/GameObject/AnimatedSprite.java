@@ -110,7 +110,8 @@ public class AnimatedSprite implements IntersectableRectangle {
     // currentFrame is essentially a sprite, so each game loop cycle
 	// the sprite needs to have its current state updated based on animation logic,
 	// and location updated to match any changes to the animated sprite class
-	protected void updateCurrentFrame() {
+	protected void updateCurrentFrame() 
+	{
 		currentFrame = getCurrentFrame();
 		currentFrame.setX(x);
 		currentFrame.setY(y);

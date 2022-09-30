@@ -32,6 +32,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     protected boolean levelCompletedStateChangeStart;
     protected SpriteFont gameTimer;
     protected SpriteFont coinCounter;
+    protected SpriteFont healthBar;
 
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
@@ -77,6 +78,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         this.coinCounter = new SpriteFont("Coins: 0", 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
         this.coinCounter.setOutlineColor(Color.black);
         this.coinCounter.setOutlineThickness(3);
+        
+        this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23, new Color(49, 207, 240));
+        this.healthBar.setOutlineColor(Color.black);
+        this.healthBar.setOutlineThickness(3);
 
         levelClearedScreen = new LevelClearedScreen();
         levelLoseScreen = new LevelLoseScreen(this);
@@ -89,6 +94,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
             case RUNNING:
                 player.update();
                 map.update(player);
+                healthBar.setText("Health: " + (int) player.getHealth());
                 
                 break;
             // if level has been completed, bring up level cleared screen
@@ -119,6 +125,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
                 
                 gameTimer.draw(graphicsHandler);
                 coinCounter.draw(graphicsHandler);
+                healthBar.draw(graphicsHandler);
                 
                 coin.draw(graphicsHandler);
                 coin2.draw(graphicsHandler);

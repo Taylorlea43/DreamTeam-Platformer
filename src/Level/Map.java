@@ -275,6 +275,7 @@ public abstract class Map {
         return new ArrayList<>();
     }
 
+    
     public Camera getCamera() {
         return camera;
     }
@@ -282,9 +283,11 @@ public abstract class Map {
     public ArrayList<Enemy> getEnemies() {
         return enemies;
     }
+    
     public ArrayList<EnhancedMapTile> getEnhancedMapTiles() {
         return enhancedMapTiles;
     }
+    
     public ArrayList<NPC> getNPCs() {
         return npcs;
     }
@@ -325,7 +328,7 @@ public abstract class Map {
         npc.setMap(this);
         this.npcs.add(npc);
     }
-
+    
 
     public void setAdjustCamera(boolean adjustCamera) {
         this.adjustCamera = adjustCamera;

@@ -8,6 +8,7 @@ import GameObject.Rectangle;
 import java.awt.*;
 import java.util.ArrayList;
 
+
 // This class represents a Map's "Camera", aka a piece of the map that is currently included in a level's update/draw logic based on what should be shown on screen.
 // A majority of its job is just determining which map tiles, enemies, npcs, and enhanced map tiles are "active" each frame (active = included in update/draw cycle)
 public class Camera extends Rectangle {
@@ -148,6 +149,7 @@ public class Camera extends Rectangle {
         return activeNPCs;
     }
     
+    
 
     /*
         determines if map entity (enemy, enhanced map tile, or npc) is active by the camera's standards
@@ -227,7 +229,6 @@ public class Camera extends Rectangle {
     public ArrayList<NPC> getActiveNPCs() {
         return activeNPCs;
     }
-
     // gets end bound X position of the camera (start position is always 0)
     public float getEndBoundX() {
         return x + (width * tileWidth) + leftoverSpaceX;

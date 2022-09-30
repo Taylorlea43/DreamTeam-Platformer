@@ -35,6 +35,8 @@ public class TestMap extends Map {
 
         enemies.add(new DinosaurEnemy(getMapTile(19, 1).getLocation().addY(2), getMapTile(22, 1).getLocation().addY(2), Direction.RIGHT));
         return enemies; 
+        
+        
     }
   
 

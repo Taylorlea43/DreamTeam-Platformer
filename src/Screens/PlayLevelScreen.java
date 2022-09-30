@@ -45,15 +45,15 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         
         //set up coins in the game
        Frame frame = new Frame(ImageLoader.load("coins.png"));
-       this.coin = new GameObject(250,400, frame);
-       coin.setMap(map);
-       this.coin2 = new GameObject(740, 105, frame);
-       coin2.setMap(map);
-       this.coin3 = new GameObject(1300,200, frame);
-        coin3.setMap(map);
+       //this.coin = new GameObject(250,400, frame);
+       //coin.setMap(map);
+       //this.coin2 = new GameObject(740, 105, frame);
+       //coin2.setMap(map);
+       //this.coin3 = new GameObject(1300,200, frame);
+        //coin3.setMap(map);
         
-        this.coin4 = new GameObject(500, 150, frame);
-        coin4.setMap(map);
+        //this.coin4 = new GameObject(500, 150, frame);
+        //coin4.setMap(map);
         
         //setup key
         Frame frame1 = new Frame(ImageLoader.load("key.png"));

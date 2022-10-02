@@ -53,7 +53,7 @@ public class TestMap extends Map {
         ));
 
         enhancedMapTiles.add(new EndLevelBox(
-                getMapTile(32, 7).getLocation()
+                getMapTile(53, 7).getLocation()
         ));
 
         return enhancedMapTiles;

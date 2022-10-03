@@ -6,6 +6,7 @@ import Enemies.ZookeeperEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
+import GameObject.Coin;
 import GameObject.Frame;
 import GameObject.GameObject;
 import GameObject.Rectangle;

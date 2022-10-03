@@ -248,6 +248,7 @@ public class GameObject extends AnimatedSprite {
 			return getBounds();
 		}
 	}
+	
 
 	// set this game object's map to make it a "part of" the map, allowing calibrated positions and collision handling logic to work
 	public void setMap(Map map) {

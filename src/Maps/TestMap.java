@@ -55,9 +55,7 @@ public class TestMap extends Map {
                 Direction.RIGHT
         ));
 
-        enhancedMapTiles.add(new EndLevelBox(
-                getMapTile(32, 10).getLocation()
-        ));
+        enhancedMapTiles.add(new EndLevelBox(getMapTile(52, 10).getLocation()));
 
         return enhancedMapTiles;
     }

@@ -1,6 +1,8 @@
 package Screens;
 
 import java.awt.Color;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
@@ -36,6 +38,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     protected SpriteFont coinCounter;
     protected SpriteFont healthBar;
     protected int coinCount;
+    protected float timeElapsed;
+
 
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
@@ -76,12 +80,21 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         
 
         // setup HUD
-        this.gameTimer = new SpriteFont("Time: 0", 700, 25, "Comic Sans", 23, new Color(49, 207, 240));
+        Timer timer = new Timer();
+        TimerTick tick = new TimerTick(timer);
+        timer.schedule(tick, 1000, 1000);
+        
+        timeElapsed = 0;
+        this.gameTimer = new SpriteFont("Time: " + timeElapsed, 691, 25, "Comic Sans", 23, new Color(49, 207, 240));
         this.gameTimer.setOutlineColor(Color.black);
         this.gameTimer.setOutlineThickness(3);
         
+
         
         this.coinCounter = new SpriteFont("Coins: " + coinCount, 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
+
+        this.coinCounter = new SpriteFont("Coins: 0", 685, 50, "Comic Sans", 23, new Color(49, 207, 240));
+
         this.coinCounter.setOutlineColor(Color.black);
         this.coinCounter.setOutlineThickness(3);
         
@@ -108,7 +121,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
  
                
                 healthBar.setText("Health: " + (int) player.getHealth());
+
                 coinCounter.setText("Coins " + this.getCoinCount());
+
+                gameTimer.setText("Time: " + (int) timeElapsed);
+
                 
                 break;
             // if level has been completed, bring up level cleared screen
@@ -193,6 +210,22 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
     public void goBackToMenu() {
         screenCoordinator.setGameState(GameState.MENU);
+    }
+    
+    public class TimerTick extends TimerTask {
+    	protected Timer timer;
+    	
+    	public TimerTick(Timer timer) {
+    		this.timer = timer;
+    	}
+    	
+    	public void run() {
+    		if (screenCoordinator.getGameState().equals(GameState.LEVEL))
+    			timeElapsed += 1;
+    		else if (playLevelScreenState == PlayLevelScreenState.LEVEL_LOSE) {
+    			timer.cancel();
+    		}
+    }
     }
 
     // This enum represents the different states this screen can be in

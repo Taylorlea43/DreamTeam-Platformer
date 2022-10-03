@@ -100,7 +100,6 @@ public abstract class Map {
         for (NPC npc: this.npcs) {
             npc.setMap(this);
         }
-       
 
         this.camera = new Camera(0, 0, tileset.getScaledSpriteWidth(), tileset.getScaledSpriteHeight(), this);
     }

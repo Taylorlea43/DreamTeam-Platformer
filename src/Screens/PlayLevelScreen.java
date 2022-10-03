@@ -2,6 +2,8 @@ package Screens;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
@@ -23,9 +25,10 @@ import Utils.Stopwatch;
 
 // This class is for when the platformer game is actually being played
 public class PlayLevelScreen extends Screen implements PlayerListener {
+
 	protected ScreenCoordinator screenCoordinator;
 	protected Map map;
-	protected GameObject coin, coin2, coin3;
+	protected GameObject coin, coin2, coin3, coin4;
 	protected GameObject key;
 	protected Player player;
 	protected PlayLevelScreenState playLevelScreenState;
@@ -37,13 +40,15 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected SpriteFont coinCounter;
 	public int currLevel;
 
+	protected SpriteFont healthBar;
+	protected float timeElapsed;
+
 	public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
 		this.screenCoordinator = screenCoordinator;
 	}
 
 	public void initialize() {
 		if (currLevel == 0) {
-			// define/setup map
 			this.map = new Level1();
 			map.reset();
 
@@ -51,17 +56,28 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Frame frame = new Frame(ImageLoader.load("coins.png"));
 			this.coin = new GameObject(250, 400, frame);
 			coin.setMap(map);
-
 			this.coin2 = new GameObject(740, 105, frame);
 			coin2.setMap(map);
-
 			this.coin3 = new GameObject(1300, 200, frame);
 			coin3.setMap(map);
+			this.coin4 = new GameObject(500, 150, frame);
+			coin4.setMap(map);
 
 			// setup key
 			Frame frame1 = new Frame(ImageLoader.load("key.png"));
 			this.key = new GameObject(1025, 250, frame1);
 			key.setMap(map);
+
+			
+
+			// setup HUD
+			Timer timer = new Timer();
+			TimerTick tick = new TimerTick(timer);
+			timer.schedule(tick, 1000, 1000);
+			timeElapsed = 0;
+
+
+			
 
 			// setup player
 			this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -71,15 +87,25 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
+			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
+					new Color(49, 207, 240));
+			this.healthBar.setOutlineColor(Color.black);
+			this.healthBar.setOutlineThickness(3);
+			
+
 			// setup HUD
-			this.gameTimer = new SpriteFont("Time: 0", 700, 25, "Comic Sans", 23, new Color(49, 207, 240));
-			this.gameTimer.setOutlineColor(Color.black);
-			this.gameTimer.setOutlineThickness(3);
-
-			this.coinCounter = new SpriteFont("Coins: 0", 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
-			this.coinCounter.setOutlineColor(Color.black);
-			this.coinCounter.setOutlineThickness(3);
-
+	        this.gameTimer = new SpriteFont("Time: 0", 700, 25, "Comic Sans", 23, new Color(49, 207, 240));
+	        this.gameTimer.setOutlineColor(Color.black);
+	        this.gameTimer.setOutlineThickness(3);
+	        
+	        this.coinCounter = new SpriteFont("Coins: 0", 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
+	        this.coinCounter.setOutlineColor(Color.black);
+	        this.coinCounter.setOutlineThickness(3);
+	        
+	        this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23, new Color(49, 207, 240));
+	        this.healthBar.setOutlineColor(Color.black);
+	        this.healthBar.setOutlineThickness(3);
+			
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
 		} else if (currLevel == 1) {
@@ -99,6 +125,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
 		} else if (currLevel == 2) {
@@ -117,6 +144,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
 		}
@@ -130,6 +158,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		case RUNNING:
 			player.update();
 			map.update(player);
+			healthBar.setText("Health: " + (int) player.getHealth());
+			gameTimer.setText("Time: " + (int) timeElapsed);
 
 			break;
 		// if level has been completed, bring up level cleared screen
@@ -138,12 +168,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				screenTimer.setWaitTime(2500);
 				currLevel++;
 				levelCompletedStateChangeStart = false;
-
-			}
-
-			else {
+			} else {
 				levelClearedScreen.update();
-//If player doesn't make a choice in time they are brought back to menu				
 //				if (screenTimer.isTimeUp()) {
 //					goBackToMenu();
 //				}
@@ -157,6 +183,27 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		}
 	}
 
+	public void goBackToMenu() {
+		screenCoordinator.setGameState(GameState.MENU);
+	}
+
+	public class TimerTick extends TimerTask {
+		protected Timer timer;
+
+		public TimerTick(Timer timer) {
+			this.timer = timer;
+		}
+
+		public void run() {
+			if (screenCoordinator.getGameState().equals(GameState.LEVEL))
+				timeElapsed += 1;
+			else if (playLevelScreenState == PlayLevelScreenState.LEVEL_LOSE) {
+				timer.cancel();
+			}
+
+		}
+	}
+
 	public void draw(GraphicsHandler graphicsHandler) {
 		// based on screen state, draw appropriate graphics
 		switch (playLevelScreenState) {
@@ -166,6 +213,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			gameTimer.draw(graphicsHandler);
 			coinCounter.draw(graphicsHandler);
+			healthBar.draw(graphicsHandler);
 
 			coin.draw(graphicsHandler);
 			coin2.draw(graphicsHandler);
@@ -209,10 +257,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 	public void loadNextLevel() {
 		initialize();
-	}
-
-	public void goBackToMenu() {
-		screenCoordinator.setGameState(GameState.MENU);
 	}
 
 	// This enum represents the different states this screen can be in

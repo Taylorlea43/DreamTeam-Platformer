@@ -14,15 +14,17 @@ import java.util.HashMap;
 // basically just sets some values for physics and then defines animations
 public class Cat extends Player {
 
-	public Cat(float x, float y) {
-		super(new SpriteSheet(ImageLoader.load("Cat.png"), 24, 24), x, y, "STAND_RIGHT");
-		gravity = .5f;
-		terminalVelocityY = 6f;
-		jumpHeight = 14.5f;
-		jumpDegrade = .5f;
-		walkSpeed = 5.3f;
-		momentumYIncrease = .5f;
-	}
+
+    public Cat(float x, float y) {
+        super(new SpriteSheet(ImageLoader.load("Cat.png"), 24, 24), x, y, "STAND_RIGHT");
+        gravity = .5f;
+        terminalVelocityY = 6f;
+        jumpHeight = 14.5f;
+        jumpDegrade = .5f;
+        walkSpeed = 5.3f;
+        momentumYIncrease = .5f;
+        health = 100;
+    }
 
 	public void update() {
 		super.update();

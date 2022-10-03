@@ -13,7 +13,8 @@ import java.util.ArrayList;
 public abstract class Player extends GameObject {
     // values that affect player movement
     // these should be set in a subclass
-    protected float walkSpeed = 0;
+    protected float health = 0;
+	protected float walkSpeed = 0;
     protected float gravity = 0;
     protected float jumpHeight = 0;
     protected float jumpDegrade = 0;
@@ -306,7 +307,11 @@ public abstract class Player extends GameObject {
         if (!isInvincible) {
             // if map entity is an enemy, kill player on touch
             if (mapEntity instanceof Enemy) {
-                levelState = LevelState.PLAYER_DEAD;
+                if(health >= 1) {
+                	health -= 1;
+                }
+                else // player health at 0
+                	levelState = LevelState.PLAYER_DEAD;
             }
         }
     }
@@ -369,6 +374,10 @@ public abstract class Player extends GameObject {
 
     public PlayerState getPlayerState() {
         return playerState;
+    }
+    
+    public float getHealth() {
+    	return health;
     }
 
     public void setPlayerState(PlayerState playerState) {

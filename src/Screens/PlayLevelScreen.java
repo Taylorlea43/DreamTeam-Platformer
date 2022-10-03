@@ -26,7 +26,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     //protected GameObject coin, coin2, coin3, coin4;
-    protected Coin coin1, coin2, coin3, coin4;
+    protected Coin coin1, coin2, coin3, coin4, coin5, coin6;
     protected GameObject key;
     protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
@@ -52,17 +52,23 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         map.reset();
         
         //set up coins in the game
-       this.coin1 = new Coin(630, 380);
+       this.coin1 = new Coin(630, 380, "coin.png");
        coin1.setMap(map);
         
-       this.coin2 = new Coin(320, 300);
+       this.coin2 = new Coin(320, 300, "coin.png");
        coin2.setMap(map);
        
-       this.coin3 = new Coin(865, 105);
+       this.coin3 = new Coin(865, 105, "coin.png");
        coin3.setMap(map);
        
-       this.coin4 = new Coin(1300, 100);
+       this.coin4 = new Coin(1300, 100, "coin.png");
        coin4.setMap(map);
+       
+       this.coin5 = new Coin(1775, 110, "coin.png");
+       coin5.setMap(map);
+       
+       this.coin6 = new Coin(2250, 430, "coin.png");
+       coin6.setMap(map);
 
         
         //setup key
@@ -118,6 +124,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
                 coin2.check(player);
                 coin3.check(player);
                 coin4.check(player);
+                coin5.check(player);
+                coin6.check(player);
  
                
                 healthBar.setText("Health: " + (int) player.getHealth());
@@ -170,6 +178,12 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
                 }
                 if(coin4.gotCoin == false) {
                 	coin4.draw(graphicsHandler);
+                }
+                if(coin5.gotCoin == false) {
+                	coin5.draw(graphicsHandler);
+                }
+                if(coin6.gotCoin == false) {
+                	coin6.draw(graphicsHandler);
                 }
                 
                 
@@ -234,7 +248,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     }
     
     public int getCoinCount() {
-    	coinCount = coin1.getCoinCount()+coin2.getCoinCount()+coin3.getCoinCount()+coin4.getCoinCount();
+    	coinCount = coin1.getCoinCount()+coin2.getCoinCount()+coin3.getCoinCount()+coin4.getCoinCount()+coin5.getCoinCount()+coin6.getCoinCount();
     	return coinCount;
     }
 }

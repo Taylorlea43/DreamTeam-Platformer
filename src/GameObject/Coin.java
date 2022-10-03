@@ -17,8 +17,8 @@ public class Coin extends MapEntity{
 	public int coinCount;
 	public float x, y;
 
-	public Coin(float x, float y) {
-		super(x, y, new Frame(ImageLoader.load("coin.png")));
+	public Coin(float x, float y, String imageName) {
+		super(x, y, new Frame(ImageLoader.load(imageName)));
 		this.x = x;
 		this.y = y;
 		this.setScale(3);
@@ -27,8 +27,9 @@ public class Coin extends MapEntity{
 	
 	
 	 public void check(Player player) {
-		 if(overlaps(player)) {
+		 if((intersects(player) && gotCoin == false) | (overlaps(player) && gotCoin == false)) {
 			 gotCoin = true;
+			 coinCount++;
 		 }
 	 }
 	    

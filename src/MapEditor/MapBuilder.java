@@ -59,7 +59,7 @@ public class MapBuilder extends JPanel {
         tileBuilderScroll.getVerticalScrollBar().setValue(tileBuilderScroll.getVerticalScrollBar().getMaximum());
         mapWidthLabel.setText("Width: " + map.getWidth());
         mapHeightLabel.setText("Height: " + map.getHeight());
-    }
+    } 
 
     public void scrollToMaxY() {
         tileBuilderScroll.getVerticalScrollBar().setValue(tileBuilderScroll.getVerticalScrollBar().getMaximum());

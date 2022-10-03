@@ -34,7 +34,7 @@ public class BugEnemy extends Enemy {
     @Override
     public void initialize() {
         super.initialize();
-        facingDirection = startFacingDirection;
+        facingDirection = startFacingDirection; 
         if (facingDirection == Direction.RIGHT) {
             currentAnimationName = "WALK_RIGHT";
         } else if (facingDirection == Direction.LEFT) {
@@ -101,7 +101,7 @@ public class BugEnemy extends Enemy {
             put("WALK_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0), 100)
                             .withScale(2)
-                            .withBounds(6, 6, 12, 7)
+								.withBounds(6, 6, 12, 7)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(0, 1), 100)
                             .withScale(2)

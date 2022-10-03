@@ -18,12 +18,12 @@ import Utils.Point;
 import java.util.ArrayList;
 
 // Represents a test map to be used in a level
-public class TestMap extends Map {
+public class Level1 extends Map {
 	
 	private GameObject coin;
 	private Frame frame;
 	
-    public TestMap() {
+    public Level1() {
         super("test_map.txt", new CommonTileset());
         this.playerStartPosition = getMapTile(2, 11).getLocation();
         
@@ -42,7 +42,7 @@ public class TestMap extends Map {
   
 
     @Override
-    public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
+    public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() { 
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
         enhancedMapTiles.add(new HorizontalMovingPlatform(

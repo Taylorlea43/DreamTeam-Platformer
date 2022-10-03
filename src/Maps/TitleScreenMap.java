@@ -25,6 +25,6 @@ public class TitleScreenMap extends Map {
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
         cat.draw(graphicsHandler);
-    }
+    } 
 
 }

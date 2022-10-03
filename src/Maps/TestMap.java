@@ -6,6 +6,7 @@ import Enemies.ZookeeperEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
+import GameObject.Coin;
 import GameObject.Frame;
 import GameObject.GameObject;
 import GameObject.Rectangle;
@@ -55,7 +56,7 @@ public class TestMap extends Map {
         ));
 
         enhancedMapTiles.add(new EndLevelBox(
-                getMapTile(32, 7).getLocation()
+                getMapTile(32, 10).getLocation()
         ));
 
         return enhancedMapTiles;
@@ -69,5 +70,5 @@ public class TestMap extends Map {
 
         return npcs;
     }
-
+    
 }

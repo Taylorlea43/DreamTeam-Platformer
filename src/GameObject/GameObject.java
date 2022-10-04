@@ -248,6 +248,7 @@ public class GameObject extends AnimatedSprite {
 			return getBounds();
 		}
 	}
+	
 
 	// set this game object's map to make it a "part of" the map, allowing calibrated positions and collision handling logic to work
 	public void setMap(Map map) {
@@ -267,7 +268,7 @@ public class GameObject extends AnimatedSprite {
 
 			// Uncomment this to draw player's bounds to screen -- useful for debugging
 			/*
-			if (this instanceof Player) {
+			if (this instance of Player) {
 				drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
 			}
 			*/

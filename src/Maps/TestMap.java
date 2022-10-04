@@ -1,11 +1,11 @@
 package Maps;
 
-import Enemies.BugEnemy;
 import Enemies.DinosaurEnemy;
 import Enemies.ZookeeperEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
+import GameObject.Coin;
 import GameObject.Frame;
 import GameObject.GameObject;
 import GameObject.Rectangle;
@@ -35,6 +35,8 @@ public class TestMap extends Map {
 
         enemies.add(new DinosaurEnemy(getMapTile(19, 1).getLocation().addY(2), getMapTile(22, 1).getLocation().addY(2), Direction.RIGHT));
         return enemies; 
+        
+        
     }
   
 
@@ -52,9 +54,7 @@ public class TestMap extends Map {
                 Direction.RIGHT
         ));
 
-        enhancedMapTiles.add(new EndLevelBox(
-                getMapTile(53, 7).getLocation()
-        ));
+        enhancedMapTiles.add(new EndLevelBox(getMapTile(52, 10).getLocation()));
 
         return enhancedMapTiles;
     }
@@ -67,5 +67,5 @@ public class TestMap extends Map {
 
         return npcs;
     }
-
+    
 }

@@ -2,11 +2,13 @@ package Level;
 
 import Engine.GraphicsHandler;
 import Engine.ScreenManager;
+import GameObject.Coin;
 import GameObject.GameObject;
 import GameObject.Rectangle;
 
 import java.awt.*;
 import java.util.ArrayList;
+
 
 // This class represents a Map's "Camera", aka a piece of the map that is currently included in a level's update/draw logic based on what should be shown on screen.
 // A majority of its job is just determining which map tiles, enemies, npcs, and enhanced map tiles are "active" each frame (active = included in update/draw cycle)
@@ -26,7 +28,6 @@ public class Camera extends Rectangle {
     private ArrayList<Enemy> activeEnemies = new ArrayList<>();
     private ArrayList<EnhancedMapTile> activeEnhancedMapTiles = new ArrayList<>();
     private ArrayList<NPC> activeNPCs = new ArrayList<>();
-
     // determines how many tiles off screen an entity can be before it will be deemed inactive and not included in the update/draw cycles until it comes back in range
     private final int UPDATE_OFF_SCREEN_RANGE = 4;
 
@@ -147,6 +148,8 @@ public class Camera extends Rectangle {
         }
         return activeNPCs;
     }
+
+    
     
 
     /*

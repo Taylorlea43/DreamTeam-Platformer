@@ -9,6 +9,7 @@ import Engine.ImageLoader;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import GameObject.Coin;
 import GameObject.Frame;
 import GameObject.GameObject;
 import Level.Map;
@@ -24,7 +25,8 @@ import Utils.Stopwatch;
 public class PlayLevelScreen extends Screen implements PlayerListener {
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
-    protected GameObject coin, coin2, coin3, coin4;
+    //protected GameObject coin, coin2, coin3, coin4;
+    protected Coin coin1, coin2, coin3, coin4, coin5, coin6;
     protected GameObject key;
     protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
@@ -35,7 +37,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     protected SpriteFont gameTimer;
     protected SpriteFont coinCounter;
     protected SpriteFont healthBar;
+    protected int coinCount;
     protected float timeElapsed;
+
 
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
@@ -48,16 +52,24 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         map.reset();
         
         //set up coins in the game
-       Frame frame = new Frame(ImageLoader.load("coins.png"));
-       this.coin = new GameObject(250,400, frame);
-       coin.setMap(map);
-       this.coin2 = new GameObject(740, 105, frame);
-       coin2.setMap(map);
-       this.coin3 = new GameObject(1300,200, frame);
-        coin3.setMap(map);
+       this.coin1 = new Coin(630, 380, "coin.png");
+       coin1.setMap(map);
         
-        this.coin4 = new GameObject(500, 150, frame);
-        coin4.setMap(map);
+       this.coin2 = new Coin(320, 300, "coin.png");
+       coin2.setMap(map);
+       
+       this.coin3 = new Coin(865, 105, "coin.png");
+       coin3.setMap(map);
+       
+       this.coin4 = new Coin(1300, 100, "coin.png");
+       coin4.setMap(map);
+       
+       this.coin5 = new Coin(1775, 110, "coin.png");
+       coin5.setMap(map);
+       
+       this.coin6 = new Coin(2250, 430, "coin.png");
+       coin6.setMap(map);
+
         
         //setup key
         Frame frame1 = new Frame(ImageLoader.load("key.png"));
@@ -83,7 +95,12 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         this.gameTimer.setOutlineColor(Color.black);
         this.gameTimer.setOutlineThickness(3);
         
+
+        
+        this.coinCounter = new SpriteFont("Coins: " + coinCount, 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
+
         this.coinCounter = new SpriteFont("Coins: 0", 685, 50, "Comic Sans", 23, new Color(49, 207, 240));
+
         this.coinCounter.setOutlineColor(Color.black);
         this.coinCounter.setOutlineThickness(3);
         
@@ -102,8 +119,21 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
             case RUNNING:
                 player.update();
                 map.update(player);
+                
+                coin1.check(player);
+                coin2.check(player);
+                coin3.check(player);
+                coin4.check(player);
+                coin5.check(player);
+                coin6.check(player);
+ 
+               
                 healthBar.setText("Health: " + (int) player.getHealth());
+
+                coinCounter.setText("Coins " + this.getCoinCount());
+
                 gameTimer.setText("Time: " + (int) timeElapsed);
+
                 
                 break;
             // if level has been completed, bring up level cleared screen
@@ -136,10 +166,26 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
                 coinCounter.draw(graphicsHandler);
                 healthBar.draw(graphicsHandler);
                 
-                coin.draw(graphicsHandler);
-                coin2.draw(graphicsHandler);
-                coin3.draw(graphicsHandler);
-                coin4.draw(graphicsHandler);
+                
+                if(coin1.gotCoin == false) {
+                	coin1.draw(graphicsHandler);
+                }
+                if(coin2.gotCoin == false) {
+                	coin2.draw(graphicsHandler);
+                }
+                if(coin3.gotCoin == false) {
+                	coin3.draw(graphicsHandler);
+                }
+                if(coin4.gotCoin == false) {
+                	coin4.draw(graphicsHandler);
+                }
+                if(coin5.gotCoin == false) {
+                	coin5.draw(graphicsHandler);
+                }
+                if(coin6.gotCoin == false) {
+                	coin6.draw(graphicsHandler);
+                }
+                
                 
                 key.draw(graphicsHandler);
 
@@ -199,5 +245,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     // This enum represents the different states this screen can be in
     private enum PlayLevelScreenState {
         RUNNING, LEVEL_COMPLETED, LEVEL_LOSE
+    }
+    
+    public int getCoinCount() {
+    	coinCount = coin1.getCoinCount()+coin2.getCoinCount()+coin3.getCoinCount()+coin4.getCoinCount()+coin5.getCoinCount()+coin6.getCoinCount();
+    	return coinCount;
     }
 }

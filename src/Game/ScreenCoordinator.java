@@ -57,7 +57,7 @@ public class ScreenCoordinator extends Screen {
 
 			// call the update method for the currentScreen
 			currentScreen.update();
-		} while (previousGameState != gameState);
+		} while (previousGameState != gameState); 
 	}
 
 	@Override

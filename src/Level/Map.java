@@ -66,7 +66,7 @@ public abstract class Map {
     // map tiles in map that are animated
     protected ArrayList<MapTile> animatedMapTiles;
 
-    public Map(String mapFileName, Tileset tileset) {
+    public Map(String mapFileName, Tileset tileset) { 
         this.mapFileName = mapFileName;
         this.tileset = tileset;
         setupMap();

@@ -239,7 +239,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		public void run() {
 			if (screenCoordinator.getGameState().equals(GameState.LEVEL))
 				timeElapsed += 1;
-			else if (playLevelScreenState == PlayLevelScreenState.LEVEL_LOSE) {
+			else if (playLevelScreenState.equals(PlayLevelScreenState.LEVEL_LOSE)) {
 				timer.cancel();
 			}
 

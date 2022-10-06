@@ -13,6 +13,7 @@ import Game.ScreenCoordinator;
 import GameObject.Coin;
 import GameObject.Frame;
 import GameObject.GameObject;
+import GameObject.LevelKey;
 import Level.Map;
 import Level.Player;
 import Level.PlayerListener;
@@ -30,7 +31,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected ScreenCoordinator screenCoordinator;
 	protected Map map;
 	protected Coin coin1, coin2, coin3, coin4, coin5, coin6;
-	protected GameObject key;
+	protected LevelKey key;
 	protected Player player;
 	protected PlayLevelScreenState playLevelScreenState;
 	protected Stopwatch screenTimer = new Stopwatch();
@@ -51,7 +52,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 	public void initialize() {
 
-		if (currLevel == 0) {
+		if (currLevel == 0) 
+		{
 			// define/setup map
 			this.map = new Level1();
 			map.reset();
@@ -76,8 +78,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin6.setMap(map);
 
 			// setup key
-			Frame frame1 = new Frame(ImageLoader.load("key.png"));
-			this.key = new GameObject(1025, 250, frame1);
+			this.key = new LevelKey(1025, 250, "key.png");
 			key.setMap(map);
 
 			this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -107,8 +108,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
-		} else if (currLevel == 1)
-
+		} 
+		else if (currLevel == 1)
 		{
 			// define/setup map
 			this.map = new Level2();
@@ -153,6 +154,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin4.check(player);
 			coin5.check(player);
 			coin6.check(player);
+			
+			key.check(player);
 
 			healthBar.setText("Health: " + (int) player.getHealth());
 
@@ -212,7 +215,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				coin6.draw(graphicsHandler);
 			}
 
-			key.draw(graphicsHandler);
+			if (key.gotKey == false)
+			{
+				key.draw(graphicsHandler);
+			}
+			
 
 			break;
 		case LEVEL_COMPLETED:

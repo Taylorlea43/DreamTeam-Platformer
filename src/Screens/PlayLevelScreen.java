@@ -29,7 +29,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 	protected ScreenCoordinator screenCoordinator;
 	protected Map map;
-	protected Coin coin1, coin2, coin3, coin4, coin5, coin6;
+	protected Coin coin1, coin2, coin3, coin4, coin5, coin6, coin7, coin8, coin9, coin10;
 	protected GameObject key;
 	protected Player player;
 	protected PlayLevelScreenState playLevelScreenState;
@@ -119,6 +119,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			
+			//set up coins in the level 
+			
 
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);

@@ -1,5 +1,6 @@
 package GameObject;
 
+import java.awt.image.BufferedImage;
 import java.util.Map;
 
 import Engine.GraphicsHandler;
@@ -17,8 +18,8 @@ public class Coin extends MapEntity{
 	public int coinCount;
 	public float x, y;
 
-	public Coin(float x, float y, String imageName) {
-		super(x, y, new Frame(ImageLoader.load(imageName)));
+	public Coin(float x, float y) {
+		super( x, y, new Frame(ImageLoader.load("Coins.png")));
 		this.x = x;
 		this.y = y;
 		this.setScale(3);
@@ -27,7 +28,7 @@ public class Coin extends MapEntity{
 	
 	
 	 public void check(Player player) {
-		 if((intersects(player) && gotCoin == false) | (overlaps(player) && gotCoin == false)) {
+		 if((intersects(player) && gotCoin == false) && (overlaps(player) && gotCoin == false)) {
 			 gotCoin = true;
 			 coinCount++;
 		 }

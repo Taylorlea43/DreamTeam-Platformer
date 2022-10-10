@@ -28,7 +28,7 @@ public class Coin extends MapEntity{
 	
 	
 	 public void check(Player player) {
-		 if((intersects(player) && gotCoin == false) && (overlaps(player) && gotCoin == false)) {
+		 if((intersects(player) && gotCoin == false) | (overlaps(player) && gotCoin == false)) {
 			 gotCoin = true;
 			 coinCount++;
 		 }

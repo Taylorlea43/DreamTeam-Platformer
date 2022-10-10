@@ -13,6 +13,7 @@ import Game.ScreenCoordinator;
 import GameObject.Coin;
 import GameObject.Frame;
 import GameObject.GameObject;
+import GameObject.Rectangle;
 import GameObject.LevelKey;
 import Level.Map;
 import Level.Player;
@@ -58,24 +59,30 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// define/setup map
 			this.map = new Level1();
 			map.reset();
-			// set up coins in the game
 
-			this.coin1 = new Coin(630, 380);
+			// set up coins in the game
+			this.coin1 = new Coin(320, 340);
+			coin1.setBounds(new Rectangle(1, 1, 16, 16));
 			coin1.setMap(map);
 
-			this.coin2 = new Coin(320, 293);
+			this.coin2 = new Coin(620, 293);
+			coin2.setBounds(new Rectangle(1, 1, 16, 16));
 			coin2.setMap(map);
 
 			this.coin3 = new Coin(865, 105);
+			coin3.setBounds(new Rectangle(1, 1, 16, 16));
 			coin3.setMap(map);
 
-			this.coin4 = new Coin(1300, 100);
+			this.coin4 = new Coin(1300, 130);
+			coin4.setBounds(new Rectangle(1, 1, 16, 16));
 			coin4.setMap(map);
 
-			this.coin5 = new Coin(1775, 110);
+			this.coin5 = new Coin(1730, 490);
+			coin5.setBounds(new Rectangle(1, 1, 16, 16));
 			coin5.setMap(map);
 
 			this.coin6 = new Coin(2250, 430);
+			coin6.setBounds(new Rectangle(1, 1, 16, 16));
 			coin6.setMap(map);
 
 			// setup key

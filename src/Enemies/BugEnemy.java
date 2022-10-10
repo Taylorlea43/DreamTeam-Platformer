@@ -26,7 +26,8 @@ public class BugEnemy extends Enemy {
     private AirGroundState airGroundState;
 
     public BugEnemy(Point location, Direction facingDirection) {
-        super(location.x, location.y, new SpriteSheet(ImageLoader.load("BugEnemy.png"), 24, 15), "WALK_LEFT");
+        super(location.x, location.y, new SpriteSheet(ImageLoader.load("SquirrelEnemie.png"), 23 , 15), "WALK_LEFT");
+
         this.startFacingDirection = facingDirection;
         this.initialize();
     }
@@ -101,10 +102,12 @@ public class BugEnemy extends Enemy {
             put("WALK_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0), 100)
                             .withScale(2)
-								.withBounds(6, 6, 12, 7)
+                            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                            .withBounds(6, 6, 12, 7)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(0, 1), 100)
                             .withScale(2)
+                            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(6, 6, 12, 7)
                             .build()
             });
@@ -112,12 +115,10 @@ public class BugEnemy extends Enemy {
             put("WALK_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0), 100)
                             .withScale(2)
-                            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(6, 6, 12, 7)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(0, 1), 100)
                             .withScale(2)
-                            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(6, 6, 12, 7)
                             .build()
             });

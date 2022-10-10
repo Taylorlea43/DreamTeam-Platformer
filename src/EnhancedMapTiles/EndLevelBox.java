@@ -14,8 +14,8 @@ import java.util.HashMap;
 // This class is for the end level gold box tile
 // when the player touches it, it will tell the player that the level has been completed
 public class EndLevelBox extends EnhancedMapTile {
-    public EndLevelBox(Point location) {
-        super(location.x, location.y, new SpriteSheet(ImageLoader.load("Lizard2.png"), 24, 24), TileType.PASSABLE);
+    public EndLevelBox(Point location, String name) {
+        super(location.x, location.y, new SpriteSheet(ImageLoader.load(name), 24, 24), TileType.PASSABLE);
     }
 
     @Override

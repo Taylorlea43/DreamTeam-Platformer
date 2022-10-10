@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 /*
  * This is where the game loop starts
@@ -28,9 +29,17 @@ public class GamePanel extends JPanel {
 
 	private boolean doPaint = false;
 	private boolean isGamePaused = false;
+	private boolean isGameFullscreen = false;
+
 	private SpriteFont pauseLabel;
 	private KeyLocker keyLocker = new KeyLocker();
 	private final Key pauseKey = Key.P;
+	private final Key FULLSCREEN_KEY = Key.F;
+
+	BufferedImage tempScreen;
+	Graphics2D g2;
+	int screenwidth2 = Config.GAME_WINDOW_WIDTH;
+	int screenheight2 = Config.GAME_WINDOW_HEIGHT;
 
 	/*
 	 * The JPanel and various important class instances are setup here
@@ -58,8 +67,18 @@ public class GamePanel extends JPanel {
 		// Config file.
 		timer = new Timer(1000 / Config.FPS, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				update();
-				repaint();
+				updatePause();
+				updateFullscreen();
+
+				if (!isGameFullscreen) {
+					repaint();
+				}
+				if (isGameFullscreen) {
+					 drawToTemp();
+					 drawToScreen();
+					//repaint();
+				}
+
 			}
 		});
 		timer.setRepeats(true);
@@ -72,6 +91,21 @@ public class GamePanel extends JPanel {
 		setBackground(Colors.CORNFLOWER_BLUE);
 		screenManager.initialize(new Rectangle(getX(), getY(), getWidth(), getHeight()));
 		doPaint = true;
+		tempScreen = new BufferedImage(Config.GAME_WINDOW_WIDTH, Config.GAME_WINDOW_HEIGHT,
+				BufferedImage.TYPE_INT_ARGB);
+		g2 = (Graphics2D) tempScreen.getGraphics();
+		// setFullscreen();
+	}
+
+	public void setFullscreen() {
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		GraphicsDevice gd = ge.getDefaultScreenDevice();
+//		gd.setFullScreenWindow(GameWindow.gameWindow);
+		GameWindow.gameWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+		screenwidth2 = GameWindow.gameWindow.getWidth();
+		screenheight2 = GameWindow.gameWindow.getHeight();
+
 	}
 
 	// this starts the timer (the game loop is started here
@@ -83,7 +117,7 @@ public class GamePanel extends JPanel {
 		return screenManager;
 	}
 
-	public void update() {
+	public void updatePause() {
 		if (Keyboard.isKeyDown(pauseKey) && !keyLocker.isKeyLocked(pauseKey)) {
 			isGamePaused = !isGamePaused;
 			keyLocker.lockKey(pauseKey);
@@ -96,6 +130,18 @@ public class GamePanel extends JPanel {
 		if (!isGamePaused) {
 			screenManager.update();
 		}
+
+	}
+
+	public void updateFullscreen() {
+		if (Keyboard.isKeyDown(FULLSCREEN_KEY) && !keyLocker.isKeyLocked(FULLSCREEN_KEY)) {
+			isGameFullscreen = !isGameFullscreen;
+			keyLocker.lockKey(FULLSCREEN_KEY);
+		}
+
+		if (Keyboard.isKeyUp(FULLSCREEN_KEY)) {
+			keyLocker.unlockKey(FULLSCREEN_KEY);
+		}
 	}
 
 	public void draw() {
@@ -106,6 +152,27 @@ public class GamePanel extends JPanel {
 			pauseLabel.draw(graphicsHandler);
 			graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(),
 					new Color(0, 0, 0, 100));
+		}
+		if (isGameFullscreen) {
+			setFullscreen();
+//			GameWindow.gameWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+		} else if (!isGameFullscreen) {
+			GameWindow.gameWindow.setSize(Config.GAME_WINDOW_WIDTH, Config.GAME_WINDOW_HEIGHT);
+
+		}
+	}
+
+	public void drawToScreen() {
+		Graphics g = getGraphics();
+		g.drawImage(tempScreen, 0, 0, screenwidth2, screenheight2, null);
+		g.dispose();
+	}
+
+	public void drawToTemp() {
+		graphicsHandler.setGraphics((Graphics2D) g2);
+		if (doPaint) {
+			draw();
 		}
 	}
 

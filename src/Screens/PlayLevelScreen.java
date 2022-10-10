@@ -52,8 +52,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 	public void initialize() {
 
-		if (currLevel == 0) 
-		{
+		if (currLevel == 0) {
 			// define/setup map
 			this.map = new Level1();
 			map.reset();
@@ -108,12 +107,13 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
-		} 
-		else if (currLevel == 1)
-		{
+
+		} else if (currLevel == 1) {
 			// define/setup map
 			this.map = new Level2();
 			map.reset();
+			coin6.setMap(map);
+
 			this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
@@ -154,7 +154,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin4.check(player);
 			coin5.check(player);
 			coin6.check(player);
-			
+
 			key.check(player);
 
 			healthBar.setText("Health: " + (int) player.getHealth());
@@ -215,11 +215,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				coin6.draw(graphicsHandler);
 			}
 
-			if (key.gotKey == false)
-			{
+			if (key.gotKey == false) {
 				key.draw(graphicsHandler);
 			}
-			
 
 			break;
 		case LEVEL_COMPLETED:

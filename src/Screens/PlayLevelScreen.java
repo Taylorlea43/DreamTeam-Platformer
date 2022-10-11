@@ -108,7 +108,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.gameTimer.setOutlineColor(Color.black);
 			this.gameTimer.setOutlineThickness(3);
 
-			this.coinCounter = new SpriteFont("Coins: 0", 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
+			this.coinCounter = new SpriteFont("Coins: " + this.getCoinCount(), 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
 			this.coinCounter.setOutlineColor(Color.black);
 			this.coinCounter.setOutlineThickness(3);
 			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
@@ -172,7 +172,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			healthBar.setText("Health: " + (int) player.getHealth());
 
-			coinCounter.setText("Coins " + this.getCoinCount());
+			coinCounter.setText("Coins: " + this.getCoinCount());
 
 			gameTimer.setText("Time: " + (int) timeElapsed);
 

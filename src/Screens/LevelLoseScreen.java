@@ -41,11 +41,11 @@ public class LevelLoseScreen extends Screen {
 		if (Keyboard.isKeyUp(Key.ESC)) {
 			keyLocker.unlockKey(Key.ESC);
 		}
- 
+
 //		 if space is pressed, reset level. if escape is pressed, go back to main menu
-		if (Keyboard.isKeyDown(Key.SPACE) && !keyLocker.isKeyLocked(Key.SPACE) && commandInput == 1) {
+		if (Keyboard.isKeyDown(Key.SPACE) && !keyLocker.isKeyLocked(Key.SPACE) && commandInput == 0) {
 			playLevelScreen.resetLevel();
-		} else if (Keyboard.isKeyDown(Key.SPACE) && !keyLocker.isKeyLocked(Key.SPACE) && commandInput == 0) {
+		} else if (Keyboard.isKeyDown(Key.SPACE) && !keyLocker.isKeyLocked(Key.SPACE) && commandInput == 1) {
 			playLevelScreen.goBackToMenu();
 		}
 	}
@@ -57,20 +57,19 @@ public class LevelLoseScreen extends Screen {
 		instructions.draw(graphicsHandler);
 		instructions2.draw(graphicsHandler);
 		if (Keyboard.isKeyDown(Key.DOWN)) {
-			commandInput = 0;
+			commandInput = 1;
 			playLevelScreen.update();
-			;
+			
 
 		} else if (Keyboard.isKeyDown(Key.UP)) {
-			commandInput = 1;
-			if (Keyboard.isKeyDown(Key.SPACE) && !keyLocker.isKeyLocked(Key.SPACE)) {
-				playLevelScreen.update();
-				;
-			}
+			commandInput = 0;
+			playLevelScreen.update();
+			
+
 		}
-		if (commandInput == 1) {
+		if (commandInput == 0) {
 			graphicsHandler.drawString(">", 100, 300, null, Color.white);
-		} else if (commandInput == 0) {
+		} else if (commandInput == 1) {
 			graphicsHandler.drawString(">", 100, 400, null, Color.white);
 
 		}

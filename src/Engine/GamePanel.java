@@ -74,9 +74,9 @@ public class GamePanel extends JPanel {
 					repaint();
 				}
 				if (isGameFullscreen) {
-					 drawToTemp();
-					 drawToScreen();
-					//repaint();
+					 //drawToTemp();
+					// drawToScreen();
+					repaint();
 				}
 
 			}
@@ -154,8 +154,8 @@ public class GamePanel extends JPanel {
 					new Color(0, 0, 0, 100));
 		}
 		if (isGameFullscreen) {
-			setFullscreen();
-//			GameWindow.gameWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//			setFullscreen();
+			GameWindow.gameWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 		} else if (!isGameFullscreen) {
 			GameWindow.gameWindow.setSize(Config.GAME_WINDOW_WIDTH, Config.GAME_WINDOW_HEIGHT);

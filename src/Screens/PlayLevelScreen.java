@@ -13,6 +13,7 @@ import Game.ScreenCoordinator;
 import GameObject.Coin;
 import GameObject.Frame;
 import GameObject.GameObject;
+import GameObject.Rectangle;
 import GameObject.LevelKey;
 import Level.Map;
 import Level.Player;
@@ -21,6 +22,7 @@ import Maps.Level1;
 import Maps.Level2;
 import Maps.Level3;
 import Players.Cat;
+import Players.Girl;
 import SpriteFont.SpriteFont;
 import Utils.Point;
 import Utils.Stopwatch;
@@ -30,6 +32,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 	protected ScreenCoordinator screenCoordinator;
 	protected Map map;
+
 	protected Coin coin1, coin2, coin3, coin4, coin5, coin6;
 	protected LevelKey key;
 	protected Player player;
@@ -46,7 +49,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected SpriteFont healthBar;
 	protected float timeElapsed;
 
-	public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
+	public PlayLevelScreen(ScreenCoordinator screenCoordinator) 
+	{
 		this.screenCoordinator = screenCoordinator;
 	}
 
@@ -58,29 +62,35 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			map.reset();
 
 			// set up coins in the game
-			this.coin1 = new Coin(630, 380, "coin.png");
+			this.coin1 = new Coin(320, 340);
+			coin1.setBounds(new Rectangle(1, 1, 16, 16));
 			coin1.setMap(map);
 
-			this.coin2 = new Coin(320, 300, "coin.png");
+			this.coin2 = new Coin(620, 293);
+			coin2.setBounds(new Rectangle(1, 1, 16, 16));
 			coin2.setMap(map);
 
-			this.coin3 = new Coin(865, 105, "coin.png");
+			this.coin3 = new Coin(865, 105);
+			coin3.setBounds(new Rectangle(1, 1, 16, 16));
 			coin3.setMap(map);
 
-			this.coin4 = new Coin(1300, 100, "coin.png");
+			this.coin4 = new Coin(1300, 130);
+			coin4.setBounds(new Rectangle(1, 1, 16, 16));
 			coin4.setMap(map);
 
-			this.coin5 = new Coin(1775, 110, "coin.png");
+			this.coin5 = new Coin(1730, 490);
+			coin5.setBounds(new Rectangle(1, 1, 16, 16));
 			coin5.setMap(map);
 
-			this.coin6 = new Coin(2250, 430, "coin.png");
+			this.coin6 = new Coin(2250, 430);
+			coin6.setBounds(new Rectangle(1, 1, 16, 16));
 			coin6.setMap(map);
 
 			// setup key
-			this.key = new LevelKey(1025, 250, "key.png");
+			this.key = new LevelKey(955, 250, "pixelKey.png");
 			key.setMap(map);
 
-			this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -114,12 +124,15 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			map.reset();
 			coin6.setMap(map);
 
-			this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			
+			//set up coins in the level 
+			
 
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
@@ -127,7 +140,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new Level3();
 			map.reset();
 
-			this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();

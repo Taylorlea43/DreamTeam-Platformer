@@ -21,6 +21,7 @@ import Maps.Level1;
 import Maps.Level2;
 import Maps.Level3;
 import Players.Cat;
+import Players.Girl;
 import SpriteFont.SpriteFont;
 import Utils.Point;
 import Utils.Stopwatch;
@@ -46,7 +47,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected SpriteFont healthBar;
 	protected float timeElapsed;
 
-	public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
+	public PlayLevelScreen(ScreenCoordinator screenCoordinator) 
+	{
 		this.screenCoordinator = screenCoordinator;
 	}
 
@@ -78,10 +80,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin6.setMap(map);
 
 			// setup key
-			this.key = new LevelKey(1025, 250, "key.png");
+			this.key = new LevelKey(955, 250, "pixelKey.png");
 			key.setMap(map);
 
-			this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -114,7 +116,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// define/setup map
 			this.map = new Level2();
 			map.reset();
-			this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -127,7 +129,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new Level3();
 			map.reset();
 
-			this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();

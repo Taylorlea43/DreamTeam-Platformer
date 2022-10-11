@@ -17,15 +17,14 @@ public class LevelKey extends MapEntity
 		super(x, y, new Frame(ImageLoader.load(imageName)));
 		this.x = x;
 		this.y = y;
+		this.setScale(2);
 	}
-	
-	
-	 public void check(Player player) 
+
+	public void check(Player player) 
 	 {
 		 if((intersects(player) && gotKey == false) | (overlaps(player) && gotKey == false)) 
 		 {
 			 gotKey = true;
-			 System.out.println("touched key");
 		 }
 	 }
 	 	    

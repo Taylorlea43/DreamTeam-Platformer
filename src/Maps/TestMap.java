@@ -2,6 +2,7 @@ package Maps;
 
 import Enemies.DinosaurEnemy;
 import Enemies.ZookeeperEnemy;
+import Enemies.BugEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
@@ -30,6 +31,9 @@ public class TestMap extends Map {
     @Override
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
+
+        enemies.add(new BugEnemy(getMapTile(15, 8).getLocation().addY(20), Direction.LEFT));
+
         enemies.add(new ZookeeperEnemy(getMapTile(15, 6).getLocation().addY(10), Direction.LEFT)); 
 
         enemies.add(new DinosaurEnemy(getMapTile(19, 1).getLocation().addY(2), getMapTile(22, 1).getLocation().addY(2), Direction.RIGHT));
@@ -51,7 +55,7 @@ public class TestMap extends Map {
                 Direction.RIGHT
         ));
 
-        enhancedMapTiles.add(new EndLevelBox(getMapTile(52, 10).getLocation()));
+        enhancedMapTiles.add(new EndLevelBox(getMapTile(52, 10).getLocation(), "Lizard2.png"));
 
         return enhancedMapTiles;
     }

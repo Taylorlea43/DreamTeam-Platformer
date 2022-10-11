@@ -35,7 +35,7 @@ public class Level2 extends Map {
 		ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
 	
-		enhancedMapTiles.add(new EndLevelBox(getMapTile(29, 7).getLocation()));
+		enhancedMapTiles.add(new EndLevelBox(getMapTile(27, 7).getLocation(), "Bunny.png"));
 
 		return enhancedMapTiles;
 	}	

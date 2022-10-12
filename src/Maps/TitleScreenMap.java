@@ -16,7 +16,7 @@ public class TitleScreenMap extends Map {
     public TitleScreenMap() {
         super("title_screen_map.txt", new CommonTileset());
         Point girlLocation = getMapTile(6, 6).getLocation().subtractX(24).subtractY(6);
-        girl = new Sprite(ImageLoader.loadSubImage("Girl.png", Colors.MAGENTA, 0, 0, 55, 85));
+        girl = new Sprite(ImageLoader.loadSubImage("girlNoLines.png", Colors.MAGENTA, 0, 0, 55, 85));
         girl.setScale(2);
         girl.setLocation(girlLocation.x, girlLocation.y);
     }

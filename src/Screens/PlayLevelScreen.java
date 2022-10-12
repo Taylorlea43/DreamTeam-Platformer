@@ -56,8 +56,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 	public void initialize() {
 
-		if (currLevel == 0) 
-		{
+		if (currLevel == 0) {
 			// define/setup map
 			this.map = new Level1();
 			map.reset();
@@ -108,7 +107,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.gameTimer.setOutlineColor(Color.black);
 			this.gameTimer.setOutlineThickness(3);
 
-			this.coinCounter = new SpriteFont("Coins: 0", 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
+			this.coinCounter = new SpriteFont("Coins: " + this.getCoinCount(), 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
 			this.coinCounter.setOutlineColor(Color.black);
 			this.coinCounter.setOutlineThickness(3);
 			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
@@ -118,12 +117,13 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
-		} 
-		else if (currLevel == 1)
-		{
+
+		} else if (currLevel == 1) {
 			// define/setup map
 			this.map = new Level2();
 			map.reset();
+			coin6.setMap(map);
+
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
@@ -167,12 +167,12 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin4.check(player);
 			coin5.check(player);
 			coin6.check(player);
-			
+
 			key.check(player);
 
 			healthBar.setText("Health: " + (int) player.getHealth());
 
-			coinCounter.setText("Coins " + this.getCoinCount());
+			coinCounter.setText("Coins: " + this.getCoinCount());
 
 			gameTimer.setText("Time: " + (int) timeElapsed);
 
@@ -228,11 +228,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				coin6.draw(graphicsHandler);
 			}
 
-			if (key.gotKey == false)
-			{
+			if (key.gotKey == false) {
 				key.draw(graphicsHandler);
 			}
-			
 
 			break;
 		case LEVEL_COMPLETED:

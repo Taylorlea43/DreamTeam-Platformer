@@ -86,7 +86,7 @@ public class Girl extends Player
 				put("DEATH_RIGHT",
 						new Frame[] { new FrameBuilder(spriteSheet.getSprite(5, 0), 100).withScale(1).build(),
 								new FrameBuilder(spriteSheet.getSprite(5, 1), 100).withScale(1).build(),
-								new FrameBuilder(spriteSheet.getSprite(5, 2), -1).withScale(1).build() });
+								new FrameBuilder(spriteSheet.getSprite(5, 1), -1).withScale(1).build() });
 
 				put("DEATH_LEFT",
 						new Frame[] {
@@ -94,7 +94,7 @@ public class Girl extends Player
 										.withImageEffect(ImageEffect.FLIP_HORIZONTAL).build(),
 								new FrameBuilder(spriteSheet.getSprite(5, 1), 100).withScale(1)
 										.withImageEffect(ImageEffect.FLIP_HORIZONTAL).build(),
-								new FrameBuilder(spriteSheet.getSprite(5, 2), -1).withScale(1)
+								new FrameBuilder(spriteSheet.getSprite(5, 1), -1).withScale(1)
 										.withImageEffect(ImageEffect.FLIP_HORIZONTAL).build() });
 				
 				put("SWIM_STAND_RIGHT", new Frame[] {

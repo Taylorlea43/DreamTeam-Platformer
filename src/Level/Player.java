@@ -7,8 +7,8 @@ import GameObject.GameObject;
 import GameObject.SpriteSheet;
 import Utils.AirGroundState;
 import Utils.Direction;
-
 import java.util.ArrayList;
+import Enemies.Net;
 
 public abstract class Player extends GameObject {
     // values that affect player movement
@@ -308,7 +308,14 @@ public abstract class Player extends GameObject {
             // if map entity is an enemy, kill player on touch
             if (mapEntity instanceof Enemy) {
                 if(health >= 1) {
-                	health -= 1;
+                	if(mapEntity instanceof Net) {
+                		if(health - 25 > 0)
+                			health -= 25;
+                		else
+                			health = 0;
+                	}
+                	else
+                		health -= 1;
                 }
                 else // player health at 0
                 	levelState = LevelState.PLAYER_DEAD;

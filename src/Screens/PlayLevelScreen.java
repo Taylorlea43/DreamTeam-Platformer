@@ -45,9 +45,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 	protected SpriteFont healthBar;
 	protected float timeElapsed;
+	protected Timer timer;
 
 	public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
 		this.screenCoordinator = screenCoordinator;
+		timer = new Timer();
 	}
 
 	public void initialize() {
@@ -89,7 +91,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			// setup HUD
-			Timer timer = new Timer();
 			TimerTick tick = new TimerTick(timer);
 			timer.schedule(tick, 1000, 1000);
 
@@ -121,9 +122,27 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
+			// setup HUD
+			TimerTick tick = new TimerTick(timer);
+			timer.schedule(tick, 1000, 1000);
+
+			timeElapsed = 0;
+			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 691, 25, "Comic Sans", 23, new Color(49, 207, 240));
+			this.gameTimer.setOutlineColor(Color.black);
+			this.gameTimer.setOutlineThickness(3);
+
+			this.coinCounter = new SpriteFont("Coins: 0", 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
+			this.coinCounter.setOutlineColor(Color.black);
+			this.coinCounter.setOutlineThickness(3);
+			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
+					new Color(49, 207, 240));
+			this.healthBar.setOutlineColor(Color.black);
+			this.healthBar.setOutlineThickness(3);
+
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
-		} else if (currLevel == 2) {
+		} 
+		else if (currLevel == 2) {
 			this.map = new Level3();
 			map.reset();
 
@@ -133,6 +152,23 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+
+			// setup HUD
+			TimerTick tick = new TimerTick(timer);
+			timer.schedule(tick, 1000, 1000);
+
+			timeElapsed = 0;
+			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 691, 25, "Comic Sans", 23, new Color(49, 207, 240));
+			this.gameTimer.setOutlineColor(Color.black);
+			this.gameTimer.setOutlineThickness(3);
+
+			this.coinCounter = new SpriteFont("Coins: 0", 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
+			this.coinCounter.setOutlineColor(Color.black);
+			this.coinCounter.setOutlineThickness(3);
+			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
+					new Color(49, 207, 240));
+			this.healthBar.setOutlineColor(Color.black);
+			this.healthBar.setOutlineThickness(3);
 
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
@@ -154,7 +190,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin4.check(player);
 			coin5.check(player);
 			coin6.check(player);
-			
+
 			key.check(player);
 
 			healthBar.setText("Health: " + (int) player.getHealth());
@@ -164,7 +200,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			gameTimer.setText("Time: " + (int) timeElapsed);
 
 			break;
-		// if level has been completed, bring up level cleared screen
+			// if level has been completed, bring up level cleared screen
 		case LEVEL_COMPLETED:
 			if (levelCompletedStateChangeStart) {
 				screenTimer.setWaitTime(2500);
@@ -246,8 +282,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		public void run() {
 			if (screenCoordinator.getGameState().equals(GameState.LEVEL))
 				timeElapsed += 1;
-			else if (playLevelScreenState.equals(PlayLevelScreenState.LEVEL_LOSE)) {
-				timer.cancel();
+			if (playLevelScreenState == PlayLevelScreenState.LEVEL_LOSE) {
+				this.cancel();
 			}
 
 		}
@@ -269,6 +305,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public void onDeath() {
 		if (playLevelScreenState != PlayLevelScreenState.LEVEL_LOSE) {
 			playLevelScreenState = PlayLevelScreenState.LEVEL_LOSE;
+			//timer.cancel();
 		}
 	}
 

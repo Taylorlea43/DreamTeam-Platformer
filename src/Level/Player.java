@@ -8,8 +8,8 @@ import GameObject.Rectangle;
 import GameObject.SpriteSheet;
 import Utils.AirGroundState;
 import Utils.Direction;
-
 import java.util.ArrayList;
+import Enemies.Net;
 
 public abstract class Player extends GameObject {
 	// values that affect player movement
@@ -318,20 +318,29 @@ public abstract class Player extends GameObject {
 		}
 	}
 
-	// other entities can call this method to hurt the player
-	public void hurtPlayer(MapEntity mapEntity) {
-		if (!isInvincible) {
-			// if map entity is an enemy, kill player on touch
-			if (mapEntity instanceof Enemy) {
-				if (health >= 1) {
-					health -= 1;
-				} else // player health at 0
-					levelState = LevelState.PLAYER_DEAD;
-			}
-		}
-	}
 
-	// other entities can call this to tell the player they beat a level
+    // other entities can call this method to hurt the player
+    public void hurtPlayer(MapEntity mapEntity) {
+        if (!isInvincible) {
+            // if map entity is an enemy, kill player on touch
+            if (mapEntity instanceof Enemy) {
+                if(health >= 1) {
+                	if(mapEntity instanceof Net) {
+                		if(health - 25 > 0)
+                			health -= 25;
+                		else
+                			health = 0;
+                	}
+                	else
+                		health -= 1;
+                }
+                else // player health at 0
+                	levelState = LevelState.PLAYER_DEAD;
+            }
+        }
+    }
+	
+    // other entities can call this to tell the player they beat a level
 	public void completeLevel() {
 		levelState = LevelState.LEVEL_COMPLETED;
 	}

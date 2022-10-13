@@ -34,7 +34,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected Map map;
 
 	protected Coin coin1, coin2, coin3, coin4, coin5, coin6;
-	protected LevelKey key;
+	protected LevelKey key1;
 	protected Player player;
 	protected PlayLevelScreenState playLevelScreenState;
 	protected Stopwatch screenTimer = new Stopwatch();
@@ -87,8 +87,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin6.setMap(map);
 
 			// setup key
-			this.key = new LevelKey(955, 250, "pixelKey.png");
-			key.setMap(map);
+			this.key1 = new LevelKey(955, 250, "pixelKey.png");
+			key1.setMap(map);
 
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
@@ -132,10 +132,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 			
 			//set up coins in the level 
-			
-
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
+			
 		} else if (currLevel == 2) {
 			this.map = new Level3();
 			map.reset();
@@ -149,6 +148,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
+			
+			// setup key
 		}
 	}
 
@@ -168,7 +169,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin5.check(player);
 			coin6.check(player);
 
-			key.check(player);
+			key1.check(player);
 
 			healthBar.setText("Health: " + (int) player.getHealth());
 
@@ -228,8 +229,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				coin6.draw(graphicsHandler);
 			}
 
-			if (key.gotKey == false) {
-				key.draw(graphicsHandler);
+			if (key1.gotKey == false) {
+				key1.draw(graphicsHandler);
 			}
 
 			break;

@@ -14,6 +14,10 @@ public class Config {
 	public static final String MAP_FILES_PATH = "MapFiles/";
 	public static final int GAME_WINDOW_WIDTH = 800;
 	public static final int GAME_WINDOW_HEIGHT = 605;
+	
+	public static final int FULL_GAME_WINDOW_WIDTH = 1300;
+	public static final int FULL_GAME_WINDOW_HEIGHT = 805;
+	
 	public static final Color TRANSPARENT_COLOR = Colors.MAGENTA;
 
 	// prevents Config from being instantiated -- it's my way of making a "static"

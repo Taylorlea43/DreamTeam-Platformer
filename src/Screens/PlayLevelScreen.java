@@ -107,7 +107,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			timeElapsed = 0;
 
-			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 15, 50, "Comic Sans", 23, new Color(49, 207, 240)); // was 691
+			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 15, 50, "Comic Sans", 23, new Color(49, 207, 240)); // was
+																														// 691
 			this.gameTimer.setOutlineColor(Color.black);
 			this.gameTimer.setOutlineThickness(3);
 
@@ -157,55 +158,18 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
-			// set up coins in the level
-
-			// setup HUD
-			TimerTick tick = new TimerTick(timer);
-			timer.schedule(tick, 1000, 1000);
-
-			timeElapsed = 0;
-			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 691, 25, "Comic Sans", 23, new Color(49, 207, 240));
-			this.gameTimer.setOutlineColor(Color.black);
-			this.gameTimer.setOutlineThickness(3);
-
-			this.coinCounter = new SpriteFont("Coins: 0", 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
-			this.coinCounter.setOutlineColor(Color.black);
-			this.coinCounter.setOutlineThickness(3);
-			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
-					new Color(49, 207, 240));
-			this.healthBar.setOutlineColor(Color.black);
-			this.healthBar.setOutlineThickness(3);
-
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
-		} 
-		else if (currLevel == 2) {
+		} else if (currLevel == 2) {
 			this.map = new Level3();
 			map.reset();
-
+			
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-
-			// setup HUD
-			TimerTick tick = new TimerTick(timer);
-			timer.schedule(tick, 1000, 1000);
-
-			timeElapsed = 0;
-			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 691, 25, "Comic Sans", 23, new Color(49, 207, 240));
-			this.gameTimer.setOutlineColor(Color.black);
-			this.gameTimer.setOutlineThickness(3);
-
-			this.coinCounter = new SpriteFont("Coins: 0", 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
-			this.coinCounter.setOutlineColor(Color.black);
-			this.coinCounter.setOutlineThickness(3);
-			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
-					new Color(49, 207, 240));
-			this.healthBar.setOutlineColor(Color.black);
-			this.healthBar.setOutlineThickness(3);
 
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
@@ -237,7 +201,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			gameTimer.setText("Time: " + (int) timeElapsed);
 
 			break;
-			// if level has been completed, bring up level cleared screen
+		// if level has been completed, bring up level cleared screen
 		case LEVEL_COMPLETED:
 			if (levelCompletedStateChangeStart) {
 				screenTimer.setWaitTime(2500);
@@ -340,7 +304,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public void onDeath() {
 		if (playLevelScreenState != PlayLevelScreenState.LEVEL_LOSE) {
 			playLevelScreenState = PlayLevelScreenState.LEVEL_LOSE;
-			//timer.cancel();
+			// timer.cancel();
 		}
 	}
 

@@ -211,7 +211,7 @@ public abstract class Player extends GameObject {
 					jumpForce = 0;
 				}
 			}
-		}
+		} 
 
 		// if player is in air (currently in a jump) and has more jumpForce, continue
 		// sending player upwards

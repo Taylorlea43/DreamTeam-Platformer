@@ -5,8 +5,12 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import Engine.GamePanel;
+import Engine.GameWindow;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
+import Engine.Key;
+import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
@@ -49,8 +53,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected SpriteFont healthBar;
 	protected float timeElapsed;
 
-	public PlayLevelScreen(ScreenCoordinator screenCoordinator) 
-	{
+	public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
 		this.screenCoordinator = screenCoordinator;
 	}
 
@@ -60,7 +63,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// define/setup map
 			this.map = new Level1();
 			map.reset();
-
 			// set up coins in the game
 			this.coin1 = new Coin(320, 340);
 			coin1.setBounds(new Rectangle(1, 1, 16, 16));
@@ -103,11 +105,13 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			timer.schedule(tick, 1000, 1000);
 
 			timeElapsed = 0;
-			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 691, 25, "Comic Sans", 23, new Color(49, 207, 240));
+
+			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 15, 50, "Comic Sans", 23, new Color(49, 207, 240)); // was 691
 			this.gameTimer.setOutlineColor(Color.black);
 			this.gameTimer.setOutlineThickness(3);
 
-			this.coinCounter = new SpriteFont("Coins: " + this.getCoinCount(), 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
+			this.coinCounter = new SpriteFont("Coins: " + this.getCoinCount(), 15, 75, "Comic Sans", 23, // was 694
+					new Color(49, 207, 240));
 			this.coinCounter.setOutlineColor(Color.black);
 			this.coinCounter.setOutlineThickness(3);
 			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
@@ -122,6 +126,27 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// define/setup map
 			this.map = new Level2();
 			map.reset();
+			this.coin1 = new Coin(320, 500);
+			coin1.setBounds(new Rectangle(1, 1, 16, 16));
+			coin1.setMap(map);
+			this.coin2 = new Coin(620, 500);
+			coin2.setBounds(new Rectangle(1, 1, 16, 16));
+			coin2.setMap(map);
+
+			this.coin3 = new Coin(865, 500);
+			coin3.setBounds(new Rectangle(1, 1, 16, 16));
+			coin3.setMap(map);
+
+			this.coin4 = new Coin(1300, 500);
+			coin4.setBounds(new Rectangle(1, 1, 16, 16));
+			coin4.setMap(map);
+
+			this.coin5 = new Coin(1730, 500);
+			coin5.setBounds(new Rectangle(1, 1, 16, 16));
+			coin5.setMap(map);
+
+			this.coin6 = new Coin(2250, 430);
+			coin6.setBounds(new Rectangle(1, 1, 16, 16));
 			coin6.setMap(map);
 
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -130,9 +155,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-			
-			//set up coins in the level 
-			
+
+			// set up coins in the level
 
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);

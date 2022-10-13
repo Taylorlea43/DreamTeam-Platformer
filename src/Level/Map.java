@@ -50,7 +50,7 @@ public abstract class Map {
 
     // in pixels, this basically creates a rectangle defining how big the map is
     // startX and Y will always be 0, endX and Y is the number of tiles multiplied by the number of pixels each tile takes up
-    protected int startBoundX, startBoundY, endBoundX, endBoundY;
+    public static int startBoundX, startBoundY, endBoundX, endBoundY;
 
     // the name of the map text file that has the tile map information
     protected String mapFileName;

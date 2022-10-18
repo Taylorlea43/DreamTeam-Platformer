@@ -26,7 +26,7 @@ public class GameWindow {
 		gameWindow.setResizable(false);
 		gameWindow.setUndecorated(false);
 
-		gameWindow.setSize(Config.GAME_WINDOW_WIDTH, Config.GAME_WINDOW_HEIGHT);
+		gameWindow.setSize(Config.FULL_GAME_WINDOW_WIDTH, Config.FULL_GAME_WINDOW_HEIGHT);
 		gameWindow.setLocationRelativeTo(null);
 		gameWindow.setVisible(true);
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // it'd be nice if this actually worked more than

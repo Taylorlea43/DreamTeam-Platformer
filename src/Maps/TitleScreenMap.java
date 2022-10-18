@@ -16,7 +16,7 @@ public class TitleScreenMap extends Map {
 
     private Sprite girl;
     private SpriteFont zooMania;
-    private Sprite elephantUncaged, girrafeUncaged;
+    private Sprite elephantUncaged, girrafeUncaged, bunnyUncaged;
 
     public TitleScreenMap() {
         super("title_screen_map.txt", new CommonTileset());
@@ -35,10 +35,16 @@ public class TitleScreenMap extends Map {
         elephantUncaged.setLocation(elephantLocation.x, elephantLocation.y);
 
         //add giraffe
-        Point giraffeLocation = getMapTile(1, 4).getLocation().subtractY(35);
+        Point giraffeLocation = getMapTile(1, 3).getLocation();
         girrafeUncaged = new Sprite(ImageLoader.load("giraffeUncaged.png"));
         girrafeUncaged.setScale(7);
-        girrafeUncaged.setLocation(giraffeLocation.x, elephantLocation.y);
+        girrafeUncaged.setLocation(giraffeLocation.x, giraffeLocation.y);
+
+        //add bunny
+        Point bunnyLocation = getMapTile(7, 9).getLocation().subtractY(13);
+        bunnyUncaged = new Sprite(ImageLoader.load("BunnyUncaged.png"));
+        bunnyUncaged.setScale(2);
+        bunnyUncaged.setLocation(bunnyLocation.x, bunnyLocation.y);
     }
 
     @Override
@@ -48,6 +54,7 @@ public class TitleScreenMap extends Map {
         zooMania.draw(graphicsHandler);
         elephantUncaged.draw(graphicsHandler);
         girrafeUncaged.draw(graphicsHandler);
+        bunnyUncaged.draw(graphicsHandler);
     } 
 
 }

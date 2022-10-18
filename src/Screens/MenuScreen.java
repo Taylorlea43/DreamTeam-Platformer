@@ -9,6 +9,10 @@ import SpriteFont.SpriteFont;
 import Utils.Stopwatch;
 
 import java.awt.*;
+import java.lang.ProcessHandle.Info;
+
+import javax.security.auth.login.FailedLoginException;
+import javax.swing.plaf.ProgressBarUI;
 
 // This is the class for the main menu screen
 public class MenuScreen extends Screen {
@@ -23,6 +27,9 @@ public class MenuScreen extends Screen {
 	protected Stopwatch keyTimer = new Stopwatch();
 	protected int pointerLocationX, pointerLocationY;
 	protected KeyLocker keyLocker = new KeyLocker();
+	
+
+	
 
 	public MenuScreen(ScreenCoordinator screenCoordinator) {
 		this.screenCoordinator = screenCoordinator;
@@ -103,7 +110,7 @@ public class MenuScreen extends Screen {
 			} else if (menuItemSelected == 1) {
 				screenCoordinator.setGameState(GameState.CREDITS);
 			} else if (menuItemSelected == 2) {
-				System.exit(0);;
+				System.exit(0);
 			}
 		}
 	}

@@ -17,7 +17,6 @@ public class Config {
 	
 	public static final int FULL_GAME_WINDOW_WIDTH = 1300;
 	public static final int FULL_GAME_WINDOW_HEIGHT = 805;
-	
 	public static final Color TRANSPARENT_COLOR = Colors.MAGENTA;
 
 	// prevents Config from being instantiated -- it's my way of making a "static"

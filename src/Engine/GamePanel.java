@@ -156,8 +156,9 @@ public class GamePanel extends JPanel {
 		}
 		if (isGameFullscreen) {
 //			setFullscreen();
-			 GameWindow.gameWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
-			//GameWindow.gameWindow.setSize(Config.FULL_GAME_WINDOW_WIDTH, Config.FULL_GAME_WINDOW_HEIGHT);
+			GameWindow.gameWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			// GameWindow.gameWindow.setSize(Config.FULL_GAME_WINDOW_WIDTH,
+			// Config.FULL_GAME_WINDOW_HEIGHT);
 
 		} else if (!isGameFullscreen) {
 			GameWindow.gameWindow.setSize(Config.GAME_WINDOW_WIDTH, Config.GAME_WINDOW_HEIGHT);

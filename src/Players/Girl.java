@@ -18,9 +18,9 @@ public class Girl extends Player
 		 super(new SpriteSheet(ImageLoader.load("girlNoLines.png"), 45, 85), x, y, "STAND_RIGHT");
 	        gravity = .5f;
 	        terminalVelocityY = 6f;
-	        jumpHeight = 20f; //14.5
+	        jumpHeight = 14.5f; //14.5
 	        jumpDegrade = .5f;
-	        walkSpeed = 2f; //3.3
+	        walkSpeed = 3.3f;
 	        momentumYIncrease = .5f;
 	        health = 100;
 	}

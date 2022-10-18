@@ -129,7 +129,7 @@ public class CommonTileset extends Tileset {
                         .withScale(tileScale)
                         .build(),
                 new FrameBuilder(getSubImage(1, 4), 500)
-                        .withScale(tileScale)
+                        .withScale(tileScale) 
                         .build()
         };
 

@@ -14,12 +14,13 @@ import Level.Map;
 import Level.TileType;
 import Level.Tileset;
 import Tilesets.CommonTileset;
+import Tilesets.DesertTileset;
 import Utils.Direction;
 
 public class Level2 extends Map {
 
 	public Level2() {
-		super("level2.txt", new CommonTileset());
+		super("level2.txt", new DesertTileset());
 		this.playerStartPosition = getMapTile(2, 11).getLocation();
 
 	}

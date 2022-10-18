@@ -33,7 +33,6 @@ public class LevelKey extends MapEntity
 		 return gotKey;
 	 }
 
-
     @Override
     public void draw(GraphicsHandler graphicsHandler) 
     {

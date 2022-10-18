@@ -1,20 +1,16 @@
 package Maps;
 
-import Enemies.BugEnemy;
+import Enemies.SquirrelEnemy;
 import Enemies.DinosaurEnemy;
 import Enemies.ZookeeperEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
-import GameObject.Coin;
-import GameObject.Frame;
-import GameObject.GameObject;
 import GameObject.Rectangle;
 import Level.*;
 import NPCs.Walrus;
 import Tilesets.CommonTileset;
 import Utils.Direction;
-import Utils.Point;
 
 import java.util.ArrayList;
 
@@ -31,7 +27,7 @@ public class Level1 extends Map {
 	public ArrayList<Enemy> loadEnemies() {
 		ArrayList<Enemy> enemies = new ArrayList<>();
 
-		enemies.add(new BugEnemy(getMapTile(17, 8).getLocation().addY(20), Direction.LEFT));
+		enemies.add(new SquirrelEnemy(getMapTile(17, 8).getLocation().addY(20), Direction.LEFT));
 
 		enemies.add(new ZookeeperEnemy(getMapTile(15, 6).getLocation().addY(10), Direction.LEFT));
 

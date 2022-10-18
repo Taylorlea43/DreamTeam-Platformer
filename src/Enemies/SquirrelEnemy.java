@@ -17,7 +17,7 @@ import java.util.HashMap;
 // This class is for the black bug enemy
 // enemy behaves like a Mario goomba -- walks forward until it hits a solid map tile, and then turns around
 // if it ends up in the air from walking off a cliff, it will fall down until it hits the ground again, and then will continue walking
-public class BugEnemy extends Enemy {
+public class SquirrelEnemy extends Enemy {
 
     private float gravity = .5f;
     private float movementSpeed = .5f;
@@ -25,7 +25,7 @@ public class BugEnemy extends Enemy {
     private Direction facingDirection;
     private AirGroundState airGroundState;
 
-    public BugEnemy(Point location, Direction facingDirection) {
+    public SquirrelEnemy(Point location, Direction facingDirection) {
         super(location.x, location.y, new SpriteSheet(ImageLoader.load("SquirrelEnemie.png"), 23 , 15), "WALK_LEFT");
 
         this.startFacingDirection = facingDirection;

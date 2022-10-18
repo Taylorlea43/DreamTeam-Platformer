@@ -28,10 +28,10 @@ public class MenuScreen extends Screen {
 
     @Override
     public void initialize() {
-        playGame = new SpriteFont("PLAY GAME", 200, 150, "Comic Sans", 30, new Color(49, 207, 240));
+        playGame = new SpriteFont("PLAY GAME", 310, 150, "Comic Sans", 30, new Color(49, 207, 240));
         playGame.setOutlineColor(Color.black);
         playGame.setOutlineThickness(3);
-        credits = new SpriteFont("CREDITS", 200, 250, "Comic Sans", 30, new Color(49, 207, 240));
+        credits = new SpriteFont("CREDITS", 310, 200, "Comic Sans", 30, new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
         background = new TitleScreenMap();
@@ -65,13 +65,13 @@ public class MenuScreen extends Screen {
         if (currentMenuItemHovered == 0) {
             playGame.setColor(new Color(255, 215, 0));
             credits.setColor(new Color(49, 207, 240));
-            pointerLocationX = 170;
-            pointerLocationY = 130;
+            pointerLocationX = 275;
+            pointerLocationY = 125;
         } else if (currentMenuItemHovered == 1) {
             playGame.setColor(new Color(49, 207, 240));
             credits.setColor(new Color(255, 215, 0));
-            pointerLocationX = 170;
-            pointerLocationY = 230;
+            pointerLocationX = 275;
+            pointerLocationY = 175;
         }
 
         // if space is pressed on menu item, change to appropriate screen based on which menu item was chosen

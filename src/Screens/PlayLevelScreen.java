@@ -36,9 +36,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 	protected ScreenCoordinator screenCoordinator;
 	protected Map map;
-
 	protected Coin coin1, coin2, coin3, coin4, coin5, coin6;
-	protected LevelKey key;
+	protected LevelKey key1, displayKey;
 	protected Player player;
 	protected PlayLevelScreenState playLevelScreenState;
 	protected Stopwatch screenTimer = new Stopwatch();
@@ -47,6 +46,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected boolean levelCompletedStateChangeStart;
 	protected SpriteFont gameTimer;
 	protected SpriteFont coinCounter;
+	protected SpriteFont keyStatusBar, keyStatus;
 	public int currLevel;
 	protected int coinCount;
 
@@ -61,7 +61,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 	public void initialize() {
 
-		if (currLevel == 0) {
+		if (currLevel == 0) 
+		{
 			// define/setup map
 			this.map = new Level1();
 			map.reset();
@@ -91,9 +92,12 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin6.setMap(map);
 
 			// setup key
-			this.key = new LevelKey(955, 250, "pixelKey.png");
-			key.setMap(map);
-
+			this.key1 = new LevelKey(955, 250, "pixelKey.png");
+			key1.setMap(map);
+			
+//			this.displayKey = new LevelKey(7, 65, "pixelKey.png");
+//			displayKey.setMap(map);
+			
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
@@ -116,15 +120,27 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 					new Color(49, 207, 240));
 			this.coinCounter.setOutlineColor(Color.black);
 			this.coinCounter.setOutlineThickness(3);
-			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
-					new Color(49, 207, 240));
+			
+			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23, new Color(49, 207, 240));
 			this.healthBar.setOutlineColor(Color.black);
 			this.healthBar.setOutlineThickness(3);
+			
+			this.keyStatusBar = new SpriteFont("Key: ", 15, 100, "Comic Sans", 23, new Color(49, 207, 240));
+			this.keyStatusBar.setOutlineColor(Color.black);
+			this.keyStatusBar.setOutlineThickness(3);
 
+			//setup key status
+			this.keyStatus = new SpriteFont(" ", 75, 100, "Comic Sans", 23, new Color(250, 204, 77));
+			this.keyStatus.setOutlineColor(Color.black);
+			this.keyStatus.setOutlineThickness(3);
+			
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
-
-		} else if (currLevel == 1) {
+		} 
+		
+		else if (currLevel == 1) 
+			
+		{
 			// define/setup map
 			this.map = new Level2();
 			map.reset();
@@ -157,6 +173,40 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			
+			//set up coins in the level 
+
+			levelClearedScreen = new LevelClearedScreen(this);
+			levelLoseScreen = new LevelLoseScreen(this);	
+		} 
+
+		else if (currLevel == 2) 
+		
+		{
+			// setup HUD
+			TimerTick tick = new TimerTick(timer);
+			timer.schedule(tick, 1000, 1000);
+
+			timeElapsed = 0;
+			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 691, 25, "Comic Sans", 23, new Color(49, 207, 240));
+			this.gameTimer.setOutlineColor(Color.black);
+			this.gameTimer.setOutlineThickness(3);
+
+			this.coinCounter = new SpriteFont("Coins: 0", 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
+			this.coinCounter.setOutlineColor(Color.black);
+			this.coinCounter.setOutlineThickness(3);
+			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
+					new Color(49, 207, 240));
+			this.healthBar.setOutlineColor(Color.black);
+			this.healthBar.setOutlineThickness(3);
+
+			levelClearedScreen = new LevelClearedScreen(this);
+			levelLoseScreen = new LevelLoseScreen(this);
+		} 
+		
+		else if (currLevel == 2) 
+		
+		{
 
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
@@ -192,13 +242,27 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin5.check(player);
 			coin6.check(player);
 
-			key.check(player);
+			key1.check(player);
+//			displayKey.check(player);
 
 			healthBar.setText("Health: " + (int) player.getHealth());
 
 			coinCounter.setText("Coins: " + this.getCoinCount());
 
 			gameTimer.setText("Time: " + (int) timeElapsed);
+			
+			keyStatusBar.setText("Key: ");
+			
+			if (key1.gotKey == false) 
+			{
+				keyStatus.setText("KEY NEEDED");
+//				key1.check(player);
+			} else {
+				keyStatus.setText("You have the key!");
+//				displayKey.check(player);
+			}
+			
+			
 
 			break;
 		// if level has been completed, bring up level cleared screen
@@ -232,6 +296,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			gameTimer.draw(graphicsHandler);
 			coinCounter.draw(graphicsHandler);
 			healthBar.draw(graphicsHandler);
+			keyStatusBar.draw(graphicsHandler);
+			keyStatus.draw(graphicsHandler);
 
 			if (coin1.gotCoin == false) {
 				coin1.draw(graphicsHandler);
@@ -252,9 +318,13 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				coin6.draw(graphicsHandler);
 			}
 
-			if (key.gotKey == false) {
-				key.draw(graphicsHandler);
+			if (key1.gotKey == false) 
+			{
+				key1.draw(graphicsHandler);
 			}
+//			} else {
+//				displayKey.draw(graphicsHandler);
+//			}
 
 			break;
 		case LEVEL_COMPLETED:

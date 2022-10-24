@@ -30,6 +30,7 @@ import Players.Girl;
 import SpriteFont.SpriteFont;
 import Utils.Point;
 import Utils.Stopwatch;
+import Sounds.AudioPlayer;
 
 // This class is for when the platformer game is actually being played
 public class PlayLevelScreen extends Screen implements PlayerListener {
@@ -49,6 +50,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected SpriteFont keyStatusBar, keyStatus;
 	public int currLevel;
 	protected int coinCount;
+	protected AudioPlayer levelMusic;
 
 	protected SpriteFont healthBar;
 	protected float timeElapsed;
@@ -104,6 +106,20 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			
+			// setup AudioPlayer
+			try
+			{
+				levelMusic = new AudioPlayer(true, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
+						+ "DreamTeam-Platformer/Resources/Zoo-Mania_Level1_Music.wav");
+				levelMusic.play();
+			}
+
+			catch(Exception x)
+			{
+				System.out.println("Error with playing sound."); 
+				x.printStackTrace();
+			}
 
 			// setup HUD
 			TimerTick tick = new TimerTick(timer);
@@ -278,11 +294,12 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 //				}
 			}
 			break;
-		// wait on level lose screen to make a decision (either resets level or sends
-		// player back to main menu)
-		case LEVEL_LOSE:
+			// wait on level lose screen to make a decision (either resets level or sends
+			// player back to main menu)
+		case LEVEL_LOSE:{
 			levelLoseScreen.update();
 			break;
+			}
 		}
 	}
 
@@ -367,6 +384,15 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		if (playLevelScreenState != PlayLevelScreenState.LEVEL_COMPLETED) {
 			playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
 			levelCompletedStateChangeStart = true;
+			
+			try
+			{
+				levelMusic.stop();
+			}
+			
+			catch(Exception x)
+			{
+			}
 		}
 	}
 
@@ -374,7 +400,15 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public void onDeath() {
 		if (playLevelScreenState != PlayLevelScreenState.LEVEL_LOSE) {
 			playLevelScreenState = PlayLevelScreenState.LEVEL_LOSE;
-			// timer.cancel();
+
+			try
+			{
+				levelMusic.stop();
+			}
+
+			catch(Exception x)
+			{
+			}
 		}
 	}
 

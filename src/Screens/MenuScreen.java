@@ -7,8 +7,10 @@ import Level.Map;
 import Maps.TitleScreenMap;
 import SpriteFont.SpriteFont;
 import Utils.Stopwatch;
+import Sounds.AudioPlayer;
 
 import java.awt.*;
+import java.io.File;
 import java.lang.ProcessHandle.Info;
 
 import javax.security.auth.login.FailedLoginException;
@@ -25,6 +27,9 @@ public class MenuScreen extends Screen {
 	protected Stopwatch keyTimer = new Stopwatch();
 	protected int pointerLocationX, pointerLocationY;
 	protected KeyLocker keyLocker = new KeyLocker();
+	protected static AudioPlayer menuMusic;
+	protected AudioPlayer startEffect;
+	protected static boolean musicAlreadyPlaying = false;
 
 	public MenuScreen(ScreenCoordinator screenCoordinator) {
 		this.screenCoordinator = screenCoordinator;
@@ -43,6 +48,23 @@ public class MenuScreen extends Screen {
 		keyTimer.setWaitTime(200);
 		menuItemSelected = -1;
 		keyLocker.lockKey(Key.SPACE);
+
+		// setup AudioPlayer
+		try
+		{
+			if(musicAlreadyPlaying == false)
+			{
+				menuMusic = new AudioPlayer(true, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
+						+ "DreamTeam-Platformer/Resources/Zoo-Mania_Sample_Music.wav");
+				menuMusic.play();
+			}
+		}
+
+		catch(Exception x)
+		{
+			System.out.println("Error with playing sound."); 
+			x.printStackTrace();
+		}
 	}
 
 	public void update() {
@@ -83,9 +105,33 @@ public class MenuScreen extends Screen {
 			keyLocker.unlockKey(Key.SPACE);
 		}
 		if (!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE)) {
+			try
+			{
+				startEffect = new AudioPlayer (false, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
+						+ "DreamTeam-Platformer/Resources/GameStart_Sound.wav");
+				startEffect.play();
+			}
+			
+			catch(Exception x)
+			{
+				System.out.println("Error with sound");
+			}
+			
 			menuItemSelected = currentMenuItemHovered;
 			if (menuItemSelected == 0) {
+				try
+				{
+					musicAlreadyPlaying = false;					
+					menuMusic.stop();
+				}
+				
+				catch(Exception x)
+				{
+					System.out.println("Error with music");
+					x.printStackTrace();
+				}
 				screenCoordinator.setGameState(GameState.LEVEL);
+				
 			} else if (menuItemSelected == 1) {
 				screenCoordinator.setGameState(GameState.CREDITS);
 			}

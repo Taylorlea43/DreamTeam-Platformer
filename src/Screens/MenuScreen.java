@@ -60,10 +60,10 @@ public class MenuScreen extends Screen {
 			}
 		}
 
-		catch(Exception x)
+		catch(Exception e)
 		{
 			System.out.println("Error with playing sound."); 
-			x.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 
@@ -112,7 +112,7 @@ public class MenuScreen extends Screen {
 				startEffect.play();
 			}
 			
-			catch(Exception x)
+			catch(Exception e)
 			{
 				System.out.println("Error with sound");
 			}
@@ -125,10 +125,10 @@ public class MenuScreen extends Screen {
 					menuMusic.stop();
 				}
 				
-				catch(Exception x)
+				catch(Exception e)
 				{
 					System.out.println("Error with music");
-					x.printStackTrace();
+					e.printStackTrace();
 				}
 				screenCoordinator.setGameState(GameState.LEVEL);
 				

@@ -329,7 +329,10 @@ public abstract class Player extends GameObject {
                 		if(health - 25 > 0)
                 			health -= 25;
                 		else
+                		{
                 			health = 0;
+                			levelState = LevelState.PLAYER_DEAD;
+                		}
                 	}
                 	else
                 		health -= 1;
@@ -338,6 +341,11 @@ public abstract class Player extends GameObject {
                 	levelState = LevelState.PLAYER_DEAD;
             }
         }
+    }
+    
+    public boolean isDead()
+    {
+    	return (levelState == LevelState.PLAYER_DEAD);
     }
 	
     // other entities can call this to tell the player they beat a level

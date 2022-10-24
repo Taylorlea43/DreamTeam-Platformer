@@ -1,6 +1,7 @@
 package Screens;
 
 import Engine.*;
+import Sounds.AudioPlayer;
 import SpriteFont.SpriteFont;
 
 import java.awt.*;
@@ -43,11 +44,27 @@ public class LevelLoseScreen extends Screen {
 		}
 
 //		 if space is pressed, reset level. if escape is pressed, go back to main menu
-		if (Keyboard.isKeyDown(Key.SPACE) && !keyLocker.isKeyLocked(Key.SPACE) && commandInput == 0) {
+		if (Keyboard.isKeyDown(Key.SPACE) && !keyLocker.isKeyLocked(Key.SPACE) && commandInput == 0) 
+		{
 			playLevelScreen.resetLevel();
-		} else if (Keyboard.isKeyDown(Key.SPACE) && !keyLocker.isKeyLocked(Key.SPACE) && commandInput == 1) {
-			playLevelScreen.goBackToMenu();
+			
+			try
+			{
+				AudioPlayer startSound = new AudioPlayer (false, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
+						+ "DreamTeam-Platformer/Resources/GameStart_Sound.wav");
+				startSound.play();
+			}
+			
+			catch(Exception e)
+			{
+				System.out.println("Error with sound");
+			}
+		} 
+		else if (Keyboard.isKeyDown(Key.SPACE) && !keyLocker.isKeyLocked(Key.SPACE) && commandInput == 1) 
+		{
+			playLevelScreen.goBackToMenu();			
 		}
+		
 	}
 
 	public void draw(GraphicsHandler graphicsHandler) {

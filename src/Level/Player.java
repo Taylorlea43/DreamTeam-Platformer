@@ -6,6 +6,7 @@ import Engine.Keyboard;
 import GameObject.GameObject;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
+import Sounds.AudioPlayer;
 import Utils.AirGroundState;
 import Utils.Direction;
 import java.util.ArrayList;
@@ -210,6 +211,18 @@ public abstract class Player extends GameObject {
 				if (jumpForce < 0) {
 					jumpForce = 0;
 				}
+			}
+			
+			try
+			{
+				AudioPlayer jumpSound = new AudioPlayer (false, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
+						+ "DreamTeam-Platformer/Resources/PlayerJump_Sound.wav");
+				jumpSound.play();
+			}
+			
+			catch(Exception e)
+			{
+				System.out.println("Error with jump sound");
 			}
 		} 
 

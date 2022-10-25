@@ -111,8 +111,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// setup AudioPlayer
 			try
 			{
-				levelMusic = new AudioPlayer(true, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
-						+ "DreamTeam-Platformer/Resources/Zoo-Mania_Level1_Music.wav");
+				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
 				levelMusic.play();
 			}
 

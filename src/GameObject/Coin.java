@@ -37,8 +37,7 @@ public class Coin extends MapEntity{
 			 
 			 try
 				{
-					coinSound = new AudioPlayer (false, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
-							+ "DreamTeam-Platformer/Resources/CoinGet_Sound.wav");
+					coinSound = new AudioPlayer (false, "Resources/CoinGet_Sound.wav");
 					coinSound.play();
 				}
 				

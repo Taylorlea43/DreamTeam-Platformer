@@ -28,8 +28,7 @@ public class EndLevelBox extends EnhancedMapTile {
             
             try
 			{
-				AudioPlayer LevelCompleteSound = new AudioPlayer (false, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
-						+ "DreamTeam-Platformer/Resources/LevelComplete_Sound.wav");
+				AudioPlayer LevelCompleteSound = new AudioPlayer (false, "Resources/LevelComplete_Sound.wav");
 				LevelCompleteSound.play();
 			}
 			

@@ -54,8 +54,7 @@ public class MenuScreen extends Screen {
 		{
 			if(musicAlreadyPlaying == false)
 			{
-				menuMusic = new AudioPlayer(true, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
-						+ "DreamTeam-Platformer/Resources/Zoo-Mania_Sample_Music.wav");
+				menuMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Sample_Music.wav");
 				menuMusic.play();
 			}
 		}
@@ -107,8 +106,7 @@ public class MenuScreen extends Screen {
 		if (!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE)) {
 			try
 			{
-				startEffect = new AudioPlayer (false, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
-						+ "DreamTeam-Platformer/Resources/GameStart_Sound.wav");
+				startEffect = new AudioPlayer (false, "Resources/GameStart_Sound.wav");
 				startEffect.play();
 			}
 			

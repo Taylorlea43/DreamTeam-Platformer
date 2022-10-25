@@ -29,8 +29,7 @@ public class LevelKey extends MapEntity
 			 
 			 try
 				{
-					AudioPlayer keySound = new AudioPlayer (false, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
-							+ "DreamTeam-Platformer/Resources/KeyGet_Sound.wav");
+					AudioPlayer keySound = new AudioPlayer (false, "Resources/KeyGet_Sound.wav");
 					keySound.play();
 				}
 				

@@ -50,8 +50,7 @@ public class LevelLoseScreen extends Screen {
 			
 			try
 			{
-				AudioPlayer startSound = new AudioPlayer (false, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
-						+ "DreamTeam-Platformer/Resources/GameStart_Sound.wav");
+				AudioPlayer startSound = new AudioPlayer (false, "Resources/GameStart_Sound.wav");
 				startSound.play();
 			}
 			

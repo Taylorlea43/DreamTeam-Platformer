@@ -15,7 +15,7 @@ import Enemies.Net;
 public abstract class Player extends GameObject {
 	// values that affect player movement
 	// these should be set in a subclass
-	protected float health = 0;
+	protected double health = 0;
 	protected float walkSpeed = 0;
 	protected float gravity = 0;
 	protected float jumpHeight = 0;
@@ -346,8 +346,20 @@ public abstract class Player extends GameObject {
                 			levelState = LevelState.PLAYER_DEAD;
                 		}
                 	}
-                	else
-                		health -= 1;
+                	else {
+                		health -= 0.5;
+                		
+                		try
+            			{
+            				AudioPlayer hurtSound = new AudioPlayer (false, "Resources/PlayerHurt_Sound.wav");
+            				hurtSound.play();
+            			}
+            			
+            			catch(Exception e)
+            			{
+            				System.out.println("Error with sound");
+            			}
+                	}
                 }
                 else // player health at 0
                 	levelState = LevelState.PLAYER_DEAD;
@@ -422,7 +434,7 @@ public abstract class Player extends GameObject {
 		return playerState;
 	}
 
-	public float getHealth() {
+	public double getHealth() {
 		return health;
 	}
 

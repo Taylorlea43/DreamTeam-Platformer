@@ -6,6 +6,7 @@ import Enemies.ZookeeperEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
+import GameObject.LevelKey;
 import GameObject.Rectangle;
 import Level.*;
 import NPCs.Walrus;
@@ -16,7 +17,9 @@ import java.util.ArrayList;
 
 // Represents a test map to be used in a level
 public class Level1 extends Map {
-
+	
+	private LevelKey key;
+	
 	public Level1() 
 	{
 		super("test_map.txt", new CommonTileset());
@@ -31,8 +34,8 @@ public class Level1 extends Map {
 
 		enemies.add(new ZookeeperEnemy(getMapTile(15, 6).getLocation().addY(10), Direction.LEFT));
 
-		enemies.add(new DinosaurEnemy(getMapTile(19, 1).getLocation().addY(2), getMapTile(22, 1).getLocation().addY(2),
-				Direction.RIGHT));
+		//enemies.add(new DinosaurEnemy(getMapTile(19, 1).getLocation().addY(2), getMapTile(22, 1).getLocation().addY(2),
+				//Direction.RIGHT));
 		return enemies;
 	}
 
@@ -44,18 +47,18 @@ public class Level1 extends Map {
 				getMapTile(24, 6).getLocation(), getMapTile(27, 6).getLocation(), TileType.JUMP_THROUGH_PLATFORM, 3,
 				new Rectangle(0, 6, 16, 4), Direction.RIGHT));
 
-		enhancedMapTiles.add(new EndLevelBox(getMapTile(53, 7).getLocation(), "Lizard2.png"));
+		enhancedMapTiles.add(new EndLevelBox(getMapTile(53, 7).getLocation(), "Lizard2.png", key));
 
 		return enhancedMapTiles;
 	}
 
-	@Override
-	public ArrayList<NPC> loadNPCs() {
-		ArrayList<NPC> npcs = new ArrayList<>();
+	//@Override
+	//public ArrayList<NPC> loadNPCs() {
+		//ArrayList<NPC> npcs = new ArrayList<>();
 
-		npcs.add(new Walrus(getMapTile(30, 10).getLocation().subtractY(13)));
+		//npcs.add(new Walrus(getMapTile(30, 10).getLocation().subtractY(13)));
 
-		return npcs;
-	}
+		//return npcs;
+	//}
 
 }

@@ -157,9 +157,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// define/setup map
 			this.map = new Level2();
 			map.reset();
+			
 			this.coin1 = new Coin(320, 500);
 			coin1.setBounds(new Rectangle(1, 1, 16, 16));
 			coin1.setMap(map);
+			
 			this.coin2 = new Coin(620, 500);
 			coin2.setBounds(new Rectangle(1, 1, 16, 16));
 			coin2.setMap(map);
@@ -179,6 +181,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.coin6 = new Coin(2250, 430);
 			coin6.setBounds(new Rectangle(1, 1, 16, 16));
 			coin6.setMap(map);
+			
+			this.key1 = new LevelKey(955, 450, "pixelKey.png");
+			key1.setMap(map);
 
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
@@ -186,8 +191,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-			
-			//set up coins in the level 
 
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);	
@@ -268,10 +271,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			if (key1.gotKey == false) 
 			{
 				keyStatus.setText("KEY NEEDED");
-//				key1.check(player);
 			} else {
 				keyStatus.setText("You have the key!");
-//				displayKey.check(player);
 			}
 			
 			
@@ -335,9 +336,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			{
 				key1.draw(graphicsHandler);
 			}
-//			} else {
-//				displayKey.draw(graphicsHandler);
-//			}
 
 			break;
 		case LEVEL_COMPLETED:

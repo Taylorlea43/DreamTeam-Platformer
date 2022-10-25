@@ -9,7 +9,7 @@ import Sounds.AudioPlayer;
 
 public class LevelKey extends MapEntity
 {
-	public boolean gotKey = false;
+	public static boolean gotKey = false;
 	public Screen screen;
 	public float x, y;
 

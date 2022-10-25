@@ -6,6 +6,7 @@ import Enemies.SquirrelEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
+import GameObject.LevelKey;
 import GameObject.Rectangle;
 import Level.*;
 import NPCs.Walrus;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 // Represents a test map to be used in a level
 public class TestMap extends Map {
 	
+	private LevelKey key;
 	
     public TestMap() {
         super("test_map.txt", new CommonTileset());
@@ -51,7 +53,7 @@ public class TestMap extends Map {
                 Direction.RIGHT
         ));
 
-        enhancedMapTiles.add(new EndLevelBox(getMapTile(52, 10).getLocation(), "Lizard2.png"));
+        enhancedMapTiles.add(new EndLevelBox(getMapTile(52, 10).getLocation(), "Lizard2.png", key));
 
         return enhancedMapTiles;
     }

@@ -19,8 +19,8 @@ import Utils.Direction;
 public class Level3 extends Map {
 
 	public Level3() {
-		super("level3.txt", new CommonTileset());
-		this.playerStartPosition = getMapTile(0, 25).getLocation();
+		super("level2.txt", new CommonTileset());
+		this.playerStartPosition = getMapTile(0, 7).getLocation();
 
 	}
 
@@ -34,7 +34,7 @@ public class Level3 extends Map {
 	public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
 		ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
-		enhancedMapTiles.add(new EndLevelBox(getMapTile(15, 23).getLocation(), "Monkey.png"));
+		enhancedMapTiles.add(new EndLevelBox(getMapTile(27, 7).getLocation(), "parrot.png"));
 
 		return enhancedMapTiles;
 	}

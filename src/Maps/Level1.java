@@ -31,8 +31,8 @@ public class Level1 extends Map {
 
 		enemies.add(new ZookeeperEnemy(getMapTile(15, 6).getLocation().addY(10), Direction.LEFT));
 
-		enemies.add(new DinosaurEnemy(getMapTile(19, 1).getLocation().addY(2), getMapTile(22, 1).getLocation().addY(2),
-				Direction.RIGHT));
+		//enemies.add(new DinosaurEnemy(getMapTile(19, 1).getLocation().addY(2), getMapTile(22, 1).getLocation().addY(2),
+				//Direction.RIGHT));
 		return enemies;
 	}
 
@@ -49,13 +49,13 @@ public class Level1 extends Map {
 		return enhancedMapTiles;
 	}
 
-	@Override
-	public ArrayList<NPC> loadNPCs() {
-		ArrayList<NPC> npcs = new ArrayList<>();
+	//@Override
+	//public ArrayList<NPC> loadNPCs() {
+		//ArrayList<NPC> npcs = new ArrayList<>();
 
-		npcs.add(new Walrus(getMapTile(30, 10).getLocation().subtractY(13)));
+		//npcs.add(new Walrus(getMapTile(30, 10).getLocation().subtractY(13)));
 
-		return npcs;
-	}
+		//return npcs;
+	//}
 
 }

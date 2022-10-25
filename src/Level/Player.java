@@ -215,8 +215,7 @@ public abstract class Player extends GameObject {
 			
 			try
 			{
-				AudioPlayer jumpSound = new AudioPlayer (false, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
-						+ "DreamTeam-Platformer/Resources/PlayerJump_Sound.wav");
+				AudioPlayer jumpSound = new AudioPlayer (false, "Resources/PlayerJump_Sound.wav");
 				jumpSound.play();
 			}
 			

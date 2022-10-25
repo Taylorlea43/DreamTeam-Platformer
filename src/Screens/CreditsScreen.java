@@ -43,6 +43,7 @@ public class CreditsScreen extends Screen {
         // if space is pressed, go back to main menu
         if (!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE)) {
             screenCoordinator.setGameState(GameState.MENU);
+            MenuScreen.musicAlreadyPlaying = true;
         }
     }
 

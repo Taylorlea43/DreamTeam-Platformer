@@ -10,6 +10,7 @@ import Engine.Keyboard;
 import Engine.Screen;
 import Level.MapEntity;
 import Level.Player;
+import Sounds.AudioPlayer;
 
 public class Coin extends MapEntity{
 	
@@ -17,6 +18,7 @@ public class Coin extends MapEntity{
 	public Screen screen;
 	public int coinCount;
 	public float x, y;
+	public AudioPlayer coinSound;
 
 	public Coin(float x, float y) {
 		super( x, y, new Frame(ImageLoader.load("Coins.png")));
@@ -28,9 +30,21 @@ public class Coin extends MapEntity{
 	
 	
 	 public void check(Player player) {
-		 if((intersects(player) && gotCoin == false) | (overlaps(player) && gotCoin == false)) {
+		 if((intersects(player) && gotCoin == false) | (overlaps(player) && gotCoin == false)) 
+		 {
 			 gotCoin = true;
 			 coinCount++;
+			 
+			 try
+				{
+					coinSound = new AudioPlayer (false, "Resources/CoinGet_Sound.wav");
+					coinSound.play();
+				}
+				
+				catch(Exception e)
+				{
+					System.out.println("Error with coin sound");
+				}
 		 }
 	 }
 	    

@@ -8,6 +8,7 @@ import GameObject.SpriteSheet;
 import Level.EnhancedMapTile;
 import Level.Player;
 import Level.TileType;
+import Sounds.AudioPlayer;
 import Utils.Point;
 
 import java.util.HashMap;
@@ -23,17 +24,28 @@ public class EndLevelBox extends EnhancedMapTile
     		super(location.x, location.y, new SpriteSheet(ImageLoader.load(name), 24, 24), TileType.PASSABLE);
     		this.key = key;
     	}
- 
-    	@Override
-    	public void update(Player player) 
-    	{
-    		super.update(player);
-    		
-    		if (intersects(player) && key.gotKey == true) 
-    			{
-    			player.completeLevel();
-    			}
-    	}
+
+    @Override
+    public void update(Player player) {
+    	
+        super.update(player);
+        
+        if (intersects(player) && key.gotKey == true) 
+        {
+            player.completeLevel();
+            
+            try
+			{
+				AudioPlayer LevelCompleteSound = new AudioPlayer (false, "Resources/LevelComplete_Sound.wav");
+				LevelCompleteSound.play();
+			}
+			
+			catch(Exception e)
+			{
+				System.out.println("Error with sound");
+			}
+        }
+    }
 
     	@Override
     	public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) 

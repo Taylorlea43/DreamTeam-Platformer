@@ -6,6 +6,7 @@ import Engine.Keyboard;
 import GameObject.GameObject;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
+import Sounds.AudioPlayer;
 import Utils.AirGroundState;
 import Utils.Direction;
 import java.util.ArrayList;
@@ -211,6 +212,18 @@ public abstract class Player extends GameObject {
 					jumpForce = 0;
 				}
 			}
+			
+			try
+			{
+				AudioPlayer jumpSound = new AudioPlayer (false, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
+						+ "DreamTeam-Platformer/Resources/PlayerJump_Sound.wav");
+				jumpSound.play();
+			}
+			
+			catch(Exception e)
+			{
+				System.out.println("Error with jump sound");
+			}
 		} 
 
 		// if player is in air (currently in a jump) and has more jumpForce, continue
@@ -330,7 +343,10 @@ public abstract class Player extends GameObject {
 							health -= 25;
 					}
                 		else
+                		{
                 			health = 0;
+                			levelState = LevelState.PLAYER_DEAD;
+                		}
                 	}
                 	else
                 		health -= 1;
@@ -339,6 +355,11 @@ public abstract class Player extends GameObject {
                 	levelState = LevelState.PLAYER_DEAD;
             }
         }
+    }
+    
+    public boolean isDead()
+    {
+    	return (levelState == LevelState.PLAYER_DEAD);
     }
 	
     // other entities can call this to tell the player they beat a level

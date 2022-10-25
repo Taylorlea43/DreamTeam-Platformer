@@ -28,6 +28,7 @@ import Maps.Level3;
 import Players.Cat;
 import Players.Girl;
 import SpriteFont.SpriteFont;
+import Utils.ClockTimer;
 import Utils.Point;
 import Utils.Stopwatch;
 import Sounds.AudioPlayer;
@@ -35,12 +36,12 @@ import Sounds.AudioPlayer;
 // This class is for when the platformer game is actually being played
 public class PlayLevelScreen extends Screen implements PlayerListener {
 
-	protected ScreenCoordinator screenCoordinator;
+	public ScreenCoordinator screenCoordinator;
 	protected Map map;
 	protected Coin coin1, coin2, coin3, coin4, coin5, coin6;
 	protected LevelKey key1, displayKey;
-	protected Player player;
-	protected PlayLevelScreenState playLevelScreenState;
+	public Player player;
+	public PlayLevelScreenState playLevelScreenState;
 	protected Stopwatch screenTimer = new Stopwatch();
 	protected LevelClearedScreen levelClearedScreen;
 	protected LevelLoseScreen levelLoseScreen;
@@ -53,12 +54,12 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected AudioPlayer levelMusic;
 
 	protected SpriteFont healthBar;
-	protected float timeElapsed;
-	protected Timer timer;
+	public int timeElapsed;
+	public ClockTimer timer;
 
 	public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
 		this.screenCoordinator = screenCoordinator;
-		timer = new Timer();
+		timer = new ClockTimer(this);
 	}
 
 	public void initialize() {
@@ -110,25 +111,21 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// setup AudioPlayer
 			try
 			{
-				levelMusic = new AudioPlayer(true, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
-						+ "DreamTeam-Platformer/Resources/Zoo-Mania_Level1_Music.wav");
+				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
 				levelMusic.play();
 			}
 
-			catch(Exception x)
+			catch(Exception e)
 			{
 				System.out.println("Error with playing sound."); 
-				x.printStackTrace();
+				e.printStackTrace();
 			}
 
 			// setup HUD
-			TimerTick tick = new TimerTick(timer);
-			timer.schedule(tick, 1000, 1000);
-
 			timeElapsed = 0;
+			timer.start();
 
-			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 15, 50, "Comic Sans", 23, new Color(49, 207, 240)); // was
-																														// 691
+			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 15, 50, "Comic Sans", 23, new Color(49, 207, 240)); // was 691
 			this.gameTimer.setOutlineColor(Color.black);
 			this.gameTimer.setOutlineThickness(3);
 
@@ -200,10 +197,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		
 		{
 			// setup HUD
-			TimerTick tick = new TimerTick(timer);
-			timer.schedule(tick, 1000, 1000);
-
 			timeElapsed = 0;
+			timer.start();
+			
 			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 691, 25, "Comic Sans", 23, new Color(49, 207, 240));
 			this.gameTimer.setOutlineColor(Color.black);
 			this.gameTimer.setOutlineThickness(3);
@@ -358,23 +354,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		screenCoordinator.setGameState(GameState.MENU);
 	}
 
-	public class TimerTick extends TimerTask {
-		protected Timer timer;
-
-		public TimerTick(Timer timer) {
-			this.timer = timer;
-		}
-
-		public void run() {
-			if (screenCoordinator.getGameState().equals(GameState.LEVEL))
-				timeElapsed += 1;
-			if (playLevelScreenState == PlayLevelScreenState.LEVEL_LOSE) {
-				this.cancel();
-			}
-
-		}
-	}
-
 	public PlayLevelScreenState getPlayLevelScreenState() {
 		return playLevelScreenState;
 	}
@@ -390,7 +369,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				levelMusic.stop();
 			}
 			
-			catch(Exception x)
+			catch(Exception e)
 			{
 			}
 		}
@@ -406,10 +385,15 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				levelMusic.stop();
 			}
 
-			catch(Exception x)
+			catch(Exception e)
 			{
 			}
 		}
+	}
+	
+	public boolean playerLose()
+	{
+		return (playLevelScreenState == PlayLevelScreenState.LEVEL_LOSE);			
 	}
 
 	public void resetLevel() {

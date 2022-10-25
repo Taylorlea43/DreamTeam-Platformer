@@ -7,6 +7,7 @@ import GameObject.SpriteSheet;
 import Level.EnhancedMapTile;
 import Level.Player;
 import Level.TileType;
+import Sounds.AudioPlayer;
 import Utils.Point;
 
 import java.util.HashMap;
@@ -21,8 +22,20 @@ public class EndLevelBox extends EnhancedMapTile {
     @Override
     public void update(Player player) {
         super.update(player);
-        if (intersects(player)) {
+        if (intersects(player)) 
+        {
             player.completeLevel();
+            
+            try
+			{
+				AudioPlayer LevelCompleteSound = new AudioPlayer (false, "Resources/LevelComplete_Sound.wav");
+				LevelCompleteSound.play();
+			}
+			
+			catch(Exception e)
+			{
+				System.out.println("Error with sound");
+			}
         }
     }
 

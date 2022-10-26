@@ -6,6 +6,7 @@ import Enemies.ZookeeperEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
+import GameObject.LevelKey;
 import GameObject.Rectangle;
 import Level.Enemy;
 import Level.EnhancedMapTile;
@@ -18,25 +19,29 @@ import Utils.Direction;
 
 public class Level7 extends Map {
 
+    private LevelKey key;
+
     public Level7() {
         super("level2.txt", new DesertTileset());
-        this.playerStartPosition = getMapTile(2, 11).getLocation();
+        this.playerStartPosition = getMapTile(0, 7).getLocation();
 
     }
+
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
-        //enemies.add(new BugEnemy(getMapTile(15, 8).getLocation().addY(20), Direction.LEFT));
-        enemies.add(new ZookeeperEnemy(getMapTile(15, 6).getLocation().addY(10), Direction.LEFT));
 
         return enemies;
     }
+
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
 
-        enhancedMapTiles.add(new EndLevelBox(getMapTile(27, 7).getLocation(), "girrafe.png"));
+        enhancedMapTiles.add(new EndLevelBox(getMapTile(23, 7).getLocation(), "girrafe.png", key, 24, 48));
+
 
         return enhancedMapTiles;
     }
+
 }

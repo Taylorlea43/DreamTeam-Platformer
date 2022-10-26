@@ -350,6 +350,7 @@ public abstract class Player extends GameObject {
                 	else {
                 		health -= 0.5;
                 		
+                		/*
                 		try
             			{
             				AudioPlayer hurtSound = new AudioPlayer (false, "Resources/PlayerHurt_Sound.wav");
@@ -360,6 +361,7 @@ public abstract class Player extends GameObject {
             			{
             				System.out.println("Error with sound");
             			}
+                		*/
                 	}
                 }
                 else // player health at 0

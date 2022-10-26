@@ -22,9 +22,7 @@ import GameObject.LevelKey;
 import Level.Map;
 import Level.Player;
 import Level.PlayerListener;
-import Maps.Level1;
-import Maps.Level2;
-import Maps.Level3;
+import Maps.*;
 import Players.Cat;
 import Players.Girl;
 import SpriteFont.SpriteFont;
@@ -64,8 +62,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 	public void initialize() {
 
-		if (currLevel == 0) 
-		{
+		if (currLevel == 0) {
 			// define/setup map
 			this.map = new Level1();
 			map.reset();
@@ -96,6 +93,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin6.setMap(map);
 
 			// setup key
+
 			this.key = new LevelKey(955, 250, "pixelKey.png");
 			key.setMap(map);
 			
@@ -113,23 +111,27 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			
 			
 			//setup player
+
+			this.key = new LevelKey(955, 250, "pixelKey.png");
+			key.setMap(map);
+
+//			this.displayKey = new LevelKey(7, 65, "pixelKey.png");
+//			displayKey.setMap(map);
+
+
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-			
+
 			// setup AudioPlayer
-			try
-			{
+			try {
 				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
 				levelMusic.play();
-			}
-
-			catch(Exception e)
-			{
-				System.out.println("Error with playing sound."); 
+			} catch (Exception e) {
+				System.out.println("Error with playing sound.");
 				e.printStackTrace();
 			}
 
@@ -145,23 +147,39 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 					new Color(49, 207, 240));
 			this.coinCounter.setOutlineColor(Color.black);
 			this.coinCounter.setOutlineThickness(3);
-			
+
 			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23, new Color(49, 207, 240));
 			this.healthBar.setOutlineColor(Color.black);
 			this.healthBar.setOutlineThickness(3);
+
 		} 
 		
 		else if (currLevel == 1) 
 			
 		{
+
+
+			this.keyStatusBar = new SpriteFont("Key: ", 15, 100, "Comic Sans", 23, new Color(49, 207, 240));
+			this.keyStatusBar.setOutlineColor(Color.black);
+			this.keyStatusBar.setOutlineThickness(3);
+
+			//setup key status
+			this.keyStatus = new SpriteFont(" ", 75, 100, "Comic Sans", 23, new Color(250, 204, 77));
+			this.keyStatus.setOutlineColor(Color.black);
+			this.keyStatus.setOutlineThickness(3);
+
+			levelClearedScreen = new LevelClearedScreen(this);
+			levelLoseScreen = new LevelLoseScreen(this);
+		} else if (currLevel == 1) {
+
 			// define/setup map
-			this.map = new Level2();
+			this.map = new Level1();
 			map.reset();
-			
+
 			this.coin1 = new Coin(320, 500);
 			coin1.setBounds(new Rectangle(1, 1, 16, 16));
 			coin1.setMap(map);
-			
+
 			this.coin2 = new Coin(620, 500);
 			coin2.setBounds(new Rectangle(1, 1, 16, 16));
 			coin2.setMap(map);
@@ -181,57 +199,53 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.coin6 = new Coin(2250, 430);
 			coin6.setBounds(new Rectangle(1, 1, 16, 16));
 			coin6.setMap(map);
-			
+
 			this.key = new LevelKey(955, 450, "pixelKey.png");
 			key.setMap(map);
 			
 			key = new LevelKey(955, 250, "pixelKey.png");
 			key.setMap(map);
 
+			this.key = new LevelKey(955, 450, "pixelKey.png");
+			key.setMap(map);
+
+
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-
-			levelClearedScreen = new LevelClearedScreen(this);
-			levelLoseScreen = new LevelLoseScreen(this);	
-		} 
-
-		else if (currLevel == 2) 
-		
-		{
-			// setup HUD
-			timeElapsed = 0;
-			timer.start();
-			
-			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 691, 25, "Comic Sans", 23, new Color(49, 207, 240));
-			this.gameTimer.setOutlineColor(Color.black);
-			this.gameTimer.setOutlineThickness(3);
-
-			this.coinCounter = new SpriteFont("Coins: 0", 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
-			this.coinCounter.setOutlineColor(Color.black);
-			this.coinCounter.setOutlineThickness(3);
-			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
-					new Color(49, 207, 240));
-			this.healthBar.setOutlineColor(Color.black);
-			this.healthBar.setOutlineThickness(3);
-
-			levelClearedScreen = new LevelClearedScreen(this);
-			levelLoseScreen = new LevelLoseScreen(this);
-		} 
-		
-		else if (currLevel == 2) 
-		
-		{
 
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
 		} else if (currLevel == 2) {
-			this.map = new Level3();
+
+			this.map = new Level2();
 			map.reset();
-			
+			this.coin1 = new Coin(320, 500);
+			coin1.setBounds(new Rectangle(1, 1, 16, 16));
+			coin1.setMap(map);
+			this.coin2 = new Coin(620, 500);
+			coin2.setBounds(new Rectangle(1, 1, 16, 16));
+			coin2.setMap(map);
+
+			this.coin3 = new Coin(865, 500);
+			coin3.setBounds(new Rectangle(1, 1, 16, 16));
+			coin3.setMap(map);
+
+			this.coin4 = new Coin(1300, 500);
+			coin4.setBounds(new Rectangle(1, 1, 16, 16));
+			coin4.setMap(map);
+
+			this.coin5 = new Coin(1730, 500);
+			coin5.setBounds(new Rectangle(1, 1, 16, 16));
+			coin5.setMap(map);
+
+			this.coin6 = new Coin(2250, 430);
+			coin6.setBounds(new Rectangle(1, 1, 16, 16));
+			coin6.setMap(map);
+
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
@@ -239,9 +253,135 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
+			//set up coins in the level
+
+			levelClearedScreen = new LevelClearedScreen(this);
+			levelLoseScreen = new LevelLoseScreen(this);
+
+		} else if (currLevel == 3) {
+			this.map = new Level3();
+			map.reset();
+
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			Point playerStartPosition = map.getPlayerStartPosition();
+			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+
+
+			levelClearedScreen = new LevelClearedScreen(this);
+			levelLoseScreen = new LevelLoseScreen(this);
+
+		} else if (currLevel == 4) {
+			this.map = new Level4();
+			map.reset();
+
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			Point playerStartPosition = map.getPlayerStartPosition();
+			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+
+
+			levelClearedScreen = new LevelClearedScreen(this);
+			levelLoseScreen = new LevelLoseScreen(this);
+
+		}else if (currLevel == 5) {
+			this.map = new Level5();
+			map.reset();
+
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			Point playerStartPosition = map.getPlayerStartPosition();
+			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+
+
+			levelClearedScreen = new LevelClearedScreen(this);
+			levelLoseScreen = new LevelLoseScreen(this);
+
+		}else if (currLevel == 6) {
+			this.map = new Level6();
+			map.reset();
+
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			Point playerStartPosition = map.getPlayerStartPosition();
+			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+
+
+			levelClearedScreen = new LevelClearedScreen(this);
+			levelLoseScreen = new LevelLoseScreen(this);
+
+		}else if (currLevel == 7) {
+			this.map = new Level7();
+			map.reset();
+
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			Point playerStartPosition = map.getPlayerStartPosition();
+			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+
+
+			levelClearedScreen = new LevelClearedScreen(this);
+			levelLoseScreen = new LevelLoseScreen(this);
+
+		}else if (currLevel == 8) {
+			this.map = new Level8();
+			map.reset();
+
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			Point playerStartPosition = map.getPlayerStartPosition();
+			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+
+
+			levelClearedScreen = new LevelClearedScreen(this);
+			levelLoseScreen = new LevelLoseScreen(this);
+
+		}else if (currLevel == 9 ){
+			this.map = new Level9();
+			map.reset();
+
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			Point playerStartPosition = map.getPlayerStartPosition();
+			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+
+
+			levelClearedScreen = new LevelClearedScreen(this);
+			levelLoseScreen = new LevelLoseScreen(this);
+
+		}else if (currLevel == 10) {
+			this.map = new Level10();
+			map.reset();
+
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			Point playerStartPosition = map.getPlayerStartPosition();
+			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+
+
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
 		}
+
+
+
+
 	}
 
 	public void update() {

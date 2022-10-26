@@ -47,7 +47,7 @@ public class Level1 extends Map {
 				getMapTile(24, 6).getLocation(), getMapTile(27, 6).getLocation(), TileType.JUMP_THROUGH_PLATFORM, 3,
 				new Rectangle(0, 6, 16, 4), Direction.RIGHT));
 
-		enhancedMapTiles.add(new EndLevelBox(getMapTile(53, 7).getLocation(), "Lizard2.png", key));
+		enhancedMapTiles.add(new EndLevelBox(getMapTile(53, 7).getLocation(), "Lizard2.png", key, 24, 24));
 
 		return enhancedMapTiles;
 	}

@@ -19,9 +19,9 @@ public class EndLevelBox extends EnhancedMapTile
 	{
 		private LevelKey key;
 	
-    	public EndLevelBox(Point location, String name, LevelKey key) 
+    	public EndLevelBox(Point location, String name, LevelKey key, int x, int y)
     	{
-    		super(location.x, location.y, new SpriteSheet(ImageLoader.load(name), 24, 24), TileType.PASSABLE);
+    		super(location.x, location.y, new SpriteSheet(ImageLoader.load(name), x, y), TileType.PASSABLE);
     		this.key = key;
     	}
 

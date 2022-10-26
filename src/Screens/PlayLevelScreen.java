@@ -63,8 +63,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 	public void initialize() {
 
-		if (currLevel == 0) 
-		{
+		if (currLevel == 0) {
 			// define/setup map
 			this.map = new Level1();
 			map.reset();
@@ -96,28 +95,26 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// setup key
 			this.key1 = new LevelKey(955, 250, "pixelKey.png");
 			key1.setMap(map);
-			
+
 //			this.displayKey = new LevelKey(7, 65, "pixelKey.png");
 //			displayKey.setMap(map);
-			
+
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-			
+
 			// setup AudioPlayer
-			try
-			{
+			try {
 				levelMusic = new AudioPlayer(true, "C:/Users/emili/OneDrive/Desktop/SER225_GAME/"
 						+ "DreamTeam-Platformer/Resources/Zoo-Mania_Level1_Music.wav");
 				levelMusic.play();
 			}
 
-			catch(Exception x)
-			{
-				System.out.println("Error with playing sound."); 
+			catch (Exception x) {
+				System.out.println("Error with playing sound.");
 				x.printStackTrace();
 			}
 
@@ -136,26 +133,27 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 					new Color(49, 207, 240));
 			this.coinCounter.setOutlineColor(Color.black);
 			this.coinCounter.setOutlineThickness(3);
-			
-			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23, new Color(49, 207, 240));
+
+			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
+					new Color(49, 207, 240));
 			this.healthBar.setOutlineColor(Color.black);
 			this.healthBar.setOutlineThickness(3);
-			
+
 			this.keyStatusBar = new SpriteFont("Key: ", 15, 100, "Comic Sans", 23, new Color(49, 207, 240));
 			this.keyStatusBar.setOutlineColor(Color.black);
 			this.keyStatusBar.setOutlineThickness(3);
 
-			//setup key status
+			// setup key status
 			this.keyStatus = new SpriteFont(" ", 75, 100, "Comic Sans", 23, new Color(250, 204, 77));
 			this.keyStatus.setOutlineColor(Color.black);
 			this.keyStatus.setOutlineThickness(3);
-			
+
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
-		} 
-		
-		else if (currLevel == 1) 
-			
+		}
+
+		else if (currLevel == 1)
+
 		{
 			// define/setup map
 			this.map = new Level2();
@@ -189,47 +187,17 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-			
-			//set up coins in the level 
 
-			levelClearedScreen = new LevelClearedScreen(this);
-			levelLoseScreen = new LevelLoseScreen(this);	
-		} 
-
-		else if (currLevel == 2) 
-		
-		{
-			// setup HUD
-			TimerTick tick = new TimerTick(timer);
-			timer.schedule(tick, 1000, 1000);
-
-			timeElapsed = 0;
-			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 691, 25, "Comic Sans", 23, new Color(49, 207, 240));
-			this.gameTimer.setOutlineColor(Color.black);
-			this.gameTimer.setOutlineThickness(3);
-
-			this.coinCounter = new SpriteFont("Coins: 0", 694, 50, "Comic Sans", 23, new Color(49, 207, 240));
-			this.coinCounter.setOutlineColor(Color.black);
-			this.coinCounter.setOutlineThickness(3);
-			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
-					new Color(49, 207, 240));
-			this.healthBar.setOutlineColor(Color.black);
-			this.healthBar.setOutlineThickness(3);
+			// set up coins in the level
 
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
-		} 
-		
-		else if (currLevel == 2) 
-		
-		{
+		}
 
-			levelClearedScreen = new LevelClearedScreen(this);
-			levelLoseScreen = new LevelLoseScreen(this);
-		} else if (currLevel == 2) {
+		else if (currLevel == 2) {
 			this.map = new Level3();
 			map.reset();
-			
+
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
@@ -266,19 +234,16 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coinCounter.setText("Coins: " + this.getCoinCount());
 
 			gameTimer.setText("Time: " + (int) timeElapsed);
-			
+
 			keyStatusBar.setText("Key: ");
-			
-			if (key1.gotKey == false) 
-			{
+
+			if (key1.gotKey == false) {
 				keyStatus.setText("KEY NEEDED");
 //				key1.check(player);
 			} else {
 				keyStatus.setText("You have the key!");
 //				displayKey.check(player);
 			}
-			
-			
 
 			break;
 		// if level has been completed, bring up level cleared screen
@@ -294,12 +259,12 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 //				}
 			}
 			break;
-			// wait on level lose screen to make a decision (either resets level or sends
-			// player back to main menu)
-		case LEVEL_LOSE:{
+		// wait on level lose screen to make a decision (either resets level or sends
+		// player back to main menu)
+		case LEVEL_LOSE: {
 			levelLoseScreen.update();
 			break;
-			}
+		}
 		}
 	}
 
@@ -335,8 +300,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				coin6.draw(graphicsHandler);
 			}
 
-			if (key1.gotKey == false) 
-			{
+			if (key1.gotKey == false) {
 				key1.draw(graphicsHandler);
 			}
 //			} else {
@@ -384,14 +348,12 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		if (playLevelScreenState != PlayLevelScreenState.LEVEL_COMPLETED) {
 			playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
 			levelCompletedStateChangeStart = true;
-			
-			try
-			{
+
+			try {
 				levelMusic.stop();
 			}
-			
-			catch(Exception x)
-			{
+
+			catch (Exception x) {
 			}
 		}
 	}
@@ -401,13 +363,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		if (playLevelScreenState != PlayLevelScreenState.LEVEL_LOSE) {
 			playLevelScreenState = PlayLevelScreenState.LEVEL_LOSE;
 
-			try
-			{
+			try {
 				levelMusic.stop();
 			}
 
-			catch(Exception x)
-			{
+			catch (Exception x) {
 			}
 		}
 	}

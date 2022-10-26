@@ -14,6 +14,7 @@ import Level.EnhancedMapTile;
 import Level.Map;
 import Level.TileType;
 import Level.Tileset;
+import Tilesets.CloudTileset;
 import Tilesets.CommonTileset;
 import Tilesets.DesertTileset;
 import Tilesets.ForestTileset;
@@ -24,8 +25,8 @@ public class Level3 extends Map {
 	private LevelKey key;
 
 	public Level3() {
-		super("level2.txt", new DesertTileset());
-		this.playerStartPosition = getMapTile(0, 10).getLocation();
+		super("level4.txt", new CloudTileset());
+		this.playerStartPosition = getMapTile(1, 11).getLocation();
 	}
 
 	public ArrayList<Enemy> loadEnemies() {

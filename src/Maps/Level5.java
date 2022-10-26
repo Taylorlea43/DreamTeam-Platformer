@@ -13,8 +13,10 @@ import Level.EnhancedMapTile;
 import Level.Map;
 import Level.TileType;
 import Level.Tileset;
+import Tilesets.ArticTileset;
 import Tilesets.CommonTileset;
 import Tilesets.DesertTileset;
+import Tilesets.JungleTileset;
 import Utils.Direction;
 
 public class Level5 extends Map {
@@ -22,8 +24,8 @@ public class Level5 extends Map {
     private LevelKey key;
 
     public Level5() {
-        super("level2.txt", new DesertTileset());
-        this.playerStartPosition = getMapTile(0, 7).getLocation();
+        super("level6.txt", new JungleTileset());
+        this.playerStartPosition = getMapTile(7, 14).getLocation();
 
     }
 
@@ -38,7 +40,7 @@ public class Level5 extends Map {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
 
-        enhancedMapTiles.add(new EndLevelBox(getMapTile(23, 7).getLocation(), "Monkey.png", key, 24, 24));
+        enhancedMapTiles.add(new EndLevelBox(getMapTile(8, 0).getLocation(), "monkey.png", key, 24, 24));
 
 
         return enhancedMapTiles;

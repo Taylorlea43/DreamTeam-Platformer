@@ -12,7 +12,10 @@ import javax.swing.*;
 public class GameWindow {
 	public static JFrame gameWindow;
 	private GamePanel gamePanel;
-	protected Key FULLSCREEN_KEY = Key.F;
+	private final Key FULLSCREEN_KEY = Key.F;
+	private boolean isGameFullscreen = false;
+
+	private KeyLocker keyLocker = new KeyLocker();
 
 	public GameWindow() {
 
@@ -26,12 +29,36 @@ public class GameWindow {
 		gameWindow.setResizable(false);
 		gameWindow.setUndecorated(false);
 
-		gameWindow.setSize(Config.FULL_GAME_WINDOW_WIDTH, Config.FULL_GAME_WINDOW_HEIGHT);
+		gameWindow.setSize(Config.GAME_WINDOW_WIDTH, Config.GAME_WINDOW_HEIGHT);
+
 		gameWindow.setLocationRelativeTo(null);
 		gameWindow.setVisible(true);
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // it'd be nice if this actually worked more than
 																	// 1/3rd of the time
 		gamePanel.setupGame();
+
+//		updateFullscreen();
+
+//		if (!isGameFullscreen) {
+//			gameWindow.setSize(Config.GAME_WINDOW_WIDTH, Config.GAME_WINDOW_HEIGHT);
+//		}
+//		if (isGameFullscreen) {
+//
+//			gameWindow.setSize(Config.FULL_GAME_WINDOW_WIDTH, Config.FULL_GAME_WINDOW_HEIGHT);
+//		}
+
+	}
+
+	public void updateFullscreen() {
+		if (Keyboard.isKeyDown(FULLSCREEN_KEY) && !keyLocker.isKeyLocked(FULLSCREEN_KEY)) {
+			isGameFullscreen = !isGameFullscreen;
+			keyLocker.lockKey(FULLSCREEN_KEY);
+
+		}
+
+		if (Keyboard.isKeyUp(FULLSCREEN_KEY)) {
+			keyLocker.unlockKey(FULLSCREEN_KEY);
+		}
 	}
 
 	// triggers the game loop to start as defined in the GamePanel class

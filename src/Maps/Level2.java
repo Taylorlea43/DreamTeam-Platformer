@@ -19,13 +19,13 @@ import Tilesets.DesertTileset;
 import Tilesets.ForestTileset;
 import Utils.Direction;
 
-public class Level2 extends Map {
-	
+public class Level2 extends Map 
+{
 	private LevelKey key;
 
 	public Level2() {
 		super("level3.txt", new ForestTileset());
-		this.playerStartPosition = getMapTile(2, 11).getLocation();
+		this.playerStartPosition = getMapTile(2, 19).getLocation();
 
 	}
 	public ArrayList<Enemy> loadEnemies() {

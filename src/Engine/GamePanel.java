@@ -41,6 +41,8 @@ public class GamePanel extends JPanel {
 	int screenwidth2 = Config.GAME_WINDOW_WIDTH;
 	int screenheight2 = Config.GAME_WINDOW_HEIGHT;
 
+	static GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0];
+
 	/*
 	 * The JPanel and various important class instances are setup here
 	 */
@@ -74,7 +76,7 @@ public class GamePanel extends JPanel {
 					repaint();
 				}
 				if (isGameFullscreen) {
-					// drawToTemp();
+					 //drawToTemp();
 					// drawToScreen();
 					repaint();
 				}
@@ -137,7 +139,6 @@ public class GamePanel extends JPanel {
 		if (Keyboard.isKeyDown(FULLSCREEN_KEY) && !keyLocker.isKeyLocked(FULLSCREEN_KEY)) {
 			isGameFullscreen = !isGameFullscreen;
 			keyLocker.lockKey(FULLSCREEN_KEY);
-
 		}
 
 		if (Keyboard.isKeyUp(FULLSCREEN_KEY)) {
@@ -155,12 +156,15 @@ public class GamePanel extends JPanel {
 					new Color(0, 0, 0, 100));
 		}
 		if (isGameFullscreen) {
-//			setFullscreen();
-			GameWindow.gameWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
-			// GameWindow.gameWindow.setSize(Config.FULL_GAME_WINDOW_WIDTH,
-			// Config.FULL_GAME_WINDOW_HEIGHT);
+			// setFullscreen();
+//			GameWindow.gameWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			GameWindow.gameWindow.setSize(Config.FULL_GAME_WINDOW_WIDTH, Config.FULL_GAME_WINDOW_HEIGHT);
+			GameWindow.gameWindow.setLocationRelativeTo(null);
+
+			// device.setFullScreenWindow(GameWindow.gameWindow);
 
 		} else if (!isGameFullscreen) {
+
 			GameWindow.gameWindow.setSize(Config.GAME_WINDOW_WIDTH, Config.GAME_WINDOW_HEIGHT);
 
 		}

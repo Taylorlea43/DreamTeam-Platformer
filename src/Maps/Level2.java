@@ -18,8 +18,8 @@ import Tilesets.CommonTileset;
 import Tilesets.DesertTileset;
 import Utils.Direction;
 
-public class Level2 extends Map {
-	
+public class Level2 extends Map 
+{
 	private LevelKey key;
 
 	public Level2() {

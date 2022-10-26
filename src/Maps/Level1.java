@@ -16,8 +16,8 @@ import Utils.Direction;
 import java.util.ArrayList;
 
 // Represents a test map to be used in a level
-public class Level1 extends Map {
-	
+public class Level1 extends Map 
+{
 	private LevelKey key;
 	
 	public Level1() 

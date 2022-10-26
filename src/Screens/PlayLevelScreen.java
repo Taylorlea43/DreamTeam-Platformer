@@ -39,7 +39,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public ScreenCoordinator screenCoordinator;
 	protected Map map;
 	protected Coin coin1, coin2, coin3, coin4, coin5, coin6;
-	protected LevelKey key1, displayKey;
+	protected LevelKey key;
 	public Player player;
 	public PlayLevelScreenState playLevelScreenState;
 	protected Stopwatch screenTimer = new Stopwatch();
@@ -69,6 +69,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// define/setup map
 			this.map = new Level1();
 			map.reset();
+			
 			// set up coins in the game
 			this.coin1 = new Coin(320, 340);
 			coin1.setBounds(new Rectangle(1, 1, 16, 16));
@@ -95,12 +96,23 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin6.setMap(map);
 
 			// setup key
-			this.key1 = new LevelKey(955, 250, "pixelKey.png");
-			key1.setMap(map);
+			this.key = new LevelKey(955, 250, "pixelKey.png");
+			key.setMap(map);
 			
-//			this.displayKey = new LevelKey(7, 65, "pixelKey.png");
-//			displayKey.setMap(map);
+			//set up key status
+			this.keyStatusBar = new SpriteFont("Key: ", 15, 100, "Comic Sans", 23, new Color(49, 207, 240));
+			this.keyStatusBar.setOutlineColor(Color.black);
+			this.keyStatusBar.setOutlineThickness(3);
 			
+			this.keyStatus = new SpriteFont(" ", 75, 100, "Comic Sans", 23, new Color(250, 204, 77));
+			this.keyStatus.setOutlineColor(Color.black);
+			this.keyStatus.setOutlineThickness(3);
+			
+			levelClearedScreen = new LevelClearedScreen(this);
+			levelLoseScreen = new LevelLoseScreen(this);
+			
+			
+			//setup player
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
 			this.player.addListener(this);
@@ -137,18 +149,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23, new Color(49, 207, 240));
 			this.healthBar.setOutlineColor(Color.black);
 			this.healthBar.setOutlineThickness(3);
-			
-			this.keyStatusBar = new SpriteFont("Key: ", 15, 100, "Comic Sans", 23, new Color(49, 207, 240));
-			this.keyStatusBar.setOutlineColor(Color.black);
-			this.keyStatusBar.setOutlineThickness(3);
-
-			//setup key status
-			this.keyStatus = new SpriteFont(" ", 75, 100, "Comic Sans", 23, new Color(250, 204, 77));
-			this.keyStatus.setOutlineColor(Color.black);
-			this.keyStatus.setOutlineThickness(3);
-			
-			levelClearedScreen = new LevelClearedScreen(this);
-			levelLoseScreen = new LevelLoseScreen(this);
 		} 
 		
 		else if (currLevel == 1) 
@@ -182,8 +182,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin6.setBounds(new Rectangle(1, 1, 16, 16));
 			coin6.setMap(map);
 			
-			this.key1 = new LevelKey(955, 450, "pixelKey.png");
-			key1.setMap(map);
+			this.key = new LevelKey(955, 450, "pixelKey.png");
+			key.setMap(map);
+			
+			key = new LevelKey(955, 250, "pixelKey.png");
+			key.setMap(map);
 
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
@@ -257,8 +260,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin5.check(player);
 			coin6.check(player);
 
-			key1.check(player);
-//			displayKey.check(player);
+			key.check(player);
 
 			healthBar.setText("Health: " + (int) player.getHealth());
 
@@ -268,7 +270,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			
 			keyStatusBar.setText("Key: ");
 			
-			if (key1.gotKey == false) 
+			if (key.gotKey == false) 
 			{
 				keyStatus.setText("KEY NEEDED");
 			} else {
@@ -332,9 +334,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				coin6.draw(graphicsHandler);
 			}
 
-			if (key1.gotKey == false) 
+			if (key.gotKey == false) 
 			{
-				key1.draw(graphicsHandler);
+				key.draw(graphicsHandler);
 			}
 
 			break;

@@ -51,7 +51,7 @@ public class Level1 extends Map {
 
 		return enhancedMapTiles;
 	}
-
+	
 	//@Override
 	//public ArrayList<NPC> loadNPCs() {
 		//ArrayList<NPC> npcs = new ArrayList<>();

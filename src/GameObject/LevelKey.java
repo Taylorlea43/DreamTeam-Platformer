@@ -5,10 +5,11 @@ import Engine.ImageLoader;
 import Engine.Screen;
 import Level.MapEntity;
 import Level.Player;
+import Sounds.AudioPlayer;
 
 public class LevelKey extends MapEntity
 {
-	public boolean gotKey = false;
+	public static boolean gotKey = false;
 	public Screen screen;
 	public float x, y;
 
@@ -25,6 +26,17 @@ public class LevelKey extends MapEntity
 		 if((intersects(player) && gotKey == false) | (overlaps(player) && gotKey == false)) 
 		 {
 			 gotKey = true;
+			 
+			 try
+				{
+					AudioPlayer keySound = new AudioPlayer (false, "Resources/KeyGet_Sound.wav");
+					keySound.play();
+				}
+				
+				catch(Exception e)
+				{
+					System.out.println("Error with sound");
+				}
 		 }
 	 }
 	 	    

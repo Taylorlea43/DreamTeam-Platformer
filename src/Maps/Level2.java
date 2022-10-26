@@ -16,6 +16,7 @@ import Level.TileType;
 import Level.Tileset;
 import Tilesets.CommonTileset;
 import Tilesets.DesertTileset;
+import Tilesets.ForestTileset;
 import Utils.Direction;
 
 public class Level2 extends Map {
@@ -23,14 +24,14 @@ public class Level2 extends Map {
 	private LevelKey key;
 
 	public Level2() {
-		super("level2.txt", new DesertTileset());
+		super("level3.txt", new ForestTileset());
 		this.playerStartPosition = getMapTile(2, 11).getLocation();
 
 	}
 	public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
         //enemies.add(new BugEnemy(getMapTile(15, 8).getLocation().addY(20), Direction.LEFT));
-        enemies.add(new ZookeeperEnemy(getMapTile(15, 6).getLocation().addY(10), Direction.LEFT)); 
+//        enemies.add(new ZookeeperEnemy(getMapTile(15, 6).getLocation().addY(10), Direction.LEFT)); 
 
         return enemies; 
     }
@@ -39,7 +40,7 @@ public class Level2 extends Map {
 		ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
 	
-		enhancedMapTiles.add(new EndLevelBox(getMapTile(27, 7).getLocation(), "Bunny.png", key, 24, 24));
+		enhancedMapTiles.add(new EndLevelBox(getMapTile(23, 15).getLocation(), "bunny.png", key, 24, 24));
 
 		return enhancedMapTiles;
 	}	

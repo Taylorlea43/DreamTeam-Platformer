@@ -16,6 +16,7 @@ import Level.TileType;
 import Level.Tileset;
 import Tilesets.CommonTileset;
 import Tilesets.DesertTileset;
+import Tilesets.UnderwaterTileset;
 import Utils.Direction;
 
 public class Level8 extends Map {
@@ -23,7 +24,7 @@ public class Level8 extends Map {
     private LevelKey key;
 
     public Level8() {
-        super("level2.txt", new DesertTileset());
+        super("level9.txt", new UnderwaterTileset());
         this.playerStartPosition = getMapTile(0, 7).getLocation();
 
     }

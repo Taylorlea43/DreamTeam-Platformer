@@ -17,6 +17,7 @@ import Level.Tileset;
 import Tilesets.CommonTileset;
 import Tilesets.DesertTileset;
 import Tilesets.JungleTileset;
+import Tilesets.MountainTileset;
 import Utils.Direction;
 
 public class Level6 extends Map {
@@ -24,7 +25,7 @@ public class Level6 extends Map {
     private LevelKey key;
 
     public Level6() {
-        super("level6.txt", new JungleTileset());
+        super("level7.txt", new MountainTileset());
         this.playerStartPosition = getMapTile(7, 13).getLocation();
 
     }

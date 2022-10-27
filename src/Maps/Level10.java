@@ -15,6 +15,7 @@ import Level.TileType;
 import Level.Tileset;
 import Tilesets.CommonTileset;
 import Tilesets.DesertTileset;
+import Tilesets.SavannahTileset;
 import Utils.Direction;
 
 public class Level10 extends Map {
@@ -22,7 +23,7 @@ public class Level10 extends Map {
     private LevelKey key;
 
     public Level10() {
-        super("level2.txt", new DesertTileset());
+        super("level11.txt", new SavannahTileset());
         this.playerStartPosition = getMapTile(0, 7).getLocation();
 
     }
@@ -38,7 +39,7 @@ public class Level10 extends Map {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
 
-        enhancedMapTiles.add(new EndLevelBox(getMapTile(23, 7).getLocation(), "Lion.png", key, 35, 24));
+        enhancedMapTiles.add(new EndLevelBox(getMapTile(23, 10).getLocation(), "Lion.png", key, 35, 24));
 
 
         return enhancedMapTiles;

@@ -43,11 +43,11 @@ public class Level1 extends Map
 	public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
 		ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
-		enhancedMapTiles.add(new HorizontalMovingPlatform(ImageLoader.load("GreenPlatform.png"),
-				getMapTile(24, 6).getLocation(), getMapTile(27, 6).getLocation(), TileType.JUMP_THROUGH_PLATFORM, 3,
-				new Rectangle(0, 6, 16, 4), Direction.RIGHT));
+//		enhancedMapTiles.add(new HorizontalMovingPlatform(ImageLoader.load("GreenPlatform.png"),
+//				getMapTile(24, 6).getLocation(), getMapTile(27, 6).getLocation(), TileType.JUMP_THROUGH_PLATFORM, 3,
+//				new Rectangle(0, 6, 16, 4), Direction.RIGHT));
 
-		enhancedMapTiles.add(new EndLevelBox(getMapTile(23, 7).getLocation(), "Lizard2.png", key, 24, 24));
+		enhancedMapTiles.add(new EndLevelBox(getMapTile(23, 10).getLocation(), "Lizard2.png", key, 24, 24));
 
 		return enhancedMapTiles;
 	}

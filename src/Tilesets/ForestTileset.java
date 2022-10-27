@@ -72,35 +72,35 @@ public class ForestTileset extends Tileset {
 
 		mapTiles.add(treeTile5);
 
-		Frame branch1 = new FrameBuilder(getSubImage(2, 0)).withScale(tileScale).build();
+		Frame branch1 = new FrameBuilder(getSubImage(2, 0)).withScale(tileScale).withBounds(2,6,16,6).build();
 
-		MapTileBuilder branchTile1 = new MapTileBuilder(branch1);
+		MapTileBuilder branchTile1 = new MapTileBuilder(branch1).withTileType(TileType.JUMP_THROUGH_PLATFORM);
 
 		mapTiles.add(branchTile1);
 
 		Frame reverseBranch1 = new FrameBuilder(getSubImage(2, 0)).withScale(tileScale)
-				.withImageEffect(ImageEffect.FLIP_HORIZONTAL).build();
+				.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(2,6,16,6).build();
 
-		MapTileBuilder reverseBranchTile1 = new MapTileBuilder(reverseBranch1);
+		MapTileBuilder reverseBranchTile1 = new MapTileBuilder(reverseBranch1).withTileType(TileType.JUMP_THROUGH_PLATFORM);
 
 		mapTiles.add(reverseBranchTile1);
 
-		Frame branch2 = new FrameBuilder(getSubImage(2, 1)).withScale(tileScale).build();
+		Frame branch2 = new FrameBuilder(getSubImage(2, 1)).withScale(tileScale).withBounds(0,6,16,6).build();
 
-		MapTileBuilder branchTile2 = new MapTileBuilder(branch2);
+		MapTileBuilder branchTile2 = new MapTileBuilder(branch2).withTileType(TileType.JUMP_THROUGH_PLATFORM);
 
 		mapTiles.add(branchTile2);
 
-		Frame reverseBranch2 = new FrameBuilder(getSubImage(2, 1)).withScale(tileScale)
+		Frame reverseBranch2 = new FrameBuilder(getSubImage(2, 1)).withBounds(0,6,16,6).withScale(tileScale)
 				.withImageEffect(ImageEffect.FLIP_HORIZONTAL).build();
 
-		MapTileBuilder reverseBranchTile2 = new MapTileBuilder(reverseBranch2);
+		MapTileBuilder reverseBranchTile2 = new MapTileBuilder(reverseBranch2).withTileType(TileType.JUMP_THROUGH_PLATFORM);
 
 		mapTiles.add(reverseBranchTile2);
 
-		Frame branch3 = new FrameBuilder(getSubImage(2, 2)).withScale(tileScale).build();
+		Frame branch3 = new FrameBuilder(getSubImage(2, 2)).withScale(tileScale).withBounds(0,6,16,6).build();
 
-		MapTileBuilder branchTile3 = new MapTileBuilder(branch3);
+		MapTileBuilder branchTile3 = new MapTileBuilder(branch3).withTileType(TileType.JUMP_THROUGH_PLATFORM);
 
 		mapTiles.add(branchTile3);
 

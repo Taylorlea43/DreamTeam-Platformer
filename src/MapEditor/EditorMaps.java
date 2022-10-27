@@ -2,6 +2,7 @@ package MapEditor;
 
 import Level.Map;
 import Maps.Level1;
+import Maps.Level10;
 import Maps.Level2;
 import Maps.Level3;
 import Maps.Level4;
@@ -29,6 +30,7 @@ public class EditorMaps {
 				add("Level7");
 				add("Level8");
 				add("Level9");
+				add("Level10");
 				add("TitleScreen");
 			}
 		};
@@ -56,6 +58,8 @@ public class EditorMaps {
 			return new Level8();
 		case "Level9":
 			return new Level9();
+		case "Level10":
+			return new Level10();
 		case "TitleScreen":
 			return new TitleScreenMap();
 

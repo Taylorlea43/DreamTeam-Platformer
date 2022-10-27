@@ -150,6 +150,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		else if (currLevel == 1)
 
 		{
+			timeElapsed = 0;
+			
 			// define/setup map
 			this.map = new Level1();
 			map.reset();
@@ -188,6 +190,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		else if (currLevel == 2)
 
 		{
+			timeElapsed = 0;
+			
 			// setup map
 			this.map = new Level2();
 			map.reset();
@@ -222,6 +226,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		else if (currLevel == 3)
 
 		{
+			timeElapsed = 0;
+			
 			// setup map
 			this.map = new Level3();
 			map.reset();
@@ -251,6 +257,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		else if (currLevel == 4)
 
 		{
+			timeElapsed = 0;
+			
 			// setup map
 			this.map = new Level4();
 			map.reset();
@@ -276,6 +284,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			levelLoseScreen = new LevelLoseScreen(this);
 
 		} else if (currLevel == 5) {
+			timeElapsed = 0;
+			
 			this.map = new Level5();
 			map.reset();
 
@@ -298,6 +308,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			levelLoseScreen = new LevelLoseScreen(this);
 
 		} else if (currLevel == 6) {
+			timeElapsed = 0;
+			
 			this.map = new Level6();
 			map.reset();
 
@@ -320,6 +332,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			levelLoseScreen = new LevelLoseScreen(this);
 
 		} else if (currLevel == 7) {
+			timeElapsed = 0;
+			
 			this.map = new Level7();
 			map.reset();
 
@@ -342,6 +356,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			levelLoseScreen = new LevelLoseScreen(this);
 
 		} else if (currLevel == 8) {
+			timeElapsed = 0;
+			
 			this.map = new Level8();
 			map.reset();
 
@@ -364,6 +380,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			levelLoseScreen = new LevelLoseScreen(this);
 
 		} else if (currLevel == 9) {
+			timeElapsed = 0;
+			
 			this.map = new Level9();
 			map.reset();
 
@@ -386,6 +404,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			levelLoseScreen = new LevelLoseScreen(this);
 
 		} else if (currLevel == 10) {
+			timeElapsed = 0;
+
 			this.map = new Level10();
 			map.reset();
 
@@ -408,7 +428,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
 		}
-
+/*
 		else if (currLevel == 5)
 
 		{
@@ -581,8 +601,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			// end level
 			levelClearedScreen = new LevelClearedScreen(this);
-			levelLoseScreen = new LevelLoseScreen(this);
-		}
+			levelLoseScreen = new LevelLoseScreen(this); 
+		} */
 	}
 
 	public void update() {

@@ -18,6 +18,7 @@ import java.util.HashMap;
 public class EndLevelBox extends EnhancedMapTile 
 	{
 		private LevelKey key;
+		private boolean endSoundOn = false;
 	
     	public EndLevelBox(Point location, String name, LevelKey key, int x, int y)
     	{
@@ -30,9 +31,10 @@ public class EndLevelBox extends EnhancedMapTile
     	
         super.update(player);
         
-        if (intersects(player) && key.gotKey == true) 
+        if (intersects(player) && key.gotKey == true && endSoundOn == false) 
         {
             player.completeLevel();
+            endSoundOn = true;
             
             try
 			{

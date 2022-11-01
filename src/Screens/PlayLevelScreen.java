@@ -146,12 +146,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			levelLoseScreen = new LevelLoseScreen(this);
 		}
 
-
 		else if (currLevel == 1)
 
 		{
 			timeElapsed = 0;
-			
+
 			// define/setup map
 			this.map = new Level1();
 			map.reset();
@@ -191,7 +190,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 		{
 			timeElapsed = 0;
-			
+
 			// setup map
 			this.map = new Level2();
 			map.reset();
@@ -221,13 +220,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			levelLoseScreen = new LevelLoseScreen(this);
 		}
 
-		
-
 		else if (currLevel == 3)
 
 		{
 			timeElapsed = 0;
-			
+
 			// setup map
 			this.map = new Level3();
 			map.reset();
@@ -258,7 +255,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 		{
 			timeElapsed = 0;
-			
+
 			// setup map
 			this.map = new Level4();
 			map.reset();
@@ -285,7 +282,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 		} else if (currLevel == 5) {
 			timeElapsed = 0;
-			
+
 			this.map = new Level5();
 			map.reset();
 
@@ -309,7 +306,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 		} else if (currLevel == 6) {
 			timeElapsed = 0;
-			
+
 			this.map = new Level6();
 			map.reset();
 
@@ -333,7 +330,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 		} else if (currLevel == 7) {
 			timeElapsed = 0;
-			
+
 			this.map = new Level7();
 			map.reset();
 
@@ -357,7 +354,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 		} else if (currLevel == 8) {
 			timeElapsed = 0;
-			
+
 			this.map = new Level8();
 			map.reset();
 
@@ -381,7 +378,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 		} else if (currLevel == 9) {
 			timeElapsed = 0;
-			
+
 			this.map = new Level9();
 			map.reset();
 
@@ -428,181 +425,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
 		}
-/*
-		else if (currLevel == 5)
-
-		{
-			// setup map
-			this.map = new Level5();
-			map.reset();
-
-			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-			this.player.setMap(map);
-			this.player.addListener(this);
-			Point playerStartPosition = map.getPlayerStartPosition();
-			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
-			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-
-			// setup AudioPlayer
-			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
-				levelMusic.play();
-			} catch (Exception e) {
-				System.out.println("Error with playing sound.");
-				e.printStackTrace();
-			}
-
-			// end level
-			levelClearedScreen = new LevelClearedScreen(this);
-			levelLoseScreen = new LevelLoseScreen(this);
-		}
-
-		else if (currLevel == 6)
-
-		{
-			// setup map
-			this.map = new Level6();
-			map.reset();
-
-			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-			this.player.setMap(map);
-			this.player.addListener(this);
-			Point playerStartPosition = map.getPlayerStartPosition();
-			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
-			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-
-			// setup AudioPlayer
-			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
-				levelMusic.play();
-			} catch (Exception e) {
-				System.out.println("Error with playing sound.");
-				e.printStackTrace();
-			}
-
-			// end level
-			levelClearedScreen = new LevelClearedScreen(this);
-			levelLoseScreen = new LevelLoseScreen(this);
-		}
-
-		else if (currLevel == 7)
-
-		{
-			// setup map
-			this.map = new Level7();
-			map.reset();
-
-			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-			this.player.setMap(map);
-			this.player.addListener(this);
-			Point playerStartPosition = map.getPlayerStartPosition();
-			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
-			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-
-			// setup AudioPlayer
-			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
-				levelMusic.play();
-			} catch (Exception e) {
-				System.out.println("Error with playing sound.");
-				e.printStackTrace();
-			}
-
-			// end level
-			levelClearedScreen = new LevelClearedScreen(this);
-			levelLoseScreen = new LevelLoseScreen(this);
-
-		}
-
-		else if (currLevel == 8)
-
-		{
-			// setup map
-			this.map = new Level8();
-			map.reset();
-
-			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-			this.player.setMap(map);
-			this.player.addListener(this);
-			Point playerStartPosition = map.getPlayerStartPosition();
-			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
-			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-
-			// setup AudioPlayer
-			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
-				levelMusic.play();
-			} catch (Exception e) {
-				System.out.println("Error with playing sound.");
-				e.printStackTrace();
-			}
-
-			// end level
-			levelClearedScreen = new LevelClearedScreen(this);
-			levelLoseScreen = new LevelLoseScreen(this);
-		}
-
-		else if (currLevel == 9)
-
-		{
-			// setup map
-			this.map = new Level9();
-			map.reset();
-
-			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-			this.player.setMap(map);
-			this.player.addListener(this);
-			Point playerStartPosition = map.getPlayerStartPosition();
-			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
-			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-
-			// setup AudioPlayer
-			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
-				levelMusic.play();
-			} catch (Exception e) {
-				System.out.println("Error with playing sound.");
-				e.printStackTrace();
-			}
-
-			// end level
-			levelClearedScreen = new LevelClearedScreen(this);
-			levelLoseScreen = new LevelLoseScreen(this);
-		}
-
-		else if (currLevel == 10)
-
-		{
-			// setup map
-			this.map = new Level10();
-			map.reset();
-
-			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-			this.player.setMap(map);
-			this.player.addListener(this);
-			Point playerStartPosition = map.getPlayerStartPosition();
-			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
-			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-
-			// setup AudioPlayer
-			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
-				levelMusic.play();
-			} catch (Exception e) {
-				System.out.println("Error with playing sound.");
-				e.printStackTrace();
-			}
-
-			// end level
-			levelClearedScreen = new LevelClearedScreen(this);
-			levelLoseScreen = new LevelLoseScreen(this); 
-		} */
 	}
 
 	public void update() {

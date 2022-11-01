@@ -165,6 +165,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// setup key
 			this.key = new LevelKey(955, 450, "pixelKey.png");
 			key.setMap(map);
+			
 			this.keyStatus = new SpriteFont(" ", 75, 100, "Comic Sans", 23, new Color(250, 204, 77));
 			this.keyStatus.setOutlineColor(Color.black);
 			this.keyStatus.setOutlineThickness(3);

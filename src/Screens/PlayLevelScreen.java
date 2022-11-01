@@ -36,7 +36,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 	public ScreenCoordinator screenCoordinator;
 	protected Map map;
-	protected Coin coin1, coin2, coin3, coin4, coin5;
+	protected Coin coin1, coin2, coin3, coin4, coin5, coin6, coin7, coin8, coin9, coin10;
 	protected LevelKey key;
 	public Player player;
 	public PlayLevelScreenState playLevelScreenState;
@@ -154,6 +154,25 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			map.reset();
 
 			// set up coins
+			this.coin5 = new Coin(100, 490);
+			coin5.setBounds(new Rectangle(1, 1, 16, 16));
+			coin5.setMap(map);
+
+			this.coin6 = new Coin(200, 490);
+			coin6.setBounds(new Rectangle(1, 1, 16, 16));
+			coin6.setMap(map);
+
+			this.coin7 = new Coin(300, 490);
+			coin7.setBounds(new Rectangle(1, 1, 16, 16));
+			coin7.setMap(map);
+
+			this.coin8 = new Coin(350, 490);
+			coin8.setBounds(new Rectangle(1, 1, 16, 16));
+			coin8.setMap(map);
+
+			this.coin9 = new Coin(400, 490);
+			coin9.setBounds(new Rectangle(1, 1, 16, 16));
+			coin9.setMap(map);
 
 			// setup key
 			this.key = new LevelKey(955, 450, "pixelKey.png");

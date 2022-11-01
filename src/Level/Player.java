@@ -349,19 +349,22 @@ public abstract class Player extends GameObject {
                 	}
                 	else {
                 		health -= 0.5;
-                		
+
                 		/*
                 		try
             			{
             				AudioPlayer hurtSound = new AudioPlayer (false, "Resources/PlayerHurt_Sound.wav");
             				hurtSound.play();
             			}
-            			
+
             			catch(Exception e)
             			{
             				System.out.println("Error with sound");
             			}
-                		*/
+                		 */
+
+                		if (health < 1)
+                			levelState = LevelState.PLAYER_DEAD;
                 	}
                 }
                 else // player health at 0

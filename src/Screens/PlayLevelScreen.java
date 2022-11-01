@@ -26,6 +26,7 @@ import Maps.*;
 import Players.Cat;
 import Players.Girl;
 import SpriteFont.SpriteFont;
+import Utils.BlinkTimer;
 import Utils.ClockTimer;
 import Utils.Point;
 import Utils.Stopwatch;
@@ -50,6 +51,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public int currLevel;
 	protected int coinCount;
 	protected AudioPlayer levelMusic;
+	public boolean blink = false;
+	protected BlinkTimer blinkTimer;
 
 	protected SpriteFont healthBar;
 	public int timeElapsed;
@@ -58,9 +61,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
 		this.screenCoordinator = screenCoordinator;
 		timer = new ClockTimer(this);
+		blinkTimer = new BlinkTimer(this);
 	}
 
-	public void initialize() {
+	public void initialize() {				
 		if (currLevel == 0) {
 			// define/setup map
 			this.map = new TestMap();
@@ -90,6 +94,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			// setup key
 			this.key = new LevelKey(955, 250, "pixelKey.png");
+			key.setBounds(new Rectangle(30, 25, 25, 20));
 			key.setMap(map);
 
 			// setup player
@@ -459,6 +464,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		// if level is "running" update player and map to keep game logic for the
 		// platformer level going
 		case RUNNING:
+			//System.out.println(blink);
 			player.update();
 			map.update(player);
 
@@ -471,14 +477,26 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			key.check(player);
 
-			healthBar.setText("Health: " + (int) player.getHealth());
-
 			coinCounter.setText("Coins: " + this.getCoinCount());
 
 			gameTimer.setText("Time: " + (int) timeElapsed);
 
 			keyStatusBar.setText("Key: ");
 
+			if (player.getHealth() <= 30)
+			{
+				blinkTimer.start();
+				healthBar.setColor(Color.RED);
+			}
+			else
+			{
+				healthBar.setColor(new Color(49, 207, 240));
+				blinkTimer.healthReset();
+
+			}
+
+			healthBar.setText("Health: " + (int) player.getHealth());
+			
 			if (key.gotKey == false) {
 				keyStatus.setText("KEY NEEDED");
 			} else {
@@ -515,8 +533,14 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		// based on screen state, draw appropriate graphics
 		switch (playLevelScreenState) {
 		case RUNNING:
+
 			map.draw(graphicsHandler);
+			
+			if(!blink)
+				healthBar.draw(graphicsHandler);
+			
 			player.draw(graphicsHandler);
+
 
 			if(currLevel != 11) {
 				gameTimer.draw(graphicsHandler);
@@ -525,6 +549,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				keyStatusBar.draw(graphicsHandler);
 				keyStatus.draw(graphicsHandler);
 			}
+			gameTimer.draw(graphicsHandler);
+			coinCounter.draw(graphicsHandler);
+			keyStatusBar.draw(graphicsHandler);
+			keyStatus.draw(graphicsHandler);
+
 
 			if (coin1.gotCoin == false) {
 				coin1.draw(graphicsHandler);
@@ -559,6 +588,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 	public void goBackToMenu() {
 		screenCoordinator.setGameState(GameState.MENU);
+		blinkTimer.healthReset();
+
 	}
 
 	public PlayLevelScreenState getPlayLevelScreenState() {
@@ -584,7 +615,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public void onDeath() {
 		if (playLevelScreenState != PlayLevelScreenState.LEVEL_LOSE) {
 			playLevelScreenState = PlayLevelScreenState.LEVEL_LOSE;
-
+			
 			try {
 				levelMusic.stop();
 			}

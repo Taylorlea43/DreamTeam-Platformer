@@ -98,8 +98,9 @@ public class SpriteFont {
 	public void moveUp(float dy) {
 		y -= dy;
 	}
-
+	
 	public void draw(GraphicsHandler graphicsHandler) {
+		
 		if (outlineColor != null && !outlineColor.equals(color)) {
 			graphicsHandler.drawStringWithOutline(text, Math.round(x), Math.round(y), font, color, outlineColor, outlineThickness);
 		} else {

@@ -66,6 +66,7 @@ public class GraphicsHandler {
         g.setColor(color);
         g.drawString(text, x, y);
     }
+    
 
     // https://stackoverflow.com/a/35222059 and https://stackoverflow.com/a/31831120
     public void drawStringWithOutline(String text, int x, int y, Font font, Color textColor, Color outlineColor, float outlineThickness) {

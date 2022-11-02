@@ -29,7 +29,7 @@ public class FlyingEnemy2 extends Enemy {
 	protected BirdState previousBirdState;
 
 	public FlyingEnemy2(Point location, Direction facingDirection) {
-		super(location.x, location.y, new SpriteSheet(ImageLoader.load("SquirrelEnemie.png"), 23, 15), "WALK_LEFT");
+		super(location.x, location.y, new SpriteSheet(ImageLoader.load("CrowEnemie.png"), 23, 15), "WALK_LEFT");
 
 		this.startFacingDirection = facingDirection;
 		this.initialize();

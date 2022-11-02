@@ -103,7 +103,6 @@ public class FlyingEnemy2 extends Enemy {
 			shootTimer.setWaitTime(2000);
 		}
 
-		System.out.print(getX() + " " + player.getX() + "\n ");
 
 		// move bug
 		moveYHandleCollision(moveAmountY);

@@ -227,7 +227,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
-			// set up coins in the level
+			// setup key
+			this.key = new LevelKey(955, 450, "pixelKey.png");
+			key.setMap(map);
+						
 			// setup AudioPlayer
 			try {
 				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
@@ -258,6 +261,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			
+			// setup key
+			this.key = new LevelKey(955, 450, "pixelKey.png");
+			key.setMap(map);
 
 			// setup AudioPlayer
 			try {
@@ -289,6 +296,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			
+			// setup key
+			this.key = new LevelKey(955, 450, "pixelKey.png");
+			key.setMap(map);
 
 			// setup AudioPlayer
 			try {
@@ -314,6 +325,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			
+			// setup key
+			this.key = new LevelKey(200, 450, "pixelKey.png");
+			key.setMap(map);
 
 			try {
 				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
@@ -338,6 +353,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			
+			// setup key
+			this.key = new LevelKey(650, 450, "pixelKey.png");
+			key.setMap(map);
 
 			try {
 				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
@@ -362,6 +381,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			
+			// setup key
+			this.key = new LevelKey(700, 450, "pixelKey.png");
+			key.setMap(map);
 
 			try {
 				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
@@ -386,6 +409,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			
+			// setup key
+			this.key = new LevelKey(700, 450, "pixelKey.png");
+			key.setMap(map);
 
 			try {
 				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
@@ -410,6 +437,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			
+			// setup key
+			this.key = new LevelKey(700, 450, "pixelKey.png");
+			key.setMap(map);
 
 			try {
 				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
@@ -434,6 +465,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			
+			// setup key
+			this.key = new LevelKey(700, 450, "pixelKey.png");
+			key.setMap(map);
 
 			try {
 				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
@@ -599,6 +634,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		if (playLevelScreenState != PlayLevelScreenState.LEVEL_COMPLETED) {
 			playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
 			levelCompletedStateChangeStart = true;
+			key.gotKey = false;
 
 			try {
 				levelMusic.stop();

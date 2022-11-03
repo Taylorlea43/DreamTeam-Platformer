@@ -40,7 +40,7 @@ public abstract class Player extends GameObject {
 	// classes that listen to player events can be added to this list
 	protected ArrayList<PlayerListener> listeners = new ArrayList<>();
 
-	public Map  endX;
+	public Map endX;
 	// define keys
 	protected KeyLocker keyLocker = new KeyLocker();
 	protected Key JUMP_KEY = Key.UP;
@@ -68,12 +68,14 @@ public abstract class Player extends GameObject {
 		// if player is currently playing through level (has not won or lost)
 		if (levelState == LevelState.RUNNING) {
 			applyGravity();
+
 			if (x <= 0) {
-				x = 0+2;
-			} 
-			if (x >= Map.endBoundX -50) {
-				x = Map.endBoundX -50;
-			} 	
+				moveAmountX += walkSpeed;
+			}
+			
+			if (x >= Map.endBoundX - 50) {
+				moveAmountX -= walkSpeed;
+			}
 			// update player's state and current actions, which includes things like
 			// determining how much it should move each frame and if its walking or jumping
 			do {
@@ -87,7 +89,7 @@ public abstract class Player extends GameObject {
 			// move this frame
 			lastAmountMovedY = super.moveYHandleCollision(moveAmountY);
 			lastAmountMovedX = super.moveXHandleCollision(moveAmountX);
-			
+
 			handlePlayerAnimation();
 
 			updateLockedKeys();
@@ -212,18 +214,16 @@ public abstract class Player extends GameObject {
 					jumpForce = 0;
 				}
 			}
-			
-			try
-			{
-				AudioPlayer jumpSound = new AudioPlayer (false, "Resources/PlayerJump_Sound.wav");
+
+			try {
+				AudioPlayer jumpSound = new AudioPlayer(false, "Resources/PlayerJump_Sound.wav");
 				jumpSound.play();
 			}
-			
-			catch(Exception e)
-			{
+
+			catch (Exception e) {
 				System.out.println("Error with jump sound");
 			}
-		} 
+		}
 
 		// if player is in air (currently in a jump) and has more jumpForce, continue
 		// sending player upwards
@@ -330,55 +330,43 @@ public abstract class Player extends GameObject {
 		}
 	}
 
-
-    // other entities can call this method to hurt the player
-    public void hurtPlayer(MapEntity mapEntity) {
-        if (!isInvincible) {
-            // if map entity is an enemy, kill player on touch
-            if (mapEntity instanceof Enemy) {
-                if(health >= 1) {
-                	if(mapEntity instanceof Net) {
-						if (health - 25 > 0){
+	// other entities can call this method to hurt the player
+	public void hurtPlayer(MapEntity mapEntity) {
+		if (!isInvincible) {
+			// if map entity is an enemy, kill player on touch
+			if (mapEntity instanceof Enemy) {
+				if (health >= 1) {
+					if (mapEntity instanceof Net) {
+						if (health - 25 > 0) {
 							health -= 25;
+						} else {
+							health = 0;
+							levelState = LevelState.PLAYER_DEAD;
+						}
+					} else {
+						health -= 0.5;
+
+						/*
+						 * try { AudioPlayer hurtSound = new AudioPlayer (false,
+						 * "Resources/PlayerHurt_Sound.wav"); hurtSound.play(); }
+						 * 
+						 * catch(Exception e) { System.out.println("Error with sound"); }
+						 */
+
+						if (health < 1)
+							levelState = LevelState.PLAYER_DEAD;
 					}
-                		else
-                		{
-                			health = 0;
-                			levelState = LevelState.PLAYER_DEAD;
-                		}
-                	}
-                	else {
-                		health -= 0.5;
+				} else // player health at 0
+					levelState = LevelState.PLAYER_DEAD;
+			}
+		}
+	}
 
-                		/*
-                		try
-            			{
-            				AudioPlayer hurtSound = new AudioPlayer (false, "Resources/PlayerHurt_Sound.wav");
-            				hurtSound.play();
-            			}
+	public boolean isDead() {
+		return (levelState == LevelState.PLAYER_DEAD);
+	}
 
-            			catch(Exception e)
-            			{
-            				System.out.println("Error with sound");
-            			}
-                		 */
-
-                		if (health < 1)
-                			levelState = LevelState.PLAYER_DEAD;
-                	}
-                }
-                else // player health at 0
-                	levelState = LevelState.PLAYER_DEAD;
-            }
-        }
-    }
-    
-    public boolean isDead()
-    {
-    	return (levelState == LevelState.PLAYER_DEAD);
-    }
-	
-    // other entities can call this to tell the player they beat a level
+	// other entities can call this to tell the player they beat a level
 	public void completeLevel() {
 		levelState = LevelState.LEVEL_COMPLETED;
 	}

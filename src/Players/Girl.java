@@ -45,25 +45,25 @@ public class Girl extends Player
 						new FrameBuilder(spriteSheet.getSprite(0, 0)).withScale(1).withBounds(1, 1, 40, 80).build() });
 
 				put("STAND_LEFT", new Frame[] { new FrameBuilder(spriteSheet.getSprite(0, 0)).withScale(1)
-						.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(5, 5, 40, 80).build() });
+						.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(1, 1, 40, 80).build() });
 
 				put("WALK_RIGHT", new Frame[] {
-						new FrameBuilder(spriteSheet.getSprite(1, 0), 200).withScale(1).withBounds(5, 5, 40, 80).build(),
-						new FrameBuilder(spriteSheet.getSprite(1, 1), 200).withScale(1).withBounds(5, 5, 40, 80).build(),
-						new FrameBuilder(spriteSheet.getSprite(1, 2), 200).withScale(1).withBounds(5, 5, 40, 80).build(),
-						new FrameBuilder(spriteSheet.getSprite(1, 3), 200).withScale(1).withBounds(5, 5, 40, 80)
+						new FrameBuilder(spriteSheet.getSprite(1, 0), 200).withScale(1).withBounds(1, 1, 40, 80).build(),
+						new FrameBuilder(spriteSheet.getSprite(1, 1), 200).withScale(1).withBounds(1, 1, 40, 80).build(),
+						new FrameBuilder(spriteSheet.getSprite(1, 2), 200).withScale(1).withBounds(1, 1, 40, 80).build(),
+						new FrameBuilder(spriteSheet.getSprite(1, 3), 200).withScale(1).withBounds(1, 1, 40, 80)
 								.build() });
 
 				put("WALK_LEFT",
 						new Frame[] {
 								new FrameBuilder(spriteSheet.getSprite(1, 0), 200).withScale(1)
-										.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(5, 5, 40, 80).build(),
+										.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(1, 1, 40, 80).build(),
 								new FrameBuilder(spriteSheet.getSprite(1, 1), 200).withScale(1)
-										.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(5, 5, 40, 80).build(),
+										.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(1, 1, 40, 80).build(),
 								new FrameBuilder(spriteSheet.getSprite(1, 2), 200).withScale(1)
-										.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(5, 5, 40, 80).build(),
+										.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(1, 1, 40, 80).build(),
 								new FrameBuilder(spriteSheet.getSprite(1, 3), 200).withScale(1)
-										.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(5, 5, 40, 80).build() });
+										.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(1, 1, 40, 80).build() });
 
 				put("JUMP_RIGHT", new Frame[] {
 						new FrameBuilder(spriteSheet.getSprite(2, 0)).withScale(1).withBounds(1, 1, 40, 80).build() });

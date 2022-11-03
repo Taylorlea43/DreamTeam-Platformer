@@ -3,17 +3,20 @@ package Screens;
 import Engine.GraphicsHandler;
 import Engine.Screen;
 import Game.ScreenCoordinator;
+import Screens.PlayLevelScreen;
 import Level.Map;
 import Maps.GameCompleteMap;
 import Maps.TitleScreenMap;
 
 public class GameWonScreen extends Screen {
 
-    protected ScreenCoordinator screenCoordinator;
+    private PlayLevelScreen playLevelScreen;
     protected Map background;
 
-    public GameWonScreen(ScreenCoordinator screenCoordinator){
-        this.screenCoordinator = screenCoordinator;
+    public GameWonScreen(PlayLevelScreen playLevelScreen){
+
+        this.playLevelScreen = playLevelScreen;
+        initialize();
     }
 
     @Override

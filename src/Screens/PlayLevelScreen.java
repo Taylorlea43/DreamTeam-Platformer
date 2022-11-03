@@ -44,6 +44,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected Stopwatch screenTimer = new Stopwatch();
 	protected LevelClearedScreen levelClearedScreen;
 	protected LevelLoseScreen levelLoseScreen;
+	protected GameWonScreen gameWonScreen;
 	protected boolean levelCompletedStateChangeStart;
 	protected SpriteFont gameTimer;
 	protected SpriteFont coinCounter;
@@ -484,6 +485,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		}
 		else if (currLevel == 11) {
 
+			gameWonScreen = new GameWonScreen(this);
 			this.map = new GameCompleteMap();
 			map.reset();
 			this.playLevelScreenState = PlayLevelScreenState.GAME_WON;
@@ -501,11 +503,18 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			player.update();
 			map.update(player);
 
-			coin1.check(player);
-			coin2.check(player);
-			coin3.check(player);
-			coin4.check(player);
-			coin5.check(player);
+			if(currLevel == 0) {
+				coin1.check(player);
+				coin2.check(player);
+				coin3.check(player);
+				coin4.check(player);
+				coin5.check(player);
+			}else if(currLevel == 1){
+				coin5.check(player);
+				coin6.check(player);
+			}
+
+
 
 
 			key.check(player);
@@ -588,20 +597,27 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			keyStatus.draw(graphicsHandler);
 
 
-			if (coin1.gotCoin == false) {
-				coin1.draw(graphicsHandler);
+			if(currLevel == 0) {
+				if (coin1.gotCoin == false) {
+					coin1.draw(graphicsHandler);
+				}
+				if (coin2.gotCoin == false) {
+					coin2.draw(graphicsHandler);
+				}
+				if (coin3.gotCoin == false) {
+					coin3.draw(graphicsHandler);
+				}
+				if (coin4.gotCoin == false) {
+					coin4.draw(graphicsHandler);
+				}
+				if (coin5.gotCoin == false) {
+					coin5.draw(graphicsHandler);
+				}
 			}
-			if (coin2.gotCoin == false) {
-				coin2.draw(graphicsHandler);
-			}
-			if (coin3.gotCoin == false) {
-				coin3.draw(graphicsHandler);
-			}
-			if (coin4.gotCoin == false) {
-				coin4.draw(graphicsHandler);
-			}
-			if (coin5.gotCoin == false) {
-				coin5.draw(graphicsHandler);
+			if(currLevel == 1) {
+				if (coin6.gotCoin == false) {
+					coin6.draw(graphicsHandler);
+				}
 			}
 
 			if (key.gotKey == false) {
@@ -615,6 +631,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			break;
 		case LEVEL_LOSE:
 			levelLoseScreen.draw(graphicsHandler);
+			break;
+			case GAME_WON:gameWonScreen.draw(graphicsHandler);
 			break;
 		}
 	}

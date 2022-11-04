@@ -264,7 +264,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 			
 			// setup key
-			this.key = new LevelKey(955, 450, "pixelKey.png");
+			this.key = new LevelKey(450, 450, "pixelKey.png");
 			key.setMap(map);
 
 			// setup AudioPlayer

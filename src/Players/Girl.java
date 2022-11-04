@@ -15,7 +15,7 @@ public class Girl extends Player
 
 	public Girl(float x, float y)
 	{
-		 super(new SpriteSheet(ImageLoader.load("girlNoLines.png"), 45, 85), x, y, "STAND_RIGHT");
+		 super(new SpriteSheet(ImageLoader.load("girlNoLinesDeath.png"), 45, 85), x, y, "STAND_RIGHT");
 	        gravity = .5f;
 	        terminalVelocityY = 6f;
 	        jumpHeight = 14.5f; //14.5
@@ -113,6 +113,12 @@ public class Girl extends Player
 						.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(1, 1, 40, 80).build(),
 				new FrameBuilder(spriteSheet.getSprite(1, 3), 200).withScale(1)
 						.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(1, 1, 40, 80).build() }); //same as walk
+				
+				put("DAMAGE_STAND_RIGHT", new Frame[] {
+						new FrameBuilder(spriteSheet.getSprite(6, 0)).withScale(1).withBounds(1, 1, 40, 80).build() });
+				
+				put("DAMAGE_STAND_LEFT", new Frame[] { new FrameBuilder(spriteSheet.getSprite(6, 0)).withScale(1)
+						.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(1, 1, 40, 80).build() });
 			}
 		};
 	}

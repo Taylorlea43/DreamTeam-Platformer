@@ -50,7 +50,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected SpriteFont coinCounter;
 	protected SpriteFont keyStatusBar, keyStatus;
 	public int currLevel;
-	protected int coinCount;
+	protected int coinCount0, coinCount1, coinCount;
 	protected AudioPlayer levelMusic;
 	public boolean blink = false;
 	protected BlinkTimer blinkTimer;
@@ -65,7 +65,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		blinkTimer = new BlinkTimer(this);
 	}
 
-	public void initialize() {				
+	public void initialize() {
 		if (currLevel == 0) {
 			// define/setup map
 			this.map = new TestMap();
@@ -120,7 +120,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			timer.start();
 
 			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 15, 50, "Comic Sans", 23, new Color(49, 207, 240)); // was
-																														// 691
+			// 691
 			this.gameTimer.setOutlineColor(Color.black);
 			this.gameTimer.setOutlineThickness(3);
 
@@ -147,11 +147,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
-		}
-
-		else if (currLevel == 1)
-
-		{
+		} else if (currLevel == 1) {
 			timeElapsed = 0;
 
 			// define/setup map
@@ -159,30 +155,30 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			map.reset();
 
 			// set up coins
-			this.coin5 = new Coin(100, 490);
+			this.coin5 = new Coin(110, 490);
 			coin5.setBounds(new Rectangle(1, 1, 16, 16));
 			coin5.setMap(map);
 
-			this.coin6 = new Coin(200, 490);
+			this.coin6 = new Coin(520, 490);
 			coin6.setBounds(new Rectangle(1, 1, 16, 16));
 			coin6.setMap(map);
 
-			this.coin7 = new Coin(300, 490);
+			this.coin7 = new Coin(800, 490);
 			coin7.setBounds(new Rectangle(1, 1, 16, 16));
 			coin7.setMap(map);
 
-			this.coin8 = new Coin(350, 490);
+			this.coin8 = new Coin(950, 300);
 			coin8.setBounds(new Rectangle(1, 1, 16, 16));
 			coin8.setMap(map);
 
-			this.coin9 = new Coin(400, 490);
+			this.coin9 = new Coin(1200, 400);
 			coin9.setBounds(new Rectangle(1, 1, 16, 16));
 			coin9.setMap(map);
 
 			// setup key
 			this.key = new LevelKey(955, 450, "pixelKey.png");
 			key.setMap(map);
-			
+
 			this.keyStatus = new SpriteFont(" ", 75, 100, "Comic Sans", 23, new Color(250, 204, 77));
 			this.keyStatus.setOutlineColor(Color.black);
 			this.keyStatus.setOutlineThickness(3);
@@ -207,11 +203,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
 
-		}
-
-		else if (currLevel == 2)
-
-		{
+		} else if (currLevel == 2) {
 			timeElapsed = 0;
 
 			// setup map
@@ -241,11 +233,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// end level
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
-		}
-
-		else if (currLevel == 3)
-
-		{
+		} else if (currLevel == 3) {
 			timeElapsed = 0;
 
 			// setup map
@@ -272,11 +260,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// end level
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
-		}
-
-		else if (currLevel == 4)
-
-		{
+		} else if (currLevel == 4) {
 			timeElapsed = 0;
 
 			// setup map
@@ -447,8 +431,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// end level
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
-		}
-		else if (currLevel == 11) {
+		} else if (currLevel == 11) {
 
 			gameWonScreen = new GameWonScreen(this);
 			this.map = new GameCompleteMap();
@@ -461,144 +444,152 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public void update() {
 		// based on screen state, perform specific actions
 		switch (playLevelScreenState) {
-		// if level is "running" update player and map to keep game logic for the
-		// platformer level going
-		case RUNNING:
-			//System.out.println(blink);
-			player.update();
-			map.update(player);
+			// if level is "running" update player and map to keep game logic for the
+			// platformer level going
+			case RUNNING:
+				//System.out.println(blink);
+				player.update();
+				map.update(player);
 
-			if(currLevel == 0) {
-				coin1.check(player);
-				coin2.check(player);
-				coin3.check(player);
-				coin4.check(player);
-				coin5.check(player);
-			}else if(currLevel == 1){
-				coin5.check(player);
-				coin6.check(player);
-			}
+				if (currLevel == 0) {
+					coin1.check(player);
+					coin2.check(player);
+					coin3.check(player);
+					coin4.check(player);
+					coin5.check(player);
+				} else if (currLevel == 1) {
+					coin5.check(player);
+					coin6.check(player);
+					coin7.check(player);
+					coin8.check(player);
+					coin9.check(player);
+				}
 
 
+				key.check(player);
 
+				coinCounter.setText("Coins: " + this.getCoinCount());
 
-			key.check(player);
+				gameTimer.setText("Time: " + (int) timeElapsed);
 
-			coinCounter.setText("Coins: " + this.getCoinCount());
+				keyStatusBar.setText("Key: ");
 
-			gameTimer.setText("Time: " + (int) timeElapsed);
+				if (player.getHealth() <= 30) {
+					blinkTimer.start();
+					healthBar.setColor(Color.RED);
+				} else {
+					healthBar.setColor(new Color(49, 207, 240));
+					blinkTimer.healthReset();
 
-			keyStatusBar.setText("Key: ");
+				}
 
-			if (player.getHealth() <= 30)
-			{
-				blinkTimer.start();
-				healthBar.setColor(Color.RED);
-			}
-			else
-			{
-				healthBar.setColor(new Color(49, 207, 240));
-				blinkTimer.healthReset();
+				healthBar.setText("Health: " + (int) player.getHealth());
 
-			}
+				if (key.gotKey == false) {
+					keyStatus.setText("KEY NEEDED");
+				} else {
+					keyStatus.setText("You have the key!");
+				}
 
-			healthBar.setText("Health: " + (int) player.getHealth());
-			
-			if (key.gotKey == false) {
-				keyStatus.setText("KEY NEEDED");
-			} else {
-				keyStatus.setText("You have the key!");
-			}
-
-			break;
-		// if level has been completed, bring up level cleared screen
-		case LEVEL_COMPLETED:
-			if (levelCompletedStateChangeStart) {
-				screenTimer.setWaitTime(2500);
-				currLevel++;
-				levelCompletedStateChangeStart = false;
-			} else {
-				levelClearedScreen.update();
+				break;
+			// if level has been completed, bring up level cleared screen
+			case LEVEL_COMPLETED:
+				if (levelCompletedStateChangeStart) {
+					screenTimer.setWaitTime(2500);
+					currLevel++;
+					levelCompletedStateChangeStart = false;
+				} else {
+					levelClearedScreen.update();
 //				if (screenTimer.isTimeUp()) {
 //					goBackToMenu();
 //				}
-			}
-			break;
-		// wait on level lose screen to make a decision (either resets level or sends
-		// player back to main menu)
-		// wait on level lose screen to make a decision (either resets level or sends
-		// player back to main menu)
-		case LEVEL_LOSE: {
+				}
+				break;
+			// wait on level lose screen to make a decision (either resets level or sends
+			// player back to main menu)
+			// wait on level lose screen to make a decision (either resets level or sends
+			// player back to main menu)
+			case LEVEL_LOSE: {
 
-			levelLoseScreen.update();
-			break;
-		}
+				levelLoseScreen.update();
+				break;
+			}
 		}
 	}
 
 	public void draw(GraphicsHandler graphicsHandler) {
 		// based on screen state, draw appropriate graphics
 		switch (playLevelScreenState) {
-		case RUNNING:
+			case RUNNING:
 
-			map.draw(graphicsHandler);
-			
-			if(!blink)
-				healthBar.draw(graphicsHandler);
-			
-			player.draw(graphicsHandler);
+				map.draw(graphicsHandler);
+
+				if (!blink)
+					healthBar.draw(graphicsHandler);
+
+				player.draw(graphicsHandler);
 
 
-			if(currLevel != 11) {
+				if (currLevel != 11) {
+					gameTimer.draw(graphicsHandler);
+					coinCounter.draw(graphicsHandler);
+					healthBar.draw(graphicsHandler);
+					keyStatusBar.draw(graphicsHandler);
+					keyStatus.draw(graphicsHandler);
+				}
 				gameTimer.draw(graphicsHandler);
 				coinCounter.draw(graphicsHandler);
-				healthBar.draw(graphicsHandler);
 				keyStatusBar.draw(graphicsHandler);
 				keyStatus.draw(graphicsHandler);
-			}
-			gameTimer.draw(graphicsHandler);
-			coinCounter.draw(graphicsHandler);
-			keyStatusBar.draw(graphicsHandler);
-			keyStatus.draw(graphicsHandler);
 
 
-			if(currLevel == 0) {
-				if (coin1.gotCoin == false) {
-					coin1.draw(graphicsHandler);
+				if (currLevel == 0) {
+					if (coin1.gotCoin == false) {
+						coin1.draw(graphicsHandler);
+					}
+					if (coin2.gotCoin == false) {
+						coin2.draw(graphicsHandler);
+					}
+					if (coin3.gotCoin == false) {
+						coin3.draw(graphicsHandler);
+					}
+					if (coin4.gotCoin == false) {
+						coin4.draw(graphicsHandler);
+					}
+					if (coin5.gotCoin == false) {
+						coin5.draw(graphicsHandler);
+					}
 				}
-				if (coin2.gotCoin == false) {
-					coin2.draw(graphicsHandler);
+				if (currLevel == 1) {
+					if (coin6.gotCoin == false) {
+						coin6.draw(graphicsHandler);
+					}
+					if (coin7.gotCoin == false) {
+						coin7.draw(graphicsHandler);
+					}
+					if (coin8.gotCoin == false) {
+						coin8.draw(graphicsHandler);
+					}
+					if (coin9.gotCoin == false) {
+						coin9.draw(graphicsHandler);
+					}
 				}
-				if (coin3.gotCoin == false) {
-					coin3.draw(graphicsHandler);
-				}
-				if (coin4.gotCoin == false) {
-					coin4.draw(graphicsHandler);
-				}
-				if (coin5.gotCoin == false) {
-					coin5.draw(graphicsHandler);
-				}
-			}
-			if(currLevel == 1) {
-				if (coin6.gotCoin == false) {
-					coin6.draw(graphicsHandler);
-				}
-			}
 
-			if (key.gotKey == false) {
-				key.draw(graphicsHandler);
-			}
+				if (key.gotKey == false) {
+					key.draw(graphicsHandler);
+				}
 
-			break;
-		case LEVEL_COMPLETED:
-			levelClearedScreen.draw(graphicsHandler);
+				break;
+			case LEVEL_COMPLETED:
+				levelClearedScreen.draw(graphicsHandler);
 
-			break;
-		case LEVEL_LOSE:
-			levelLoseScreen.draw(graphicsHandler);
-			break;
-			case GAME_WON:gameWonScreen.draw(graphicsHandler);
-			break;
+				break;
+			case LEVEL_LOSE:
+				levelLoseScreen.draw(graphicsHandler);
+				break;
+			case GAME_WON:
+				gameWonScreen.draw(graphicsHandler);
+				break;
 		}
 	}
 
@@ -620,9 +611,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			try {
 				levelMusic.stop();
-			}
-
-			catch (Exception e) {
+			} catch (Exception e) {
 			}
 		}
 	}
@@ -631,12 +620,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public void onDeath() {
 		if (playLevelScreenState != PlayLevelScreenState.LEVEL_LOSE) {
 			playLevelScreenState = PlayLevelScreenState.LEVEL_LOSE;
-			
+
 			try {
 				levelMusic.stop();
-			}
-
-			catch (Exception e) {
+			} catch (Exception e) {
 			}
 		}
 	}
@@ -659,8 +646,14 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	}
 
 	public int getCoinCount() {
-		coinCount = coin1.getCoinCount() + coin2.getCoinCount() + coin3.getCoinCount() + coin4.getCoinCount()
-				+ coin5.getCoinCount();
+		if (currLevel == 0) {
+			coinCount = coin1.getCoinCount() + coin2.getCoinCount() + coin3.getCoinCount() + coin4.getCoinCount()
+					+ coin5.getCoinCount();
+			coinCount0 = coinCount;
+		} else if (currLevel == 1) {
+			coinCount = coinCount0+  coin6.getCoinCount() + coin7.getCoinCount() + coin8.getCoinCount() + coin9.getCoinCount();
+		}
+
 		return coinCount;
 	}
 }

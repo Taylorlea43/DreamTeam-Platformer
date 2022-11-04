@@ -38,7 +38,7 @@ public class Level3 extends Map {
 	@Override
 	public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
 		ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
-		enhancedMapTiles.add(new EndLevelBox(getMapTile(23, 7).getLocation(), "parrot.png", key, 24, 24));
+		enhancedMapTiles.add(new EndLevelBox(getMapTile(73, 7).getLocation(), "parrot.png", key, 24, 24));
 		return enhancedMapTiles;
 	}
 }

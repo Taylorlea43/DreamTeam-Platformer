@@ -23,6 +23,7 @@ import Level.Map;
 import Level.Player;
 import Level.PlayerListener;
 import Maps.*;
+import Players.Boy;
 import Players.Cat;
 import Players.Girl;
 import SpriteFont.SpriteFont;
@@ -99,7 +100,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			key.setMap(map);
 
 			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);	//changes girl or boy
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();

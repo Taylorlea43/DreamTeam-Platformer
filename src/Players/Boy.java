@@ -10,12 +10,12 @@ import Level.Player;
 
 import java.util.HashMap;
 
-public class Girl extends Player
+public class Boy extends Player
 {
 
-	public Girl(float x, float y)
+	public Boy(float x, float y)
 	{
-		 super(new SpriteSheet(ImageLoader.load("girlFinal.png"), 45, 85), x, y, "STAND_RIGHT");
+		 super(new SpriteSheet(ImageLoader.load("boyFinal.png"), 45, 85), x, y, "STAND_RIGHT");
 	        gravity = .5f;
 	        terminalVelocityY = 6f;
 	        jumpHeight = 14.5f; //14.5

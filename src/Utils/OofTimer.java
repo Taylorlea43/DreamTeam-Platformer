@@ -10,32 +10,25 @@ import java.awt.event.ActionListener;
 public class OofTimer extends Timer
 {
 	public Player player;
-	public PlayLevelScreen level;
 	
-	public OofTimer(Player player, PlayLevelScreen level)
+	public OofTimer(Player player)
 	{
-		super (125, null);
-		
+		super (500, null);	
 		this.player = player;
-		this.level = level;
-		
 		this.addActionListener(new OofListener());	
+	}
+	
+	public void reset()
+	{
+		player.isInvincible = false;
+		this.stop();
 	}
 	
 	private class OofListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			
-			try 
-			{
-				this.wait(250);
-			} 
-			
-			catch (InterruptedException ex) 
-			{
-				ex.printStackTrace();
-			}
+			player.isInvincible = false;
 		}
 	}
 }

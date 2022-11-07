@@ -712,7 +712,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// if level is "running" update player and map to keep game logic for the
 			// platformer level going
 			case RUNNING:
-				//System.out.println(blink);
 				player.update();
 				map.update(player);
 
@@ -844,19 +843,20 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 				map.draw(graphicsHandler);
 
-				if (!blink)
-					healthBar.draw(graphicsHandler);
-
 				player.draw(graphicsHandler);
 
 
-				if (currLevel != 11) {
+				if (currLevel != 11) 
+				{
+					if (!blink)
+						healthBar.draw(graphicsHandler);
+					
 					gameTimer.draw(graphicsHandler);
 					coinCounter.draw(graphicsHandler);
-					healthBar.draw(graphicsHandler);
 					keyStatusBar.draw(graphicsHandler);
 					keyStatus.draw(graphicsHandler);
 				}
+				
 				gameTimer.draw(graphicsHandler);
 				coinCounter.draw(graphicsHandler);
 				keyStatusBar.draw(graphicsHandler);

@@ -9,6 +9,9 @@ import GameObject.SpriteSheet;
 import Sounds.AudioPlayer;
 import Utils.AirGroundState;
 import Utils.Direction;
+import Utils.OofTimer;
+import Utils.Stopwatch;
+
 import java.util.ArrayList;
 import Enemies.Net;
 
@@ -48,8 +51,9 @@ public abstract class Player extends GameObject {
 	protected Key MOVE_RIGHT_KEY = Key.RIGHT;
 	protected Key CROUCH_KEY = Key.DOWN;
 
-	// flags
-	protected boolean isInvincible = false; // if true, player cannot be hurt by enemies (good for testing)
+	public boolean isInvincible = false; // if true, player cannot be hurt by enemies (good for testing)
+	public OofTimer oofTimer = new OofTimer(this);
+	protected Stopwatch hurtTimer = new Stopwatch();
 
 	public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {
 		super(spriteSheet, x, y, startingAnimationName);
@@ -131,9 +135,32 @@ public abstract class Player extends GameObject {
 		case JUMPING:
 			playerJumping();
 			break;
+		case HURTING:
+			playerHurting();
+			break;
 		}
 	}
 
+	//player HURTING state logic
+	protected void playerHurting() {
+		// if walk left or walk right key is pressed, player enters WALKING state
+				if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY)) {
+					playerState = PlayerState.WALKING;
+				}
+
+				// if jump key is pressed, player enters JUMPING state
+				else if (Keyboard.isKeyDown(JUMP_KEY) && !keyLocker.isKeyLocked(JUMP_KEY)) {
+					keyLocker.lockKey(JUMP_KEY);
+					playerState = PlayerState.JUMPING;
+				}
+
+				// if crouch key is pressed, player enters CROUCHING state
+				else if (Keyboard.isKeyDown(CROUCH_KEY)) {
+					playerState = PlayerState.CROUCHING;
+				}
+	}
+
+	
 	// player STANDING state logic
 	protected void playerStanding() {
 		// if walk left or walk right key is pressed, player enters WALKING state
@@ -300,6 +327,9 @@ public abstract class Player extends GameObject {
 			} else {
 				this.currentAnimationName = facingDirection == Direction.RIGHT ? "FALL_RIGHT" : "FALL_LEFT";
 			}
+		} else if (playerState == PlayerState.HURTING) {
+			// sets animation to a DAMAGE animation based on which way player is facing
+			this.currentAnimationName = facingDirection == Direction.RIGHT ? "DAMAGE_STAND_RIGHT" : "DAMAGE_STAND_LEFT";
 		}
 	}
 
@@ -332,35 +362,64 @@ public abstract class Player extends GameObject {
 
 	// other entities can call this method to hurt the player
 	public void hurtPlayer(MapEntity mapEntity) {
+		if(oofTimer.isRunning() && isInvincible == false)
+			oofTimer.stop();
+		
 		if (!isInvincible) {
-			// if map entity is an enemy, kill player on touch
-			if (mapEntity instanceof Enemy) {
-				if (health >= 1) {
+			// if map entity is an enemy, hurt player on touch
+			if (mapEntity instanceof Enemy) 
+			{
+				if (health >= 1) 
+				{
 					
-					if (mapEntity instanceof Net) {
-						if (health - 25 > 0) {
+					if (mapEntity instanceof Net) 
+					{
+						if (health - 25 > 0)
+						{
+							playerState = PlayerState.HURTING;
 							health -= 25;
-						} else {
+						}
+						
+						else 
+						{
 							health = 0;
 							levelState = LevelState.PLAYER_DEAD;
 						}
-					} else {
-						health -= 0.5;
+					} 
+					
+					else 
+					{
+						if (health - 10 > 0)
+						{
+							playerState = PlayerState.HURTING;
+							health -= 10;
+						}
+						
+						else
+						{
+							health = 0;
+							levelState = LevelState.PLAYER_DEAD;
+						}
 
-						/*
-						 * try { AudioPlayer hurtSound = new AudioPlayer (false,
-						 * "Resources/PlayerHurt_Sound.wav"); hurtSound.play(); }
-						 * 
-						 * catch(Exception e) { System.out.println("Error with sound"); }
-						 */
+						try { 
+							AudioPlayer hurtSound = new AudioPlayer (false,
+								"Resources/PlayerHurt_Sound.wav"); hurtSound.play(); }
+
+						catch(Exception e) { System.out.println("Error with sound"); }
 
 						if (health < 1)
 							levelState = LevelState.PLAYER_DEAD;
 					}
-				} else // player health at 0
+					
+				} 
+				
+				else // player health at 0
 					levelState = LevelState.PLAYER_DEAD;
 			}
 		}
+		
+		isInvincible = true;
+		oofTimer.start();
 	}
 
 	public boolean isDead() {

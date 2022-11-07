@@ -1,8 +1,6 @@
 package Maps;
 
-import Enemies.SquirrelEnemy;
-import Enemies.DinosaurEnemy;
-import Enemies.ZookeeperEnemy;
+import Enemies.*;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
@@ -31,8 +29,10 @@ public class Level1 extends Map
 	public ArrayList<Enemy> loadEnemies() {
 		ArrayList<Enemy> enemies = new ArrayList<>();
 
+		enemies.add(new cowboyZookeeperEnemy(getMapTile(15,6).getLocation().addY(10), Direction.LEFT));
+		enemies.add(new ScorpionEnemy(getMapTile(20, 7).getLocation().addY(20), Direction.LEFT));
 
-		enemies.add(new ZookeeperEnemy(getMapTile(15, 6).getLocation().addY(10), Direction.LEFT));
+		//enemies.add(new ZookeeperEnemy(getMapTile(15, 6).getLocation().addY(10), Direction.LEFT));
 
 		//enemies.add(new DinosaurEnemy(getMapTile(19, 1).getLocation().addY(2), getMapTile(22, 1).getLocation().addY(2),
 				//Direction.RIGHT));

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Enemies.DinosaurEnemy;
 import Enemies.ZookeeperEnemy;
+import Enemies.cowboyZookeeperEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;

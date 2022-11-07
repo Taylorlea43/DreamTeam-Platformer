@@ -52,8 +52,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected int coinCount;
 	protected AudioPlayer levelMusic;
 	public boolean blink = false;
+	public boolean oof = false;
 	protected BlinkTimer blinkTimer;
-
 	protected SpriteFont healthBar;
 	public int timeElapsed;
 	public ClockTimer timer;

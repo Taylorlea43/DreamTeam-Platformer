@@ -7,8 +7,7 @@ import java.awt.event.ActionListener;
 
 public class BlinkTimer extends Timer
 {
-	public PlayLevelScreen level;
-	
+	public PlayLevelScreen level;	
 	
 	public BlinkTimer(PlayLevelScreen s)
 	{

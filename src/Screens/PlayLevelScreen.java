@@ -54,8 +54,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected int coinCount0, coinCount1, coinCount, coinCount2, coinCount3, coinCount4, coinCount5, coinCount6, coinCount7, coinCount8, coinCount9, coinCount10;
 	protected AudioPlayer levelMusic;
 	public boolean blink = false;
+	public boolean oof = false;
 	protected BlinkTimer blinkTimer;
-
 	protected SpriteFont healthBar;
 	public int timeElapsed;
 	public ClockTimer timer;
@@ -712,7 +712,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// if level is "running" update player and map to keep game logic for the
 			// platformer level going
 			case RUNNING:
-				//System.out.println(blink);
 				player.update();
 				map.update(player);
 
@@ -844,19 +843,20 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 				map.draw(graphicsHandler);
 
-				if (!blink)
-					healthBar.draw(graphicsHandler);
-
 				player.draw(graphicsHandler);
 
 
-				if (currLevel != 11) {
+				if (currLevel != 11) 
+				{
+					if (!blink)
+						healthBar.draw(graphicsHandler);
+					
 					gameTimer.draw(graphicsHandler);
 					coinCounter.draw(graphicsHandler);
-					healthBar.draw(graphicsHandler);
 					keyStatusBar.draw(graphicsHandler);
 					keyStatus.draw(graphicsHandler);
 				}
+				
 				gameTimer.draw(graphicsHandler);
 				coinCounter.draw(graphicsHandler);
 				keyStatusBar.draw(graphicsHandler);

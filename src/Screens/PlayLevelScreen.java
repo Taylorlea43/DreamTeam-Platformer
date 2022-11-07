@@ -38,7 +38,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 	public ScreenCoordinator screenCoordinator;
 	protected Map map;
-	protected Coin coin1, coin2, coin3, coin4, coin5, coin6, coin7, coin8, coin9, coin10, coin11, coin12, coin13, coin14, coin15, coin16, coin17, coin18, coin19, coin20, coin21, coin22, coin23, coin24, coin25, coin26, coin27, coin28, coin29, coin30, coin31, coin32, coin33, coin34, coin35, coin36, coin37, coin38, coin39, coin40, coin41, coin42, coin43, coin44, coin45, coin46, coin47, coin48, coin49, coin50;
+	protected Coin coin1, coin2, coin3, coin4, coin5, coin6, coin7, coin8, coin9, coin10, coin11, coin12, coin13, coin14, coin15, coin16, coin17, coin18, coin19, coin20, coin21, coin22, coin23, coin24, coin25, coin26, coin27, coin28, coin29, coin30, coin31, coin32, coin33, coin34, coin35, coin36, coin37, coin38, coin39, coin40, coin41, coin42, coin43, coin44, coin45, coin46, coin47, coin48, coin49, coin50, coin51, coin52, coin53, coin54, coin55;
 	protected LevelKey key;
 	public Player player;
 	public PlayLevelScreenState playLevelScreenState;
@@ -176,7 +176,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin9.setBounds(new Rectangle(1, 1, 16, 16));
 			coin9.setMap(map);
 
-			this.coin10 = new Coin(3100, 400);
+			this.coin10 = new Coin(3100, 500);
 			coin10.setBounds(new Rectangle(1, 1, 16, 16));
 			coin10.setMap(map);
 
@@ -236,7 +236,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin14.setBounds(new Rectangle(1, 1, 16, 16));
 			coin14.setMap(map);
 
-			this.coin15 = new Coin(3100, 500);
+			this.coin15 = new Coin(3100, 700);
 			coin15.setBounds(new Rectangle(1, 1, 16, 16));
 			coin15.setMap(map);
 
@@ -336,19 +336,19 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin21.setBounds(new Rectangle(1, 1, 16, 16));
 			coin21.setMap(map);
 
-			this.coin22 = new Coin(240, 490);
+			this.coin22 = new Coin(340, 490);
 			coin22.setBounds(new Rectangle(1, 1, 16, 16));
 			coin22.setMap(map);
 
-			this.coin23 = new Coin(340, 500);
+			this.coin23 = new Coin(540, 500);
 			coin23.setBounds(new Rectangle(1, 1, 16, 16));
 			coin23.setMap(map);
 
-			this.coin24 = new Coin(540, 400);
+			this.coin24 = new Coin(640, 400);
 			coin24.setBounds(new Rectangle(1, 1, 16, 16));
 			coin24.setMap(map);
 
-			this.coin25 = new Coin(640, 500);
+			this.coin25 = new Coin(540, 500);
 			coin25.setBounds(new Rectangle(1, 1, 16, 16));
 			coin25.setMap(map);
 
@@ -383,7 +383,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			map.reset();
 
 			//setup coins
-			this.coin25 = new Coin(240, 490);
+			this.coin25 = new Coin(340, 490);
 			coin25.setBounds(new Rectangle(1, 1, 16, 16));
 			coin25.setMap(map);
 
@@ -391,11 +391,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin26.setBounds(new Rectangle(1, 1, 16, 16));
 			coin26.setMap(map);
 
-			this.coin27 = new Coin(260, 390);
+			this.coin27 = new Coin(290, 390);
 			coin27.setBounds(new Rectangle(1, 1, 16, 16));
 			coin27.setMap(map);
 
-			this.coin28 = new Coin(255, 290);
+			this.coin28 = new Coin(300, 290);
 			coin28.setBounds(new Rectangle(1, 1, 16, 16));
 			coin28.setMap(map);
 
@@ -403,7 +403,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin29.setBounds(new Rectangle(1, 1, 16, 16));
 			coin29.setMap(map);
 
-			this.coin30 = new Coin(258, 90);
+			this.coin30 = new Coin(300, 90);
 			coin30.setBounds(new Rectangle(1, 1, 16, 16));
 			coin30.setMap(map);
 
@@ -496,27 +496,27 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			//setup coins
-			this.coin35 = new Coin(240, 490);
+			this.coin35 = new Coin(340, 490);
 			coin35.setBounds(new Rectangle(1, 1, 16, 16));
 			coin35.setMap(map);
 
-			this.coin36 = new Coin(250, 490);
+			this.coin36 = new Coin(550, 490);
 			coin36.setBounds(new Rectangle(1, 1, 16, 16));
 			coin36.setMap(map);
 
-			this.coin37 = new Coin(260, 390);
+			this.coin37 = new Coin(590, 500);
 			coin37.setBounds(new Rectangle(1, 1, 16, 16));
 			coin37.setMap(map);
 
-			this.coin38 = new Coin(255, 290);
+			this.coin38 = new Coin(655, 510);
 			coin38.setBounds(new Rectangle(1, 1, 16, 16));
 			coin38.setMap(map);
 
-			this.coin39 = new Coin(260, 150);
+			this.coin39 = new Coin(670, 485);
 			coin39.setBounds(new Rectangle(1, 1, 16, 16));
 			coin39.setMap(map);
 
-			this.coin40 = new Coin(258, 90);
+			this.coin40 = new Coin(858, 490);
 			coin40.setBounds(new Rectangle(1, 1, 16, 16));
 			coin40.setMap(map);
 
@@ -524,30 +524,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.key = new LevelKey(700, 450, "pixelKey.png");
 			key.setMap(map);
 
-			//setup coins
-			this.coin40 = new Coin(240, 490);
-			coin40.setBounds(new Rectangle(1, 1, 16, 16));
-			coin40.setMap(map);
 
-			this.coin41 = new Coin(250, 490);
-			coin41.setBounds(new Rectangle(1, 1, 16, 16));
-			coin41.setMap(map);
-
-			this.coin42 = new Coin(260, 390);
-			coin42.setBounds(new Rectangle(1, 1, 16, 16));
-			coin42.setMap(map);
-
-			this.coin43 = new Coin(255, 290);
-			coin43.setBounds(new Rectangle(1, 1, 16, 16));
-			coin43.setMap(map);
-
-			this.coin44 = new Coin(260, 150);
-			coin44.setBounds(new Rectangle(1, 1, 16, 16));
-			coin44.setMap(map);
-
-			this.coin45 = new Coin(258, 90);
-			coin45.setBounds(new Rectangle(1, 1, 16, 16));
-			coin45.setMap(map);
 
 			try {
 				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
@@ -565,6 +542,31 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			this.map = new Level8();
 			map.reset();
+
+			//setup coins
+			this.coin40 = new Coin(340, 490);
+			coin40.setBounds(new Rectangle(1, 1, 16, 16));
+			coin40.setMap(map);
+
+			this.coin41 = new Coin(550, 500);
+			coin41.setBounds(new Rectangle(1, 1, 16, 16));
+			coin41.setMap(map);
+
+			this.coin42 = new Coin(590, 510);
+			coin42.setBounds(new Rectangle(1, 1, 16, 16));
+			coin42.setMap(map);
+
+			this.coin43 = new Coin(655, 490);
+			coin43.setBounds(new Rectangle(1, 1, 16, 16));
+			coin43.setMap(map);
+
+			this.coin44 = new Coin(860, 495);
+			coin44.setBounds(new Rectangle(1, 1, 16, 16));
+			coin44.setMap(map);
+
+			this.coin45 = new Coin(958, 590);
+			coin45.setBounds(new Rectangle(1, 1, 16, 16));
+			coin45.setMap(map);
 
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 			this.player.setMap(map);
@@ -605,6 +607,31 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.key = new LevelKey(700, 450, "pixelKey.png");
 			key.setMap(map);
 
+			//setup coins
+			this.coin45 = new Coin(340, 490);
+			coin45.setBounds(new Rectangle(1, 1, 16, 16));
+			coin45.setMap(map);
+
+			this.coin46 = new Coin(450, 500);
+			coin46.setBounds(new Rectangle(1, 1, 16, 16));
+			coin46.setMap(map);
+
+			this.coin47 = new Coin(660, 510);
+			coin47.setBounds(new Rectangle(1, 1, 16, 16));
+			coin47.setMap(map);
+
+			this.coin48 = new Coin(755, 490);
+			coin48.setBounds(new Rectangle(1, 1, 16, 16));
+			coin48.setMap(map);
+
+			this.coin49 = new Coin(960, 485);
+			coin49.setBounds(new Rectangle(1, 1, 16, 16));
+			coin49.setMap(map);
+
+			this.coin50 = new Coin(1000, 590);
+			coin50.setBounds(new Rectangle(1, 1, 16, 16));
+			coin50.setMap(map);
+
 			try {
 				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
 				levelMusic.play();
@@ -632,6 +659,31 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// setup key
 			this.key = new LevelKey(700, 450, "pixelKey.png");
 			key.setMap(map);
+
+			//setup coins
+			this.coin50 = new Coin(240, 490);
+			coin50.setBounds(new Rectangle(1, 1, 16, 16));
+			coin50.setMap(map);
+
+			this.coin51 = new Coin(550, 510);
+			coin51.setBounds(new Rectangle(1, 1, 16, 16));
+			coin51.setMap(map);
+
+			this.coin52 = new Coin(660, 500);
+			coin52.setBounds(new Rectangle(1, 1, 16, 16));
+			coin52.setMap(map);
+
+			this.coin53 = new Coin(755, 490);
+			coin53.setBounds(new Rectangle(1, 1, 16, 16));
+			coin53.setMap(map);
+
+			this.coin54 = new Coin(760, 550);
+			coin54.setBounds(new Rectangle(1, 1, 16, 16));
+			coin54.setMap(map);
+
+			this.coin55 = new Coin(958, 590);
+			coin55.setBounds(new Rectangle(1, 1, 16, 16));
+			coin55.setMap(map);
 
 			try {
 				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
@@ -707,6 +759,30 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 					coin33.check(player);
 					coin34.check(player);
 					coin35.check(player);
+				}else if (currLevel == 7) {
+					coin36.check(player);
+					coin37.check(player);
+					coin38.check(player);
+					coin39.check(player);
+					coin40.check(player);
+				}else if (currLevel == 8) {
+					coin41.check(player);
+					coin42.check(player);
+					coin43.check(player);
+					coin44.check(player);
+					coin45.check(player);
+				}else if (currLevel == 9) {
+					coin46.check(player);
+					coin47.check(player);
+					coin48.check(player);
+					coin49.check(player);
+					coin50.check(player);
+				}else if (currLevel == 10) {
+					coin51.check(player);
+					coin52.check(player);
+					coin53.check(player);
+					coin54.check(player);
+					coin55.check(player);
 				}
 
 
@@ -840,41 +916,41 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 					}
 				}
 
-					if (currLevel == 3) {
-						if (coin16.gotCoin == false) {
-							coin16.draw(graphicsHandler);
-						}
-						if (coin17.gotCoin == false) {
-							coin17.draw(graphicsHandler);
-						}
-						if (coin18.gotCoin == false) {
-							coin18.draw(graphicsHandler);
-						}
-						if (coin19.gotCoin == false) {
-							coin19.draw(graphicsHandler);
-						}
-						if (coin20.gotCoin == false) {
-							coin20.draw(graphicsHandler);
-						}
+				if (currLevel == 3) {
+					if (coin16.gotCoin == false) {
+						coin16.draw(graphicsHandler);
 					}
+					if (coin17.gotCoin == false) {
+						coin17.draw(graphicsHandler);
+					}
+					if (coin18.gotCoin == false) {
+						coin18.draw(graphicsHandler);
+					}
+					if (coin19.gotCoin == false) {
+						coin19.draw(graphicsHandler);
+					}
+					if (coin20.gotCoin == false) {
+						coin20.draw(graphicsHandler);
+					}
+				}
 
-						if (currLevel == 4) {
-							if (coin21.gotCoin == false) {
-								coin21.draw(graphicsHandler);
-							}
-							if (coin22.gotCoin == false) {
-								coin22.draw(graphicsHandler);
-							}
-							if (coin23.gotCoin == false) {
-								coin23.draw(graphicsHandler);
-							}
-							if (coin24.gotCoin == false) {
-								coin24.draw(graphicsHandler);
-							}
-							if (coin25.gotCoin == false) {
-								coin25.draw(graphicsHandler);
-							}
-						}
+				if (currLevel == 4) {
+					if (coin21.gotCoin == false) {
+						coin21.draw(graphicsHandler);
+					}
+					if (coin22.gotCoin == false) {
+						coin22.draw(graphicsHandler);
+					}
+					if (coin23.gotCoin == false) {
+						coin23.draw(graphicsHandler);
+					}
+					if (coin24.gotCoin == false) {
+						coin24.draw(graphicsHandler);
+					}
+					if (coin25.gotCoin == false) {
+						coin25.draw(graphicsHandler);
+					}
+				}
 
 				if (currLevel == 5) {
 					if (coin26.gotCoin == false) {
@@ -891,6 +967,91 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 					}
 					if (coin30.gotCoin == false) {
 						coin30.draw(graphicsHandler);
+					}
+				}
+				if (currLevel == 6) {
+					if (coin31.gotCoin == false) {
+						coin31.draw(graphicsHandler);
+					}
+					if (coin32.gotCoin == false) {
+						coin32.draw(graphicsHandler);
+					}
+					if (coin33.gotCoin == false) {
+						coin33.draw(graphicsHandler);
+					}
+					if (coin34.gotCoin == false) {
+						coin34.draw(graphicsHandler);
+					}
+					if (coin35.gotCoin == false) {
+						coin35.draw(graphicsHandler);
+					}
+				}
+				if (currLevel == 7) {
+					if (coin36.gotCoin == false) {
+						coin36.draw(graphicsHandler);
+					}
+					if (coin37.gotCoin == false) {
+						coin37.draw(graphicsHandler);
+					}
+					if (coin38.gotCoin == false) {
+						coin38.draw(graphicsHandler);
+					}
+					if (coin39.gotCoin == false) {
+						coin39.draw(graphicsHandler);
+					}
+					if (coin40.gotCoin == false) {
+						coin40.draw(graphicsHandler);
+					}
+				}
+				if (currLevel == 8) {
+					if (coin41.gotCoin == false) {
+						coin41.draw(graphicsHandler);
+					}
+					if (coin42.gotCoin == false) {
+						coin42.draw(graphicsHandler);
+					}
+					if (coin43.gotCoin == false) {
+						coin43.draw(graphicsHandler);
+					}
+					if (coin44.gotCoin == false) {
+						coin44.draw(graphicsHandler);
+					}
+					if (coin45.gotCoin == false) {
+						coin45.draw(graphicsHandler);
+					}
+				}
+				if (currLevel == 9) {
+					if (coin46.gotCoin == false) {
+						coin46.draw(graphicsHandler);
+					}
+					if (coin47.gotCoin == false) {
+						coin47.draw(graphicsHandler);
+					}
+					if (coin48.gotCoin == false) {
+						coin48.draw(graphicsHandler);
+					}
+					if (coin49.gotCoin == false) {
+						coin49.draw(graphicsHandler);
+					}
+					if (coin50.gotCoin == false) {
+						coin50.draw(graphicsHandler);
+					}
+				}
+				if (currLevel == 10) {
+					if (coin51.gotCoin == false) {
+						coin51.draw(graphicsHandler);
+					}
+					if (coin52.gotCoin == false) {
+						coin52.draw(graphicsHandler);
+					}
+					if (coin53.gotCoin == false) {
+						coin53.draw(graphicsHandler);
+					}
+					if (coin54.gotCoin == false) {
+						coin54.draw(graphicsHandler);
+					}
+					if (coin55.gotCoin == false) {
+						coin55.draw(graphicsHandler);
 					}
 				}
 
@@ -985,6 +1146,20 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		} else if (currLevel == 5) {
 			coinCount = coinCount4 + coin26.getCoinCount() + coin27.getCoinCount() + coin28.getCoinCount() + coin29.getCoinCount() + coin30.getCoinCount();
 			coinCount5 = coinCount;
+		} else if (currLevel == 6) {
+			coinCount = coinCount5 + coin31.getCoinCount() + coin32.getCoinCount() + coin33.getCoinCount() + coin34.getCoinCount() + coin35.getCoinCount();
+			coinCount6 = coinCount;
+		} else if (currLevel == 7) {
+			coinCount = coinCount6 + coin36.getCoinCount() + coin37.getCoinCount() + coin38.getCoinCount() + coin39.getCoinCount() + coin40.getCoinCount();
+			coinCount7 = coinCount;
+		} else if (currLevel == 8) {
+			coinCount = coinCount7 + coin41.getCoinCount() + coin42.getCoinCount() + coin43.getCoinCount() + coin44.getCoinCount() + coin45.getCoinCount();
+			coinCount8 = coinCount;
+		} else if (currLevel == 9) {
+			coinCount = coinCount8 + coin46.getCoinCount() + coin47.getCoinCount() + coin48.getCoinCount() + coin49.getCoinCount() + coin50.getCoinCount();
+			coinCount9 = coinCount;
+		} else if (currLevel == 10) {
+			coinCount = coinCount9 + coin51.getCoinCount() + coin52.getCoinCount() + coin53.getCoinCount() + coin54.getCoinCount() + coin55.getCoinCount();
 		}
 			return coinCount;
 	}

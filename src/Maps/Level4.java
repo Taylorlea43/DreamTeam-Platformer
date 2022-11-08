@@ -39,7 +39,7 @@ public class Level4 extends Map {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
 
-        enhancedMapTiles.add(new EndLevelBox(getMapTile(23, 9).getLocation(), "penguin.png", key, 30, 26));
+        enhancedMapTiles.add(new EndLevelBox(getMapTile(73, 9).getLocation(), "penguin.png", key, 30, 26));
 
 
         return enhancedMapTiles;

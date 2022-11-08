@@ -27,7 +27,7 @@ public class GameWindow {
 
 		gameWindow.setContentPane(gamePanel);
 		gameWindow.setResizable(false);
-		gameWindow.setUndecorated(false);
+		gameWindow.setUndecorated(true);
 
 		gameWindow.setSize(Config.GAME_WINDOW_WIDTH, Config.GAME_WINDOW_HEIGHT);
 

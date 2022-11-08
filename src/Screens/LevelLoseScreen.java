@@ -27,9 +27,9 @@ public class LevelLoseScreen extends Screen {
 
 	@Override
 	public void initialize() {
-		loseMessage = new SpriteFont("GAME OVER", 350, 270, "Comic Sans", 30, Color.white);
-		instructions = new SpriteFont("RETRY", 120, 300, "Comic Sans", 20, Color.white);
-		instructions2 = new SpriteFont("QUIT", 120, 400, "Comic Sans", 20, Color.white);
+		loseMessage = new SpriteFont("GAME OVER", Config.GAME_WINDOW_WIDTH / 2 - 105, 270, "Comic Sans", 30, Color.white);
+		instructions = new SpriteFont("RETRY", Config.GAME_WINDOW_WIDTH / 2 - 55, 350, "Comic Sans", 20, Color.white);
+		instructions2 = new SpriteFont("QUIT", Config.GAME_WINDOW_WIDTH / 2 - 55, 400, "Comic Sans", 20, Color.white);
 		keyLocker.lockKey(Key.SPACE);
 		keyLocker.lockKey(Key.ESC);
 	}
@@ -84,9 +84,9 @@ public class LevelLoseScreen extends Screen {
 
 		}
 		if (commandInput == 0) {
-			graphicsHandler.drawString(">", 100, 300, null, Color.white);
+			graphicsHandler.drawString(">", Config.GAME_WINDOW_WIDTH / 2 - 125, 350, null, Color.white); 
 		} else if (commandInput == 1) {
-			graphicsHandler.drawString(">", 100, 400, null, Color.white);
+			graphicsHandler.drawString(">", Config.GAME_WINDOW_WIDTH / 2 - 125, 400, null, Color.white);
 
 		}
 	}

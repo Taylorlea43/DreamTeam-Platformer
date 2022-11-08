@@ -29,8 +29,11 @@ public class Level1 extends Map
 	public ArrayList<Enemy> loadEnemies() {
 		ArrayList<Enemy> enemies = new ArrayList<>();
 
-		enemies.add(new cowboyZookeeperEnemy(getMapTile(15,6).getLocation().addY(10), Direction.LEFT));
-		enemies.add(new ScorpionEnemy(getMapTile(20, 7).getLocation().addY(20), Direction.LEFT));
+		enemies.add(new cowboyZookeeperEnemy(getMapTile(15,10).getLocation().addY(10), Direction.LEFT));
+		enemies.add(new ScorpionEnemy(getMapTile(47, 16).getLocation().addY(20), Direction.LEFT));
+		enemies.add(new ScorpionEnemy(getMapTile(48, 16).getLocation().addY(20), Direction.LEFT));
+		enemies.add(new ScorpionEnemy(getMapTile(49, 16).getLocation().addY(20), Direction.LEFT));
+		enemies.add(new ScorpionEnemy(getMapTile(16, 15).getLocation().addY(20), Direction.LEFT));
 
 		//enemies.add(new ZookeeperEnemy(getMapTile(15, 6).getLocation().addY(10), Direction.LEFT));
 

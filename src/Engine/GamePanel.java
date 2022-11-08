@@ -57,7 +57,7 @@ public class GamePanel extends JPanel {
 
 		screenManager = new ScreenManager();
 
-		pauseLabel = new SpriteFont("PAUSE", 365, 280, "Comic Sans", 24, Color.white);
+		pauseLabel = new SpriteFont("PAUSE", Config.GAME_WINDOW_WIDTH/2-50, 200, "Comic Sans", 24, Color.white);
 		pauseLabel.setOutlineColor(Color.black);
 		pauseLabel.setOutlineThickness(2.0f);
 
@@ -122,7 +122,7 @@ public class GamePanel extends JPanel {
 	public void updatePause() {
 		if (Keyboard.isKeyDown(pauseKey) && !keyLocker.isKeyLocked(pauseKey)) {
 			isGamePaused = !isGamePaused;
-			keyLocker.lockKey(pauseKey);
+			keyLocker.lockKey(pauseKey); 
 		}
 
 		if (Keyboard.isKeyUp(pauseKey)) {

@@ -301,7 +301,13 @@ public abstract class Player extends GameObject {
 
 	// anything extra the player should do based on interactions can be handled here
 	protected void handlePlayerAnimation() {
-		if (playerState == PlayerState.STANDING) {
+
+		if (playerState == PlayerState.HURTING) {
+			// sets animation to a DAMAGE animation based on which way player is facing
+			this.currentAnimationName = facingDirection == Direction.RIGHT ? "DAMAGE_STAND_RIGHT" : "DAMAGE_STAND_LEFT";
+		}
+
+		else if (playerState == PlayerState.STANDING) {
 			// sets animation to a STAND animation based on which way player is facing
 			this.currentAnimationName = facingDirection == Direction.RIGHT ? "STAND_RIGHT" : "STAND_LEFT";
 

@@ -134,7 +134,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 					new Color(49, 207, 240));
 			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
 					new Color(49, 207, 240));
-			this.healthBar.setOutlineColor(Color.black);
+			this.healthBar.setOutlineColor(Color.black); 
 			this.healthBar.setOutlineThickness(3);
 
 			this.keyStatusBar = new SpriteFont("Key: ", 15, 100, "Comic Sans", 23, new Color(49, 207, 240));

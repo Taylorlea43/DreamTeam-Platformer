@@ -332,7 +332,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin20.setBounds(new Rectangle(1, 1, 16, 16));
 			coin20.setMap(map);
 
-			this.coin21 = new Coin(140, 490);
+			this.coin21 = new Coin(140, 485);
 			coin21.setBounds(new Rectangle(1, 1, 16, 16));
 			coin21.setMap(map);
 
@@ -340,7 +340,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin22.setBounds(new Rectangle(1, 1, 16, 16));
 			coin22.setMap(map);
 
-			this.coin23 = new Coin(540, 500);
+			this.coin23 = new Coin(540, 495);
 			coin23.setBounds(new Rectangle(1, 1, 16, 16));
 			coin23.setMap(map);
 
@@ -348,7 +348,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin24.setBounds(new Rectangle(1, 1, 16, 16));
 			coin24.setMap(map);
 
-			this.coin25 = new Coin(540, 500);
+			this.coin25 = new Coin(545, 500);
 			coin25.setBounds(new Rectangle(1, 1, 16, 16));
 			coin25.setMap(map);
 

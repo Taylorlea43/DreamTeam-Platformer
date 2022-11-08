@@ -29,7 +29,7 @@ public class Level4 extends Map {
     }
 
     public ArrayList<Enemy> loadEnemies() {
-        ArrayList<Enemy> enemies = new ArrayList<>();
+        ArrayList<Enemy> enemies = new ArrayList<>(); 
 
         return enemies;
     }

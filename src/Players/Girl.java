@@ -15,7 +15,7 @@ public class Girl extends Player
 
 	public Girl(float x, float y)
 	{
-		 super(new SpriteSheet(ImageLoader.load("girlFinal.png"), 45, 85), x, y, "STAND_RIGHT");
+		 super(new SpriteSheet(ImageLoader.load("girlFinal.png"), 45, 85), x, y, "STAND_RIGHT", false);
 	        gravity = .5f;
 	        terminalVelocityY = 6f;
 	        jumpHeight = 14.5f; //14.5

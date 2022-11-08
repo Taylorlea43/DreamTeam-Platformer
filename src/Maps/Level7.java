@@ -39,7 +39,7 @@ public class Level7 extends Map {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
 
-        enhancedMapTiles.add(new EndLevelBox(getMapTile(23, 10).getLocation(), "girrafe.png", key, 24, 48));
+        enhancedMapTiles.add(new EndLevelBox(getMapTile(73, 10).getLocation(), "girrafe.png", key, 24, 48));
 
 
         return enhancedMapTiles;

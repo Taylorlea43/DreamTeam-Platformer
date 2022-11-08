@@ -41,7 +41,7 @@ public class Level6 extends Map {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
 
-        enhancedMapTiles.add(new EndLevelBox(getMapTile(8, 0).getLocation(), "mountainGoat.png", key, 25, 25));
+        enhancedMapTiles.add(new EndLevelBox(getMapTile(8, 8).getLocation(), "mountainGoat.png", key, 25, 25));
 
 
         return enhancedMapTiles;

@@ -40,7 +40,7 @@ public class Level8 extends Map {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
 
-        enhancedMapTiles.add(new EndLevelBox(getMapTile(23, 7).getLocation(), "shark.png", key, 25, 18));
+        enhancedMapTiles.add(new EndLevelBox(getMapTile(73, 9).getLocation(), "shark.png", key, 25, 18));
 
 
         return enhancedMapTiles;

@@ -93,7 +93,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin5.setBounds(new Rectangle(1, 1, 16, 16));
 			coin5.setMap(map);
 
-
 			// setup key
 			this.key = new LevelKey(955, 250, "pixelKey.png");
 			key.setBounds(new Rectangle(30, 25, 25, 20));
@@ -575,6 +574,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
+			player.setIsSwimming(true);
+
 			// setup key
 			this.key = new LevelKey(700, 450, "pixelKey.png");
 			key.setMap(map);
@@ -587,11 +588,15 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				e.printStackTrace();
 			}
 
+			player.decreaseMomentum();
+
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
 
 		} else if (currLevel == 9) {
 			timeElapsed = 0;
+
+			player.setIsSwimming(false);
 
 			this.map = new Level9();
 			map.reset();

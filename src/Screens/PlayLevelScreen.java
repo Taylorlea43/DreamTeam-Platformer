@@ -93,7 +93,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin5.setBounds(new Rectangle(1, 1, 16, 16));
 			coin5.setMap(map);
 
-
 			// setup key
 			this.key = new LevelKey(955, 250, "pixelKey.png");
 			key.setBounds(new Rectangle(30, 25, 25, 20));
@@ -176,7 +175,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin9.setBounds(new Rectangle(1, 1, 16, 16));
 			coin9.setMap(map);
 
-			this.coin10 = new Coin(3100, 500);
+			this.coin10 = new Coin(3080, 490);
 			coin10.setBounds(new Rectangle(1, 1, 16, 16));
 			coin10.setMap(map);
 
@@ -236,7 +235,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin14.setBounds(new Rectangle(1, 1, 16, 16));
 			coin14.setMap(map);
 
-			this.coin15 = new Coin(3100, 700);
+			this.coin15 = new Coin(3080, 660);
 			coin15.setBounds(new Rectangle(1, 1, 16, 16));
 			coin15.setMap(map);
 
@@ -280,7 +279,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin16.setBounds(new Rectangle(1, 1, 16, 16));
 			coin16.setMap(map);
 
-			this.coin17 = new Coin(1200, 490);
+			this.coin17 = new Coin(1230, 480);
 			coin17.setBounds(new Rectangle(1, 1, 16, 16));
 			coin17.setMap(map);
 
@@ -288,11 +287,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin18.setBounds(new Rectangle(1, 1, 16, 16));
 			coin18.setMap(map);
 
-			this.coin19 = new Coin(1900, 400);
+			this.coin19 = new Coin(2100, 400);
 			coin19.setBounds(new Rectangle(1, 1, 16, 16));
 			coin19.setMap(map);
 
-			this.coin20 = new Coin(3100, 400);
+			this.coin20 = new Coin(3070, 380);
 			coin20.setBounds(new Rectangle(1, 1, 16, 16));
 			coin20.setMap(map);
 
@@ -336,19 +335,19 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin21.setBounds(new Rectangle(1, 1, 16, 16));
 			coin21.setMap(map);
 
-			this.coin22 = new Coin(340, 490);
+			this.coin22 = new Coin(550, 460);
 			coin22.setBounds(new Rectangle(1, 1, 16, 16));
 			coin22.setMap(map);
 
-			this.coin23 = new Coin(540, 495);
+			this.coin23 = new Coin(940, 495);
 			coin23.setBounds(new Rectangle(1, 1, 16, 16));
 			coin23.setMap(map);
 
-			this.coin24 = new Coin(640, 400);
+			this.coin24 = new Coin(1530, 400);
 			coin24.setBounds(new Rectangle(1, 1, 16, 16));
 			coin24.setMap(map);
 
-			this.coin25 = new Coin(545, 500);
+			this.coin25 = new Coin(2265, 500);
 			coin25.setBounds(new Rectangle(1, 1, 16, 16));
 			coin25.setMap(map);
 
@@ -383,27 +382,27 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			map.reset();
 
 			//setup coins
-			this.coin25 = new Coin(340, 490);
+			this.coin25 = new Coin(340, 2890);
 			coin25.setBounds(new Rectangle(1, 1, 16, 16));
 			coin25.setMap(map);
 
-			this.coin26 = new Coin(250, 490);
+			this.coin26 = new Coin(250, 2290);
 			coin26.setBounds(new Rectangle(1, 1, 16, 16));
 			coin26.setMap(map);
 
-			this.coin27 = new Coin(290, 390);
+			this.coin27 = new Coin(290, 1790);
 			coin27.setBounds(new Rectangle(1, 1, 16, 16));
 			coin27.setMap(map);
 
-			this.coin28 = new Coin(300, 290);
+			this.coin28 = new Coin(300, 1090);
 			coin28.setBounds(new Rectangle(1, 1, 16, 16));
 			coin28.setMap(map);
 
-			this.coin29 = new Coin(260, 150);
+			this.coin29 = new Coin(260, 850);
 			coin29.setBounds(new Rectangle(1, 1, 16, 16));
 			coin29.setMap(map);
 
-			this.coin30 = new Coin(300, 90);
+			this.coin30 = new Coin(300, 190);
 			coin30.setBounds(new Rectangle(1, 1, 16, 16));
 			coin30.setMap(map);
 
@@ -443,23 +442,23 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			//setup coins
-			this.coin31 = new Coin(340, 490);
+			this.coin31 = new Coin(1540, 600);
 			coin31.setBounds(new Rectangle(1, 1, 16, 16));
 			coin31.setMap(map);
 
-			this.coin32 = new Coin(450, 490);
+			this.coin32 = new Coin(850, 990);
 			coin32.setBounds(new Rectangle(1, 1, 16, 16));
 			coin32.setMap(map);
 
-			this.coin33 = new Coin(560, 390);
+			this.coin33 = new Coin(1060, 490);
 			coin33.setBounds(new Rectangle(1, 1, 16, 16));
 			coin33.setMap(map);
 
-			this.coin34 = new Coin(455, 290);
+			this.coin34 = new Coin(1355, 790);
 			coin34.setBounds(new Rectangle(1, 1, 16, 16));
 			coin34.setMap(map);
 
-			this.coin35 = new Coin(560, 150);
+			this.coin35 = new Coin(1160, 1000);
 			coin35.setBounds(new Rectangle(1, 1, 16, 16));
 			coin35.setMap(map);
 
@@ -500,23 +499,23 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin35.setBounds(new Rectangle(1, 1, 16, 16));
 			coin35.setMap(map);
 
-			this.coin36 = new Coin(550, 490);
+			this.coin36 = new Coin(850, 490);
 			coin36.setBounds(new Rectangle(1, 1, 16, 16));
 			coin36.setMap(map);
 
-			this.coin37 = new Coin(590, 500);
+			this.coin37 = new Coin(1290, 500);
 			coin37.setBounds(new Rectangle(1, 1, 16, 16));
 			coin37.setMap(map);
 
-			this.coin38 = new Coin(655, 510);
+			this.coin38 = new Coin(1555, 510);
 			coin38.setBounds(new Rectangle(1, 1, 16, 16));
 			coin38.setMap(map);
 
-			this.coin39 = new Coin(670, 485);
+			this.coin39 = new Coin(1970, 485);
 			coin39.setBounds(new Rectangle(1, 1, 16, 16));
 			coin39.setMap(map);
 
-			this.coin40 = new Coin(858, 490);
+			this.coin40 = new Coin(2558, 490);
 			coin40.setBounds(new Rectangle(1, 1, 16, 16));
 			coin40.setMap(map);
 
@@ -552,28 +551,31 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin41.setBounds(new Rectangle(1, 1, 16, 16));
 			coin41.setMap(map);
 
-			this.coin42 = new Coin(590, 510);
+			this.coin42 = new Coin(875, 480);
 			coin42.setBounds(new Rectangle(1, 1, 16, 16));
 			coin42.setMap(map);
 
-			this.coin43 = new Coin(655, 490);
+			this.coin43 = new Coin(1255, 415);
 			coin43.setBounds(new Rectangle(1, 1, 16, 16));
 			coin43.setMap(map);
 
-			this.coin44 = new Coin(860, 495);
+			this.coin44 = new Coin(1760, 435);
 			coin44.setBounds(new Rectangle(1, 1, 16, 16));
 			coin44.setMap(map);
 
-			this.coin45 = new Coin(958, 590);
+			this.coin45 = new Coin(2158, 490);
 			coin45.setBounds(new Rectangle(1, 1, 16, 16));
 			coin45.setMap(map);
 
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			player.setJumpDegrade(2);
+			player.setIsSwimming(true);
 
 			// setup key
 			this.key = new LevelKey(700, 450, "pixelKey.png");
@@ -587,11 +589,16 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				e.printStackTrace();
 			}
 
+			player.decreaseMomentum();
+
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
 
 		} else if (currLevel == 9) {
 			timeElapsed = 0;
+
+			player.setIsSwimming(false);
+			player.setJumpDegrade(.5f);
 
 			this.map = new Level9();
 			map.reset();
@@ -616,19 +623,19 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin46.setBounds(new Rectangle(1, 1, 16, 16));
 			coin46.setMap(map);
 
-			this.coin47 = new Coin(660, 510);
+			this.coin47 = new Coin(960, 510);
 			coin47.setBounds(new Rectangle(1, 1, 16, 16));
 			coin47.setMap(map);
 
-			this.coin48 = new Coin(755, 490);
+			this.coin48 = new Coin(1255, 490);
 			coin48.setBounds(new Rectangle(1, 1, 16, 16));
 			coin48.setMap(map);
 
-			this.coin49 = new Coin(960, 485);
+			this.coin49 = new Coin(1960, 485);
 			coin49.setBounds(new Rectangle(1, 1, 16, 16));
 			coin49.setMap(map);
 
-			this.coin50 = new Coin(1000, 590);
+			this.coin50 = new Coin(2700, 590);
 			coin50.setBounds(new Rectangle(1, 1, 16, 16));
 			coin50.setMap(map);
 
@@ -669,19 +676,19 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin51.setBounds(new Rectangle(1, 1, 16, 16));
 			coin51.setMap(map);
 
-			this.coin52 = new Coin(660, 500);
+			this.coin52 = new Coin(960, 500);
 			coin52.setBounds(new Rectangle(1, 1, 16, 16));
 			coin52.setMap(map);
 
-			this.coin53 = new Coin(755, 490);
+			this.coin53 = new Coin(1955, 490);
 			coin53.setBounds(new Rectangle(1, 1, 16, 16));
 			coin53.setMap(map);
 
-			this.coin54 = new Coin(760, 550);
+			this.coin54 = new Coin(2360, 500);
 			coin54.setBounds(new Rectangle(1, 1, 16, 16));
 			coin54.setMap(map);
 
-			this.coin55 = new Coin(958, 590);
+			this.coin55 = new Coin(3075, 565);
 			coin55.setBounds(new Rectangle(1, 1, 16, 16));
 			coin55.setMap(map);
 

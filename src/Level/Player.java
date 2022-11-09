@@ -39,6 +39,7 @@ public abstract class Player extends GameObject {
 	protected AirGroundState airGroundState;
 	protected AirGroundState previousAirGroundState;
 	protected LevelState levelState;
+	protected boolean isSwimming;
 
 	// classes that listen to player events can be added to this list
 	protected ArrayList<PlayerListener> listeners = new ArrayList<>();
@@ -55,7 +56,7 @@ public abstract class Player extends GameObject {
 	public OofTimer oofTimer = new OofTimer(this);
 	protected Stopwatch hurtTimer = new Stopwatch();
 
-	public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {
+	public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName, boolean isSwimming) {
 		super(spriteSheet, x, y, startingAnimationName);
 		facingDirection = Direction.RIGHT;
 		airGroundState = AirGroundState.AIR;
@@ -63,6 +64,8 @@ public abstract class Player extends GameObject {
 		playerState = PlayerState.STANDING;
 		previousPlayerState = playerState;
 		levelState = LevelState.RUNNING;
+		this.isSwimming = isSwimming;
+		this.isSwimming = false;
 	}
 
 	public void update() {
@@ -273,7 +276,9 @@ public abstract class Player extends GameObject {
 			// if player is falling, increases momentum as player falls so it falls faster
 			// over time
 			if (moveAmountY > 0) {
-				increaseMomentum();
+				if(!isSwimming) {
+					increaseMomentum();
+				}
 			}
 		}
 
@@ -291,6 +296,26 @@ public abstract class Player extends GameObject {
 		if (momentumY > terminalVelocityY) {
 			momentumY = terminalVelocityY;
 		}
+	}
+
+	public void decreaseMomentum(){
+		momentumY -= momentumYIncrease;
+		if (momentumY < terminalVelocityY) {
+			momentumY = terminalVelocityY;
+		}
+	}
+
+	public void setJumpDegrade(float num){
+		jumpDegrade = num;
+	}
+
+	//public boolean getIsSwimming(){
+	//	return isSwimming;
+	//}
+
+	public boolean setIsSwimming(boolean t){
+		isSwimming = t;
+		return isSwimming;
 	}
 
 	protected void updateLockedKeys() {

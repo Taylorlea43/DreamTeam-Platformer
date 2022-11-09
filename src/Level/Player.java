@@ -305,6 +305,10 @@ public abstract class Player extends GameObject {
 		}
 	}
 
+	public void setJumpDegrade(float num){
+		jumpDegrade = num;
+	}
+
 	//public boolean getIsSwimming(){
 	//	return isSwimming;
 	//}

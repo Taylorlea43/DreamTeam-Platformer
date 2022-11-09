@@ -34,6 +34,10 @@ public class Girl extends Player
 	{
 		super.draw(graphicsHandler);
 	}
+
+	public void setJumpDegrade(float num){
+		jumpDegrade = num;
+	}
 	
 	@Override
 	public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet)

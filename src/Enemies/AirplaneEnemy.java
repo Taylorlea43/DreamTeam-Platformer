@@ -2,9 +2,8 @@ package Enemies;
 
 import java.util.HashMap;
 
-import javax.tools.DocumentationTool.Location;
-
 import Builders.FrameBuilder;
+import Enemies.FlyingEnemy2.BirdState;
 import Engine.ImageLoader;
 import GameObject.Frame;
 import GameObject.ImageEffect;
@@ -12,21 +11,25 @@ import GameObject.SpriteSheet;
 import Level.Enemy;
 import Level.MapEntity;
 import Level.Player;
-import Players.Girl;
 import Utils.AirGroundState;
 import Utils.Direction;
 import Utils.Point;
+import Utils.Stopwatch;
 
-public class FlyingEnemy1 extends Enemy {
+public class AirplaneEnemy extends Enemy {
 
 	private float gravity = 10f;
 	private float movementSpeed = 1.5f;
 	private Direction startFacingDirection;
 	private Direction facingDirection;
 	private AirGroundState airGroundState;
+	protected Stopwatch shootTimer = new Stopwatch();
 
-	public FlyingEnemy1(Point location, Direction facingDirection) {
-		super(location.x, location.y, new SpriteSheet(ImageLoader.load("CrowEnemie.png"), 20, 13), "WALK_LEFT");
+	protected BirdState birdState;
+	protected BirdState previousBirdState;
+
+	public AirplaneEnemy(Point location, Direction facingDirection) {
+		super(location.x, location.y, new SpriteSheet(ImageLoader.load("AirplaneEnemy.png"), 24, 18), "WALK_LEFT");
 
 		this.startFacingDirection = facingDirection;
 		this.initialize();
@@ -50,8 +53,10 @@ public class FlyingEnemy1 extends Enemy {
 		float moveAmountY = 0;
 
 		// add gravity (if in air, this will cause bug to fall)
+		if (shootTimer.isTimeUp() && birdState != BirdState.SHOOT) {
+			birdState = BirdState.SHOOT;
+		}
 
-		// if on ground, walk forward based on facing direction
 		if ((player.getX() < getX()) && (airGroundState == AirGroundState.AIR)) {
 
 			if (facingDirection == Direction.RIGHT) {
@@ -61,7 +66,6 @@ public class FlyingEnemy1 extends Enemy {
 			}
 		}
 		if ((player.getX() > getX()) && (airGroundState == AirGroundState.AIR)) {
-			moveAmountY += gravity;
 
 			if (facingDirection == Direction.LEFT) {
 				moveAmountX += movementSpeed;
@@ -69,8 +73,36 @@ public class FlyingEnemy1 extends Enemy {
 				moveAmountX -= movementSpeed;
 			}
 		}
+		if (shootTimer.isTimeUp()) {
 
-		System.out.print(getX() + " " + player.getX() + "\n ");
+			// define where fireball will spawn on map (x location) relative to dinosaur
+			// enemy's location
+			// and define its movement speed
+			int eggX;
+			float movementSpeed;
+			if (facingDirection == Direction.RIGHT) {
+				eggX = Math.round(getX()) - getWidth();
+				movementSpeed = 10.5f;
+			} else {
+				eggX = Math.round(getX());
+				movementSpeed = -10.5f;
+			}
+
+			// define where fireball will spawn on the map (y location) relative to dinosaur
+			// enemy's location
+			int eggY = Math.round(getY()) - 4;
+
+			// create Fireball enemy
+			Egg egg = new Egg(new Point(eggX, eggY), movementSpeed, 1000);
+
+			// add fireball enemy to the map for it to offically spawn in the level
+			map.addEnemy(egg);
+
+			// change dinosaur back to its WALK state after shooting, reset shootTimer to
+			// wait another 2 seconds before shooting again
+			shootTimer.setWaitTime(2000);
+		}
+
 
 		// move bug
 		moveYHandleCollision(moveAmountY);
@@ -112,13 +144,13 @@ public class FlyingEnemy1 extends Enemy {
 	public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {
 		return new HashMap<String, Frame[]>() {
 			{
-				put("WALK_LEFT", new Frame[] {
+				put("WALK_RIGHT", new Frame[] {
 						new FrameBuilder(spriteSheet.getSprite(0, 0), 100).withScale(2)
 								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(6, 6, 12, 7).build(),
 						new FrameBuilder(spriteSheet.getSprite(0, 1), 100).withScale(2)
 								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(6, 6, 12, 7).build() });
 
-				put("WALK_RIGHT",
+				put("WALK_LEFT",
 						new Frame[] {
 								new FrameBuilder(spriteSheet.getSprite(0, 0), 100).withScale(2).withBounds(6, 6, 12, 7)
 										.build(),
@@ -126,5 +158,9 @@ public class FlyingEnemy1 extends Enemy {
 										.build() });
 			}
 		};
+	}
+
+	public enum BirdState {
+		WALK, SHOOT
 	}
 }

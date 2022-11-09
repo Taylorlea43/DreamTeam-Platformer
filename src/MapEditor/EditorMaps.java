@@ -1,6 +1,7 @@
 package MapEditor;
 
 import Level.Map;
+import Maps.GameCompleteMap;
 import Maps.Level1;
 import Maps.Level10;
 import Maps.Level2;
@@ -13,6 +14,7 @@ import Maps.Level8;
 import Maps.Level9;
 import Maps.TestMap;
 import Maps.TitleScreenMap;
+import Screens.GameWonScreen;
 
 import java.util.ArrayList;
 
@@ -32,6 +34,8 @@ public class EditorMaps {
 				add("Level9");
 				add("Level10");
 				add("TitleScreen");
+				add("GameWon");
+
 			}
 		};
 	}
@@ -62,7 +66,8 @@ public class EditorMaps {
 			return new Level10();
 		case "TitleScreen":
 			return new TitleScreenMap();
-
+		case "GameWon":
+			return new GameCompleteMap();
 		default:
 			throw new RuntimeException("Unrecognized map name");
 		}

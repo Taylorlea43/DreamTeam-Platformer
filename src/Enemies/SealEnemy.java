@@ -2,8 +2,6 @@ package Enemies;
 
 import java.util.HashMap;
 
-import javax.tools.DocumentationTool.Location;
-
 import Builders.FrameBuilder;
 import Engine.ImageLoader;
 import GameObject.Frame;
@@ -12,25 +10,23 @@ import GameObject.SpriteSheet;
 import Level.Enemy;
 import Level.MapEntity;
 import Level.Player;
-import Players.Girl;
 import Utils.AirGroundState;
 import Utils.Direction;
 import Utils.Point;
 
-public class FlyingEnemy1 extends Enemy {
-
-	private float gravity = 10f;
+public class SealEnemy extends Enemy {
+	private float gravity = 5.5f;
 	private float movementSpeed = 1.5f;
 	private Direction startFacingDirection;
 	private Direction facingDirection;
 	private AirGroundState airGroundState;
 
-	public FlyingEnemy1(Point location, Direction facingDirection) {
-		super(location.x, location.y, new SpriteSheet(ImageLoader.load("CrowEnemie.png"), 20, 13), "WALK_LEFT");
+	public SealEnemy(Point location, Direction facingDirection) {
+	        super(location.x, location.y, new SpriteSheet(ImageLoader.load("SealEnemy.png"), 40 , 26), "WALK_LEFT");
 
-		this.startFacingDirection = facingDirection;
-		this.initialize();
-	}
+	        this.startFacingDirection = facingDirection;
+	        this.initialize();
+	    }
 
 	@Override
 	public void initialize() {
@@ -50,27 +46,16 @@ public class FlyingEnemy1 extends Enemy {
 		float moveAmountY = 0;
 
 		// add gravity (if in air, this will cause bug to fall)
+		moveAmountY += gravity;
 
 		// if on ground, walk forward based on facing direction
-		if ((player.getX() < getX()) && (airGroundState == AirGroundState.AIR)) {
-
+		if (airGroundState == AirGroundState.GROUND) {
 			if (facingDirection == Direction.RIGHT) {
 				moveAmountX += movementSpeed;
 			} else {
 				moveAmountX -= movementSpeed;
 			}
 		}
-		if ((player.getX() > getX()) && (airGroundState == AirGroundState.AIR)) {
-			moveAmountY += gravity;
-
-			if (facingDirection == Direction.LEFT) {
-				moveAmountX += movementSpeed;
-			} else {
-				moveAmountX -= movementSpeed;
-			}
-		}
-
-		System.out.print(getX() + " " + player.getX() + "\n ");
 
 		// move bug
 		moveYHandleCollision(moveAmountY);
@@ -112,17 +97,17 @@ public class FlyingEnemy1 extends Enemy {
 	public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {
 		return new HashMap<String, Frame[]>() {
 			{
-				put("WALK_LEFT", new Frame[] {
+				put("WALK_RIGHT", new Frame[] {
 						new FrameBuilder(spriteSheet.getSprite(0, 0), 100).withScale(2)
-								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(6, 6, 12, 7).build(),
+								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(7, 6, 32, 17).build(),
 						new FrameBuilder(spriteSheet.getSprite(0, 1), 100).withScale(2)
-								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(6, 6, 12, 7).build() });
+								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(7, 6, 32, 17).build() });
 
-				put("WALK_RIGHT",
+				put("WALK_LEFT",
 						new Frame[] {
-								new FrameBuilder(spriteSheet.getSprite(0, 0), 100).withScale(2).withBounds(6, 6, 12, 7)
+								new FrameBuilder(spriteSheet.getSprite(0, 0), 100).withScale(2).withBounds(7, 6, 32, 17)
 										.build(),
-								new FrameBuilder(spriteSheet.getSprite(0, 1), 100).withScale(2).withBounds(6, 6, 12, 7)
+								new FrameBuilder(spriteSheet.getSprite(0, 1), 100).withScale(2).withBounds(7, 6, 32, 17)
 										.build() });
 			}
 		};

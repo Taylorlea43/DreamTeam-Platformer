@@ -39,7 +39,7 @@ public abstract class Player extends GameObject {
 	protected AirGroundState airGroundState;
 	protected AirGroundState previousAirGroundState;
 	protected LevelState levelState;
-	protected boolean isSwimming;
+	public boolean isSwimming;
 
 	// classes that listen to player events can be added to this list
 	protected ArrayList<PlayerListener> listeners = new ArrayList<>();

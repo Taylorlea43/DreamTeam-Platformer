@@ -11,7 +11,7 @@ public class KeyLocker {
 
     // lock a key
     public void lockKey(Key key) {
-        lockedKeys.add(key);
+    	lockedKeys.add(key);
     }
 
     // unlock a key

@@ -3,6 +3,8 @@ package Maps;
 import java.util.ArrayList;
 
 import Enemies.DinosaurEnemy;
+import Enemies.HyenaEnemy;
+import Enemies.PantherEnemy;
 import Enemies.ZookeeperEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
@@ -31,7 +33,10 @@ public class Level9 extends Map {
 
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
-
+        enemies.add(new HyenaEnemy(getMapTile(10,6).getLocation(), Direction.LEFT));
+        enemies.add(new PantherEnemy(getMapTile(40,6).getLocation(), Direction.LEFT));
+        enemies.add(new HyenaEnemy(getMapTile(22, 6).getLocation(), Direction.LEFT));
+        enemies.add(new PantherEnemy(getMapTile(63, 6).getLocation(), Direction.LEFT));
         return enemies;
     }
 

@@ -26,7 +26,7 @@ public class FlyingEnemy1 extends Enemy {
 	private AirGroundState airGroundState;
 
 	public FlyingEnemy1(Point location, Direction facingDirection) {
-		super(location.x, location.y, new SpriteSheet(ImageLoader.load("CrowEnemie.png"), 20, 13), "WALK_LEFT");
+		super(location.x, location.y, new SpriteSheet(ImageLoader.load("CrowEnemypng"), 20, 13), "WALK_LEFT");
 
 		this.startFacingDirection = facingDirection;
 		this.initialize();

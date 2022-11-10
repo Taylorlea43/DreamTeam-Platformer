@@ -58,6 +58,7 @@ public class AirplaneEnemy extends Enemy {
 		}
 
 		if ((player.getX() < getX()) && (airGroundState == AirGroundState.AIR)) {
+			currentAnimationName = "WALK_LEFT";
 
 			if (facingDirection == Direction.RIGHT) {
 				moveAmountX += movementSpeed;
@@ -66,6 +67,7 @@ public class AirplaneEnemy extends Enemy {
 			}
 		}
 		if ((player.getX() > getX()) && (airGroundState == AirGroundState.AIR)) {
+			currentAnimationName = "WALK_RIGHT";
 
 			if (facingDirection == Direction.LEFT) {
 				moveAmountX += movementSpeed;
@@ -102,7 +104,6 @@ public class AirplaneEnemy extends Enemy {
 			// wait another 2 seconds before shooting again
 			shootTimer.setWaitTime(2000);
 		}
-
 
 		// move bug
 		moveYHandleCollision(moveAmountY);

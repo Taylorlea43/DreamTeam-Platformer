@@ -21,12 +21,13 @@ public class OctopusEnemy extends Enemy {
 	private Direction facingDirection;
 	private AirGroundState airGroundState;
 
-	public OctopusEnemy(Point location, Direction facingDirection) {
-	        super(location.x, location.y, new SpriteSheet(ImageLoader.load("Octopus Enemy.png"), 23 , 17), "WALK_LEFT");
+	public OctopusEnemy(Point location, Direction facingDirection, float movementspeed) {
+		super(location.x, location.y, new SpriteSheet(ImageLoader.load("Octopus Enemy.png"), 23, 17), "WALK_LEFT");
 
-	        this.startFacingDirection = facingDirection;
-	        this.initialize();
-	    }
+		this.startFacingDirection = facingDirection;
+		this.movementSpeed = movementspeed;
+		this.initialize();
+	}
 
 	@Override
 	public void initialize() {
@@ -48,11 +49,19 @@ public class OctopusEnemy extends Enemy {
 		// add gravity (if in air, this will cause bug to fall)
 		moveAmountY += gravity;
 
-		// if on ground, walk forward based on facing direction
-		if (airGroundState == AirGroundState.GROUND) {
-			if (facingDirection == Direction.RIGHT) {
+		if ((player.getX() > getX())) {
+			facingDirection = Direction.LEFT;
+			currentAnimationName = "WALK_RIGHT";
+
+			if (facingDirection == Direction.LEFT) {
 				moveAmountX += movementSpeed;
-			} else {
+			}
+		}
+		if ((player.getX() < getX())) {
+			facingDirection = Direction.RIGHT;
+			currentAnimationName = "WALK_LEFT";
+
+			if (facingDirection == Direction.RIGHT) {
 				moveAmountX -= movementSpeed;
 			}
 		}

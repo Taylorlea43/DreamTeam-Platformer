@@ -541,7 +541,14 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			this.map = new Level8();
 			map.reset();
-
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			Point playerStartPosition = map.getPlayerStartPosition();
+			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			player.setJumpDegrade(2);
+			player.setIsSwimming(true);
 			//setup coins
 			this.coin40 = new Coin(340, 490);
 			coin40.setBounds(new Rectangle(1, 1, 16, 16));
@@ -567,15 +574,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin45.setBounds(new Rectangle(1, 1, 16, 16));
 			coin45.setMap(map);
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 
-			this.player.setMap(map);
-			this.player.addListener(this);
-			Point playerStartPosition = map.getPlayerStartPosition();
-			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
-			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-			player.setJumpDegrade(2);
-			player.setIsSwimming(true);
+			
+		
 
 			// setup key
 			this.key = new LevelKey(700, 450, "pixelKey.png");

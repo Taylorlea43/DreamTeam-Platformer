@@ -24,7 +24,7 @@ public class Level5 extends Map {
 
     public Level5() {
         super("level6.txt", new JungleTileset());
-        this.playerStartPosition = getMapTile(7, 63).getLocation();
+        this.playerStartPosition = getMapTile(7, 62).getLocation();
 
     }
 

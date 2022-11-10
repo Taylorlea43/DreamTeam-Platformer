@@ -2,8 +2,7 @@ package Maps;
 
 import java.util.ArrayList;
 
-import Enemies.DinosaurEnemy;
-import Enemies.ZookeeperEnemy;
+import Enemies.*;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
@@ -38,7 +37,10 @@ public class Level8 extends Map {
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
-
+        enemies.add(new OctopusEnemy(getMapTile(10,6).getLocation(), Direction.LEFT));
+        enemies.add(new JellyfishEnemy(getMapTile(40,6).getLocation(), Direction.LEFT));
+        enemies.add(new OctopusEnemy(getMapTile(22, 6).getLocation(), Direction.LEFT));
+        enemies.add(new JellyfishEnemy(getMapTile(63, 6).getLocation(), Direction.LEFT));
 
         enhancedMapTiles.add(new EndLevelBox(getMapTile(73, 11).getLocation(), "shark.png", key, 25, 18));
 

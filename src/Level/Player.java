@@ -245,13 +245,29 @@ public abstract class Player extends GameObject {
 				}
 			}
 			
-			try {
-				AudioPlayer jumpSound = new AudioPlayer(false, "Resources/PlayerJump_Sound.wav");
-				jumpSound.play();
+			if(!isSwimming)
+			{
+				try {
+					AudioPlayer jumpSound = new AudioPlayer(false, "Resources/PlayerJump_Sound.wav");
+					jumpSound.play();
+				}
+
+				catch (Exception e) {
+					System.out.println("Error with jump sound");	
+				}
 			}
 
-			catch (Exception e) {
-				System.out.println("Error with jump sound");
+			else
+			{
+				try {
+					AudioPlayer swimSound = new AudioPlayer(false, "Resources/Swim_Sound.wav");
+					swimSound.play();
+				}
+
+				catch (Exception e) {
+					System.out.println("Error with jump sound");
+
+				}
 			}
 		}
 
@@ -268,6 +284,15 @@ public abstract class Player extends GameObject {
 			
 			else if(isSwimming && Keyboard.isKeyDown(JUMP_KEY))
 			{	
+				try {
+					AudioPlayer swimSound = new AudioPlayer(false, "Resources/Swim_Sound.wav");
+					swimSound.play();
+				}
+
+				catch (Exception e) {
+					System.out.println("Error with sound");
+				}
+				
 				jumpForce = jumpHeight;
 				if (jumpForce > 0) {
 					moveAmountY -= jumpForce;

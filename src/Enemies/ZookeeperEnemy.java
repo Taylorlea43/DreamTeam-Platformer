@@ -8,6 +8,7 @@ import GameObject.SpriteSheet;
 import Level.Enemy;
 import Level.MapEntity;
 import Level.Player;
+import Sounds.AudioPlayer;
 import Utils.AirGroundState;
 import Utils.Direction;
 import Utils.Point;
@@ -99,6 +100,15 @@ public class ZookeeperEnemy extends Enemy {
 				Net net = new Net(new Point(netX, netY), movementSpeed, 1000);
 
 				map.addEnemy(net);
+				
+				try {
+					AudioPlayer netSound = new AudioPlayer(false, "Resources/Net_Sound.wav");
+					netSound.play();
+				}
+
+				catch (Exception e) {
+					System.out.println("Error with sound");
+				}
 
 				zookeperState = ZookeeperState.WALK;
 				shootTimer.setWaitTime(2000);

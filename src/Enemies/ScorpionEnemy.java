@@ -20,7 +20,7 @@ import java.util.HashMap;
 public class ScorpionEnemy extends Enemy {
 
     private float gravity = 5.5f;
-    private float movementSpeed = 4.5f;
+    private float movementSpeed = .5f;
     private Direction startFacingDirection;
     private Direction facingDirection;
     private AirGroundState airGroundState;

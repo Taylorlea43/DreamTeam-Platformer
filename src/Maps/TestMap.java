@@ -1,31 +1,14 @@
 package Maps;
 
-import Enemies.AirplaneEnemy;
-import Enemies.BearEnemy;
-import Enemies.BuffaloEnemy;
-import Enemies.CougarEnemy;
-import Enemies.DinosaurEnemy;
-import Enemies.FlyingEnemy1;
 import Enemies.FlyingEnemy2;
-import Enemies.HyenaEnemy;
-import Enemies.JellyfishEnemy;
-import Enemies.KoalaEnemy;
-import Enemies.OctopusEnemy;
-import Enemies.PantherEnemy;
-import Enemies.PolarBearEnemy;
-import Enemies.ScorpionEnemy;
-import Enemies.SealEnemy;
-import Enemies.SnakeEnemy;
 import Enemies.ZookeeperEnemy;
 import Enemies.SquirrelEnemy;
-import Enemies.WolfEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
 import GameObject.LevelKey;
 import GameObject.Rectangle;
 import Level.*;
-import NPCs.Walrus;
 import Tilesets.CommonTileset;
 import Utils.Direction;
 

@@ -8,6 +8,7 @@ import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import Screens.PlayLevelScreen;
+import Sounds.AudioPlayer;
 import Level.Map;
 import Maps.GameCompleteMap;
 import Maps.TitleScreenMap;
@@ -28,6 +29,15 @@ public class GameWonScreen extends Screen {
 	public void initialize() {
 		background = new GameCompleteMap();
 		background.setAdjustCamera(false);
+		
+		try {
+			AudioPlayer gameWon = new AudioPlayer(false, "Resources/CelebrateCut_Sound.wav");
+			gameWon.play();
+		}
+
+		catch (Exception e) {
+			System.out.println("Error with sound");
+		}
 	}
 
 	@Override

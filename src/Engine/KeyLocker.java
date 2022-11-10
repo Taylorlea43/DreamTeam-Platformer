@@ -2,6 +2,8 @@ package Engine;
 
 import java.util.HashSet;
 
+import Level.Player;
+
 // This class can be used to keep track of "locked" and "unlocked" keys based on the class
 // For example, it's often useful to "lock" a key if pressed down until its been released, since holding down a key will continually count as a "key press".
 // This way, that "key press" will only be counted once per press.
@@ -11,12 +13,12 @@ public class KeyLocker {
 
     // lock a key
     public void lockKey(Key key) {
-        lockedKeys.add(key);
+    		lockedKeys.add(key);
     }
 
     // unlock a key
     public void unlockKey(Key key) {
-        lockedKeys.remove(key);
+        	lockedKeys.remove(key);
     }
 
     // check if a key is currently locked

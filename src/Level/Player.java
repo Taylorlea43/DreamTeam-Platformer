@@ -39,7 +39,7 @@ public abstract class Player extends GameObject {
 	protected AirGroundState airGroundState;
 	protected AirGroundState previousAirGroundState;
 	protected LevelState levelState;
-	protected boolean isSwimming;
+	public boolean isSwimming;
 
 	// classes that listen to player events can be added to this list
 	protected ArrayList<PlayerListener> listeners = new ArrayList<>();
@@ -171,12 +171,11 @@ public abstract class Player extends GameObject {
 			playerState = PlayerState.WALKING;
 		}
 
-		// if jump key is pressed, player enters JUMPING state
+ 	// if jump key is pressed, player enters JUMPING state
 		else if (Keyboard.isKeyDown(JUMP_KEY) && !keyLocker.isKeyLocked(JUMP_KEY)) {
-			keyLocker.lockKey(JUMP_KEY);
 			playerState = PlayerState.JUMPING;
-		}
-
+		} 
+		
 		// if crouch key is pressed, player enters CROUCHING state
 		else if (Keyboard.isKeyDown(CROUCH_KEY)) {
 			playerState = PlayerState.CROUCHING;
@@ -220,7 +219,8 @@ public abstract class Player extends GameObject {
 
 		// if jump key is pressed, player enters JUMPING state
 		if (Keyboard.isKeyDown(JUMP_KEY) && !keyLocker.isKeyLocked(JUMP_KEY)) {
-			keyLocker.lockKey(JUMP_KEY);
+			if(!isSwimming)
+				keyLocker.lockKey(JUMP_KEY);
 			playerState = PlayerState.JUMPING;
 		}
 	}
@@ -244,7 +244,7 @@ public abstract class Player extends GameObject {
 					jumpForce = 0;
 				}
 			}
-
+			
 			try {
 				AudioPlayer jumpSound = new AudioPlayer(false, "Resources/PlayerJump_Sound.wav");
 				jumpSound.play();
@@ -263,6 +263,18 @@ public abstract class Player extends GameObject {
 				jumpForce -= jumpDegrade;
 				if (jumpForce < 0) {
 					jumpForce = 0;
+				}
+			}
+			
+			else if(isSwimming && Keyboard.isKeyDown(JUMP_KEY))
+			{	
+				jumpForce = jumpHeight;
+				if (jumpForce > 0) {
+					moveAmountY -= jumpForce;
+					jumpForce -= jumpDegrade;
+					if (jumpForce < 0) {
+						jumpForce = 0;
+					}
 				}
 			}
 
@@ -313,9 +325,8 @@ public abstract class Player extends GameObject {
 	//	return isSwimming;
 	//}
 
-	public boolean setIsSwimming(boolean t){
+	public void setIsSwimming(boolean t){
 		isSwimming = t;
-		return isSwimming;
 	}
 
 	protected void updateLockedKeys() {
@@ -326,7 +337,13 @@ public abstract class Player extends GameObject {
 
 	// anything extra the player should do based on interactions can be handled here
 	protected void handlePlayerAnimation() {
-		if (playerState == PlayerState.STANDING) {
+
+		if (playerState == PlayerState.HURTING) {
+			// sets animation to a DAMAGE animation based on which way player is facing
+			this.currentAnimationName = facingDirection == Direction.RIGHT ? "DAMAGE_STAND_RIGHT" : "DAMAGE_STAND_LEFT";
+		}
+
+		else if (playerState == PlayerState.STANDING) {
 			// sets animation to a STAND animation based on which way player is facing
 			this.currentAnimationName = facingDirection == Direction.RIGHT ? "STAND_RIGHT" : "STAND_LEFT";
 

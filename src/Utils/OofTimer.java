@@ -2,6 +2,7 @@ package Utils;
 
 import javax.swing.Timer;
 import Level.Player;
+import Level.PlayerState;
 import Screens.PlayLevelScreen;
 
 import java.awt.event.ActionEvent;
@@ -29,6 +30,11 @@ public class OofTimer extends Timer
 		public void actionPerformed(ActionEvent e)
 		{
 			player.isInvincible = false;
+			
+			if(player.getAirGroundState() == AirGroundState.GROUND)
+				player.setPlayerState(PlayerState.STANDING);
+			else
+				player.setPlayerState(PlayerState.JUMPING);
 		}
 	}
 }

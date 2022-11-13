@@ -52,6 +52,7 @@ public abstract class Player extends GameObject {
 	protected Key MOVE_RIGHT_KEY = Key.RIGHT;
 	protected Key CROUCH_KEY = Key.DOWN;
 
+	protected boolean isDead;
 	public boolean isInvincible = false; // if true, player cannot be hurt by enemies (good for testing)
 	public OofTimer oofTimer = new OofTimer(this);
 	protected Stopwatch hurtTimer = new Stopwatch();
@@ -66,6 +67,7 @@ public abstract class Player extends GameObject {
 		levelState = LevelState.RUNNING;
 		this.isSwimming = isSwimming;
 		this.isSwimming = false;
+		isDead = false;
 	}
 
 	public void update() {
@@ -452,6 +454,21 @@ public abstract class Player extends GameObject {
 						{
 							health = 0;
 							levelState = LevelState.PLAYER_DEAD;
+							
+							if(!isDead)
+							{
+								try
+								{
+									AudioPlayer loseSound = new AudioPlayer (false, "Resources/GameLose_Sound.wav");
+									loseSound.play();
+								}
+								catch(Exception e)
+								{
+									System.out.println("Error with sound");
+								}
+								
+								isDead = true;
+							}
 						}
 					} 
 					
@@ -467,6 +484,21 @@ public abstract class Player extends GameObject {
 						{
 							health = 0;
 							levelState = LevelState.PLAYER_DEAD;
+							
+							if(!isDead)
+							{
+								try
+								{
+									AudioPlayer loseSound = new AudioPlayer (false, "Resources/GameLose_Sound.wav");
+									loseSound.play();
+								}
+								catch(Exception e)
+								{
+									System.out.println("Error with sound");
+								}
+								
+								isDead = true;
+							}
 						}
 
 						try { 
@@ -476,13 +508,32 @@ public abstract class Player extends GameObject {
 						catch(Exception e) { System.out.println("Error with sound"); }
 
 						if (health < 1)
+						{	
 							levelState = LevelState.PLAYER_DEAD;
+						}
 					}
 					
 				} 
 				
 				else // player health at 0
+				{
 					levelState = LevelState.PLAYER_DEAD;
+					
+					if(!isDead)
+					{
+						try
+						{
+							AudioPlayer loseSound = new AudioPlayer (false, "Resources/GameLose_Sound.wav");
+							loseSound.play();
+						}
+						catch(Exception e)
+						{
+							System.out.println("Error with sound");
+						}
+						
+						isDead = true;
+					}
+				}
 			}
 		}
 		

@@ -1,6 +1,8 @@
 package Maps;
 
 import Enemies.FlyingEnemy2;
+import Enemies.JellyfishEnemy;
+import Enemies.OctopusEnemy;
 import Enemies.ZookeeperEnemy;
 import Enemies.SquirrelEnemy;
 import Engine.ImageLoader;
@@ -29,15 +31,11 @@ public class TestMap extends Map {
 	public ArrayList<Enemy> loadEnemies() {
 		ArrayList<Enemy> enemies = new ArrayList<>();
 
-		 enemies.add(new SquirrelEnemy(getMapTile(15, 8).getLocation().addY(20),
-		 Direction.LEFT));
-        enemies.add(new FlyingEnemy2(getMapTile(22, 0).getLocation().addY(20), Direction.LEFT));
-		 enemies.add(new ZookeeperEnemy(getMapTile(15, 6).getLocation().addY(10),
-		 Direction.LEFT));
+		enemies.add(new SquirrelEnemy(getMapTile(15, 8).getLocation().addY(20), Direction.LEFT));
+		enemies.add(new FlyingEnemy2(getMapTile(22, 0).getLocation().addY(20), Direction.LEFT));
+		enemies.add(new ZookeeperEnemy(getMapTile(15, 6).getLocation().addY(10), Direction.LEFT));
 //        enemies.add(new DinosaurEnemy(getMapTile(19, 1).getLocation().addY(2), getMapTile(22, 1).getLocation().addY(2), Direction.RIGHT));
-		
-		//enemies.add(new FlyingEnemy1(getMapTile(22, 0).getLocation().addY(20), Direction.LEFT));
-		
+
 		return enemies;
 	}
 

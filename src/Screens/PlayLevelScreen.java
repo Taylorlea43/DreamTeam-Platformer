@@ -53,6 +53,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public int currLevel;
 	protected int coinCount0, coinCount1, coinCount, coinCount2, coinCount3, coinCount4, coinCount5, coinCount6, coinCount7, coinCount8, coinCount9, coinCount10;
 	protected AudioPlayer levelMusic;
+	protected AudioPlayer loseMusic;
 	public boolean blink = false;
 	public boolean oof = false;
 	protected BlinkTimer blinkTimer;
@@ -196,7 +197,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			// setup AudioPlayer
 			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
+				levelMusic = new AudioPlayer(true, "Resources/GameMusicDesert_Sound.wav");
 				levelMusic.play();
 			} catch (Exception e) {
 				System.out.println("Error with playing sound.");
@@ -253,7 +254,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			// setup AudioPlayer
 			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
+				levelMusic = new AudioPlayer(true, "Resources/GameMusicForest_Sound.wav");
 				levelMusic.play();
 			} catch (Exception e) {
 				System.out.println("Error with playing sound.");
@@ -309,7 +310,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			// setup AudioPlayer
 			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
+				levelMusic = new AudioPlayer(true, "Resources/GameMusicSky_Sound.wav");
 				levelMusic.play();
 			} catch (Exception e) {
 				System.out.println("Error with playing sound.");
@@ -365,7 +366,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			// setup AudioPlayer
 			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
+				levelMusic = new AudioPlayer(true, "Resources/GameMusicIce_Sound.wav");
 				levelMusic.play();
 			} catch (Exception e) {
 				System.out.println("Error with playing sound.");
@@ -418,7 +419,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			key.setMap(map);
 
 			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
+				levelMusic = new AudioPlayer(true, "Resources/GameMusicJungle_Sound.wav");
 				levelMusic.play();
 			} catch (Exception e) {
 				System.out.println("Error with playing sound.");
@@ -471,7 +472,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			key.setMap(map);
 
 			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
+				levelMusic = new AudioPlayer(true, "Resources/GameMusicMountain_Sound.wav");
 				levelMusic.play();
 			} catch (Exception e) {
 				System.out.println("Error with playing sound.");
@@ -526,7 +527,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 
 			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
+				levelMusic = new AudioPlayer(true, "Resources/GameMusicSavannah_Sound.wav");
 				levelMusic.play();
 			} catch (Exception e) {
 				System.out.println("Error with playing sound.");
@@ -541,7 +542,14 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			this.map = new Level8();
 			map.reset();
-
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			Point playerStartPosition = map.getPlayerStartPosition();
+			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+			player.setJumpDegrade(2);
+			player.setIsSwimming(true);
 			//setup coins
 			this.coin40 = new Coin(340, 490);
 			coin40.setBounds(new Rectangle(1, 1, 16, 16));
@@ -567,22 +575,16 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin45.setBounds(new Rectangle(1, 1, 16, 16));
 			coin45.setMap(map);
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 
-			this.player.setMap(map);
-			this.player.addListener(this);
-			Point playerStartPosition = map.getPlayerStartPosition();
-			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
-			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-			player.setJumpDegrade(2);
-			player.setIsSwimming(true);
+			
+		
 
 			// setup key
 			this.key = new LevelKey(700, 450, "pixelKey.png");
 			key.setMap(map);
 
 			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
+				levelMusic = new AudioPlayer(true, "Resources/GameMusicWater_Sound.wav");
 				levelMusic.play();
 			} catch (Exception e) {
 				System.out.println("Error with playing sound.");
@@ -640,7 +642,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin50.setMap(map);
 
 			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
+				levelMusic = new AudioPlayer(true, "Resources/GameMusicSavannah_Sound.wav");
 				levelMusic.play();
 			} catch (Exception e) {
 				System.out.println("Error with playing sound.");
@@ -693,7 +695,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin55.setMap(map);
 
 			try {
-				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
+				levelMusic = new AudioPlayer(true, "Resources/GameMusicFinal_Sound.wav");
 				levelMusic.play();
 			} catch (Exception e) {
 				System.out.println("Error with playing sound.");
@@ -1083,7 +1085,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public void goBackToMenu() {
 		screenCoordinator.setGameState(GameState.MENU);
 		blinkTimer.healthReset();
-
+		
+		try {
+			loseMusic.stop();
+		} catch (Exception e) {
+		}
 	}
 
 	public PlayLevelScreenState getPlayLevelScreenState() {
@@ -1111,6 +1117,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			try {
 				levelMusic.stop();
+				
+				loseMusic = new AudioPlayer(true, "Resources/GameMusicLose_Sound.wav");
+				loseMusic.play();
 			} catch (Exception e) {
 			}
 		}
@@ -1121,6 +1130,12 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	}
 
 	public void resetLevel() {
+		try {
+			loseMusic.stop();
+		}
+		catch(Exception e) {
+		}
+		
 		initialize();
 	}
 

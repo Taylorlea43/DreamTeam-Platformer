@@ -29,10 +29,10 @@ public class Level2 extends Map
 	}
 	public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
-        enemies.add(new WolfEnemy(getMapTile(10,6).getLocation(), Direction.LEFT));
-		enemies.add(new WolfEnemy(getMapTile(40,6).getLocation(), Direction.LEFT));
-        enemies.add(new BearEnemy(getMapTile(22, 6).getLocation(), Direction.LEFT));
-		enemies.add(new BearEnemy(getMapTile(63, 6).getLocation(), Direction.LEFT));
+        enemies.add(new WolfEnemy(getMapTile(10,19).getLocation(), Direction.LEFT));
+		enemies.add(new WolfEnemy(getMapTile(32,19).getLocation(), Direction.LEFT));
+        enemies.add(new BearEnemy(getMapTile(46, 19).getLocation(), Direction.LEFT));
+		enemies.add(new BearEnemy(getMapTile(61, 19).getLocation(), Direction.LEFT));
         //enemies.add(new BugEnemy(getMapTile(15, 8).getLocation().addY(20), Direction.LEFT));
 //        enemies.add(new ZookeeperEnemy(getMapTile(15, 6).getLocation().addY(10), Direction.LEFT)); 
 

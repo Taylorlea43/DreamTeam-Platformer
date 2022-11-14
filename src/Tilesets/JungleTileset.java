@@ -31,19 +31,19 @@ public class JungleTileset extends Tileset {
 		
 		
 		
-		Frame leafPlatform = new FrameBuilder(getSubImage(0, 2)).withScale(tileScale).withBounds(4, 14, 16, 4).build();
+		Frame leafPlatform = new FrameBuilder(getSubImage(0, 2)).withScale(tileScale).withBounds(4, 7, 15, 6).build();
 
 		MapTileBuilder leafPlatformTile = new MapTileBuilder(leafPlatform).withTileType(TileType.JUMP_THROUGH_PLATFORM);;
 
 		mapTiles.add(leafPlatformTile);
 
 		
-		Frame leafPlatform2 = new FrameBuilder(getSubImage(0, 3)).withScale(tileScale).withBounds(4, 14, 16, 4).build();
+		Frame leafPlatform2 = new FrameBuilder(getSubImage(0, 3)).withScale(tileScale).withBounds(0, 7, 15, 6).build();
 
 		MapTileBuilder leafPlatformTile2 = new MapTileBuilder(leafPlatform2).withTileType(TileType.JUMP_THROUGH_PLATFORM);;
 
 		mapTiles.add(leafPlatformTile2);
-		Frame leafPlatform3 = new FrameBuilder(getSubImage(0, 4)).withScale(tileScale).withBounds(4, 14, 16, 4).build();
+		Frame leafPlatform3 = new FrameBuilder(getSubImage(0, 4)).withScale(tileScale).withBounds(0, 7, 12, 7).build();
 
 		MapTileBuilder leafPlatformTile3 = new MapTileBuilder(leafPlatform3).withTileType(TileType.JUMP_THROUGH_PLATFORM);;
 

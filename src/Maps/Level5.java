@@ -1,8 +1,7 @@
 package Maps;
 import java.util.ArrayList;
 
-import Enemies.DinosaurEnemy;
-import Enemies.ZookeeperEnemy;
+import Enemies.*;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
@@ -31,7 +30,10 @@ public class Level5 extends Map {
 
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
-
+        enemies.add(new KoalaEnemy(getMapTile(10,6).getLocation(), Direction.LEFT));
+        enemies.add(new SnakeEnemy(getMapTile(20,10).getLocation(), Direction.LEFT));
+        enemies.add(new KoalaEnemy(getMapTile(12, 28).getLocation(), Direction.LEFT));
+        enemies.add(new SnakeEnemy(getMapTile(19, 50).getLocation(), Direction.LEFT));
         return enemies;
     }
 

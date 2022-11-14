@@ -7,6 +7,7 @@ import Engine.KeyLocker;
 import Engine.Keyboard;
 import Engine.Screen;
 import Engine.ScreenManager;
+import Sounds.AudioPlayer;
 import SpriteFont.SpriteFont;
 
 import java.awt.*;
@@ -46,8 +47,25 @@ public class LevelClearedScreen extends Screen {
 		// if space is pressed, reset level. if escape is pressed, go back to main menu
 		if (Keyboard.isKeyDown(Key.SPACE) && !keyLocker.isKeyLocked(Key.SPACE)) {
 			playLevelScreen.resetLevel();
+
+			try {
+				AudioPlayer startEffect = new AudioPlayer(false, "Resources/GameStart_Sound.wav");
+				startEffect.play();
+			}
+
+			catch (Exception e) {
+				System.out.println("Error with sound");
+			}
 		} else if (Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC)) {
 			playLevelScreen.goBackToMenu();
+			try {
+				AudioPlayer startEffect = new AudioPlayer(false, "Resources/GameStart_Sound.wav");
+				startEffect.play();
+			}
+
+			catch (Exception e) {
+				System.out.println("Error with sound");
+			}
 		}
 	}
 

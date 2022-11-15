@@ -52,6 +52,7 @@ public abstract class Player extends GameObject {
 	protected Key MOVE_RIGHT_KEY = Key.RIGHT;
 	protected Key CROUCH_KEY = Key.DOWN;
 
+	protected boolean isDead;
 	public boolean isInvincible = false; // if true, player cannot be hurt by enemies (good for testing)
 	public OofTimer oofTimer = new OofTimer(this);
 	protected Stopwatch hurtTimer = new Stopwatch();
@@ -67,7 +68,8 @@ public abstract class Player extends GameObject {
 		levelState = LevelState.RUNNING;
 		this.isSwimming = isSwimming;
 		this.isSwimming = false;
-		this.level =  level;
+		this.level = level;
+		isDead = false;
 	}
 
 	public void update() {
@@ -81,7 +83,7 @@ public abstract class Player extends GameObject {
 			if (x <= 0) {
 				moveAmountX += walkSpeed;
 			}
-			
+
 			if (x >= Map.endBoundX - 50) {
 				moveAmountX -= walkSpeed;
 			}
@@ -128,44 +130,44 @@ public abstract class Player extends GameObject {
 	// method
 	protected void handlePlayerState() {
 		switch (playerState) {
-		case STANDING:
-			playerStanding();
-			break;
-		case WALKING:
-			playerWalking();
-			break;
-		case CROUCHING:
-			playerCrouching();
-			break;
-		case JUMPING:
-			playerJumping();
-			break;
-		case HURTING:
-			playerHurting();
-			break;
+			case STANDING:
+				playerStanding();
+				break;
+			case WALKING:
+				playerWalking();
+				break;
+			case CROUCHING:
+				playerCrouching();
+				break;
+			case JUMPING:
+				playerJumping();
+				break;
+			case HURTING:
+				playerHurting();
+				break;
 		}
 	}
 
 	//player HURTING state logic
 	protected void playerHurting() {
 		// if walk left or walk right key is pressed, player enters WALKING state
-				if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY)) {
-					playerState = PlayerState.WALKING;
-				}
+		if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY)) {
+			playerState = PlayerState.WALKING;
+		}
 
-				// if jump key is pressed, player enters JUMPING state
-				else if (Keyboard.isKeyDown(JUMP_KEY) && !keyLocker.isKeyLocked(JUMP_KEY)) {
-					keyLocker.lockKey(JUMP_KEY);
-					playerState = PlayerState.JUMPING;
-				}
+		// if jump key is pressed, player enters JUMPING state
+		else if (Keyboard.isKeyDown(JUMP_KEY) && !keyLocker.isKeyLocked(JUMP_KEY)) {
+			keyLocker.lockKey(JUMP_KEY);
+			playerState = PlayerState.JUMPING;
+		}
 
-				// if crouch key is pressed, player enters CROUCHING state
-				else if (Keyboard.isKeyDown(CROUCH_KEY)) {
-					playerState = PlayerState.CROUCHING;
-				}
+		// if crouch key is pressed, player enters CROUCHING state
+		else if (Keyboard.isKeyDown(CROUCH_KEY)) {
+			playerState = PlayerState.CROUCHING;
+		}
 	}
 
-	
+
 	// player STANDING state logic
 	protected void playerStanding() {
 		// if walk left or walk right key is pressed, player enters WALKING state
@@ -173,11 +175,12 @@ public abstract class Player extends GameObject {
 			playerState = PlayerState.WALKING;
 		}
 
- 	// if jump key is pressed, player enters JUMPING state
+		// if jump key is pressed, player enters JUMPING state
 		else if (Keyboard.isKeyDown(JUMP_KEY) && !keyLocker.isKeyLocked(JUMP_KEY)) {
+			keyLocker.lockKey(JUMP_KEY);
 			playerState = PlayerState.JUMPING;
-		} 
-		
+		}
+
 		// if crouch key is pressed, player enters CROUCHING state
 		else if (Keyboard.isKeyDown(CROUCH_KEY)) {
 			playerState = PlayerState.CROUCHING;
@@ -221,7 +224,7 @@ public abstract class Player extends GameObject {
 
 		// if jump key is pressed, player enters JUMPING state
 		if (Keyboard.isKeyDown(JUMP_KEY) && !keyLocker.isKeyLocked(JUMP_KEY)) {
-			if(!isSwimming)
+			if (!isSwimming)
 				keyLocker.lockKey(JUMP_KEY);
 			playerState = PlayerState.JUMPING;
 		}
@@ -246,27 +249,19 @@ public abstract class Player extends GameObject {
 					jumpForce = 0;
 				}
 			}
-			
-			if(!isSwimming)
-			{
+
+			if (!isSwimming) {
 				try {
 					AudioPlayer jumpSound = new AudioPlayer(false, "Resources/PlayerJump_Sound.wav");
 					jumpSound.play();
+				} catch (Exception e) {
+					System.out.println("Error with jump sound");
 				}
-
-				catch (Exception e) {
-					System.out.println("Error with jump sound");	
-				}
-			}
-
-			else
-			{
+			} else {
 				try {
 					AudioPlayer swimSound = new AudioPlayer(false, "Resources/Swim_Sound.wav");
 					swimSound.play();
-				}
-
-				catch (Exception e) {
+				} catch (Exception e) {
 					System.out.println("Error with jump sound");
 
 				}
@@ -282,19 +277,14 @@ public abstract class Player extends GameObject {
 				if (jumpForce < 0) {
 					jumpForce = 0;
 				}
-			}
-			
-			else if(isSwimming && Keyboard.isKeyDown(JUMP_KEY))
-			{	
+			} else if (isSwimming && Keyboard.isKeyDown(JUMP_KEY)) {
 				try {
 					AudioPlayer swimSound = new AudioPlayer(false, "Resources/Swim_Sound.wav");
 					swimSound.play();
-				}
-
-				catch (Exception e) {
+				} catch (Exception e) {
 					System.out.println("Error with sound");
 				}
-				
+
 				jumpForce = jumpHeight;
 				if (jumpForce > 0) {
 					moveAmountY -= jumpForce;
@@ -315,7 +305,7 @@ public abstract class Player extends GameObject {
 			// if player is falling, increases momentum as player falls so it falls faster
 			// over time
 			if (moveAmountY > 0) {
-				if(!isSwimming) {
+				if (!isSwimming) {
 					increaseMomentum();
 				}
 			}
@@ -337,14 +327,14 @@ public abstract class Player extends GameObject {
 		}
 	}
 
-	public void decreaseMomentum(){
+	public void decreaseMomentum() {
 		momentumY -= momentumYIncrease;
 		if (momentumY < terminalVelocityY) {
 			momentumY = terminalVelocityY;
 		}
 	}
 
-	public void setJumpDegrade(float num){
+	public void setJumpDegrade(float num) {
 		jumpDegrade = num;
 	}
 
@@ -352,7 +342,7 @@ public abstract class Player extends GameObject {
 	//	return isSwimming;
 	//}
 
-	public void setIsSwimming(boolean t){
+	public void setIsSwimming(boolean t) {
 		isSwimming = t;
 	}
 
@@ -368,9 +358,7 @@ public abstract class Player extends GameObject {
 		if (playerState == PlayerState.HURTING) {
 			// sets animation to a DAMAGE animation based on which way player is facing
 			this.currentAnimationName = facingDirection == Direction.RIGHT ? "DAMAGE_STAND_RIGHT" : "DAMAGE_STAND_LEFT";
-		}
-
-		else if (playerState == PlayerState.STANDING) {
+		} else if (playerState == PlayerState.STANDING) {
 			// sets animation to a STAND animation based on which way player is facing
 			this.currentAnimationName = facingDirection == Direction.RIGHT ? "STAND_RIGHT" : "STAND_LEFT";
 
@@ -431,32 +419,34 @@ public abstract class Player extends GameObject {
 
 	// other entities can call this method to hurt the player
 	public void hurtPlayer(MapEntity mapEntity) {
-		if(oofTimer.isRunning() && isInvincible == false)
+		if (oofTimer.isRunning() && isInvincible == false)
 			oofTimer.stop();
-		
+
 		if (!isInvincible) {
 			// if map entity is an enemy, hurt player on touch
-			if (mapEntity instanceof Enemy) 
-			{
-				if (health >= 1) 
-				{
-					
-					if (mapEntity instanceof Net) 
-					{
-						if (health - 25 > 0)
-						{
+			if (mapEntity instanceof Enemy) {
+				if (health >= 1) {
+
+					if (mapEntity instanceof Net) {
+						if (health - 25 > 0) {
 							playerState = PlayerState.HURTING;
 							health -= 25;
-						}
-						
-						else 
-						{
+						} else {
 							health = 0;
 							levelState = LevelState.PLAYER_DEAD;
+
+							if (!isDead) {
+								try {
+									AudioPlayer loseSound = new AudioPlayer(false, "Resources/GameLose_Sound.wav");
+									loseSound.play();
+								} catch (Exception e) {
+									System.out.println("Error with sound");
+								}
+
+								isDead = true;
+							}
 						}
-					} 
-					
-					else {
+					} else {
 						if (level == 1) {
 							if (health - 2 > 0) {
 								playerState = PlayerState.HURTING;
@@ -465,8 +455,7 @@ public abstract class Player extends GameObject {
 								health = 0;
 								levelState = LevelState.PLAYER_DEAD;
 							}
-						}
-						else if (level == 2) {
+						} else if (level == 2) {
 							if (health - 4 > 0) {
 								playerState = PlayerState.HURTING;
 								health -= 4;
@@ -474,8 +463,7 @@ public abstract class Player extends GameObject {
 								health = 0;
 								levelState = LevelState.PLAYER_DEAD;
 							}
-						}
-						else if (level == 3) {
+						} else if (level == 3) {
 							if (health - 6 > 0) {
 								playerState = PlayerState.HURTING;
 								health -= 6;
@@ -483,8 +471,7 @@ public abstract class Player extends GameObject {
 								health = 0;
 								levelState = LevelState.PLAYER_DEAD;
 							}
-						}
-						else if (level == 4) {
+						} else if (level == 4) {
 							if (health - 8 > 0) {
 								playerState = PlayerState.HURTING;
 								health -= 8;
@@ -492,80 +479,101 @@ public abstract class Player extends GameObject {
 								health = 0;
 								levelState = LevelState.PLAYER_DEAD;
 							}
-						}
-						else if (level == 5) {
-							if (health - 10 > 0) {
-								playerState = PlayerState.HURTING;
-								health -= 10;
-							} else {
-								health = 0;
-								levelState = LevelState.PLAYER_DEAD;
-							}
-						}
-						else if (level == 6) {
-							if (health - 12 > 0) {
-								playerState = PlayerState.HURTING;
-								health -= 12;
-							} else {
-								health = 0;
-								levelState = LevelState.PLAYER_DEAD;
-							}
-						}
-						else if (level == 7) {
-							if (health - 14 > 0) {
-								playerState = PlayerState.HURTING;
-								health -= 14;
-							} else {
-								health = 0;
-								levelState = LevelState.PLAYER_DEAD;
-							}
-						}
-						else if (level == 8) {
-							if (health - 16 > 0) {
-								playerState = PlayerState.HURTING;
-								health -= 16;
-							} else {
-								health = 0;
-								levelState = LevelState.PLAYER_DEAD;
-							}
-						}
-						else if (level == 9) {
-							if (health - 18 > 0) {
-								playerState = PlayerState.HURTING;
-								health -= 18;
-							} else {
-								health = 0;
-								levelState = LevelState.PLAYER_DEAD;
-							}
-						}
-						else if (level == 10) {
-							if (health - 20 > 0) {
-								playerState = PlayerState.HURTING;
-								health -= 20;
-							} else {
-								health = 0;
-								levelState = LevelState.PLAYER_DEAD;
-							}
-						}
-
-					}
-
-						try { 
-							AudioPlayer hurtSound = new AudioPlayer (false,
-								"Resources/PlayerHurt_Sound.wav"); hurtSound.play(); }
-
-						catch(Exception e) { System.out.println("Error with sound"); }
-
-						if (health < 1)
+						}else if (level == 5) {
+								if (health - 10 > 0) {
+									playerState = PlayerState.HURTING;
+									health -= 10;
+								} else {
+									health = 0;
+									levelState = LevelState.PLAYER_DEAD;
+								}
+							} else if (level == 6) {
+								if (health - 12 > 0) {
+									playerState = PlayerState.HURTING;
+									health -= 12;
+								} else {
+									health = 0;
+									levelState = LevelState.PLAYER_DEAD;
+								}
+							} else if (level == 7) {
+								if (health - 14 > 0) {
+									playerState = PlayerState.HURTING;
+									health -= 14;
+								} else {
+									health = 0;
+									levelState = LevelState.PLAYER_DEAD;
+								}
+							} else if (level == 8) {
+								if (health - 16 > 0) {
+									playerState = PlayerState.HURTING;
+									health -= 16;
+								} else {
+									health = 0;
+									levelState = LevelState.PLAYER_DEAD;
+								}
+							} else if (level == 9) {
+								if (health - 18 > 0) {
+									playerState = PlayerState.HURTING;
+									health -= 18;
+								} else {
+									health = 0;
+									levelState = LevelState.PLAYER_DEAD;
+								}
+							} else if (level == 10) {
+								if (health - 20 > 0) {
+									playerState = PlayerState.HURTING;
+									health -= 20;
+								} else {
+									health = 0;
+									levelState = LevelState.PLAYER_DEAD;
+								}
+						} else {
+							health = 0;
 							levelState = LevelState.PLAYER_DEAD;
+
+							if (!isDead) {
+								try {
+									AudioPlayer loseSound = new AudioPlayer(false, "Resources/GameLose_Sound.wav");
+									loseSound.play();
+								} catch (Exception e) {
+									System.out.println("Error with sound");
+								}
+
+								isDead = true;
+							}
+						}
 					}
-					
-				} 
-				
-				else // player health at 0
+
+				}
+
+				try {
+					AudioPlayer hurtSound = new AudioPlayer(false,
+							"Resources/PlayerHurt_Sound.wav");
+					hurtSound.play();
+				} catch (Exception e) {
+					System.out.println("Error with sound");
+				}
+
+				if (health < 1) {
 					levelState = LevelState.PLAYER_DEAD;
+				}
+			} else // player health at 0
+			{
+				levelState = LevelState.PLAYER_DEAD;
+
+				if (!isDead) {
+					try {
+						AudioPlayer loseSound = new AudioPlayer(false, "Resources/GameLose_Sound.wav");
+						loseSound.play();
+					} catch (Exception e) {
+						System.out.println("Error with sound");
+					}
+
+					isDead = true;
+				}
 			}
-		
+		}
+
 		isInvincible = true;
 		oofTimer.start();
 	}

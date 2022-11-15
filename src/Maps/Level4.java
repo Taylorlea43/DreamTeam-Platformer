@@ -29,17 +29,17 @@ public class Level4 extends Map {
 
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>(); 
-
+        enemies.add(new PolarBearEnemy(getMapTile(10,13).getLocation(), Direction.LEFT));
+        enemies.add(new SealEnemy(getMapTile(40,6).getLocation(), Direction.LEFT));
+        enemies.add(new PolarBearEnemy(getMapTile(22, 13).getLocation(), Direction.LEFT));
+        enemies.add(new SealEnemy(getMapTile(63, 6).getLocation(), Direction.LEFT));
         return enemies;
     }
 
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
-        enemies.add(new PolarBearEnemy(getMapTile(10,6).getLocation(), Direction.LEFT));
-        enemies.add(new SealEnemy(getMapTile(40,6).getLocation(), Direction.LEFT));
-        enemies.add(new PolarBearEnemy(getMapTile(22, 6).getLocation(), Direction.LEFT));
-        enemies.add(new SealEnemy(getMapTile(63, 6).getLocation(), Direction.LEFT));
+        
 
         enhancedMapTiles.add(new EndLevelBox(getMapTile(73, 9).getLocation(), "penguin.png", key, 30, 26));
 

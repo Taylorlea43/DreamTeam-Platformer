@@ -1,6 +1,9 @@
 package Enemies;
 
+import java.awt.print.Printable;
 import java.util.HashMap;
+
+import javax.security.sasl.SaslException;
 
 import Builders.FrameBuilder;
 import Engine.ImageLoader;
@@ -15,49 +18,73 @@ import Utils.Direction;
 import Utils.Point;
 
 public class JellyfishEnemy extends Enemy {
-	private float gravity = 5.5f;
 	private float movementSpeed = 1.5f;
 	private Direction startFacingDirection;
 	private Direction facingDirection;
-	private AirGroundState airGroundState;
+	protected Point startLocation;
+	protected Point secondLocation;
+	protected Point thirdLocation;
+	protected Point endLocation;
+	protected JellyState jellyState;
+	protected JellyState previousJellyState;
+	static int cases = 0;
 
-	public JellyfishEnemy(Point location, Direction facingDirection) {
-	        super(location.x, location.y, new SpriteSheet(ImageLoader.load("JellyFishEnemy (1).png"), 23 , 29), "WALK_LEFT");
-
-	        this.startFacingDirection = facingDirection;
-	        this.initialize();
-	    }
+	public JellyfishEnemy(Point startLocation, Point secondLocation, Point thirdLocation, Point endLocation,
+			Direction facingDirection) {
+		super(startLocation.x, startLocation.y, new SpriteSheet(ImageLoader.load("JellyFishEnemy (1).png"), 23, 29),
+				"WALK_LEFT");
+		this.startLocation = startLocation;
+		this.secondLocation = secondLocation;
+		this.thirdLocation = thirdLocation;
+		this.endLocation = endLocation;
+		this.startFacingDirection = facingDirection;
+		this.initialize();
+	}
 
 	@Override
 	public void initialize() {
 		super.initialize();
+		jellyState = JellyState.WALK;
+		previousJellyState = jellyState;
 		facingDirection = startFacingDirection;
 		if (facingDirection == Direction.RIGHT) {
 			currentAnimationName = "WALK_RIGHT";
 		} else if (facingDirection == Direction.LEFT) {
 			currentAnimationName = "WALK_LEFT";
 		}
-		airGroundState = AirGroundState.GROUND;
 	}
 
 	@Override
 	public void update(Player player) {
+		float startBound = startLocation.x;
+		float secondBound = secondLocation.y;
+		float thirdBound = thirdLocation.x;
+		float endBound = endLocation.y;
 		float moveAmountX = 0;
 		float moveAmountY = 0;
 
-		// add gravity (if in air, this will cause bug to fall)
-		moveAmountY += gravity;
-
-		// if on ground, walk forward based on facing direction
-		if (airGroundState == AirGroundState.GROUND) {
-			if (facingDirection == Direction.RIGHT) {
-				moveAmountX += movementSpeed;
-			} else {
-				moveAmountX -= movementSpeed;
+		if (cases == 0) {
+			if ((getY() <= startBound) && (getY() <= secondBound)) {
+				moveAmountY += movementSpeed;
 			}
 		}
+		if ((getY() >= secondBound)) {
 
-		// move bug
+			moveAmountX -= movementSpeed;
+			cases = 1;
+
+		}
+		if ((cases == 1) && (getX() <= thirdBound)) {
+			moveAmountY -= movementSpeed;
+		}
+		if ((cases == 1) && (getY() < endBound)) {
+			moveAmountX += movementSpeed;
+
+		}
+		if (getX() == startBound) {
+			cases = 0;
+		}
+
 		moveYHandleCollision(moveAmountY);
 		moveXHandleCollision(moveAmountX);
 
@@ -84,13 +111,7 @@ public class JellyfishEnemy extends Enemy {
 		// if bug is colliding with the ground, change its air ground state to GROUND
 		// if it is not colliding with the ground, it means that it's currently in the
 		// air, so its air ground state is changed to AIR
-		if (direction == Direction.DOWN) {
-			if (hasCollided) {
-				airGroundState = AirGroundState.GROUND;
-			} else {
-				airGroundState = AirGroundState.AIR;
-			}
-		}
+
 	}
 
 	@Override
@@ -99,17 +120,21 @@ public class JellyfishEnemy extends Enemy {
 			{
 				put("WALK_RIGHT", new Frame[] {
 						new FrameBuilder(spriteSheet.getSprite(0, 0), 100).withScale(2)
-								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(0, 6, 33, 20).build(),
+								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(0, 6, 25, 20).build(),
 						new FrameBuilder(spriteSheet.getSprite(0, 1), 100).withScale(2)
-								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(0, 6, 33, 20).build() });
+								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(0, 6, 25, 20).build() });
 
 				put("WALK_LEFT",
 						new Frame[] {
-								new FrameBuilder(spriteSheet.getSprite(0, 0), 100).withScale(2).withBounds(0, 6, 33, 20)
+								new FrameBuilder(spriteSheet.getSprite(0, 0), 100).withScale(2).withBounds(0, 6, 25, 20)
 										.build(),
-								new FrameBuilder(spriteSheet.getSprite(0, 1), 100).withScale(2).withBounds(0, 6, 33, 20)
+								new FrameBuilder(spriteSheet.getSprite(0, 1), 100).withScale(2).withBounds(0, 6, 25, 20)
 										.build() });
 			}
 		};
+	}
+
+	public enum JellyState {
+		WALK
 	}
 }

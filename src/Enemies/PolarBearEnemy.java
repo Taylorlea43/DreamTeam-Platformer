@@ -16,17 +16,17 @@ import Utils.Point;
 
 public class PolarBearEnemy extends Enemy {
 	private float gravity = 5.5f;
-	private float movementSpeed = 1.5f;
+	private float movementSpeed = 5.5f;
 	private Direction startFacingDirection;
 	private Direction facingDirection;
 	private AirGroundState airGroundState;
 
 	public PolarBearEnemy(Point location, Direction facingDirection) {
-	        super(location.x, location.y, new SpriteSheet(ImageLoader.load("PolarBearEnemy.png"), 29 , 26), "WALK_LEFT");
+		super(location.x, location.y, new SpriteSheet(ImageLoader.load("PolarBearEnemy.png"), 29, 26), "WALK_LEFT");
 
-	        this.startFacingDirection = facingDirection;
-	        this.initialize();
-	    }
+		this.startFacingDirection = facingDirection;
+		this.initialize();
+	}
 
 	@Override
 	public void initialize() {
@@ -48,14 +48,23 @@ public class PolarBearEnemy extends Enemy {
 		// add gravity (if in air, this will cause bug to fall)
 		moveAmountY += gravity;
 
-		// if on ground, walk forward based on facing direction
-		if (airGroundState == AirGroundState.GROUND) {
-			if (facingDirection == Direction.RIGHT) {
+		if ((player.getX() > getX())) {
+			facingDirection = Direction.LEFT;
+			currentAnimationName = "WALK_RIGHT";
+
+			if (facingDirection == Direction.LEFT) {
 				moveAmountX += movementSpeed;
-			} else {
+			}
+		}
+		if ((player.getX() < getX())) {
+			facingDirection = Direction.RIGHT;
+			currentAnimationName = "WALK_LEFT";
+
+			if (facingDirection == Direction.RIGHT) {
 				moveAmountX -= movementSpeed;
 			}
 		}
+		// if on ground, walk forward based on facing direction
 
 		// move bug
 		moveYHandleCollision(moveAmountY);

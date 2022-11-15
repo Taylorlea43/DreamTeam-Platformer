@@ -20,13 +20,17 @@ public class CougarEnemy extends Enemy {
 	private Direction startFacingDirection;
 	private Direction facingDirection;
 	private AirGroundState airGroundState;
+	protected Point startLocation;
+	protected Point endLocation;
 
-	public CougarEnemy(Point location, Direction facingDirection) {
-	        super(location.x, location.y, new SpriteSheet(ImageLoader.load("CougarEnemy.png"), 40 , 28), "WALK_LEFT");
-
-	        this.startFacingDirection = facingDirection;
-	        this.initialize();
-	    }
+	public CougarEnemy(Point startLocation, Point endLocation, Direction facingDirection) {
+		super(startLocation.x, startLocation.y, new SpriteSheet(ImageLoader.load("CougarEnemy.png"), 40, 28),
+				"WALK_RIGHT");
+		this.startLocation = startLocation;
+		this.endLocation = endLocation;
+		this.startFacingDirection = facingDirection;
+		this.initialize();
+	}
 
 	@Override
 	public void initialize() {
@@ -42,24 +46,35 @@ public class CougarEnemy extends Enemy {
 
 	@Override
 	public void update(Player player) {
-		float moveAmountX = 0;
-		float moveAmountY = 0;
+		float startBound = startLocation.x;
+		float endBound = endLocation.x;
 
-		// add gravity (if in air, this will cause bug to fall)
-		moveAmountY += gravity;
-
-		// if on ground, walk forward based on facing direction
-		if (airGroundState == AirGroundState.GROUND) {
-			if (facingDirection == Direction.RIGHT) {
-				moveAmountX += movementSpeed;
-			} else {
-				moveAmountX -= movementSpeed;
-			}
+		if (facingDirection == Direction.RIGHT) {
+			currentAnimationName = "WALK_RIGHT";
+			moveXHandleCollision(movementSpeed);
+		} else {
+			currentAnimationName = "WALK_LEFT";
+			moveXHandleCollision(-movementSpeed);
 		}
+			// if dinosaur reaches the start or end location, it turns around
+			// dinosaur may end up going a bit past the start or end location depending on
+			// movement speed
+			// this calculates the difference and pushes the enemy back a bit so it ends up
+			// right on the start or end location
+			if (getX1() + getWidth() >= endBound) {
+				float difference = endBound - (getX2());
+				moveXHandleCollision(-difference);
+				facingDirection = Direction.LEFT;
+			} else if (getX1() <= startBound) {
+				float difference = startBound - getX1();
+				moveXHandleCollision(difference);
+				facingDirection = Direction.RIGHT;
+			}
 
-		// move bug
-		moveYHandleCollision(moveAmountY);
-		moveXHandleCollision(moveAmountX);
+			// move bug
+
+		
+		
 
 		super.update(player);
 	}

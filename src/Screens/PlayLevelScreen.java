@@ -203,6 +203,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				System.out.println("Error with playing sound.");
 				e.printStackTrace();
 			}
+			
 
 			// end level
 			levelClearedScreen = new LevelClearedScreen(this);

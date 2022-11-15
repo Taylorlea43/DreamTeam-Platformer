@@ -29,7 +29,6 @@ public class WolfEnemy extends Enemy {
 
 	public WolfEnemy(Point location, Direction facingDirection) {
 		super(location.x, location.y, new SpriteSheet(ImageLoader.load("WolfEnemy.png"), 48, 30), "WALK_LEFT");
-
 		this.startFacingDirection = facingDirection;
 		this.initialize();
 	}

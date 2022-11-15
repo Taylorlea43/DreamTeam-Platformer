@@ -22,7 +22,7 @@ import java.util.HashMap;
 public class WolfEnemy extends Enemy {
 
     private float gravity = .5f;
-    private float movementSpeed = .5f;
+    private float movementSpeed = 1.0f;
     private Direction startFacingDirection;
     private Direction facingDirection;
     private AirGroundState airGroundState;

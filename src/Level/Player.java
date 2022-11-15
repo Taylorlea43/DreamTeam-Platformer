@@ -55,8 +55,9 @@ public abstract class Player extends GameObject {
 	public boolean isInvincible = false; // if true, player cannot be hurt by enemies (good for testing)
 	public OofTimer oofTimer = new OofTimer(this);
 	protected Stopwatch hurtTimer = new Stopwatch();
+	public int level;
 
-	public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName, boolean isSwimming) {
+	public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName, boolean isSwimming, int level) {
 		super(spriteSheet, x, y, startingAnimationName);
 		facingDirection = Direction.RIGHT;
 		airGroundState = AirGroundState.AIR;
@@ -66,6 +67,7 @@ public abstract class Player extends GameObject {
 		levelState = LevelState.RUNNING;
 		this.isSwimming = isSwimming;
 		this.isSwimming = false;
+		this.level =  level;
 	}
 
 	public void update() {
@@ -454,19 +456,99 @@ public abstract class Player extends GameObject {
 						}
 					} 
 					
-					else 
-					{
-						if (health - 10 > 0)
-						{
-							playerState = PlayerState.HURTING;
-							health -= 10;
+					else {
+						if (level == 1) {
+							if (health - 2 > 0) {
+								playerState = PlayerState.HURTING;
+								health -= 2;
+							} else {
+								health = 0;
+								levelState = LevelState.PLAYER_DEAD;
+							}
 						}
-						
-						else
-						{
-							health = 0;
-							levelState = LevelState.PLAYER_DEAD;
+						else if (level == 2) {
+							if (health - 4 > 0) {
+								playerState = PlayerState.HURTING;
+								health -= 4;
+							} else {
+								health = 0;
+								levelState = LevelState.PLAYER_DEAD;
+							}
 						}
+						else if (level == 3) {
+							if (health - 6 > 0) {
+								playerState = PlayerState.HURTING;
+								health -= 6;
+							} else {
+								health = 0;
+								levelState = LevelState.PLAYER_DEAD;
+							}
+						}
+						else if (level == 4) {
+							if (health - 8 > 0) {
+								playerState = PlayerState.HURTING;
+								health -= 8;
+							} else {
+								health = 0;
+								levelState = LevelState.PLAYER_DEAD;
+							}
+						}
+						else if (level == 5) {
+							if (health - 10 > 0) {
+								playerState = PlayerState.HURTING;
+								health -= 10;
+							} else {
+								health = 0;
+								levelState = LevelState.PLAYER_DEAD;
+							}
+						}
+						else if (level == 6) {
+							if (health - 12 > 0) {
+								playerState = PlayerState.HURTING;
+								health -= 12;
+							} else {
+								health = 0;
+								levelState = LevelState.PLAYER_DEAD;
+							}
+						}
+						else if (level == 7) {
+							if (health - 14 > 0) {
+								playerState = PlayerState.HURTING;
+								health -= 14;
+							} else {
+								health = 0;
+								levelState = LevelState.PLAYER_DEAD;
+							}
+						}
+						else if (level == 8) {
+							if (health - 16 > 0) {
+								playerState = PlayerState.HURTING;
+								health -= 16;
+							} else {
+								health = 0;
+								levelState = LevelState.PLAYER_DEAD;
+							}
+						}
+						else if (level == 9) {
+							if (health - 18 > 0) {
+								playerState = PlayerState.HURTING;
+								health -= 18;
+							} else {
+								health = 0;
+								levelState = LevelState.PLAYER_DEAD;
+							}
+						}
+						else if (level == 10) {
+							if (health - 20 > 0) {
+								playerState = PlayerState.HURTING;
+								health -= 20;
+							} else {
+								health = 0;
+								levelState = LevelState.PLAYER_DEAD;
+							}
+						}
+
+					}
 
 						try { 
 							AudioPlayer hurtSound = new AudioPlayer (false,
@@ -483,7 +565,6 @@ public abstract class Player extends GameObject {
 				else // player health at 0
 					levelState = LevelState.PLAYER_DEAD;
 			}
-		}
 		
 		isInvincible = true;
 		oofTimer.start();

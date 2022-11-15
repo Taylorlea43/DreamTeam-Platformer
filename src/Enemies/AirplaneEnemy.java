@@ -19,7 +19,7 @@ import Utils.Stopwatch;
 public class AirplaneEnemy extends Enemy {
 
 	private float gravity = 10f;
-	private float movementSpeed = 1.5f;
+	private float movementSpeed = 2.0f;
 	private Direction startFacingDirection;
 	private Direction facingDirection;
 	private AirGroundState airGroundState;

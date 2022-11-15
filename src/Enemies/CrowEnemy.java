@@ -20,7 +20,7 @@ import Utils.Point;
 public class CrowEnemy extends Enemy {
 
     private float gravity = 10f;
-    private float movementSpeed = 1.5f;
+    private float movementSpeed = 2.0f;
     private Direction startFacingDirection;
     private Direction facingDirection;
     private AirGroundState airGroundState;

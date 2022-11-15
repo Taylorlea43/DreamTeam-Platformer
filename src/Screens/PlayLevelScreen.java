@@ -59,7 +59,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected BlinkTimer blinkTimer;
 	protected SpriteFont healthBar;
 	public int timeElapsed;
-	public ClockTimer timer;
+	public static ClockTimer timer;
 
 	public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
 		this.screenCoordinator = screenCoordinator;

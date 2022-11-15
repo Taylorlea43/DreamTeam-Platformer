@@ -542,7 +542,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			this.map = new Level8();
 			map.reset();
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 8);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -575,10 +575,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin45.setBounds(new Rectangle(1, 1, 16, 16));
 			coin45.setMap(map);
 
-<<<<<<< HEAD
+
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 8);
-=======
->>>>>>> 350fadf4751e6aba8ea28e25c5e191bdb92d7e70
 
 			
 		

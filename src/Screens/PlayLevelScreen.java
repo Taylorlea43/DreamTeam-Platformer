@@ -59,7 +59,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected BlinkTimer blinkTimer;
 	protected SpriteFont healthBar;
 	public int timeElapsed;
-	public ClockTimer timer;
+	public static ClockTimer timer;
 
 	public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
 		this.screenCoordinator = screenCoordinator;
@@ -713,7 +713,16 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new GameCompleteMap();
 			map.reset();
 			this.playLevelScreenState = PlayLevelScreenState.GAME_WON;
-
+			
+			/*
+			try {
+				levelMusic = new AudioPlayer(true, "Resources/GameMusicCelebrate_Sound.wav");
+				levelMusic.play();
+			} catch (Exception e) {
+				System.out.println("Error with playing sound.");
+				e.printStackTrace();
+			}
+			 */
 		}
 	}
 

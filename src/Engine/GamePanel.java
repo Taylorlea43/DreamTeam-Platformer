@@ -1,7 +1,7 @@
 package Engine;
 
 import GameObject.Rectangle;
-
+import Screens.PlayLevelScreen;
 import SpriteFont.SpriteFont;
 import Utils.Colors;
 
@@ -119,7 +119,8 @@ public class GamePanel extends JPanel {
 	public void updatePause() {
 		if (Keyboard.isKeyDown(pauseKey) && !keyLocker.isKeyLocked(pauseKey)) {
 			isGamePaused = !isGamePaused;
-			keyLocker.lockKey(pauseKey); 
+			keyLocker.lockKey(pauseKey);
+			PlayLevelScreen.timer.toggle();
 		}
 
 		if (Keyboard.isKeyUp(pauseKey)) 

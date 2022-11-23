@@ -422,48 +422,62 @@ public abstract class Player extends GameObject {
 		if (oofTimer.isRunning() && isInvincible == false)
 			oofTimer.stop();
 
-		if (!isInvincible) {
+		if (!isInvincible) 
+		{
 			// if map entity is an enemy, hurt player on touch
-			if (mapEntity instanceof Enemy) {
-				if (health >= 1) {
-
-					if (mapEntity instanceof Net) {
-						if (health - 25 > 0) {
+			if (mapEntity instanceof Enemy) 
+			{
+				if (health >= 1) 
+				{
+					if (mapEntity instanceof Net) 
+					{
+						if (health - 25 > 0) 
+						{
 							playerState = PlayerState.HURTING;
 							health -= 25;
-						} else {
-							health = 0;
-							levelState = LevelState.PLAYER_DEAD;
+						} 
+						
+						else
+							killPlayer();
 
-							if (!isDead) {
-								try {
-									AudioPlayer loseSound = new AudioPlayer(false, "Resources/GameLose_Sound.wav");
-									loseSound.play();
-								} catch (Exception e) {
-									System.out.println("Error with sound");
-								}
-
-								isDead = true;
-							}
-						}
-					} else {
-						if (level == 1) {
-							if (health - 2 > 0) {
+					} 
+					
+					else //not net 
+					{
+						if (level == 0)
+						{
+							if (health - 2 > 0)
+							{
 								playerState = PlayerState.HURTING;
 								health -= 2;
-							} else {
-								health = 0;
-								levelState = LevelState.PLAYER_DEAD;
 							}
-						} else if (level == 2) {
-							if (health - 4 > 0) {
+							else
+								killPlayer();
+						}
+						
+						if (level == 1) 
+						{
+							if (health - 5 > 0) 
+							{
 								playerState = PlayerState.HURTING;
-								health -= 4;
-							} else {
-								health = 0;
-								levelState = LevelState.PLAYER_DEAD;
+								health -= 5;
+							} 		
+							else
+								killPlayer();	
+						} 
+						
+						else if (level == 2) 
+						{
+							if (health - 7 > 0) 
+							{
+								playerState = PlayerState.HURTING;
+								health -= 7;
 							}
-						} else if (level == 3) {
+							else
+								killPlayer();
+	
+						} 
+						else if (level == 3) {
 							if (health - 6 > 0) {
 								playerState = PlayerState.HURTING;
 								health -= 6;
@@ -527,24 +541,11 @@ public abstract class Player extends GameObject {
 									health = 0;
 									levelState = LevelState.PLAYER_DEAD;
 								}
-						} else {
-							health = 0;
-							levelState = LevelState.PLAYER_DEAD;
-
-							if (!isDead) {
-								try {
-									AudioPlayer loseSound = new AudioPlayer(false, "Resources/GameLose_Sound.wav");
-									loseSound.play();
-								} catch (Exception e) {
-									System.out.println("Error with sound");
-								}
-
-								isDead = true;
-							}
-						}
+							} else
+								killPlayer();
 					}
-
 				}
+			}
 
 				try {
 					AudioPlayer hurtSound = new AudioPlayer(false,
@@ -553,31 +554,31 @@ public abstract class Player extends GameObject {
 				} catch (Exception e) {
 					System.out.println("Error with sound");
 				}
-
-				if (health < 1) {
-					levelState = LevelState.PLAYER_DEAD;
-				}
 			} else // player health at 0
-			{
-				levelState = LevelState.PLAYER_DEAD;
+				killPlayer();
 
-				if (!isDead) {
-					try {
-						AudioPlayer loseSound = new AudioPlayer(false, "Resources/GameLose_Sound.wav");
-						loseSound.play();
-					} catch (Exception e) {
-						System.out.println("Error with sound");
-					}
-
-					isDead = true;
-				}
-			}
-		}
 
 		isInvincible = true;
 		oofTimer.start();
 	}
 
+	public void killPlayer()
+	{
+		health = 0;
+		levelState = LevelState.PLAYER_DEAD;
+		
+		if (!isDead) {
+			try {
+				AudioPlayer loseSound = new AudioPlayer(false, "Resources/GameLose_Sound.wav");
+				loseSound.play();
+			} catch (Exception e) {
+				System.out.println("Error with sound");
+			}
+
+			isDead = true;
+		}
+	}
+	
 	public boolean isDead() {
 		return (levelState == LevelState.PLAYER_DEAD);
 	}

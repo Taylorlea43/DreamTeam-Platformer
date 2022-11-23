@@ -16,9 +16,7 @@ import java.awt.image.BufferedImage;
  * The JPanel uses a timer to continually call cycles of update and draw
  */
 public class GamePanel extends JPanel {
-	// loads Screens on to the JPanel
-	// each screen has its own update and draw methods defined to handle a "section"
-	// of the game.
+	// loads Screens on to the JPanel each screen has its own update and draw methods defined to handle a "section" of the game.
 	private ScreenManager screenManager;
 
 	// used to create the game loop and cycle between update and draw calls
@@ -46,7 +44,8 @@ public class GamePanel extends JPanel {
 	/*
 	 * The JPanel and various important class instances are setup here
 	 */
-	public GamePanel() {
+	public GamePanel() 
+	{
 		super();
 		this.setDoubleBuffered(true);
 
@@ -61,12 +60,9 @@ public class GamePanel extends JPanel {
 		pauseLabel.setOutlineColor(Color.black);
 		pauseLabel.setOutlineThickness(2.0f);
 
-		// Every timer "tick" will call the update method as well as tell the JPanel to
-		// repaint
-		// Remember that repaint "schedules" a paint rather than carries it out
-		// immediately
-		// If the game is really laggy/slow, I would consider upping the FPS in the
-		// Config file.
+		// Every timer "tick" will call the update method as well as tell the JPanel to repaint
+		// Remember that repaint "schedules" a paint rather than carries it out immediately
+		// If the game is really laggy/slow, I would consider upping the FPS in the Config file.
 		timer = new Timer(1000 / Config.FPS, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				updatePause();
@@ -107,15 +103,16 @@ public class GamePanel extends JPanel {
 
 		screenwidth2 = GameWindow.gameWindow.getWidth();
 		screenheight2 = GameWindow.gameWindow.getHeight();
-
 	}
 
 	// this starts the timer (the game loop is started here
-	public void startGame() {
+	public void startGame() 
+	{
 		timer.start();
 	}
 
-	public ScreenManager getScreenManager() {
+	public ScreenManager getScreenManager() 
+	{
 		return screenManager;
 	}
 
@@ -125,17 +122,19 @@ public class GamePanel extends JPanel {
 			keyLocker.lockKey(pauseKey); 
 		}
 
-		if (Keyboard.isKeyUp(pauseKey)) {
+		if (Keyboard.isKeyUp(pauseKey)) 
+		{
 			keyLocker.unlockKey(pauseKey);
 		}
 
-		if (!isGamePaused) {
+		if (!isGamePaused) 
+		{
 			screenManager.update();
 		}
-
 	}
 
-	public void updateFullscreen() {
+	public void updateFullscreen() 
+	{
 		if (Keyboard.isKeyDown(FULLSCREEN_KEY) && !keyLocker.isKeyLocked(FULLSCREEN_KEY)) {
 			isGameFullscreen = !isGameFullscreen;
 			keyLocker.lockKey(FULLSCREEN_KEY);
@@ -170,25 +169,27 @@ public class GamePanel extends JPanel {
 		}
 	}
 
-	public void drawToScreen() {
+	public void drawToScreen() 
+	{
 		Graphics g = getGraphics();
 		g.drawImage(tempScreen, 0, 0, screenwidth2, screenheight2, null);
 		g.dispose();
 	}
 
-	public void drawToTemp() {
+	public void drawToTemp() 
+	{
 		graphicsHandler.setGraphics((Graphics2D) g2);
-		if (doPaint) {
+		if (doPaint) 
+		{
 			draw();
 		}
 	}
 
 	@Override
-	protected void paintComponent(Graphics g) {
+	protected void paintComponent(Graphics g) 
+	{
 		super.paintComponent(g);
-		// every repaint call will schedule this method to be called
-		// when called, it will setup the graphics handler and then call this class's
-		// draw method
+		// every repaint call will schedule this method to be called when called, it will setup the graphics handler and then call this class's draw method
 		graphicsHandler.setGraphics((Graphics2D) g);
 		if (doPaint) {
 			draw();

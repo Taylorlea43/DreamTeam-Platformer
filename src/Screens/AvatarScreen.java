@@ -28,7 +28,7 @@ public class AvatarScreen extends Screen
 //        background = new TitleScreenMap();
 //        background.setAdjustCamera(false);
         
-        avatarLabel = new SpriteFont("CHOOSE YOUR AVATAR", 100, 100, "Times New Roman", 60, Color.white);
+        avatarLabel = new SpriteFont("CHOOSE YOUR AVATAR", 175, 100, "Times New Roman", 60, Color.white);
         keyLocker.lockKey(Key.SPACE);
 	}
 

@@ -1,3 +1,4 @@
+
 package Screens;
 
 import java.awt.Color;
@@ -59,7 +60,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected BlinkTimer blinkTimer;
 	protected SpriteFont healthBar;
 	public int timeElapsed;
-	public ClockTimer timer;
+	public static ClockTimer timer;
 
 	public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
 		this.screenCoordinator = screenCoordinator;
@@ -134,7 +135,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 					new Color(49, 207, 240));
 			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 35, "Comic Sans", 23,
 					new Color(49, 207, 240));
-			this.healthBar.setOutlineColor(Color.black); 
+			this.healthBar.setOutlineColor(Color.black);
 			this.healthBar.setOutlineThickness(3);
 
 			this.keyStatusBar = new SpriteFont("Key: ", 15, 110, "Comic Sans", 23, new Color(49, 207, 240));
@@ -181,7 +182,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin10.setMap(map);
 
 			// setup key
-			this.key = new LevelKey(955, 450, "pixelKey.png");
+			this.key = new LevelKey(1230, 375, "pixelKey.png");
 			key.setMap(map);
 
 			this.keyStatus = new SpriteFont(" ", 75, 100, "Comic Sans", 23, new Color(250, 204, 77));
@@ -249,7 +250,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			// setup key
-			this.key = new LevelKey(955, 450, "pixelKey.png");
+			this.key = new LevelKey(500, 210, "pixelKey.png");
 			key.setMap(map);
 
 			// setup AudioPlayer
@@ -305,7 +306,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			// setup key
-			this.key = new LevelKey(450, 450, "pixelKey.png");
+			this.key = new LevelKey(2180, 290, "pixelKey.png");
 			key.setMap(map);
 
 			// setup AudioPlayer
@@ -361,7 +362,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			// setup key
-			this.key = new LevelKey(955, 450, "pixelKey.png");
+			this.key = new LevelKey(1820, 540, "pixelKey.png");
 			key.setMap(map);
 
 			// setup AudioPlayer
@@ -415,7 +416,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			// setup key
-			this.key = new LevelKey(200, 450, "pixelKey.png");
+			this.key = new LevelKey(455, 1585, "pixelKey.png");
 			key.setMap(map);
 
 			try {
@@ -468,7 +469,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin30.setMap(map);
 
 			// setup key
-			this.key = new LevelKey(650, 450, "pixelKey.png");
+			this.key = new LevelKey(1275, 790, "pixelKey.png");
 			key.setMap(map);
 
 			try {
@@ -521,7 +522,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin40.setMap(map);
 
 			// setup key
-			this.key = new LevelKey(700, 450, "pixelKey.png");
+			this.key = new LevelKey(2500, 500, "pixelKey.png");
 			key.setMap(map);
 
 
@@ -575,14 +576,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin45.setBounds(new Rectangle(1, 1, 16, 16));
 			coin45.setMap(map);
 
-
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 8);
 
-			
-		
-
 			// setup key
-			this.key = new LevelKey(700, 450, "pixelKey.png");
+			this.key = new LevelKey(2000, 585, "pixelKey.png");
 			key.setMap(map);
 
 			try {
@@ -615,7 +612,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			// setup key
-			this.key = new LevelKey(700, 450, "pixelKey.png");
+			this.key = new LevelKey(2320, 460, "pixelKey.png");
 			key.setMap(map);
 
 			//setup coins
@@ -668,7 +665,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			// setup key
-			this.key = new LevelKey(700, 450, "pixelKey.png");
+			this.key = new LevelKey(1685, 335, "pixelKey.png");
 			key.setMap(map);
 
 			//setup coins
@@ -713,7 +710,16 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new GameCompleteMap();
 			map.reset();
 			this.playLevelScreenState = PlayLevelScreenState.GAME_WON;
-
+			
+			/*
+			try {
+				levelMusic = new AudioPlayer(true, "Resources/GameMusicCelebrate_Sound.wav");
+				levelMusic.play();
+			} catch (Exception e) {
+				System.out.println("Error with playing sound.");
+				e.printStackTrace();
+			}
+			 */
 		}
 	}
 
@@ -857,17 +863,17 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				player.draw(graphicsHandler);
 
 
-				if (currLevel != 11) 
+				if (currLevel != 11)
 				{
 					if (!blink)
 						healthBar.draw(graphicsHandler);
-					
+
 					gameTimer.draw(graphicsHandler);
 					coinCounter.draw(graphicsHandler);
 					keyStatusBar.draw(graphicsHandler);
 					keyStatus.draw(graphicsHandler);
 				}
-				
+
 				gameTimer.draw(graphicsHandler);
 				coinCounter.draw(graphicsHandler);
 				keyStatusBar.draw(graphicsHandler);
@@ -1087,7 +1093,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public void goBackToMenu() {
 		screenCoordinator.setGameState(GameState.MENU);
 		blinkTimer.healthReset();
-		
+
 		try {
 			loseMusic.stop();
 		} catch (Exception e) {
@@ -1119,7 +1125,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			try {
 				levelMusic.stop();
-				
+
 				loseMusic = new AudioPlayer(true, "Resources/GameMusicLose_Sound.wav");
 				loseMusic.play();
 			} catch (Exception e) {
@@ -1137,7 +1143,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		}
 		catch(Exception e) {
 		}
-		
+
 		initialize();
 	}
 
@@ -1185,7 +1191,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		} else if (currLevel == 10) {
 			coinCount = coinCount9 + coin51.getCoinCount() + coin52.getCoinCount() + coin53.getCoinCount() + coin54.getCoinCount() + coin55.getCoinCount();
 		}
-			return coinCount;
+		return coinCount;
 	}
 }
-

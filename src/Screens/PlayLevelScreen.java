@@ -181,7 +181,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin10.setMap(map);
 
 			// setup key
-			this.key = new LevelKey(955, 450, "pixelKey.png");
+			this.key = new LevelKey(1230, 375, "pixelKey.png");
 			key.setMap(map);
 
 			this.keyStatus = new SpriteFont(" ", 75, 100, "Comic Sans", 23, new Color(250, 204, 77));
@@ -249,7 +249,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			// setup key
-			this.key = new LevelKey(955, 450, "pixelKey.png");
+			this.key = new LevelKey(500, 210, "pixelKey.png");
 			key.setMap(map);
 
 			// setup AudioPlayer
@@ -305,7 +305,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			// setup key
-			this.key = new LevelKey(450, 450, "pixelKey.png");
+			this.key = new LevelKey(2180, 290, "pixelKey.png");
 			key.setMap(map);
 
 			// setup AudioPlayer
@@ -361,7 +361,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			// setup key
-			this.key = new LevelKey(955, 450, "pixelKey.png");
+			this.key = new LevelKey(1820, 540, "pixelKey.png");
 			key.setMap(map);
 
 			// setup AudioPlayer
@@ -415,7 +415,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			// setup key
-			this.key = new LevelKey(200, 450, "pixelKey.png");
+			this.key = new LevelKey(455, 1585, "pixelKey.png");
 			key.setMap(map);
 
 			try {
@@ -468,7 +468,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin30.setMap(map);
 
 			// setup key
-			this.key = new LevelKey(650, 450, "pixelKey.png");
+			this.key = new LevelKey(1275, 790, "pixelKey.png");
 			key.setMap(map);
 
 			try {
@@ -521,7 +521,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin40.setMap(map);
 
 			// setup key
-			this.key = new LevelKey(700, 450, "pixelKey.png");
+			this.key = new LevelKey(2500, 500, "pixelKey.png");
 			key.setMap(map);
 
 
@@ -575,14 +575,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin45.setBounds(new Rectangle(1, 1, 16, 16));
 			coin45.setMap(map);
 
-
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 8);
 
-			
-		
-
 			// setup key
-			this.key = new LevelKey(700, 450, "pixelKey.png");
+			this.key = new LevelKey(2000, 585, "pixelKey.png");
 			key.setMap(map);
 
 			try {
@@ -615,7 +611,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			// setup key
-			this.key = new LevelKey(700, 450, "pixelKey.png");
+			this.key = new LevelKey(2320, 460, "pixelKey.png");
 			key.setMap(map);
 
 			//setup coins
@@ -668,7 +664,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			// setup key
-			this.key = new LevelKey(700, 450, "pixelKey.png");
+			this.key = new LevelKey(1685, 335, "pixelKey.png");
 			key.setMap(map);
 
 			//setup coins

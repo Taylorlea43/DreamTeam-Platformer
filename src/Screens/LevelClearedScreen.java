@@ -7,6 +7,7 @@ import Engine.KeyLocker;
 import Engine.Keyboard;
 import Engine.Screen;
 import Engine.ScreenManager;
+import GameObject.Sprite;
 import Sounds.AudioPlayer;
 import SpriteFont.SpriteFont;
 
@@ -14,8 +15,8 @@ import java.awt.*;
 
 // This class is for the level cleared screen
 public class LevelClearedScreen extends Screen {
-	protected SpriteFont winMessage;
-	protected SpriteFont instructions;
+	protected SpriteFont winMessage, instructions;
+	private Sprite elephantUncaged, girrafeUncaged, bunnyUncaged, lionUncaged, sharkUncaged, mountainGoatUncaged, monkeyUncaged, penguinUncaged, parrotUncaged, lizardUncaged, girl;
 	protected KeyLocker keyLocker = new KeyLocker();
 	protected PlayLevelScreen playLevelScreen;
 	public int currLevel;
@@ -36,13 +37,26 @@ public class LevelClearedScreen extends Screen {
 			instructions = new SpriteFont("Press Space to go to the next Level or Escape to go back to the Main Menu", 320, 300, "Comic Sans", 20, Color.white);
 			keyLocker.lockKey(Key.SPACE);
 	        keyLocker.lockKey(Key.ESC); 
-		}
-		else 
-		{
-			winMessage = new SpriteFont("Level Cleared", Config.GAME_WINDOW_WIDTH/2-100, Config.GAME_WINDOW_HEIGHT/2-100, "Comic Sans", 30, Color.white);
-			instructions = new SpriteFont("Turd", 320, 300, "Comic Sans", 20, Color.white);
-			keyLocker.lockKey(Key.SPACE);
-	        keyLocker.lockKey(Key.ESC); 
+		} else if (currLevel == 1) {
+			
+		} else if (currLevel == 2) {
+			
+		} else if (currLevel == 3) {
+			
+		} else if (currLevel == 4) {
+			
+		} else if (currLevel == 5) {
+			
+		} else if (currLevel == 6) {
+			
+		} else if (currLevel == 7) {
+			
+		} else if (currLevel == 8) {
+			
+		} else if (currLevel == 9) {
+			
+		} else if (currLevel == 10) {
+			
 		}
  
 	}

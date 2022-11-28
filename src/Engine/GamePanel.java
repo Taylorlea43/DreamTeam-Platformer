@@ -146,8 +146,8 @@ public class GamePanel extends JPanel {
 		
 		if  (Keyboard.isKeyUp(QUIT)) 
 		{
+			System.exit(0);			
 			keyLocker.unlockKey(QUIT);
-			System.exit(0);
 		}
 	}
 

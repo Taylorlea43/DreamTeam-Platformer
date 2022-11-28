@@ -184,7 +184,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.key = new LevelKey(955, 450, "pixelKey.png");
 			key.setMap(map);
 
-			this.keyStatus = new SpriteFont(" ", 75, 100, "Comic Sans", 23, new Color(250, 204, 77));
+			this.keyStatus = new SpriteFont(" ", 75, 110, "Comic Sans", 23, new Color(250, 204, 77));
 			this.keyStatus.setOutlineColor(Color.black);
 			this.keyStatus.setOutlineThickness(3);
 			// setup player
@@ -542,6 +542,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			this.map = new Level8();
 			map.reset();
+
 			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 8);
 			this.player.setMap(map);
 			this.player.addListener(this);
@@ -563,7 +564,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin42.setBounds(new Rectangle(1, 1, 16, 16));
 			coin42.setMap(map);
 
-			this.coin43 = new Coin(1255, 415);
+			this.coin43 = new Coin(1455, 415);
 			coin43.setBounds(new Rectangle(1, 1, 16, 16));
 			coin43.setMap(map);
 
@@ -575,8 +576,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin45.setBounds(new Rectangle(1, 1, 16, 16));
 			coin45.setMap(map);
 
-
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 8);
 
 			
 		
@@ -713,6 +712,13 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new GameCompleteMap();
 			map.reset();
 			this.playLevelScreenState = PlayLevelScreenState.GAME_WON;
+
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 10);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			Point playerStartPosition = map.getPlayerStartPosition();
+			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 		}
 	}

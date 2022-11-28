@@ -6,7 +6,9 @@ import Engine.Screen;
 import Screens.CreditsScreen;
 import Screens.GameWonScreen;
 import Screens.MenuScreen;
+import Screens.AvatarScreen;
 import Screens.PlayLevelScreen;
+import Screens.InstructionScreen;
 
 /*
  * Based on the current game state, this class determines which Screen should be shown
@@ -51,6 +53,16 @@ public class ScreenCoordinator extends Screen {
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);
 						break;
+					case AVATAR:
+						currentScreen = new AvatarScreen(this);
+						break;
+					case INSTUCTIONS:
+						currentScreen = new InstructionScreen(this);
+						break;
+				case WON:
+					break;
+				default:
+					break;
 				}
 				currentScreen.initialize();
 			}

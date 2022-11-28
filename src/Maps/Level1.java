@@ -35,10 +35,6 @@ public class Level1 extends Map
 		enemies.add(new ScorpionEnemy(getMapTile(49, 16).getLocation().addY(20), Direction.LEFT));
 		enemies.add(new ScorpionEnemy(getMapTile(16, 15).getLocation().addY(20), Direction.LEFT));
 
-		//enemies.add(new ZookeeperEnemy(getMapTile(15, 6).getLocation().addY(10), Direction.LEFT));
-
-		//enemies.add(new DinosaurEnemy(getMapTile(19, 1).getLocation().addY(2), getMapTile(22, 1).getLocation().addY(2),
-				//Direction.RIGHT));
 		return enemies;
 	}
 
@@ -46,22 +42,9 @@ public class Level1 extends Map
 	public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
 		ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
-//		enhancedMapTiles.add(new HorizontalMovingPlatform(ImageLoader.load("GreenPlatform.png"),
-//				getMapTile(24, 6).getLocation(), getMapTile(27, 6).getLocation(), TileType.JUMP_THROUGH_PLATFORM, 3,
-//				new Rectangle(0, 6, 16, 4), Direction.RIGHT));
-
 		enhancedMapTiles.add(new EndLevelBox(getMapTile(72, 10).getLocation(), "Lizard2.png", key, 24, 24));
 
 		return enhancedMapTiles;
 	}
-	
-	//@Override
-	//public ArrayList<NPC> loadNPCs() {
-		//ArrayList<NPC> npcs = new ArrayList<>();
-
-		//npcs.add(new Walrus(getMapTile(30, 10).getLocation().subtractY(13)));
-
-		//return npcs;
-	//}
 
 }

@@ -18,6 +18,7 @@ public class LevelClearedScreen extends Screen {
 	protected SpriteFont instructions;
 	protected KeyLocker keyLocker = new KeyLocker();
 	protected PlayLevelScreen playLevelScreen;
+	public int currLevel;
 
 	public LevelClearedScreen(PlayLevelScreen playLevelScreen) 
 	{
@@ -29,14 +30,26 @@ public class LevelClearedScreen extends Screen {
 	@Override
 	public void initialize() 
 	{
-		winMessage = new SpriteFont("Level Cleared", Config.GAME_WINDOW_WIDTH/2-100, Config.GAME_WINDOW_HEIGHT/2-100, "Comic Sans", 30, Color.white);
-		instructions = new SpriteFont("Press Space to go to the next Level or Escape to go back to the Main Menu", 320, 300, "Comic Sans", 20, Color.white);
-		keyLocker.lockKey(Key.SPACE);
-        keyLocker.lockKey(Key.ESC);  
+		if (currLevel == 0)
+		{
+			winMessage = new SpriteFont("Level Cleared", Config.GAME_WINDOW_WIDTH/2-100, Config.GAME_WINDOW_HEIGHT/2-100, "Comic Sans", 30, Color.white);
+			instructions = new SpriteFont("Press Space to go to the next Level or Escape to go back to the Main Menu", 320, 300, "Comic Sans", 20, Color.white);
+			keyLocker.lockKey(Key.SPACE);
+	        keyLocker.lockKey(Key.ESC); 
+		}
+		else 
+		{
+			winMessage = new SpriteFont("Level Cleared", Config.GAME_WINDOW_WIDTH/2-100, Config.GAME_WINDOW_HEIGHT/2-100, "Comic Sans", 30, Color.white);
+			instructions = new SpriteFont("Turd", 320, 300, "Comic Sans", 20, Color.white);
+			keyLocker.lockKey(Key.SPACE);
+	        keyLocker.lockKey(Key.ESC); 
+		}
+ 
 	}
 
 	@Override
-	public void update() {
+	public void update() 
+	{
 		if (Keyboard.isKeyUp(Key.SPACE)) {
 			keyLocker.unlockKey(Key.SPACE);
 		}
@@ -67,6 +80,7 @@ public class LevelClearedScreen extends Screen {
 				System.out.println("Error with sound");
 			}
 		}
+		currLevel++;
 	}
 
 	public void draw(GraphicsHandler graphicsHandler) {

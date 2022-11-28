@@ -25,6 +25,7 @@ public class MenuScreen extends Screen {
 	protected SpriteFont credits;
 	protected SpriteFont quit;
 	protected SpriteFont avatar;
+	protected SpriteFont instructions;
 	protected Map background;
 	protected Stopwatch keyTimer = new Stopwatch();
 	protected int pointerLocationX, pointerLocationY;
@@ -57,6 +58,10 @@ public class MenuScreen extends Screen {
 		avatar = new SpriteFont("CHOOSE AVATAR", Config.GAME_WINDOW_WIDTH / 2 - 105, 300, "Comic Sans", 30, new Color(49, 207, 240));
 		avatar.setOutlineColor(Color.black);
 		avatar.setOutlineThickness(3);
+		
+		instructions = new SpriteFont("INSTRUCTIONS", Config.GAME_WINDOW_WIDTH / 2 - 105, 350, "Comic Sans", 30, new Color(49, 207, 240));
+		instructions.setOutlineColor(Color.black);
+		instructions.setOutlineThickness(3);
 		
 		background = new TitleScreenMap();
 		background.setAdjustCamera(false);
@@ -94,10 +99,10 @@ public class MenuScreen extends Screen {
 
 		// if down is pressed on last menu item or up is pressed on first menu item,
 		// "loop" the selection back around to the beginning/end
-		if (currentMenuItemHovered > 3) {
+		if (currentMenuItemHovered > 4) {
 			currentMenuItemHovered = 0;
 		} else if (currentMenuItemHovered < 0) {
-			currentMenuItemHovered = 3;
+			currentMenuItemHovered = 4;
 		}
 
 		// sets location for blue square in front of text (pointerLocation) and also
@@ -107,6 +112,7 @@ public class MenuScreen extends Screen {
 			credits.setColor(new Color(49, 207, 240));
 			quit.setColor(new Color(49, 207, 240));
 			avatar.setColor(new Color(49, 207, 240));
+			instructions.setColor(new Color(49, 207, 240));
 
 			pointerLocationX = 495;
 			pointerLocationY = 125;
@@ -115,6 +121,7 @@ public class MenuScreen extends Screen {
 			credits.setColor(new Color(255, 215, 0));
 			quit.setColor(new Color(49, 207, 240));
 			avatar.setColor(new Color(49, 207, 240));
+			instructions.setColor(new Color(49, 207, 240));
 
 			pointerLocationX = 495;
 			pointerLocationY = 175;
@@ -123,6 +130,7 @@ public class MenuScreen extends Screen {
 			credits.setColor(new Color(49, 207, 240));
 			quit.setColor(new Color(255, 215, 0));
 			avatar.setColor(new Color(49, 207, 240));
+			instructions.setColor(new Color(49, 207, 240));
 			
 			pointerLocationX = 495;
 			pointerLocationY = 225;
@@ -131,9 +139,19 @@ public class MenuScreen extends Screen {
 			credits.setColor(new Color(49, 207, 240));
 			quit.setColor(new Color(49, 207, 240));
 			avatar.setColor(new Color(255, 215, 0));
+			instructions.setColor(new Color(49, 207, 240));
 			
 			pointerLocationX = 495;
 			pointerLocationY = 275;
+		} else if (currentMenuItemHovered == 4) {
+			playGame.setColor(new Color(49, 207, 240));
+			credits.setColor(new Color(49, 207, 240));
+			quit.setColor(new Color(49, 207, 240));
+			avatar.setColor(new Color(49, 207, 240));
+			instructions.setColor(new Color(255, 215, 0));
+			
+			pointerLocationX = 495;
+			pointerLocationY = 325;
 		}
 		// if space is pressed on menu item, change to appropriate screen based on which
 		// menu item was chosen
@@ -169,6 +187,8 @@ public class MenuScreen extends Screen {
 				System.exit(0);
 			} else if (menuItemSelected == 3) {
 				screenCoordinator.setGameState(GameState.AVATAR);
+			} else if (menuItemSelected ==4) {
+				screenCoordinator.setGameState(GameState.INSTUCTIONS);
 			}
 		}
 	}
@@ -179,6 +199,7 @@ public class MenuScreen extends Screen {
 		credits.draw(graphicsHandler);
 		quit.draw(graphicsHandler);
 		avatar.draw(graphicsHandler);
+		instructions.draw(graphicsHandler);
 
 		graphicsHandler.drawFilledRectangleWithBorder(pointerLocationX, pointerLocationY, 20, 20,
 				new Color(49, 207, 240), Color.black, 2);

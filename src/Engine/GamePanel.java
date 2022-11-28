@@ -28,11 +28,13 @@ public class GamePanel extends JPanel {
 	private boolean doPaint = false;
 	private boolean isGamePaused = false;
 	private boolean isGameFullscreen = false;
-
+	private boolean isGameQuit = false;
+	
 	private SpriteFont pauseLabel;
 	private KeyLocker keyLocker = new KeyLocker();
 	private final Key pauseKey = Key.P;
 	private final Key FULLSCREEN_KEY = Key.F;
+	private final Key QUIT = Key.Q;
 
 	BufferedImage tempScreen;
 	Graphics2D g2;
@@ -133,6 +135,21 @@ public class GamePanel extends JPanel {
 			screenManager.update();
 		}
 	}
+	
+	public void updateQuit()
+	{
+		if (Keyboard.isKeyDown(QUIT) && !keyLocker.isKeyLocked(QUIT)) 
+		{
+			isGameQuit = !isGameQuit;
+			keyLocker.lockKey(QUIT);
+		}
+		
+		if  (Keyboard.isKeyUp(QUIT)) 
+		{
+			keyLocker.unlockKey(QUIT);
+			System.exit(0);
+		}
+	}
 
 	public void updateFullscreen() 
 	{
@@ -150,23 +167,24 @@ public class GamePanel extends JPanel {
 		screenManager.draw(graphicsHandler);
 
 		// if game is paused, draw pause gfx over Screen gfx
-		if (isGamePaused) {
+		if (isGamePaused) 
+		{
 			pauseLabel.draw(graphicsHandler);
 			graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(),
 					new Color(0, 0, 0, 100));
 		}
-		if (isGameFullscreen) {
-			// setFullscreen();
+		if (isGameFullscreen) 
+		{
 //			GameWindow.gameWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			GameWindow.gameWindow.setSize(Config.FULL_GAME_WINDOW_WIDTH, Config.FULL_GAME_WINDOW_HEIGHT);
 			GameWindow.gameWindow.setLocationRelativeTo(null);
 
 			// device.setFullScreenWindow(GameWindow.gameWindow);
 
-		} else if (!isGameFullscreen) {
-
+		} 
+		else if (!isGameFullscreen) 
+		{
 			GameWindow.gameWindow.setSize(Config.GAME_WINDOW_WIDTH, Config.GAME_WINDOW_HEIGHT);
-
 		}
 	}
 

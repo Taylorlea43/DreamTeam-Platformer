@@ -22,7 +22,7 @@ public class Boy extends Player
 	        jumpDegrade = .5f;
 	        walkSpeed = 10.3f; //3.3f
 	        momentumYIncrease = .5f;
-	        health = 100;
+	        health = 1000000;
 	}
 	
 	public void update()

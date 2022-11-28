@@ -5,5 +5,5 @@ package Game;
  */
 public enum GameState 
 {
-    MENU, LEVEL, CREDITS, WON, AVATAR
+    MENU, LEVEL, CREDITS, WON, AVATAR, INSTUCTIONS
 }

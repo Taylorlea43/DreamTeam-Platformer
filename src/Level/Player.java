@@ -435,8 +435,7 @@ public abstract class Player extends GameObject {
 						{
 							playerState = PlayerState.HURTING;
 							health -= 25;
-						} 
-						
+						} 						
 						else
 							killPlayer();
 
@@ -449,13 +448,13 @@ public abstract class Player extends GameObject {
 							if (health - 2 > 0)
 							{
 								playerState = PlayerState.HURTING;
-								health -= 2;
+								health -= 2;							
 							}
 							else
 								killPlayer();
 						}
 						
-						if (level == 1) 
+						else if (level == 1) 
 						{
 							if (health - 5 > 0) 
 							{
@@ -475,87 +474,110 @@ public abstract class Player extends GameObject {
 							}
 							else
 								killPlayer();
-	
-						} 
-						else if (level == 3) {
-							if (health - 6 > 0) {
+						}
+						
+						else if (level == 3) 
+						{
+							if (health - 6 > 0) 
+							{
 								playerState = PlayerState.HURTING;
 								health -= 6;
-							} else {
-								health = 0;
-								levelState = LevelState.PLAYER_DEAD;
-							}
-						} else if (level == 4) {
-							if (health - 8 > 0) {
+							} 
+							else 
+								killPlayer();
+						} 
+						
+						else if (level == 4) 
+						{
+							if (health - 8 > 0) 
+							{
 								playerState = PlayerState.HURTING;
 								health -= 8;
-							} else {
-								health = 0;
-								levelState = LevelState.PLAYER_DEAD;
-							}
-						}else if (level == 5) {
-								if (health - 10 > 0) {
-									playerState = PlayerState.HURTING;
-									health -= 10;
-								} else {
-									health = 0;
-									levelState = LevelState.PLAYER_DEAD;
-								}
-							} else if (level == 6) {
-								if (health - 12 > 0) {
-									playerState = PlayerState.HURTING;
-									health -= 12;
-								} else {
-									health = 0;
-									levelState = LevelState.PLAYER_DEAD;
-								}
-							} else if (level == 7) {
-								if (health - 14 > 0) {
-									playerState = PlayerState.HURTING;
-									health -= 14;
-								} else {
-									health = 0;
-									levelState = LevelState.PLAYER_DEAD;
-								}
-							} else if (level == 8) {
-								if (health - 16 > 0) {
-									playerState = PlayerState.HURTING;
-									health -= 16;
-								} else {
-									health = 0;
-									levelState = LevelState.PLAYER_DEAD;
-								}
-							} else if (level == 9) {
-								if (health - 18 > 0) {
-									playerState = PlayerState.HURTING;
-									health -= 18;
-								} else {
-									health = 0;
-									levelState = LevelState.PLAYER_DEAD;
-								}
-							} else if (level == 10) {
-								if (health - 20 > 0) {
-									playerState = PlayerState.HURTING;
-									health -= 20;
-								} else {
-									health = 0;
-									levelState = LevelState.PLAYER_DEAD;
-								}
-							} else
+							} 
+							else
+								killPlayer();							
+						}
+
+						else if (level == 5) 
+						{
+							if (health - 10 > 0) 
+							{
+								playerState = PlayerState.HURTING;
+								health -= 10;
+							} 
+							else
 								killPlayer();
+						}
+
+						else if (level == 6) 
+						{
+							if (health - 12 > 0) 
+							{
+								playerState = PlayerState.HURTING;
+								health -= 12;
+							} 
+							else
+								killPlayer();
+						} 
+
+						else if (level == 7) 
+						{
+							if (health - 14 > 0) 
+							{
+								playerState = PlayerState.HURTING;
+								health -= 14;
+							} 
+							else 
+								killPlayer();
+						} 
+
+						else if (level == 8) 
+						{
+							if (health - 16 > 0) 
+							{
+								playerState = PlayerState.HURTING;
+								health -= 16;
+							}
+							else
+								killPlayer();
+						} 
+
+						else if (level == 9) 
+						{
+							if (health - 18 > 0) 
+							{
+								playerState = PlayerState.HURTING;
+								health -= 18;
+							} 
+							else
+								killPlayer();
+						} 
+
+						else if (level == 10) 
+						{
+							if (health - 20 > 0) 
+							{
+								playerState = PlayerState.HURTING;
+								health -= 20;
+							} 
+							else
+								killPlayer();
+						} 
+						
+						else
+							killPlayer();
 					}
 				}
 			}
 
-				try {
-					AudioPlayer hurtSound = new AudioPlayer(false,
-							"Resources/PlayerHurt_Sound.wav");
-					hurtSound.play();
-				} catch (Exception e) {
-					System.out.println("Error with sound");
-				}
-			} else // player health at 0
-				killPlayer();
+			try {
+				AudioPlayer hurtSound = new AudioPlayer(false,
+						"Resources/PlayerHurt_Sound.wav");
+				hurtSound.play();
+			} catch (Exception e) {
+				System.out.println("Error with sound");
+			}
+		}
 
 
 		isInvincible = true;
@@ -566,7 +588,7 @@ public abstract class Player extends GameObject {
 	{
 		health = 0;
 		levelState = LevelState.PLAYER_DEAD;
-		
+
 		if (!isDead) {
 			try {
 				AudioPlayer loseSound = new AudioPlayer(false, "Resources/GameLose_Sound.wav");

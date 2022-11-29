@@ -15,10 +15,13 @@ import Maps.Level9;
 import Maps.TestMap;
 import Maps.TitleScreenMap;
 import Screens.GameWonScreen;
+import Screens.PlayLevelScreen;
 
 import java.util.ArrayList;
 
 public class EditorMaps {
+
+	private PlayLevelScreen play;
 	public static ArrayList<String> getMapNames() {
 		return new ArrayList<String>() {
 			{

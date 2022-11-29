@@ -185,7 +185,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.key = new LevelKey(1230, 375, "pixelKey.png");
 			key.setMap(map);
 
-			this.keyStatus = new SpriteFont(" ", 75, 100, "Comic Sans", 23, new Color(250, 204, 77));
+			this.keyStatus = new SpriteFont(" ", 75, 110, "Comic Sans", 23, new Color(250, 204, 77));
 			this.keyStatus.setOutlineColor(Color.black);
 			this.keyStatus.setOutlineThickness(3);
 			// setup player
@@ -564,7 +564,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin42.setBounds(new Rectangle(1, 1, 16, 16));
 			coin42.setMap(map);
 
-			this.coin43 = new Coin(1255, 415);
+			this.coin43 = new Coin(1355, 415);
 			coin43.setBounds(new Rectangle(1, 1, 16, 16));
 			coin43.setMap(map);
 
@@ -576,7 +576,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin45.setBounds(new Rectangle(1, 1, 16, 16));
 			coin45.setMap(map);
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 8);
 
 			// setup key
 			this.key = new LevelKey(2000, 585, "pixelKey.png");
@@ -710,6 +709,22 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new GameCompleteMap();
 			map.reset();
 			this.playLevelScreenState = PlayLevelScreenState.GAME_WON;
+
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 6);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			Point playerStartPosition = map.getPlayerStartPosition();
+			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+
+			this.key = new LevelKey(200, 5, "pixelKey.png");
+			key.setMap(map);
+
+			if(getCoinCount() == 55){
+				this.key.setGotKey(true);
+			}else{
+				this.key.setGotKey(false);
+			}
 			
 			/*
 			try {
@@ -830,7 +845,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				break;
 			// if level has been completed, bring up level cleared screen
 			case LEVEL_COMPLETED:
-				if (levelCompletedStateChangeStart) {
+				if (levelCompletedStateChangeStart && currLevel!= 11) {
 					screenTimer.setWaitTime(2500);
 					currLevel++;
 					levelCompletedStateChangeStart = false;
@@ -873,11 +888,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 					keyStatusBar.draw(graphicsHandler);
 					keyStatus.draw(graphicsHandler);
 				}
-
-				gameTimer.draw(graphicsHandler);
-				coinCounter.draw(graphicsHandler);
-				keyStatusBar.draw(graphicsHandler);
-				keyStatus.draw(graphicsHandler);
 
 
 				if (currLevel == 0) {
@@ -1073,7 +1083,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				}
 
 				if (key.gotKey == false) {
-					key.draw(graphicsHandler);
+					if(currLevel!= 11) {
+						key.draw(graphicsHandler);
+					}
 				}
 
 				break;

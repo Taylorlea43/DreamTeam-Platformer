@@ -12,10 +12,11 @@ import java.util.HashMap;
 
 public class Girl extends Player
 {
+	public int level;
 
-	public Girl(float x, float y)
+	public Girl(float x, float y, int level)
 	{
-		 super(new SpriteSheet(ImageLoader.load("girlFinal.png"), 45, 85), x, y, "STAND_RIGHT", false);
+		 super(new SpriteSheet(ImageLoader.load("girlFinal.png"), 45, 85), x, y, "STAND_RIGHT", false, level);
 	        gravity = .5f;
 	        terminalVelocityY = 6f;
 	        jumpHeight = 14.5f; //14.5
@@ -23,6 +24,7 @@ public class Girl extends Player
 	        walkSpeed = 15.3f; //3.3f
 	        momentumYIncrease = .5f;
 	        health = 100;
+	        this.level = level;
 	}
 	
 	public void update()

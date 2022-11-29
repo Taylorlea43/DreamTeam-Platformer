@@ -19,14 +19,16 @@ public class LevelClearedScreen extends Screen {
 	protected KeyLocker keyLocker = new KeyLocker();
 	protected PlayLevelScreen playLevelScreen;
 
-	public LevelClearedScreen(PlayLevelScreen playLevelScreen) {
+	public LevelClearedScreen(PlayLevelScreen playLevelScreen) 
+	{
 		this.playLevelScreen = playLevelScreen;
 
 		initialize();
 	}
 
 	@Override
-	public void initialize() {
+	public void initialize() 
+	{
 		winMessage = new SpriteFont("Level Cleared", Config.GAME_WINDOW_WIDTH/2-100, Config.GAME_WINDOW_HEIGHT/2-100, "Comic Sans", 30, Color.white);
 		instructions = new SpriteFont("Press Space to go to the next Level or Escape to go back to the Main Menu", 320, 300, "Comic Sans", 20, Color.white);
 		keyLocker.lockKey(Key.SPACE);

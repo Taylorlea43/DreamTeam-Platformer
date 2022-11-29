@@ -100,7 +100,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			key.setMap(map);
 
 			// setup player
-			this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);	//changes girl or boy
+			this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 1);	//changes girl or boy
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -120,29 +120,29 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			timeElapsed = 0;
 			timer.start();
 
-			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 15, 50, "Comic Sans", 23, new Color(49, 207, 240)); // was
+			this.gameTimer = new SpriteFont("Time: " + timeElapsed, 15, 60, "Comic Sans", 23, new Color(49, 207, 240)); // was
 			// 691
 			this.gameTimer.setOutlineColor(Color.black);
 			this.gameTimer.setOutlineThickness(3);
 
-			this.coinCounter = new SpriteFont("Coins: " + this.getCoinCount(), 15, 75, "Comic Sans", 23, // was 694
+			this.coinCounter = new SpriteFont("Coins: " + this.getCoinCount(), 15, 85, "Comic Sans", 23, // was 694
 					new Color(49, 207, 240));
 			this.coinCounter.setOutlineColor(Color.black);
 			this.coinCounter.setOutlineThickness(3);
 
-			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
+			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 35, "Comic Sans", 23,
 					new Color(49, 207, 240));
-			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 25, "Comic Sans", 23,
+			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 35, "Comic Sans", 23,
 					new Color(49, 207, 240));
 			this.healthBar.setOutlineColor(Color.black); 
 			this.healthBar.setOutlineThickness(3);
 
-			this.keyStatusBar = new SpriteFont("Key: ", 15, 100, "Comic Sans", 23, new Color(49, 207, 240));
+			this.keyStatusBar = new SpriteFont("Key: ", 15, 110, "Comic Sans", 23, new Color(49, 207, 240));
 			this.keyStatusBar.setOutlineColor(Color.black);
 			this.keyStatusBar.setOutlineThickness(3);
 
 			// setup key status
-			this.keyStatus = new SpriteFont(" ", 75, 100, "Comic Sans", 23, new Color(250, 204, 77));
+			this.keyStatus = new SpriteFont(" ", 75, 110, "Comic Sans", 23, new Color(250, 204, 77));
 			this.keyStatus.setOutlineColor(Color.black);
 			this.keyStatus.setOutlineThickness(3);
 
@@ -188,7 +188,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.keyStatus.setOutlineColor(Color.black);
 			this.keyStatus.setOutlineThickness(3);
 			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 1);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -242,7 +242,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin15.setMap(map);
 
 			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 2);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -298,7 +298,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin20.setMap(map);
 
 			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 3);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -354,7 +354,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin25.setMap(map);
 
 			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 4);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -408,7 +408,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin30.setBounds(new Rectangle(1, 1, 16, 16));
 			coin30.setMap(map);
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 5);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -436,7 +436,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new Level6();
 			map.reset();
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 6);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -489,7 +489,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new Level7();
 			map.reset();
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 7);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -543,7 +543,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			this.map = new Level8();
 			map.reset();
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 8);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -577,6 +577,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin45.setMap(map);
 
 
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 8);
+
 			
 		
 
@@ -606,7 +608,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new Level9();
 			map.reset();
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 9);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -659,7 +661,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new Level10();
 			map.reset();
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 10);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();

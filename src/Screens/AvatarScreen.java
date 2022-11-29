@@ -11,8 +11,7 @@ public class AvatarScreen extends Screen
 {
     protected ScreenCoordinator screenCoordinator;
     protected KeyLocker keyLocker = new KeyLocker();
-    protected SpriteFont returnInstructionsLabel;
-    protected SpriteFont avatarLabel;
+    protected SpriteFont returnInstructionsLabel, avatarLabel, boyLabel, girlLabel;
     
 	public AvatarScreen(ScreenCoordinator screenCoordinator) 
 	{
@@ -25,6 +24,7 @@ public class AvatarScreen extends Screen
 	public void initialize() 
 	{   
         avatarLabel = new SpriteFont("CHOOSE YOUR AVATAR", 175, 100, "Times New Roman", 60, Color.white);
+        
         keyLocker.lockKey(Key.SPACE);
 	}
 

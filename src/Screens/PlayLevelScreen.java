@@ -576,8 +576,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin45.setBounds(new Rectangle(1, 1, 16, 16));
 			coin45.setMap(map);
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 8);
-
 			// setup key
 			this.key = new LevelKey(2000, 585, "pixelKey.png");
 			key.setMap(map);

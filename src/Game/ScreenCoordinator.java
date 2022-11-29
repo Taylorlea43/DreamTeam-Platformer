@@ -6,7 +6,9 @@ import Engine.Screen;
 import Screens.CreditsScreen;
 import Screens.GameWonScreen;
 import Screens.MenuScreen;
+import Screens.AvatarScreen;
 import Screens.PlayLevelScreen;
+import Screens.InstructionScreen;
 
 /*
  * Based on the current game state, this class determines which Screen should be shown
@@ -24,7 +26,8 @@ public class ScreenCoordinator extends Screen {
 		return gameState;
 	}
 
-	// Other Screens can set the gameState of this class to force it to change the currentScreen
+	// Other Screens can set the gameState of this class to force it to change the
+	// currentScreen
 	public void setGameState(GameState gameState) {
 		this.gameState = gameState;
 	}
@@ -38,19 +41,31 @@ public class ScreenCoordinator extends Screen {
 	@Override
 	public void update() {
 		do {
-			// if previousGameState does not equal gameState, it means there was a change in gameState
-			// this triggers ScreenCoordinator to bring up a new Screen based on what the gameState is
+			// if previousGameState does not equal gameState, it means there was a change in
+			// gameState
+			// this triggers ScreenCoordinator to bring up a new Screen based on what the
+			// gameState is
 			if (previousGameState != gameState) {
-				switch(gameState) {
-					case MENU:
-						currentScreen = new MenuScreen(this);
-						break;
-					case LEVEL:
-						currentScreen = new PlayLevelScreen(this);
-						break;
-					case CREDITS:
-						currentScreen = new CreditsScreen(this);
-						break;
+				switch (gameState) {
+				case MENU:
+					currentScreen = new MenuScreen(this);
+					break;
+				case LEVEL:
+					currentScreen = new PlayLevelScreen(this);
+					break;
+				case CREDITS:
+					currentScreen = new CreditsScreen(this);
+					break;
+				case AVATAR:
+					currentScreen = new AvatarScreen(this);
+					break;
+				case INSTUCTIONS:
+					currentScreen = new InstructionScreen(this);
+					break;
+				case WON:
+					break;
+				default:
+					break;
 				}
 				currentScreen.initialize();
 			}
@@ -58,7 +73,7 @@ public class ScreenCoordinator extends Screen {
 
 			// call the update method for the currentScreen
 			currentScreen.update();
-		} while (previousGameState != gameState); 
+		} while (previousGameState != gameState);
 	}
 
 	@Override

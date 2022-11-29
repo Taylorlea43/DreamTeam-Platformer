@@ -1,7 +1,8 @@
+
 package Engine;
 
 import GameObject.Rectangle;
-
+import Screens.PlayLevelScreen;
 import SpriteFont.SpriteFont;
 import Utils.Colors;
 
@@ -16,9 +17,7 @@ import java.awt.image.BufferedImage;
  * The JPanel uses a timer to continually call cycles of update and draw
  */
 public class GamePanel extends JPanel {
-	// loads Screens on to the JPanel
-	// each screen has its own update and draw methods defined to handle a "section"
-	// of the game.
+	// loads Screens on to the JPanel each screen has its own update and draw methods defined to handle a "section" of the game.
 	private ScreenManager screenManager;
 
 	// used to create the game loop and cycle between update and draw calls
@@ -30,11 +29,13 @@ public class GamePanel extends JPanel {
 	private boolean doPaint = false;
 	private boolean isGamePaused = false;
 	private boolean isGameFullscreen = false;
+	private boolean isGameQuit = false;
 
 	private SpriteFont pauseLabel;
 	private KeyLocker keyLocker = new KeyLocker();
 	private final Key pauseKey = Key.P;
 	private final Key FULLSCREEN_KEY = Key.F;
+	private final Key QUIT = Key.Q;
 
 	BufferedImage tempScreen;
 	Graphics2D g2;
@@ -57,16 +58,13 @@ public class GamePanel extends JPanel {
 
 		screenManager = new ScreenManager();
 
-		pauseLabel = new SpriteFont("PAUSE", Config.GAME_WINDOW_WIDTH/2-50, 200, "Comic Sans", 24, Color.white);
+		pauseLabel = new SpriteFont("PAUSE", Config.GAME_WINDOW_WIDTH / 2 - 50, 200, "Comic Sans", 24, Color.white);
 		pauseLabel.setOutlineColor(Color.black);
 		pauseLabel.setOutlineThickness(2.0f);
 
-		// Every timer "tick" will call the update method as well as tell the JPanel to
-		// repaint
-		// Remember that repaint "schedules" a paint rather than carries it out
-		// immediately
-		// If the game is really laggy/slow, I would consider upping the FPS in the
-		// Config file.
+		// Every timer "tick" will call the update method as well as tell the JPanel to repaint
+		// Remember that repaint "schedules" a paint rather than carries it out immediately
+		// If the game is really laggy/slow, I would consider upping the FPS in the Config file.
 		timer = new Timer(1000 / Config.FPS, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				updatePause();
@@ -76,7 +74,7 @@ public class GamePanel extends JPanel {
 					repaint();
 				}
 				if (isGameFullscreen) {
-					 //drawToTemp();
+					//drawToTemp();
 					// drawToScreen();
 					repaint();
 				}
@@ -107,7 +105,6 @@ public class GamePanel extends JPanel {
 
 		screenwidth2 = GameWindow.gameWindow.getWidth();
 		screenheight2 = GameWindow.gameWindow.getHeight();
-
 	}
 
 	// this starts the timer (the game loop is started here
@@ -122,7 +119,8 @@ public class GamePanel extends JPanel {
 	public void updatePause() {
 		if (Keyboard.isKeyDown(pauseKey) && !keyLocker.isKeyLocked(pauseKey)) {
 			isGamePaused = !isGamePaused;
-			keyLocker.lockKey(pauseKey); 
+			keyLocker.lockKey(pauseKey);
+			PlayLevelScreen.timer.toggle();
 		}
 
 		if (Keyboard.isKeyUp(pauseKey)) {
@@ -132,7 +130,18 @@ public class GamePanel extends JPanel {
 		if (!isGamePaused) {
 			screenManager.update();
 		}
+	}
 
+	public void updateQuit() {
+		if (Keyboard.isKeyDown(QUIT) && !keyLocker.isKeyLocked(QUIT)) {
+			isGameQuit = !isGameQuit;
+			keyLocker.lockKey(QUIT);
+		}
+
+		if (Keyboard.isKeyUp(QUIT)) {
+			System.exit(0);
+			keyLocker.unlockKey(QUIT);
+		}
 	}
 
 	public void updateFullscreen() {
@@ -156,7 +165,6 @@ public class GamePanel extends JPanel {
 					new Color(0, 0, 0, 100));
 		}
 		if (isGameFullscreen) {
-			// setFullscreen();
 //			GameWindow.gameWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			GameWindow.gameWindow.setSize(Config.FULL_GAME_WINDOW_WIDTH, Config.FULL_GAME_WINDOW_HEIGHT);
 			GameWindow.gameWindow.setLocationRelativeTo(null);
@@ -164,9 +172,7 @@ public class GamePanel extends JPanel {
 			// device.setFullScreenWindow(GameWindow.gameWindow);
 
 		} else if (!isGameFullscreen) {
-
 			GameWindow.gameWindow.setSize(Config.GAME_WINDOW_WIDTH, Config.GAME_WINDOW_HEIGHT);
-
 		}
 	}
 
@@ -186,9 +192,7 @@ public class GamePanel extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		// every repaint call will schedule this method to be called
-		// when called, it will setup the graphics handler and then call this class's
-		// draw method
+		// every repaint call will schedule this method to be called when called, it will setup the graphics handler and then call this class's draw method
 		graphicsHandler.setGraphics((Graphics2D) g);
 		if (doPaint) {
 			draw();

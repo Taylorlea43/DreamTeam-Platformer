@@ -3,7 +3,10 @@ package Maps;
 import Engine.Config;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
+import EnhancedMapTiles.EndLevelBox;
+import GameObject.LevelKey;
 import GameObject.Sprite;
+import Level.EnhancedMapTile;
 import Level.Map;
 import SpriteFont.SpriteFont;
 import Tilesets.CommonTileset;
@@ -11,6 +14,7 @@ import Utils.Colors;
 import Utils.Point;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GameCompleteMap extends Map {
 
@@ -18,15 +22,17 @@ public class GameCompleteMap extends Map {
     private Sprite elephantUncaged, girrafeUncaged, bunnyUncaged, lionUncaged, sharkUncaged, mountainGoatUncaged, monkeyUncaged, penguinUncaged, parrotUncaged, lizardUncaged, girl;
     private Sprite partyHat, partyHat2, partyHat3, partyHat4, partyHat5, partyHat6, partyHat7, partyHat8, partyHat9, partyHat10, partyHat11;
     private Sprite textBubble;
+    private LevelKey gotAllCoins;
 
     public GameCompleteMap(){
         super("title_screen_map.txt", new CommonTileset());
+        this.playerStartPosition = getMapTile(2, 8).getLocation();
 
         //add game completed and free animals
         gameComplete = new SpriteFont("GAME COMPLETE", Config.GAME_WINDOW_WIDTH/2-150, 100, "Impact", 62, new Color(0, 0, 0));
         freeAnimals = new SpriteFont("YOU SAVED ALL THE ANIMALS!!!", Config.GAME_WINDOW_WIDTH/2-100, 120, "Impact", 24, new Color(0, 0, 0));
 
-        Point girlLocation = getMapTile(6, 7).getLocation().subtractX(24).subtractY(6);
+        /*Point girlLocation = getMapTile(6, 7).getLocation().subtractX(24).subtractY(6);
         girl = new Sprite(ImageLoader.loadSubImage("girlNoLines.png", Colors.MAGENTA, 0, 0, 55, 85));
         girl.setScale(2);
         girl.setLocation(girlLocation.x, girlLocation.y);
@@ -34,6 +40,7 @@ public class GameCompleteMap extends Map {
         partyHat11.setScale(3);
         Point partyHatLocation10 = getMapTile(6,6).getLocation().subtractX(5).addY(10);
         partyHat11.setLocation(partyHatLocation10.x, partyHatLocation10.y);
+         */
 
         //add elephant
         Point elephantLocation = getMapTile(14, 3).getLocation().subtractX(24).addY(6);
@@ -144,6 +151,16 @@ public class GameCompleteMap extends Map {
 
     }
 
+
+    @Override
+    public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
+        ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
+
+        enhancedMapTiles.add(new EndLevelBox(getMapTile(12, 4).getLocation(), "DiscoBall.png",gotAllCoins, 24, 24));
+
+        return enhancedMapTiles;
+    }
+
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
@@ -167,10 +184,10 @@ public class GameCompleteMap extends Map {
         partyHat8.draw(graphicsHandler);
         parrotUncaged.draw(graphicsHandler);
         partyHat9.draw(graphicsHandler);
-        girl.draw(graphicsHandler);
+        //girl.draw(graphicsHandler);
         partyHat10.draw(graphicsHandler);
         lizardUncaged.draw(graphicsHandler);
-        partyHat11.draw(graphicsHandler);
+       // partyHat11.draw(graphicsHandler);
         textBubble.draw(graphicsHandler);
         weAreFree.draw(graphicsHandler);
     }

@@ -554,8 +554,7 @@ public abstract class Player extends GameObject {
 				} catch (Exception e) {
 					System.out.println("Error with sound");
 				}
-			} else // player health at 0
-				killPlayer();
+			}
 
 
 		isInvincible = true;

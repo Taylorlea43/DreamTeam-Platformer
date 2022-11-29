@@ -4,18 +4,16 @@ import Engine.GraphicsHandler;
 import Level.Map;
 import Level.Tileset;
 import Tilesets.CommonTileset;
-import Tilesets.DesertTileset;
 
-public class LevelComplete extends Map
+public class TutorialComplete extends Map
 {
-	public LevelComplete() 
+	public TutorialComplete() 
 	{
-		super("levelComplete.txt", new CommonTileset());
+		super("TutorialComplete.txt", new CommonTileset());
 	}
 	
 	public void draw(GraphicsHandler graphicsHandler)
 	{
 		super.draw(graphicsHandler);
 	}
-
 }

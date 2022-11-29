@@ -1,3 +1,4 @@
+
 package Engine;
 
 import GameObject.Rectangle;
@@ -29,7 +30,7 @@ public class GamePanel extends JPanel {
 	private boolean isGamePaused = false;
 	private boolean isGameFullscreen = false;
 	private boolean isGameQuit = false;
-	
+
 	private SpriteFont pauseLabel;
 	private KeyLocker keyLocker = new KeyLocker();
 	private final Key pauseKey = Key.P;
@@ -46,8 +47,7 @@ public class GamePanel extends JPanel {
 	/*
 	 * The JPanel and various important class instances are setup here
 	 */
-	public GamePanel() 
-	{
+	public GamePanel() {
 		super();
 		this.setDoubleBuffered(true);
 
@@ -58,7 +58,7 @@ public class GamePanel extends JPanel {
 
 		screenManager = new ScreenManager();
 
-		pauseLabel = new SpriteFont("PAUSE", Config.GAME_WINDOW_WIDTH/2-50, 200, "Comic Sans", 24, Color.white);
+		pauseLabel = new SpriteFont("PAUSE", Config.GAME_WINDOW_WIDTH / 2 - 50, 200, "Comic Sans", 24, Color.white);
 		pauseLabel.setOutlineColor(Color.black);
 		pauseLabel.setOutlineThickness(2.0f);
 
@@ -74,7 +74,7 @@ public class GamePanel extends JPanel {
 					repaint();
 				}
 				if (isGameFullscreen) {
-					 //drawToTemp();
+					//drawToTemp();
 					// drawToScreen();
 					repaint();
 				}
@@ -108,13 +108,11 @@ public class GamePanel extends JPanel {
 	}
 
 	// this starts the timer (the game loop is started here
-	public void startGame() 
-	{
+	public void startGame() {
 		timer.start();
 	}
 
-	public ScreenManager getScreenManager() 
-	{
+	public ScreenManager getScreenManager() {
 		return screenManager;
 	}
 
@@ -125,34 +123,28 @@ public class GamePanel extends JPanel {
 			PlayLevelScreen.timer.toggle();
 		}
 
-		if (Keyboard.isKeyUp(pauseKey)) 
-		{
+		if (Keyboard.isKeyUp(pauseKey)) {
 			keyLocker.unlockKey(pauseKey);
 		}
 
-		if (!isGamePaused) 
-		{
+		if (!isGamePaused) {
 			screenManager.update();
 		}
 	}
-	
-	public void updateQuit()
-	{
-		if (Keyboard.isKeyDown(QUIT) && !keyLocker.isKeyLocked(QUIT)) 
-		{
+
+	public void updateQuit() {
+		if (Keyboard.isKeyDown(QUIT) && !keyLocker.isKeyLocked(QUIT)) {
 			isGameQuit = !isGameQuit;
 			keyLocker.lockKey(QUIT);
 		}
-		
-		if  (Keyboard.isKeyUp(QUIT)) 
-		{
-			System.exit(0);			
+
+		if (Keyboard.isKeyUp(QUIT)) {
+			System.exit(0);
 			keyLocker.unlockKey(QUIT);
 		}
 	}
 
-	public void updateFullscreen() 
-	{
+	public void updateFullscreen() {
 		if (Keyboard.isKeyDown(FULLSCREEN_KEY) && !keyLocker.isKeyLocked(FULLSCREEN_KEY)) {
 			isGameFullscreen = !isGameFullscreen;
 			keyLocker.lockKey(FULLSCREEN_KEY);
@@ -167,46 +159,38 @@ public class GamePanel extends JPanel {
 		screenManager.draw(graphicsHandler);
 
 		// if game is paused, draw pause gfx over Screen gfx
-		if (isGamePaused) 
-		{
+		if (isGamePaused) {
 			pauseLabel.draw(graphicsHandler);
 			graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(),
 					new Color(0, 0, 0, 100));
 		}
-		if (isGameFullscreen) 
-		{
+		if (isGameFullscreen) {
 //			GameWindow.gameWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			GameWindow.gameWindow.setSize(Config.FULL_GAME_WINDOW_WIDTH, Config.FULL_GAME_WINDOW_HEIGHT);
 			GameWindow.gameWindow.setLocationRelativeTo(null);
 
 			// device.setFullScreenWindow(GameWindow.gameWindow);
 
-		} 
-		else if (!isGameFullscreen) 
-		{
+		} else if (!isGameFullscreen) {
 			GameWindow.gameWindow.setSize(Config.GAME_WINDOW_WIDTH, Config.GAME_WINDOW_HEIGHT);
 		}
 	}
 
-	public void drawToScreen() 
-	{
+	public void drawToScreen() {
 		Graphics g = getGraphics();
 		g.drawImage(tempScreen, 0, 0, screenwidth2, screenheight2, null);
 		g.dispose();
 	}
 
-	public void drawToTemp() 
-	{
+	public void drawToTemp() {
 		graphicsHandler.setGraphics((Graphics2D) g2);
-		if (doPaint) 
-		{
+		if (doPaint) {
 			draw();
 		}
 	}
 
 	@Override
-	protected void paintComponent(Graphics g) 
-	{
+	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		// every repaint call will schedule this method to be called when called, it will setup the graphics handler and then call this class's draw method
 		graphicsHandler.setGraphics((Graphics2D) g);

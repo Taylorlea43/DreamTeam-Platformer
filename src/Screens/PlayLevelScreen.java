@@ -1,3 +1,4 @@
+
 package Screens;
 
 import java.awt.Color;
@@ -35,7 +36,7 @@ import Sounds.AudioPlayer;
 
 // This class is for when the platformer game is actually being played
 public class PlayLevelScreen extends Screen implements PlayerListener {
-	
+
 	public ScreenCoordinator screenCoordinator;
 	protected Map map;
 	protected Coin coin1, coin2, coin3, coin4, coin5, coin6, coin7, coin8, coin9, coin10, coin11, coin12, coin13, coin14, coin15, coin16, coin17, coin18, coin19, coin20, coin21, coin22, coin23, coin24, coin25, coin26, coin27, coin28, coin29, coin30, coin31, coin32, coin33, coin34, coin35, coin36, coin37, coin38, coin39, coin40, coin41, coin42, coin43, coin44, coin45, coin46, coin47, coin48, coin49, coin50, coin51, coin52, coin53, coin54, coin55;
@@ -134,7 +135,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 					new Color(49, 207, 240));
 			this.healthBar = new SpriteFont("Health: " + (int) player.getHealth(), 15, 35, "Comic Sans", 23,
 					new Color(49, 207, 240));
-			this.healthBar.setOutlineColor(Color.black); 
+			this.healthBar.setOutlineColor(Color.black);
 			this.healthBar.setOutlineThickness(3);
 
 			this.keyStatusBar = new SpriteFont("Key: ", 15, 110, "Comic Sans", 23, new Color(49, 207, 240));
@@ -862,17 +863,17 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				player.draw(graphicsHandler);
 
 
-				if (currLevel != 11) 
+				if (currLevel != 11)
 				{
 					if (!blink)
 						healthBar.draw(graphicsHandler);
-					
+
 					gameTimer.draw(graphicsHandler);
 					coinCounter.draw(graphicsHandler);
 					keyStatusBar.draw(graphicsHandler);
 					keyStatus.draw(graphicsHandler);
 				}
-				
+
 				gameTimer.draw(graphicsHandler);
 				coinCounter.draw(graphicsHandler);
 				keyStatusBar.draw(graphicsHandler);
@@ -1092,7 +1093,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public void goBackToMenu() {
 		screenCoordinator.setGameState(GameState.MENU);
 		blinkTimer.healthReset();
-		
+
 		try {
 			loseMusic.stop();
 		} catch (Exception e) {
@@ -1124,7 +1125,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			try {
 				levelMusic.stop();
-				
+
 				loseMusic = new AudioPlayer(true, "Resources/GameMusicLose_Sound.wav");
 				loseMusic.play();
 			} catch (Exception e) {
@@ -1142,7 +1143,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		}
 		catch(Exception e) {
 		}
-		
+
 		initialize();
 	}
 
@@ -1190,7 +1191,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		} else if (currLevel == 10) {
 			coinCount = coinCount9 + coin51.getCoinCount() + coin52.getCoinCount() + coin53.getCoinCount() + coin54.getCoinCount() + coin55.getCoinCount();
 		}
-			return coinCount;
+		return coinCount;
 	}
 }
-

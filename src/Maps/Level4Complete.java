@@ -3,13 +3,14 @@ package Maps;
 import Engine.GraphicsHandler;
 import Level.Map;
 import Level.Tileset;
-import Tilesets.DesertTileset;
+import Tilesets.ArticTileset;
+import Tilesets.CommonTileset;
 
-public class Level1Complete extends Map
+public class Level4Complete extends Map
 {
-	public Level1Complete() 
+	public Level4Complete() 
 	{
-		super("level1Complete.txt", new DesertTileset());
+		super("level4Complete.txt", new ArticTileset());
 	}
 	
 	public void draw(GraphicsHandler graphicsHandler)

@@ -577,7 +577,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin45.setMap(map);
 
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 8);
 
 			
 		

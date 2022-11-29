@@ -4,16 +4,27 @@ import Level.Map;
 import Maps.GameCompleteMap;
 import Maps.Level1;
 import Maps.Level10;
+import Maps.Level10Complete;
+import Maps.Level1Complete;
 import Maps.Level2;
+import Maps.Level2Complete;
 import Maps.Level3;
+import Maps.Level3Complete;
 import Maps.Level4;
+import Maps.Level4Complete;
 import Maps.Level5;
+import Maps.Level5Complete;
 import Maps.Level6;
+import Maps.Level6Complete;
 import Maps.Level7;
+import Maps.Level7Complete;
 import Maps.Level8;
+import Maps.Level8Complete;
 import Maps.Level9;
+import Maps.Level9Complete;
 import Maps.TestMap;
 import Maps.TitleScreenMap;
+import Maps.TutorialComplete;
 import Screens.GameWonScreen;
 
 import java.util.ArrayList;
@@ -35,7 +46,17 @@ public class EditorMaps {
 				add("Level10");
 				add("TitleScreen");
 				add("GameWon");
-
+				add("TutorialComplete");
+				add("Level1Complete");
+				add("Level2Complete");
+				add("Level3Complete");
+				add("Level4Complete");
+				add("Level5Complete");
+				add("Level6Complete");
+				add("Level7Complete");
+				add("Level8Complete");
+				add("Level9Complete");
+				add("Level10Complete");
 			}
 		};
 	}
@@ -68,6 +89,29 @@ public class EditorMaps {
 			return new TitleScreenMap();
 		case "GameWon":
 			return new GameCompleteMap();
+		
+		case "TutorialComplete":
+			return new TutorialComplete();
+		case "Level1Complete":
+			return new Level1Complete();
+		case "Level2Complete":
+			return new Level2Complete();
+		case "Level3Complete":
+			return new Level3Complete();
+		case "Level4Complete":
+			return new Level4Complete();
+		case "Level5Complete":
+			return new Level5Complete();
+		case "Level6Complete":
+			return new Level6Complete();
+		case "Level7Complete":
+			return new Level7Complete();
+		case "Level8Complete":
+			return new Level8Complete();
+		case "Level9Complete":
+			return new Level9Complete();
+		case "Level10Complete":
+			return new Level10Complete();
 		default:
 			throw new RuntimeException("Unrecognized map name");
 		}

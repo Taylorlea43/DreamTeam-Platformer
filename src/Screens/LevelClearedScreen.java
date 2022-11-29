@@ -82,7 +82,6 @@ public class LevelClearedScreen extends Screen {
 			this.map = new Level10Complete();
 			map.reset();
 		}
- 
 	}
 
 	@Override

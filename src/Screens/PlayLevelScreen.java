@@ -67,7 +67,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		timer = new ClockTimer(this);
 		blinkTimer = new BlinkTimer(this);
 	}
-
+	
 	public void initialize() {
 		if (currLevel == 0) {
 			// define/setup map

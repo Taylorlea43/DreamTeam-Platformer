@@ -746,7 +746,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			 * e.printStackTrace(); }
 			 */
 		} else if (currLevel == 12) {
-			this.map = new BonusLevel();
+			this.map = new BonusLevelMap();
 			map.reset();
 			this.playLevelScreenState = PlayLevelScreenState.GAME_WON;
 

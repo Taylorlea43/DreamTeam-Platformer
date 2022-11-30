@@ -34,6 +34,7 @@ import java.util.ArrayList;
 public class EditorMaps {
 
 	private PlayLevelScreen play;
+
 	public static ArrayList<String> getMapNames() {
 		return new ArrayList<String>() {
 			{
@@ -69,7 +70,7 @@ public class EditorMaps {
 	public static Map getMapByName(String mapName) {
 		switch (mapName) {
 		case "TestMap":
-			return new TestMap(); 
+			return new TestMap();
 		case "Level1":
 			return new Level1();
 		case "Level2":
@@ -96,7 +97,6 @@ public class EditorMaps {
 			return new GameCompleteMap();
 		case "BonusLevel":
 			return new BonusLevel();
-		
 		case "TutorialComplete":
 			return new TutorialComplete();
 		case "Level1Complete":

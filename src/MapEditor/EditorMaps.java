@@ -1,6 +1,7 @@
 package MapEditor;
 
 import Level.Map;
+import Maps.*;
 import Maps.GameCompleteMap;
 import Maps.Level1;
 import Maps.Level10;
@@ -26,10 +27,14 @@ import Maps.TestMap;
 import Maps.TitleScreenMap;
 import Maps.TutorialComplete;
 import Screens.GameWonScreen;
+import Screens.PlayLevelScreen;
 
 import java.util.ArrayList;
 
 public class EditorMaps {
+
+	private PlayLevelScreen play;
+
 	public static ArrayList<String> getMapNames() {
 		return new ArrayList<String>() {
 			{
@@ -46,6 +51,7 @@ public class EditorMaps {
 				add("Level10");
 				add("TitleScreen");
 				add("GameWon");
+				add("BonusLevel");
 				add("TutorialComplete");
 				add("Level1Complete");
 				add("Level2Complete");
@@ -64,7 +70,7 @@ public class EditorMaps {
 	public static Map getMapByName(String mapName) {
 		switch (mapName) {
 		case "TestMap":
-			return new TestMap(); 
+			return new TestMap();
 		case "Level1":
 			return new Level1();
 		case "Level2":
@@ -89,7 +95,8 @@ public class EditorMaps {
 			return new TitleScreenMap();
 		case "GameWon":
 			return new GameCompleteMap();
-		
+		case "BonusLevel":
+			return new BonusLevel();
 		case "TutorialComplete":
 			return new TutorialComplete();
 		case "Level1Complete":

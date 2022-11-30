@@ -16,7 +16,7 @@ import Utils.Point;
 
 public class OctopusEnemy extends Enemy {
 	private float gravity = 5.5f;
-	private float movementSpeed = 1.5f;
+	private float movementSpeed = 6.5f;
 	private Direction startFacingDirection;
 	private Direction facingDirection;
 	private AirGroundState airGroundState;

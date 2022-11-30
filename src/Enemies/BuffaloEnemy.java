@@ -16,7 +16,7 @@ import Utils.Point;
 
 public class BuffaloEnemy extends Enemy {
 	private float gravity = 5.5f;
-	private float movementSpeed = 1.5f;
+	private float movementSpeed = 5.5f;
 	private Direction startFacingDirection;
 	private Direction facingDirection;
 	private AirGroundState airGroundState;

@@ -579,6 +579,7 @@ public abstract class Player extends GameObject {
 			}
 		}
 
+
 		isInvincible = true;
 		oofTimer.start();
 	}

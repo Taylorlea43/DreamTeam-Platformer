@@ -21,9 +21,13 @@ public class Girl extends Player
 	        terminalVelocityY = 6f;
 	        jumpHeight = 14.5f; //14.5
 	        jumpDegrade = .5f;
-	        walkSpeed = 10.3f; //3.3f
+	        walkSpeed = 15.3f; //3.3f
 	        momentumYIncrease = .5f;
+<<<<<<< HEAD
 	        health = 10;
+=======
+	        health = 100;
+>>>>>>> 3ba67281fa7fced73d4506c335fb84ff261f5d00
 	        this.level = level;
 	}
 	

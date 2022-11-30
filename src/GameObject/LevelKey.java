@@ -45,6 +45,10 @@ public class LevelKey extends MapEntity
 		 return gotKey;
 	 }
 
+	 public void setGotKey(boolean t){
+		gotKey = t;
+	 }
+
     @Override
     public void draw(GraphicsHandler graphicsHandler) 
     {

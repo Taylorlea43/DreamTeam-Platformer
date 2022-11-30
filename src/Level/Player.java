@@ -162,9 +162,9 @@ public abstract class Player extends GameObject {
 		}
 
 		// if crouch key is pressed, player enters CROUCHING state
-		else if (Keyboard.isKeyDown(CROUCH_KEY)) {
-			playerState = PlayerState.CROUCHING;
-		}
+//		else if (Keyboard.isKeyDown(CROUCH_KEY)) {
+//			playerState = PlayerState.CROUCHING;
+//		}
 	}
 
 
@@ -182,9 +182,9 @@ public abstract class Player extends GameObject {
 		}
 
 		// if crouch key is pressed, player enters CROUCHING state
-		else if (Keyboard.isKeyDown(CROUCH_KEY)) {
-			playerState = PlayerState.CROUCHING;
-		}
+//		else if (Keyboard.isKeyDown(CROUCH_KEY)) {
+//			playerState = PlayerState.CROUCHING;
+//		}
 	}
 
 	// player WALKING state logic
@@ -210,9 +210,9 @@ public abstract class Player extends GameObject {
 		}
 
 		// if crouch key is pressed,
-		else if (Keyboard.isKeyDown(CROUCH_KEY)) {
-			playerState = PlayerState.CROUCHING;
-		}
+//		else if (Keyboard.isKeyDown(CROUCH_KEY)) {
+//			playerState = PlayerState.CROUCHING;
+//		}
 	}
 
 	// player CROUCHING state logic

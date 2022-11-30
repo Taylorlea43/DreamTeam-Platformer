@@ -1,6 +1,8 @@
 package Enemies;
 
+
 import java.util.HashMap;
+
 
 import Builders.FrameBuilder;
 import Engine.ImageLoader;
@@ -14,21 +16,26 @@ import Utils.AirGroundState;
 import Utils.Direction;
 import Utils.Point;
 
-import java.util.HashMap;
-
-// This class is for the black bug enemy
-// enemy behaves like a Mario goomba -- walks forward until it hits a solid map tile, and then turns around
-// if it ends up in the air from walking off a cliff, it will fall down until it hits the ground again, and then will continue walking
-public class WolfEnemy extends Enemy {
-
-	private float gravity = .5f;
-	private float movementSpeed = 1.0f;
+public class JellyFishEnemy5 extends Enemy {
+	private float movementSpeed = 1.5f;
 	private Direction startFacingDirection;
 	private Direction facingDirection;
-	private AirGroundState airGroundState;
+	protected Point startLocation;
+	protected Point secondLocation;
+	protected Point thirdLocation;
+	protected Point endLocation;
+	protected JellyState jellyState;
+	protected JellyState previousJellyState;
+	static int cases = 0;
 
-	public WolfEnemy(Point location, Direction facingDirection) {
-		super(location.x, location.y, new SpriteSheet(ImageLoader.load("WolfEnemy.png"), 48, 30), "WALK_LEFT");
+	public JellyFishEnemy5(Point startLocation, Point secondLocation, Point thirdLocation, Point endLocation,
+			Direction facingDirection) {
+		super(startLocation.x, startLocation.y, new SpriteSheet(ImageLoader.load("JellyFishEnemy (1).png"), 23, 29),
+				"WALK_LEFT");
+		this.startLocation = startLocation;
+		this.secondLocation = secondLocation;
+		this.thirdLocation = thirdLocation;
+		this.endLocation = endLocation;
 		this.startFacingDirection = facingDirection;
 		this.initialize();
 	}
@@ -36,52 +43,47 @@ public class WolfEnemy extends Enemy {
 	@Override
 	public void initialize() {
 		super.initialize();
+		jellyState = JellyState.WALK;
+		previousJellyState = jellyState;
 		facingDirection = startFacingDirection;
 		if (facingDirection == Direction.RIGHT) {
 			currentAnimationName = "WALK_RIGHT";
 		} else if (facingDirection == Direction.LEFT) {
 			currentAnimationName = "WALK_LEFT";
 		}
-		airGroundState = AirGroundState.GROUND;
 	}
 
 	@Override
 	public void update(Player player) {
+		float startBound = startLocation.x;
+		float secondBound = secondLocation.y;
+		float thirdBound = thirdLocation.x;
+		float endBound = endLocation.y;
 		float moveAmountX = 0;
 		float moveAmountY = 0;
 
-		// add gravity (if in air, this will cause bug to fall)
-		moveAmountY += gravity;
-
-		// if on ground, walk forward based on facing direction
-		if (airGroundState == AirGroundState.GROUND) {
-			if (facingDirection == Direction.RIGHT) {
-				moveAmountX += movementSpeed;
-			} else {
-
-				moveAmountX -= movementSpeed;
+		if (cases == 0) {
+			if ((getY() <= startBound) && (getY() <= secondBound)) {
+				moveAmountY += movementSpeed;
 			}
 		}
-		if (this.intersects(player)) {
-			movementSpeed = 9;
-			if ((player.getX() < getX())) {
-				facingDirection = Direction.LEFT;
-				currentAnimationName = "WALK_LEFT";
+		if ((getY() >= secondBound)) {
 
-				if (facingDirection == Direction.LEFT) {
-					moveAmountX += movementSpeed;
-				}
-			}
-			if ((player.getX() > getX())) {
-				facingDirection = Direction.RIGHT;
-				currentAnimationName = "WALK_RIGHT";
+			moveAmountX -= movementSpeed;
+			cases = 1;
 
-				if (facingDirection == Direction.RIGHT) {
-					moveAmountX -= movementSpeed;
-				}
-			}
 		}
-		// move bug
+		if ((cases == 1) && (getX() <= thirdBound)) {
+			moveAmountY -= movementSpeed;
+		}
+		if ((cases == 1) && (getY() < endBound)) {
+			moveAmountX += movementSpeed;
+
+		}
+		if (getX() == startBound) {
+			cases = 0;
+		}
+
 		moveYHandleCollision(moveAmountY);
 		moveXHandleCollision(moveAmountX);
 
@@ -108,13 +110,7 @@ public class WolfEnemy extends Enemy {
 		// if bug is colliding with the ground, change its air ground state to GROUND
 		// if it is not colliding with the ground, it means that it's currently in the
 		// air, so its air ground state is changed to AIR
-		if (direction == Direction.DOWN) {
-			if (hasCollided) {
-				airGroundState = AirGroundState.GROUND;
-			} else {
-				airGroundState = AirGroundState.AIR;
-			}
-		}
+
 	}
 
 	@Override
@@ -123,17 +119,21 @@ public class WolfEnemy extends Enemy {
 			{
 				put("WALK_RIGHT", new Frame[] {
 						new FrameBuilder(spriteSheet.getSprite(0, 0), 100).withScale(2)
-								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(6, 6, 46, 24).build(),
+								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(0, 6, 25, 20).build(),
 						new FrameBuilder(spriteSheet.getSprite(0, 1), 100).withScale(2)
-								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(6, 6, 46, 24).build() });
+								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(0, 6, 25, 20).build() });
 
 				put("WALK_LEFT",
 						new Frame[] {
-								new FrameBuilder(spriteSheet.getSprite(0, 0), 100).withScale(2).withBounds(6, 6, 46, 24)
+								new FrameBuilder(spriteSheet.getSprite(0, 0), 100).withScale(2).withBounds(0, 6, 25, 20)
 										.build(),
-								new FrameBuilder(spriteSheet.getSprite(0, 1), 100).withScale(2).withBounds(6, 6, 46, 24)
+								new FrameBuilder(spriteSheet.getSprite(0, 1), 100).withScale(2).withBounds(0, 6, 25, 20)
 										.build() });
 			}
 		};
+	}
+
+	public enum JellyState {
+		WALK
 	}
 }

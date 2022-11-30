@@ -24,7 +24,7 @@ public class Level8 extends Map {
 
 	public Level8() {
 		super("level9.txt", new UnderwaterTileset());
-		this.playerStartPosition = getMapTile(0, 7).getLocation();
+		this.playerStartPosition = getMapTile(1, 17).getLocation();
 
 	}
 
@@ -37,9 +37,20 @@ public class Level8 extends Map {
 		enemies.add(new OctopusEnemy(getMapTile(61, 0).getLocation(), Direction.LEFT, 1));
 		enemies.add(new OctopusEnemy(getMapTile(61, 0).getLocation(), Direction.LEFT, 9));
 
-		enemies.add(new JellyfishEnemy(getMapTile(20, 6).getLocation(), getMapTile(20, 9).getLocation(),
-				getMapTile(17, 9).getLocation(), getMapTile(17, 6).getLocation(), Direction.LEFT));
+		enemies.add(new JellyfishEnemy(getMapTile(19, 10).getLocation(), getMapTile(19, 12).getLocation(),
+				getMapTile(18, 12).getLocation(), getMapTile(18, 10).getLocation(), Direction.LEFT));
 
+		enemies.add(new JellyFishEnemy2(getMapTile(25, 9).getLocation(), getMapTile(25, 12).getLocation(),
+				getMapTile(24, 12).getLocation(), getMapTile(24, 9).getLocation(), Direction.LEFT));
+
+		enemies.add(new JellyFishEnemy3(getMapTile(18, 3).getLocation(), getMapTile(18, 4).getLocation(),
+				getMapTile(17, 4).getLocation(), getMapTile(17, 3).getLocation(), Direction.LEFT));
+
+		enemies.add(new JellyFishEnemy4(getMapTile(26, 3).getLocation(), getMapTile(26, 5).getLocation(),
+				getMapTile(25, 5).getLocation(), getMapTile(25, 3).getLocation(), Direction.LEFT));
+
+		enemies.add(new JellyFishEnemy5(getMapTile(57, 9).getLocation(), getMapTile(57, 14).getLocation(),
+				getMapTile(45, 14).getLocation(), getMapTile(45, 9).getLocation(), Direction.LEFT));
 		return enemies;
 	}
 

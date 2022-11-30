@@ -79,7 +79,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// define/setup map
 			this.map = new TestMap();
 			map.reset();
-
+			
 			// set up coins in the game
 			this.coin1 = new Coin(320, 340);
 			coin1.setBounds(new Rectangle(1, 1, 16, 16));
@@ -114,7 +114,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-
+			
 			// setup AudioPlayer
 			try {
 				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
@@ -560,7 +560,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-			player.setJumpDegrade(2);
+			player.setJumpDegrade(2f);
 			player.setIsSwimming(true);
 			// setup coins
 			this.coin40 = new Coin(340, 490);

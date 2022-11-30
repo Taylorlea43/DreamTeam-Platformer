@@ -15,25 +15,25 @@ import Utils.Direction;
 import java.util.ArrayList;
 
 // Represents a test map to be used in a level
-public class Level1 extends Map 
-{
+public class Level1 extends Map {
 	private LevelKey key;
-	
-	public Level1() 
-	{
+
+	public Level1() {
 		super("level2.txt", new DesertTileset());
-		this.playerStartPosition = getMapTile(2, 8).getLocation();
+		this.playerStartPosition = getMapTile(1, 13).getLocation();
 	}
 
 	@Override
 	public ArrayList<Enemy> loadEnemies() {
 		ArrayList<Enemy> enemies = new ArrayList<>();
 
-		enemies.add(new cowboyZookeeperEnemy(getMapTile(15,10).getLocation().addY(10), Direction.LEFT));
+		enemies.add(new cowboyZookeeperEnemy(getMapTile(15, 10).getLocation().addY(10), Direction.LEFT));
 		enemies.add(new ScorpionEnemy(getMapTile(47, 16).getLocation().addY(20), Direction.LEFT));
 		enemies.add(new ScorpionEnemy(getMapTile(48, 16).getLocation().addY(20), Direction.LEFT));
 		enemies.add(new ScorpionEnemy(getMapTile(49, 16).getLocation().addY(20), Direction.LEFT));
 		enemies.add(new ScorpionEnemy(getMapTile(16, 15).getLocation().addY(20), Direction.LEFT));
+		enemies.add(new cowboyZookeeperEnemy(getMapTile(34, 11).getLocation().addY(10), Direction.LEFT));
+		enemies.add(new ScorpionEnemy(getMapTile(53, 11).getLocation().addY(20), Direction.LEFT));
 
 		return enemies;
 	}

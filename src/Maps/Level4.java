@@ -23,7 +23,7 @@ public class Level4 extends Map {
 
     public Level4() {
         super("level5.txt", new ArticTileset());
-        this.playerStartPosition = getMapTile(0, 7).getLocation();
+        this.playerStartPosition = getMapTile(1, 13).getLocation();
 
     }
 

@@ -1,6 +1,7 @@
 package MapEditor;
 
 import Level.Map;
+import Maps.BonusLevel;
 import Maps.GameCompleteMap;
 import Maps.Level1;
 import Maps.Level10;
@@ -57,6 +58,7 @@ public class EditorMaps {
 				add("Level10Complete");
 				add("TitleScreen");
 				add("GameWon");
+				add("BonusLevel");
 			}
 		};
 	}
@@ -111,6 +113,8 @@ public class EditorMaps {
 			return new TitleScreenMap();
 		case "GameWon":
 			return new GameCompleteMap();
+		case "BonusLevel":
+			return new BonusLevel();
 		default:
 			throw new RuntimeException("Unrecognized map name");
 		}

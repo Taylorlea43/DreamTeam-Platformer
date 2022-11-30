@@ -8,6 +8,7 @@ import GameObject.LevelKey;
 import GameObject.Rectangle;
 import Level.*;
 import NPCs.Walrus;
+import Tilesets.BonusTileset;
 import Tilesets.CommonTileset;
 import Tilesets.DesertTileset;
 import Utils.Direction;
@@ -19,14 +20,20 @@ public class BonusLevel extends Map {
 
     public BonusLevel()
     {
-        super("level2.txt", new DesertTileset());
-        this.playerStartPosition = getMapTile(2, 8).getLocation();
+        super("bonus_level.txt", new BonusTileset());
+        //this.playerStartPosition = getMapTile(2, 8).getLocation();
     }
 
     @Override
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
         return enemies;
+    }
+
+    @Override
+    public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
+        ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
+        return enhancedMapTiles;
     }
 
 

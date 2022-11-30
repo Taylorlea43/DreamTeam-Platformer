@@ -183,6 +183,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			// setup key
 			this.key = new LevelKey(1230, 375, "pixelKey.png");
+			key.setBounds(new Rectangle(30, 25, 25, 20));
 			key.setMap(map);
 
 			this.keyStatus = new SpriteFont(" ", 75, 110, "Comic Sans", 23, new Color(250, 204, 77));
@@ -251,6 +252,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			// setup key
 			this.key = new LevelKey(500, 210, "pixelKey.png");
+			key.setBounds(new Rectangle(30, 25, 25, 20));
 			key.setMap(map);
 
 			// setup AudioPlayer
@@ -307,6 +309,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			// setup key
 			this.key = new LevelKey(2180, 290, "pixelKey.png");
+			key.setBounds(new Rectangle(30, 25, 25, 20));
 			key.setMap(map);
 
 			// setup AudioPlayer
@@ -363,6 +366,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			// setup key
 			this.key = new LevelKey(1820, 540, "pixelKey.png");
+			key.setBounds(new Rectangle(30, 25, 25, 20));
 			key.setMap(map);
 
 			// setup AudioPlayer
@@ -417,6 +421,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			// setup key
 			this.key = new LevelKey(455, 1585, "pixelKey.png");
+			key.setBounds(new Rectangle(30, 25, 25, 20));
 			key.setMap(map);
 
 			try {
@@ -523,6 +528,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			// setup key
 			this.key = new LevelKey(2500, 500, "pixelKey.png");
+			key.setBounds(new Rectangle(30, 25, 25, 20));
 			key.setMap(map);
 
 
@@ -579,6 +585,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			// setup key
 			this.key = new LevelKey(2000, 585, "pixelKey.png");
+			key.setBounds(new Rectangle(30, 25, 25, 20));
 			key.setMap(map);
 
 			try {
@@ -665,6 +672,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			// setup key
 			this.key = new LevelKey(1685, 335, "pixelKey.png");
+			key.setBounds(new Rectangle(30, 25, 25, 20));
 			key.setMap(map);
 
 			//setup coins
@@ -705,6 +713,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			levelLoseScreen = new LevelLoseScreen(this);
 		} else if (currLevel == 11) {
 
+			coinCount = 55;
 			gameWonScreen = new GameWonScreen(this);
 			this.map = new GameCompleteMap();
 			map.reset();
@@ -718,6 +727,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			this.key = new LevelKey(200, 5, "pixelKey.png");
+			key.setBounds(new Rectangle(30, 25, 25, 20));
 			key.setMap(map);
 
 			if(getCoinCount() == 55){
@@ -735,6 +745,18 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				e.printStackTrace();
 			}
 			 */
+		}
+		else if(currLevel == 12){
+			this.map = new BonusLevel();
+			map.reset();
+			this.playLevelScreenState = PlayLevelScreenState.GAME_WON;
+
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 6);
+			this.player.setMap(map);
+			this.player.addListener(this);
+			Point playerStartPosition = map.getPlayerStartPosition();
+			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
+			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 		}
 	}
 
@@ -845,7 +867,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				break;
 			// if level has been completed, bring up level cleared screen
 			case LEVEL_COMPLETED:
-				if (levelCompletedStateChangeStart && currLevel!= 11) {
+				if (levelCompletedStateChangeStart) {
 					screenTimer.setWaitTime(2500);
 					currLevel++;
 					levelCompletedStateChangeStart = false;
@@ -878,7 +900,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				player.draw(graphicsHandler);
 
 
-				if (currLevel != 11)
+				if (currLevel != 11 && currLevel != 12)
 				{
 					if (!blink)
 						healthBar.draw(graphicsHandler);
@@ -1083,7 +1105,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				}
 
 				if (key.gotKey == false) {
-					if(currLevel!= 11) {
+					if(currLevel!= 11 && currLevel!= 12) {
 						key.draw(graphicsHandler);
 					}
 				}

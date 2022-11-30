@@ -4,16 +4,27 @@ import Level.Map;
 import Maps.GameCompleteMap;
 import Maps.Level1;
 import Maps.Level10;
+import Maps.Level10Complete;
+import Maps.Level1Complete;
 import Maps.Level2;
+import Maps.Level2Complete;
 import Maps.Level3;
+import Maps.Level3Complete;
 import Maps.Level4;
+import Maps.Level4Complete;
 import Maps.Level5;
+import Maps.Level5Complete;
 import Maps.Level6;
+import Maps.Level6Complete;
 import Maps.Level7;
+import Maps.Level7Complete;
 import Maps.Level8;
+import Maps.Level8Complete;
 import Maps.Level9;
+import Maps.Level9Complete;
 import Maps.TestMap;
 import Maps.TitleScreenMap;
+import Maps.TutorialComplete;
 import Screens.GameWonScreen;
 
 import java.util.ArrayList;
@@ -23,19 +34,29 @@ public class EditorMaps {
 		return new ArrayList<String>() {
 			{
 				add("TestMap");
+				add("TutorialComplete");
 				add("Level1");
+				add("Level1Complete");
 				add("Level2");
+				add("Level2Complete");
 				add("Level3");
+				add("Level3Complete");
 				add("Level4");
+				add("Level4Complete");
 				add("Level5");
+				add("Level5Complete");
 				add("Level6");
+				add("Level6Complete");
 				add("Level7");
+				add("Level7Complete");
 				add("Level8");
+				add("Level8Complete");
 				add("Level9");
+				add("Level9Complete");
 				add("Level10");
+				add("Level10Complete");
 				add("TitleScreen");
 				add("GameWon");
-
 			}
 		};
 	}
@@ -44,26 +65,48 @@ public class EditorMaps {
 		switch (mapName) {
 		case "TestMap":
 			return new TestMap(); 
+		case "TutorialComplete":
+			return new TutorialComplete();
 		case "Level1":
 			return new Level1();
+		case "Level1Complete":
+			return new Level1Complete();	
 		case "Level2":
 			return new Level2();
+		case "Level2Complete":
+			return new Level2Complete();
 		case "Level3":
 			return new Level3();
+		case "Level3Complete":
+			return new Level3Complete();
 		case "Level4":
 			return new Level4();
+		case "Level4Complete":
+			return new Level4Complete();
 		case "Level5":
 			return new Level5();
+		case "Level5Complete":
+			return new Level5Complete();
 		case "Level6":
 			return new Level6();
+		case "Level6Complete":
+			return new Level6Complete();
 		case "Level7":
 			return new Level7();
+		case "Level7Complete":
+			return new Level7Complete();
 		case "Level8":
 			return new Level8();
+		case "Level8Complete":
+			return new Level8Complete();
 		case "Level9":
 			return new Level9();
+		case "Level9Complete":
+			return new Level9Complete();
 		case "Level10":
 			return new Level10();
+		case "Level10Complete":
+			return new Level10Complete();
 		case "TitleScreen":
 			return new TitleScreenMap();
 		case "GameWon":

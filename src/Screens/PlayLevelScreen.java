@@ -26,6 +26,7 @@ import Level.PlayerListener;
 import Maps.*;
 import Players.Boy;
 import Players.Cat;
+import Players.DiscoPlayer;
 import Players.Girl;
 import SpriteFont.SpriteFont;
 import Utils.BlinkTimer;
@@ -750,7 +751,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			map.reset();
 			this.playLevelScreenState = PlayLevelScreenState.GAME_WON;
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 6);
+			this.player = new DiscoPlayer(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 6);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();

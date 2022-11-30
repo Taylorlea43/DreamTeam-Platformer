@@ -68,7 +68,7 @@ public class LevelLoseScreen extends Screen {
 
 	public void draw(GraphicsHandler graphicsHandler) {
 		graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(),
-				Color.black);
+				new Color(173, 12, 3));
 		loseMessage.draw(graphicsHandler);
 		instructions.draw(graphicsHandler);
 		instructions2.draw(graphicsHandler);

@@ -44,8 +44,11 @@ public class LevelClearedScreen extends Screen {
 	@Override
 	public void initialize() 
 	{
-		winMessage = new SpriteFont("Level Cleared", Config.GAME_WINDOW_WIDTH/2-100, Config.GAME_WINDOW_HEIGHT/2-100, "Comic Sans", 30, Color.white);
-		instructions = new SpriteFont("Press Space to go to the next Level or Escape to go back to the Main Menu", 320, 300, "Comic Sans", 20, Color.white);
+		winMessage = new SpriteFont("Level Cleared", Config.GAME_WINDOW_WIDTH/2-250, Config.GAME_WINDOW_HEIGHT/2-25, "Comic Sans", 75, Color.white);
+		winMessage.setOutlineColor(Color.BLACK);
+		winMessage.setOutlineThickness(3);
+		winMessage.setFontStyle(2);
+		instructions = new SpriteFont("Press Space to go to the next Level or Escape to go back to the Main Menu", Config.GAME_WINDOW_WIDTH/2-350, Config.GAME_WINDOW_HEIGHT - 100, "Comic Sans", 20, Color.white);
 		keyLocker.lockKey(Key.SPACE);
         keyLocker.lockKey(Key.ESC); 
         
@@ -124,7 +127,7 @@ public class LevelClearedScreen extends Screen {
 	public void draw(GraphicsHandler graphicsHandler) {
 		// paint entire screen black and dislpay level cleared text
 		graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(),
-				Color.black);
+				new Color(44, 201, 60));
 		winMessage.draw(graphicsHandler);
         instructions.draw(graphicsHandler);
 

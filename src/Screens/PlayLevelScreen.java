@@ -470,7 +470,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin30.setMap(map);
 
 			// setup key
-			this.key = new LevelKey(1275, 790, "pixelKey.png");
+			this.key = new LevelKey(955, 250, "pixelKey.png");
 			key.setMap(map);
 
 			try {

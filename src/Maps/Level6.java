@@ -34,8 +34,8 @@ public class Level6 extends Map {
         enemies.add(new BuffaloEnemy(getMapTile(36,18).getLocation(), Direction.LEFT));
         enemies.add(new BuffaloEnemy(getMapTile(34, 28).getLocation(), Direction.LEFT));
         enemies.add(new CougarEnemy(getMapTile(25, 16).getLocation().addY(10), getMapTile(30, 16).getLocation(), Direction.LEFT));
-        enemies.add(new CougarEnemy(getMapTile(19, 20).getLocation().addY(10), getMapTile(23, 21).getLocation(), Direction.LEFT));
-        enemies.add(new CougarEnemy(getMapTile(11, 19).getLocation().addY(10), getMapTile(14, 19).getLocation(), Direction.LEFT));
+        enemies.add(new CougarEnemy(getMapTile(19, 20).getLocation().addY(10), getMapTile(25, 21).getLocation(), Direction.LEFT));
+        enemies.add(new CougarEnemy(getMapTile(11, 18).getLocation().addY(10), getMapTile(16, 18).getLocation(), Direction.LEFT));
         return enemies;
     }
 

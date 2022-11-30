@@ -11,7 +11,7 @@ public class InstructionScreen extends Screen
 {
 	protected ScreenCoordinator screenCoordinator;
 	protected KeyLocker keyLocker = new KeyLocker();
-	protected SpriteFont instructions, controls, quit, pause, select;
+	protected SpriteFont instructions, controls, quit, pause, select, menuReturn;
 	
 	public InstructionScreen(ScreenCoordinator screenCoordinator)
 	{
@@ -28,6 +28,7 @@ public class InstructionScreen extends Screen
 		quit = new SpriteFont("Quit: Press 'Command Q' to exit the game at any time.", 115, 360, "Comic Sans", 25, Color.white);
 		pause = new SpriteFont("Pause: Press 'P' to pause the game at any time.", 115, 420, "Comic Sans", 25, Color.white);
 		select = new SpriteFont("Space: Use the space bar to make selections and return", 115, 480, "Comic Sans", 25, Color.white);
+		menuReturn = new SpriteFont("Return to Menu: Press 'ESC' after completing any level to return to the main menu", 115, 540, "Comic Sans", 25, Color.white);
 		// ("message", x location, y location, "font", size, color)
 		
 		keyLocker.lockKey(Key.SPACE);

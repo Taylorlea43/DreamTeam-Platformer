@@ -89,7 +89,6 @@ public class EditorMaps {
 			return new TitleScreenMap();
 		case "GameWon":
 			return new GameCompleteMap();
-		
 		case "TutorialComplete":
 			return new TutorialComplete();
 		case "Level1Complete":

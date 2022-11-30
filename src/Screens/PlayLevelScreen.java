@@ -101,7 +101,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			key.setMap(map);
 
 			// setup player
-			this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 1);	//changes girl or boy
+			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 1);	//changes girl or boy
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();

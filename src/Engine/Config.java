@@ -19,7 +19,7 @@ public class Config {
 	public static final int GAME_WINDOW_HEIGHT = screenSize.height;
 
 	public static int FULL_GAME_WINDOW_WIDTH = screenSize.width;
-	public static int FULL_GAME_WINDOW_HEIGHT =  screenSize.height;
+	public static int FULL_GAME_WINDOW_HEIGHT = screenSize.height;
 	public static final Color TRANSPARENT_COLOR = Colors.MAGENTA;
 
 	// prevents Config from being instantiated -- it's my way of making a "static"

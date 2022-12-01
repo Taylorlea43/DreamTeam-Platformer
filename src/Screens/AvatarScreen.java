@@ -23,7 +23,10 @@ public class AvatarScreen extends Screen
 	@Override
 	public void initialize() 
 	{   
-        avatarLabel = new SpriteFont("CHOOSE YOUR AVATAR", 175, 100, "Times New Roman", 60, Color.white);
+        avatarLabel = new SpriteFont("CHOOSE YOUR AVATAR", 175, 100, "Times New Roman", 60, Color.white);      
+        boyLabel = new SpriteFont("BOY", 175, 175, "Times New Roman", 30, Color.white);
+        girlLabel = new SpriteFont("GIRL", 175, 215, "Times New Roman", 30, Color.white);
+
         
         keyLocker.lockKey(Key.SPACE);
 	}
@@ -46,7 +49,10 @@ public class AvatarScreen extends Screen
 	{	
 		graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(),
 				Color.black);
-		avatarLabel.draw(graphicsHandler);	
+		avatarLabel.draw(graphicsHandler);
+		boyLabel.draw(graphicsHandler);	
+		girlLabel.draw(graphicsHandler);	
+
 	}
 
 }

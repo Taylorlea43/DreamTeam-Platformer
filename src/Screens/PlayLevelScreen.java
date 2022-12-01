@@ -81,25 +81,24 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			map.reset();
 			
 			// set up coins in the game
-<<<<<<< HEAD
-			this.coin1 = new Coin(326, 512);
-			coin1.setBounds(new Rectangle(1, 1, 16, 16));
-			coin1.setMap(map);
+//			this.coin1 = new Coin(326, 512);
+//			coin1.setBounds(new Rectangle(1, 1, 16, 16));
+//			coin1.setMap(map);
+//
+//			this.coin2 = new Coin(884, 256);
+//			coin2.setBounds(new Rectangle(1, 1, 16, 16));
+//			coin2.setMap(map);
+//
+//			this.coin3 = new Coin(1163, 465);
+//			coin3.setBounds(new Rectangle(1, 1, 16, 16));
+//			coin3.setMap(map);
+//
+//			this.coin4 = new Coin(1628, 279);
+//			coin4.setBounds(new Rectangle(1, 1, 16, 16));
+//			coin4.setMap(map);
+//
+//			this.coin5 = new Coin(2046, 330);
 
-			this.coin2 = new Coin(884, 256);
-			coin2.setBounds(new Rectangle(1, 1, 16, 16));
-			coin2.setMap(map);
-
-			this.coin3 = new Coin(1163, 465);
-			coin3.setBounds(new Rectangle(1, 1, 16, 16));
-			coin3.setMap(map);
-
-			this.coin4 = new Coin(1628, 279);
-			coin4.setBounds(new Rectangle(1, 1, 16, 16));
-			coin4.setMap(map);
-
-			this.coin5 = new Coin(2046, 330);
-=======
 			this.coin1 = new Coin(1850, 430);
 			coin1.setBounds(new Rectangle(1, 1, 16, 16));
 			coin1.setMap(map);
@@ -117,7 +116,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin4.setMap(map);
 
 			this.coin5 = new Coin(2050, 430);
->>>>>>> 18adc8ce85d622eec3368b142e223b00fdb165dd
 			coin5.setBounds(new Rectangle(1, 1, 16, 16));
 			coin5.setMap(map);
 
@@ -1173,6 +1171,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public void onDeath() {
 		if (playLevelScreenState != PlayLevelScreenState.LEVEL_LOSE) {
 			playLevelScreenState = PlayLevelScreenState.LEVEL_LOSE;
+			
+			key.gotKey = false;
 
 			try {
 				levelMusic.stop();

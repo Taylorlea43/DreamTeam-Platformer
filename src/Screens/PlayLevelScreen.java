@@ -79,25 +79,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// define/setup map
 			this.map = new TestMap();
 			map.reset();
-			
-			// set up coins in the game
-//			this.coin1 = new Coin(326, 512);
-//			coin1.setBounds(new Rectangle(1, 1, 16, 16));
-//			coin1.setMap(map);
-//
-//			this.coin2 = new Coin(884, 256);
-//			coin2.setBounds(new Rectangle(1, 1, 16, 16));
-//			coin2.setMap(map);
-//
-//			this.coin3 = new Coin(1163, 465);
-//			coin3.setBounds(new Rectangle(1, 1, 16, 16));
-//			coin3.setMap(map);
-//
-//			this.coin4 = new Coin(1628, 279);
-//			coin4.setBounds(new Rectangle(1, 1, 16, 16));
-//			coin4.setMap(map);
-//
-//			this.coin5 = new Coin(2046, 330);
 
 			this.coin1 = new Coin(1850, 430);
 			coin1.setBounds(new Rectangle(1, 1, 16, 16));

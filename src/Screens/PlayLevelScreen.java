@@ -79,8 +79,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// define/setup map
 			this.map = new TestMap();
 			map.reset();
-
+			
 			// set up coins in the game
+<<<<<<< HEAD
 			this.coin1 = new Coin(326, 512);
 			coin1.setBounds(new Rectangle(1, 1, 16, 16));
 			coin1.setMap(map);
@@ -98,11 +99,30 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin4.setMap(map);
 
 			this.coin5 = new Coin(2046, 330);
+=======
+			this.coin1 = new Coin(1850, 430);
+			coin1.setBounds(new Rectangle(1, 1, 16, 16));
+			coin1.setMap(map);
+
+			this.coin2 = new Coin(1900, 430);
+			coin2.setBounds(new Rectangle(1, 1, 16, 16));
+			coin2.setMap(map);
+
+			this.coin3 = new Coin(1950, 430);
+			coin3.setBounds(new Rectangle(1, 1, 16, 16));
+			coin3.setMap(map);
+
+			this.coin4 = new Coin(2000, 430);
+			coin4.setBounds(new Rectangle(1, 1, 16, 16));
+			coin4.setMap(map);
+
+			this.coin5 = new Coin(2050, 430);
+>>>>>>> 18adc8ce85d622eec3368b142e223b00fdb165dd
 			coin5.setBounds(new Rectangle(1, 1, 16, 16));
 			coin5.setMap(map);
 
 			// setup key
-			this.key = new LevelKey(955, 250, "pixelKey.png");
+			this.key = new LevelKey(1255, 405, "pixelKey.png");
 			key.setBounds(new Rectangle(30, 25, 25, 20));
 			key.setMap(map);
 
@@ -114,7 +134,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-
+			
 			// setup AudioPlayer
 			try {
 				levelMusic = new AudioPlayer(true, "Resources/Zoo-Mania_Level1_Music.wav");
@@ -560,7 +580,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			Point playerStartPosition = map.getPlayerStartPosition();
 			this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
-			player.setJumpDegrade(2);
+			player.setJumpDegrade(2f);
 			player.setIsSwimming(true);
 			
 			// setup coins
@@ -748,7 +768,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			 * e.printStackTrace(); }
 			 */
 		} else if (currLevel == 12) {
-			this.map = new BonusLevel();
+			this.map = new BonusLevelMap();
 			map.reset();
 			this.playLevelScreenState = PlayLevelScreenState.GAME_WON;
 

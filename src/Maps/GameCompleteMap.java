@@ -29,7 +29,7 @@ public class GameCompleteMap extends Map {
     private Player player;
 
     public GameCompleteMap(){
-        super("title_screen_map.txt", new CommonTileset());
+        super("game_complete_map.txt", new CommonTileset());
         this.playerStartPosition = getMapTile(2, 8).getLocation();
 
 
@@ -45,8 +45,8 @@ public class GameCompleteMap extends Map {
         partyHat11 = new Sprite(ImageLoader.load("PartyHat.png"));
         partyHat11.setScale(3);
         Point partyHatLocation10 = getMapTile(6,6).getLocation().subtractX(5).addY(10);
-        partyHat11.setLocation(partyHatLocation10.x, partyHatLocation10.y);
-         */
+        partyHat11.setLocation(partyHatLocation10.x, partyHatLocation10.y);*/
+
 
         //add elephant
         Point elephantLocation = getMapTile(14, 3).getLocation().subtractX(24).addY(6);
@@ -70,7 +70,7 @@ public class GameCompleteMap extends Map {
         partyHat2.setLocation(partyHatLocation1.x, partyHatLocation1.y);
         Point BubbleLocation = getMapTile(10, 3).getLocation().addX(35).subtractY(30);
         textBubble = new Sprite(ImageLoader.load("textBubble.png"));
-        textBubble.setScale(6); 
+        textBubble.setScale(6);
         textBubble.setLocation(BubbleLocation.x, BubbleLocation.y);
         weAreFree = new SpriteFont("We are free!", 540, 165, "Impact", 18, new Color(0, 0, 0));
 
@@ -92,7 +92,7 @@ public class GameCompleteMap extends Map {
 		lionUncaged.setLocation(lionLocation.x, lionLocation.y);
         partyHat4 = new Sprite(ImageLoader.load("PartyHat.png"));
         partyHat4.setScale(8);
-        Point partyHatLocation3 = getMapTile(20,5).getLocation().subtractY(20).addX(15);
+        Point partyHatLocation3 = getMapTile(19,5).getLocation().subtractY(20).addX(15);
         partyHat4.setLocation(partyHatLocation3.x, partyHatLocation3.y);
 
         //add shark
@@ -113,7 +113,7 @@ public class GameCompleteMap extends Map {
         partyHat6 = new Sprite(ImageLoader.load("PartyHat.png"));
         partyHat6.setScale(4);
         Point partyHatLocation5 = getMapTile(15,7).getLocation().subtractX(35).addY(15);
-        partyHat6.setLocation(partyHatLocation5.x, partyHatLocation5.y); 
+        partyHat6.setLocation(partyHatLocation5.x, partyHatLocation5.y);
 
         //add monkey
     	Point monkeyLocation = getMapTile(4, 8).getLocation();

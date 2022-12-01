@@ -26,7 +26,6 @@ import Maps.Level9Complete;
 import Maps.TestMap;
 import Maps.TitleScreenMap;
 import Maps.TutorialComplete;
-import Screens.GameWonScreen;
 import Screens.PlayLevelScreen;
 
 import java.util.ArrayList;
@@ -96,7 +95,7 @@ public class EditorMaps {
 		case "GameWon":
 			return new GameCompleteMap();
 		case "BonusLevel":
-			return new BonusLevel();
+			return new BonusLevelMap();
 		case "TutorialComplete":
 			return new TutorialComplete();
 		case "Level1Complete":

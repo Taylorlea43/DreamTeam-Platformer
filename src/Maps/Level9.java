@@ -27,16 +27,22 @@ public class Level9 extends Map {
 
     public Level9() {
         super("level10.txt", new SavannahTileset());
-        this.playerStartPosition = getMapTile(0, 10).getLocation();
+        this.playerStartPosition = getMapTile(1, 13).getLocation();
 
     }
 
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
-        enemies.add(new HyenaEnemy(getMapTile(10,10).getLocation(), Direction.LEFT));
-        enemies.add(new PantherEnemy(getMapTile(40,11).getLocation(), Direction.LEFT));
-        enemies.add(new HyenaEnemy(getMapTile(22, 9).getLocation(), Direction.LEFT));
-        enemies.add(new PantherEnemy(getMapTile(63, 11).getLocation(), Direction.LEFT));
+        enemies.add(new HyenaEnemy(getMapTile(14,14).getLocation(), Direction.LEFT));
+        enemies.add(new HyenaEnemy(getMapTile(16,14).getLocation(), Direction.RIGHT));
+        enemies.add(new HyenaEnemy(getMapTile(23,14).getLocation(), Direction.LEFT));
+        enemies.add(new HyenaEnemy(getMapTile(29,14).getLocation(), Direction.LEFT));
+        enemies.add(new HyenaEnemy(getMapTile(34,14).getLocation(), Direction.RIGHT));
+        enemies.add(new HyenaEnemy(getMapTile(38,14).getLocation(), Direction.LEFT));
+        enemies.add(new HyenaEnemy(getMapTile(42,14).getLocation(), Direction.RIGHT));
+
+        enemies.add(new PantherEnemy(getMapTile(54,13).getLocation(), Direction.LEFT));
+        enemies.add(new PantherEnemy(getMapTile(64, 11).getLocation(), Direction.LEFT));
         return enemies;
     }
 

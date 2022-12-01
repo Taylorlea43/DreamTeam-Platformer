@@ -51,9 +51,7 @@ public class CrowEnemy extends Enemy {
 		float moveAmountX = 0;
 		float moveAmountY = 0;
 
-		// add gravity (if in air, this will cause bug to fall)
 
-		// if on ground, walk forward based on facing direction
 		if ((player.getX() < getX()) && (airGroundState == AirGroundState.AIR)) {
 			currentAnimationName = "WALK_LEFT";
 			if (facingDirection == Direction.RIGHT) {

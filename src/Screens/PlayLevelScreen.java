@@ -81,28 +81,28 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			map.reset();
 			
 			// set up coins in the game
-			this.coin1 = new Coin(320, 340);
+			this.coin1 = new Coin(1850, 430);
 			coin1.setBounds(new Rectangle(1, 1, 16, 16));
 			coin1.setMap(map);
 
-			this.coin2 = new Coin(620, 293);
+			this.coin2 = new Coin(1900, 430);
 			coin2.setBounds(new Rectangle(1, 1, 16, 16));
 			coin2.setMap(map);
 
-			this.coin3 = new Coin(865, 105);
+			this.coin3 = new Coin(1950, 430);
 			coin3.setBounds(new Rectangle(1, 1, 16, 16));
 			coin3.setMap(map);
 
-			this.coin4 = new Coin(1300, 130);
+			this.coin4 = new Coin(2000, 430);
 			coin4.setBounds(new Rectangle(1, 1, 16, 16));
 			coin4.setMap(map);
 
-			this.coin5 = new Coin(1730, 490);
+			this.coin5 = new Coin(2050, 430);
 			coin5.setBounds(new Rectangle(1, 1, 16, 16));
 			coin5.setMap(map);
 
 			// setup key
-			this.key = new LevelKey(955, 250, "pixelKey.png");
+			this.key = new LevelKey(1255, 405, "pixelKey.png");
 			key.setBounds(new Rectangle(30, 25, 25, 20));
 			key.setMap(map);
 

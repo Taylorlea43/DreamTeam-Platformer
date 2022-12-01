@@ -125,8 +125,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			key.setMap(map);
 
 			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 1); // changes girl
-																										// or boy
+			if(ScreenCoordinator.avatarSelection == 1)
+				this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 1);
+			else
+				this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 1);
+
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -215,7 +218,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.keyStatus.setOutlineColor(Color.black);
 			this.keyStatus.setOutlineThickness(3);
 			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 1);
+			if(ScreenCoordinator.avatarSelection == 1)
+				this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 1);
+			else
+				this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 1);
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -268,7 +274,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin14.setMap(map);
 
 			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 2);
+			if(ScreenCoordinator.avatarSelection == 1)
+				this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 2);
+			else
+				this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 2);
+			
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -325,7 +335,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin19.setMap(map);
 
 			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 3);
+			if(ScreenCoordinator.avatarSelection == 1)
+				this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 3);
+			else
+				this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 3);
+			
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -382,7 +396,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin24.setMap(map);
 
 			// setup player
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 4);
+			if(ScreenCoordinator.avatarSelection == 1)
+				this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 4);
+			else
+				this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 4);
+			
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -437,7 +455,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin29.setBounds(new Rectangle(1, 1, 16, 16));
 			coin29.setMap(map);
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 5);
+			if(ScreenCoordinator.avatarSelection == 1)
+				this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 5);
+			else
+				this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 5);
+			
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -466,7 +488,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new Level6();
 			map.reset();
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 6);
+			if(ScreenCoordinator.avatarSelection == 1)
+				this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 6);
+			else
+				this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 6);
+			
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -519,7 +545,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new Level7();
 			map.reset();
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 7);
+			if(ScreenCoordinator.avatarSelection == 1)
+				this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 7);
+			else
+				this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 7);
+			
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -572,7 +602,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 			this.map = new Level8();
 			map.reset();
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 8);
+			if(ScreenCoordinator.avatarSelection == 1)
+				this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 8);
+			else
+				this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 8);
+			
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -635,7 +669,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new Level9();
 			map.reset();
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 9);
+			if(ScreenCoordinator.avatarSelection == 1)
+				this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 9);
+			else
+				this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 9);
+			
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -688,7 +726,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new Level10();
 			map.reset();
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 10);
+			if(ScreenCoordinator.avatarSelection == 1)
+				this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 10);
+			else
+				this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 10);
+			
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();
@@ -744,7 +786,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			map.reset();
 			this.playLevelScreenState = PlayLevelScreenState.GAME_WON;
 
-			this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 6);
+			if(ScreenCoordinator.avatarSelection == 1)
+				this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 6);
+			else
+				this.player = new Boy(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 6);
+			
 			this.player.setMap(map);
 			this.player.addListener(this);
 			Point playerStartPosition = map.getPlayerStartPosition();

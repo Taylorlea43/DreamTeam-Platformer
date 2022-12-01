@@ -21,6 +21,9 @@ public class ScreenCoordinator extends Screen {
 	// keep track of gameState so ScreenCoordinator knows which Screen to show
 	protected GameState gameState;
 	protected GameState previousGameState;
+	
+	// keep track of avatar selection
+	public static int avatarSelection = 1;
 
 	public GameState getGameState() {
 		return gameState;

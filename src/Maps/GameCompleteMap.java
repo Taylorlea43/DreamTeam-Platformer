@@ -92,7 +92,7 @@ public class GameCompleteMap extends Map {
 		lionUncaged.setLocation(lionLocation.x, lionLocation.y);
         partyHat4 = new Sprite(ImageLoader.load("PartyHat.png"));
         partyHat4.setScale(8);
-        Point partyHatLocation3 = getMapTile(19,5).getLocation().subtractY(20).addX(15);
+        Point partyHatLocation3 = getMapTile(20,5).getLocation().subtractY(20).addX(15);
         partyHat4.setLocation(partyHatLocation3.x, partyHatLocation3.y);
 
         //add shark

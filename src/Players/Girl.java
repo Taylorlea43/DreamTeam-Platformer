@@ -23,6 +23,7 @@ public class Girl extends Player
 	        jumpDegrade = .5f;
 	        walkSpeed = 15.3f; //3.3f
 	        momentumYIncrease = .5f;
+	        health = 10;
 	        health = 100;
 	        this.level = level;
 	}

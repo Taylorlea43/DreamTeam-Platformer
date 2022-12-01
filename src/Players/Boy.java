@@ -10,18 +10,19 @@ import Level.Player;
 
 import java.util.HashMap;
 
-public class Boy extends Player {
+public class Boy extends Player
+{
 
 	public Boy(float x, float y, int level) {
 		super(new SpriteSheet(ImageLoader.load("boyFinal.png"), 45, 85), x, y, "STAND_RIGHT", false, level);
 		gravity = .5f;
 		terminalVelocityY = 6f;
-		jumpHeight = 14.5f; // 14.5
+		jumpHeight = 14.5f; //14.5
 		jumpDegrade = .5f;
-		walkSpeed = 10.3f; // 3.3f
+		walkSpeed = 10.3f; //3.3f
 		momentumYIncrease = .5f;
+		health = 10;
 		health = 100;
-
 	}
 
 	public void update() {

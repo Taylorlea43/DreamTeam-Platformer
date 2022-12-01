@@ -26,16 +26,17 @@ public class Level10 extends Map {
 
     public Level10() {
         super("level11.txt", new SavannahTileset());
-        this.playerStartPosition = getMapTile(0, 7).getLocation();
+        this.playerStartPosition = getMapTile(1, 13).getLocation();
 
     }
 
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
-        enemies.add(new HyenaEnemy(getMapTile(10,11).getLocation(), Direction.LEFT));
-        enemies.add(new PantherEnemy(getMapTile(40,10).getLocation(), Direction.LEFT));
-        enemies.add(new HyenaEnemy(getMapTile(22, 10).getLocation(), Direction.LEFT));
-        enemies.add(new PantherEnemy(getMapTile(63, 10).getLocation(), Direction.LEFT));
+        enemies.add(new HyenaEnemy(getMapTile(24,11).getLocation(), Direction.LEFT));
+        enemies.add(new PantherEnemy(getMapTile(42,14).getLocation(), Direction.LEFT));
+        enemies.add(new PantherEnemy(getMapTile(55,14).getLocation(), Direction.RIGHT));
+        enemies.add(new PantherEnemy(getMapTile(50,14).getLocation(), Direction.LEFT));
+        enemies.add(new HyenaEnemy(getMapTile(36, 8).getLocation(), Direction.LEFT));
         return enemies;
     }
 

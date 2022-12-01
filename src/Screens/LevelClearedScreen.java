@@ -44,44 +44,48 @@ public class LevelClearedScreen extends Screen {
 	@Override
 	public void initialize() 
 	{
-		if (currLevel == 0){
-			this.map = new TutorialComplete();
-			map.reset();
-//			winMessage = new SpriteFont("Level Cleared", Config.GAME_WINDOW_WIDTH/2-100, Config.GAME_WINDOW_HEIGHT/2-100, "Comic Sans", 30, Color.white);
-//			instructions = new SpriteFont("Press Space to go to the next Level or Escape to go back to the Main Menu", 320, 300, "Comic Sans", 20, Color.white);
-//			keyLocker.lockKey(Key.SPACE);
-//	        keyLocker.lockKey(Key.ESC); 
-		} else if (currLevel == 1) {
-			this.map = new Level1Complete();
-			map.reset();
-		} else if (currLevel == 2) {
-			this.map = new Level2Complete();
-			map.reset();
-		} else if (currLevel == 3) {
-			this.map = new Level3Complete();
-			map.reset();
-		} else if (currLevel == 4) {
-			this.map = new Level4Complete();
-			map.reset();
-		} else if (currLevel == 5) {
-			this.map = new Level5Complete();
-			map.reset();
-		} else if (currLevel == 6) {
-			this.map = new Level6Complete();
-			map.reset();
-		} else if (currLevel == 7) {
-			this.map = new Level7Complete();
-			map.reset();
-		} else if (currLevel == 8) {
-			this.map = new Level8Complete();
-			map.reset();
-		} else if (currLevel == 9) {
-			this.map = new Level9Complete();
-			map.reset();
-		} else if (currLevel == 10) {
-			this.map = new Level10Complete();
-			map.reset();
-		}
+		winMessage = new SpriteFont("Level Cleared", Config.GAME_WINDOW_WIDTH/2-250, Config.GAME_WINDOW_HEIGHT/2-25, "Comic Sans", 75, Color.white);
+		winMessage.setOutlineColor(Color.BLACK);
+		winMessage.setOutlineThickness(3);
+		winMessage.setFontStyle(2);
+		instructions = new SpriteFont("Press Space to go to the next Level or Escape to go back to the Main Menu", Config.GAME_WINDOW_WIDTH/2-350, Config.GAME_WINDOW_HEIGHT - 100, "Comic Sans", 20, Color.white);
+		keyLocker.lockKey(Key.SPACE);
+        keyLocker.lockKey(Key.ESC); 
+        
+//		if (currLevel == 0){
+//			this.map = new TutorialComplete();
+//			map.reset();
+//		} else if (currLevel == 1) {
+//			this.map = new Level1Complete();
+//			map.reset();
+//		} else if (currLevel == 2) {
+//			this.map = new Level2Complete();
+//			map.reset();
+//		} else if (currLevel == 3) {
+//			this.map = new Level3Complete();
+//			map.reset();
+//		} else if (currLevel == 4) {
+//			this.map = new Level4Complete();
+//			map.reset();
+//		} else if (currLevel == 5) {
+//			this.map = new Level5Complete();
+//			map.reset();
+//		} else if (currLevel == 6) {
+//			this.map = new Level6Complete();
+//			map.reset();
+//		} else if (currLevel == 7) {
+//			this.map = new Level7Complete();
+//			map.reset();
+//		} else if (currLevel == 8) {
+//			this.map = new Level8Complete();
+//			map.reset();
+//		} else if (currLevel == 9) {
+//			this.map = new Level9Complete();
+//			map.reset();
+//		} else if (currLevel == 10) {
+//			this.map = new Level10Complete();
+//			map.reset();
+//		}
 	}
 
 	@Override
@@ -123,7 +127,7 @@ public class LevelClearedScreen extends Screen {
 	public void draw(GraphicsHandler graphicsHandler) {
 		// paint entire screen black and dislpay level cleared text
 		graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(),
-				Color.black);
+				new Color(44, 201, 60));
 		winMessage.draw(graphicsHandler);
         instructions.draw(graphicsHandler);
 

@@ -58,6 +58,7 @@ public class WolfEnemy extends Enemy {
 			if (facingDirection == Direction.RIGHT) {
 				moveAmountX += movementSpeed;
 			} else {
+
 				moveAmountX -= movementSpeed;
 			}
 		}
@@ -122,15 +123,15 @@ public class WolfEnemy extends Enemy {
 			{
 				put("WALK_RIGHT", new Frame[] {
 						new FrameBuilder(spriteSheet.getSprite(0, 0), 100).withScale(2)
-								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(6, 6, 46, 30).build(),
+								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(6, 6, 46, 24).build(),
 						new FrameBuilder(spriteSheet.getSprite(0, 1), 100).withScale(2)
-								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(6, 6, 46, 30).build() });
+								.withImageEffect(ImageEffect.FLIP_HORIZONTAL).withBounds(6, 6, 46, 24).build() });
 
 				put("WALK_LEFT",
 						new Frame[] {
-								new FrameBuilder(spriteSheet.getSprite(0, 0), 100).withScale(2).withBounds(6, 6, 46, 30)
+								new FrameBuilder(spriteSheet.getSprite(0, 0), 100).withScale(2).withBounds(6, 6, 46, 24)
 										.build(),
-								new FrameBuilder(spriteSheet.getSprite(0, 1), 100).withScale(2).withBounds(6, 6, 46, 30)
+								new FrameBuilder(spriteSheet.getSprite(0, 1), 100).withScale(2).withBounds(6, 6, 46, 24)
 										.build() });
 			}
 		};

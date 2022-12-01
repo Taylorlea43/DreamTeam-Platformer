@@ -62,6 +62,7 @@ public class EditorMaps {
 				add("Level8Complete");
 				add("Level9Complete");
 				add("Level10Complete");
+				add("AvatarSelection");
 			}
 		};
 	}
@@ -118,6 +119,8 @@ public class EditorMaps {
 			return new Level9Complete();
 		case "Level10Complete":
 			return new Level10Complete();
+		case "AvatarSelection":
+			return new AvatarMap();
 		default:
 			throw new RuntimeException("Unrecognized map name");
 		}

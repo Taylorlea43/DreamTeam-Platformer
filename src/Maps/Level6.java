@@ -25,7 +25,7 @@ public class Level6 extends Map {
 
     public Level6() {
         super("level7.txt", new MountainTileset());
-        this.playerStartPosition = getMapTile(13, 28).getLocation();
+        this.playerStartPosition = getMapTile(1, 28).getLocation();
 
     }
 

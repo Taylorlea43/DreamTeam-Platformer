@@ -4,6 +4,7 @@ import Enemies.ZookeeperEnemy;
 import Engine.Config;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
+import Game.ScreenCoordinator;
 import GameObject.Sprite;
 import Level.Map;
 import SpriteFont.SpriteFont;
@@ -17,7 +18,7 @@ import java.awt.*;
 // Represents the map that is used as a background for the main menu and credits menu screen
 public class TitleScreenMap extends Map {
 
-	private Sprite girl;
+	private Sprite girl, boy;
 	private SpriteFont zooMania;
 	private Sprite elephantUncaged, girrafeUncaged, bunnyUncaged, lionUncaged, sharkUncaged, mountainGoatUncaged,
 			monkeyUncaged, penguinUncaged, parrotUncaged, lizardUncaged;
@@ -25,10 +26,22 @@ public class TitleScreenMap extends Map {
 
 	public TitleScreenMap() {
 		super("title_screen_map.txt", new CommonTileset());
-		Point girlLocation = getMapTile(13, 7).getLocation().subtractX(24).subtractY(6);
-		girl = new Sprite(ImageLoader.loadSubImage("girlNoLines.png", Colors.MAGENTA, 0, 0, 55, 85));
-		girl.setScale(2);
-		girl.setLocation(girlLocation.x, girlLocation.y);
+		
+		if (ScreenCoordinator.avatarSelection == 1)
+		{
+			Point girlLocation = getMapTile(13, 7).getLocation().subtractX(24).subtractY(6);
+			girl = new Sprite(ImageLoader.loadSubImage("girlNoLines.png", Colors.MAGENTA, 0, 0, 55, 85));
+			girl.setScale(2);
+			girl.setLocation(girlLocation.x, girlLocation.y);
+		}
+		
+		else
+		{
+			Point boyLocation = getMapTile(13, 7).getLocation().subtractX(24).subtractY(6);
+			boy = new Sprite(ImageLoader.loadSubImage("girlNoLines.png", Colors.MAGENTA, 0, 0, 55, 85));
+			boy.setScale(2);
+			boy.setLocation(boyLocation.x, boyLocation.y);
+		}		
 
 		// add game title
 		zooMania = new SpriteFont("ZOO MANIA", Config.GAME_WINDOW_WIDTH/2-150, 100, "Impact", 62, new Color(0, 0, 0));
@@ -102,7 +115,12 @@ public class TitleScreenMap extends Map {
 	@Override
 	public void draw(GraphicsHandler graphicsHandler) {
 		super.draw(graphicsHandler);
-		girl.draw(graphicsHandler);
+		
+		if (ScreenCoordinator.avatarSelection == 1)
+			girl.draw(graphicsHandler);
+		else
+			boy.draw(graphicsHandler);
+		
 		zooMania.draw(graphicsHandler);
 		elephantUncaged.draw(graphicsHandler);
 		girrafeUncaged.draw(graphicsHandler);

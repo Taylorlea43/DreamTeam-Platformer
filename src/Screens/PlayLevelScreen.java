@@ -276,7 +276,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.playLevelScreenState = PlayLevelScreenState.RUNNING;
 
 			// setup key
-			this.key = new LevelKey(525, 190, "pixelKey.png");
+			this.key = new LevelKey(490, 190, "pixelKey.png");
 			key.setBounds(new Rectangle(30, 25, 25, 20));
 			key.setMap(map);
 
@@ -320,7 +320,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			coin18.setBounds(new Rectangle(1, 1, 16, 16));
 			coin18.setMap(map);
 
-			this.coin19 = new Coin(3162, 450);
+			this.coin19 = new Coin(3325, 450);
 			coin19.setBounds(new Rectangle(1, 1, 16, 16));
 			coin19.setMap(map);
 

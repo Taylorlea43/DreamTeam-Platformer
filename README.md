@@ -1,6 +1,6 @@
 # SER225 Platformer Game - Hannah
 
-## What is this? EMILIO
+## What is this?
 This is a game created for Quinnipiac's SER225 Agile Development class.
 Students will be paired up in teams for an entire semester, and will utilize agile development to work further on this game.
 This usually involves adding features and fixing bugs (I'm sure there are bugs...)
@@ -19,5 +19,8 @@ It can be accessed at [https://a-r-t.github.io/SER-225-Game-Platformer/](https:/
 
 Changes to content in the `docs` folder will not show up on the website unless they are pushed to the `master` branch.
 
+#Instructions
+use arrow keys to move left right, and jump. Hit space to select anything. P to pause, and Command Q to quit. See tutorial level for additional information. Collect all coins for a surprise!
+
 ## Credits
-**Alex Thimineur**: Programmed the game, made the art.
+**Alex Thimineur, Taylor, Lea, Hannah Pfersch, James Phillips, Emilio Cruz**: Programmed the game, made the art.

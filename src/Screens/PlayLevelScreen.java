@@ -198,6 +198,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.keyStatus = new SpriteFont(" ", 75, 110, "Comic Sans", 23, new Color(250, 204, 77));
 			this.keyStatus.setOutlineColor(Color.black);
 			this.keyStatus.setOutlineThickness(3);
+
+			timeElapsed = 0;
+			timer.start();
+
 			// setup player
 			if(ScreenCoordinator.avatarSelection == 1)
 				this.player = new Girl(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 1);
@@ -279,6 +283,8 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				System.out.println("Error with playing sound.");
 				e.printStackTrace();
 			}
+			timeElapsed = 0;
+			timer.start();
 
 			// end level
 			levelClearedScreen = new LevelClearedScreen(this);
@@ -344,6 +350,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			// end level
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
+
+			timeElapsed = 0;
+			timer.start();
 		} else if (currLevel == 4) {
 			timeElapsed = 0;
 
@@ -402,11 +411,15 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 				e.printStackTrace();
 			}
 
+			timeElapsed = 0;
+			timer.start();
+
 			levelClearedScreen = new LevelClearedScreen(this);
 			levelLoseScreen = new LevelLoseScreen(this);
 
 		} else if (currLevel == 5) {
 			timeElapsed = 0;
+			timer.start();
 
 			this.map = new Level5();
 			map.reset();
@@ -465,6 +478,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 		} else if (currLevel == 6) {
 			timeElapsed = 0;
+			timer.start();
 
 			this.map = new Level6();
 			map.reset();
@@ -522,6 +536,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 		} else if (currLevel == 7) {
 			timeElapsed = 0;
+			timer.start();
 
 			this.map = new Level7();
 			map.reset();
@@ -580,6 +595,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 		} else if (currLevel == 8) {
 			timeElapsed = 0;
+			timer.start();
 
 			this.map = new Level8();
 			map.reset();
@@ -643,6 +659,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 		} else if (currLevel == 9) {
 			timeElapsed = 0;
+			timer.start();
 
 			player.setIsSwimming(false);
 			player.setJumpDegrade(.5f);
@@ -703,6 +720,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 		} else if (currLevel == 10) {
 			timeElapsed = 0;
+			timer.start();
 
 			this.map = new Level10();
 			map.reset();
@@ -761,6 +779,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			levelLoseScreen = new LevelLoseScreen(this);
 		} else if (currLevel == 11) {
 
+			timeElapsed = 0;
+			timer.start();
+
 			coinCount = 55;
 			gameWonScreen = new GameWonScreen(this);
 			this.map = new GameCompleteMap();
@@ -798,6 +819,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			this.map = new BonusLevelMap();
 			map.reset();
 			this.playLevelScreenState = PlayLevelScreenState.GAME_WON;
+
+			timeElapsed = 0;
+			timer.start();
 
 			this.player = new DiscoPlayer(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, 6);
 			this.player.setMap(map);

@@ -782,7 +782,6 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 			timeElapsed = 0;
 			timer.start();
 
-			coinCount = 55;
 			gameWonScreen = new GameWonScreen(this);
 			this.map = new GameCompleteMap();
 			map.reset();

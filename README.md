@@ -19,8 +19,5 @@ It can be accessed at [https://a-r-t.github.io/SER-225-Game-Platformer/](https:/
 
 Changes to content in the `docs` folder will not show up on the website unless they are pushed to the `master` branch.
 
-#Instructions
-use arrow keys to move left right, and jump. Hit space to select anything. P to pause, and Command Q to quit. You will be taken through a tutorial level prior to the start of the game that will explain the goals and storyline. Collect all coins for a surprise and free all the animals!
-
 ## Credits
 **Alex Thimineur, Taylor, Lea, Hannah Pfersch, James Phillips, Emilio Cruz**: Programmed the game, made the art.

@@ -19,7 +19,7 @@ public class Boy extends Player
 	        terminalVelocityY = 6f;
 	        jumpHeight = 15.5f; //14.5
 	        jumpDegrade = .5f;
-	        walkSpeed = 10.3f; //3.3f
+	        walkSpeed = 4f; //3.3f
 	        momentumYIncrease = .5f;
 	        health = 100;
 	}

@@ -1,4 +1,4 @@
-# SER225 Platformer Game - Hannah
+# SER225 Platformer Game
 
 ## What is this?
 This is a game created for Quinnipiac's SER225 Agile Development class.
@@ -6,7 +6,7 @@ Students will be paired up in teams for an entire semester, and will utilize agi
 This usually involves adding features and fixing bugs (I'm sure there are bugs...)
 
 ## How to run this project?
-I did not use any external libraries for this, so you can clone this  Taylor repo as is and run it out of the box with Java (min version 8). James
+I did not use any external libraries for this, so you can clone this repo as is and run it out of the box with Java (min version 8).
 
 I recommend using an IDE such as IntelliJ or Eclipse to run this game.
 
@@ -20,7 +20,7 @@ It can be accessed at [https://a-r-t.github.io/SER-225-Game-Platformer/](https:/
 Changes to content in the `docs` folder will not show up on the website unless they are pushed to the `master` branch.
 
 #Instructions
-use arrow keys to move left right, and jump. Hit space to select anything. P to pause, and Command Q to quit. See tutorial level for additional information. Collect all coins for a surprise!
+use arrow keys to move left right, and jump. Hit space to select anything. P to pause, and Command Q to quit. You will be taken through a tutorial level prior to the start of the game that will explain the goals and storyline. Collect all coins for a surprise and free all the animals!
 
 ## Credits
 **Alex Thimineur, Taylor, Lea, Hannah Pfersch, James Phillips, Emilio Cruz**: Programmed the game, made the art.
